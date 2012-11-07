@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{f3bda877-149e-4c1a-bc8e-587e8499b153}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>ModelingProject1</Name>
+    <RootNamespace>ModelingProject1</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Content Include="Civilization.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Civilization.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Civilization.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="CivilizationImpl.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CivilizationImpl.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CivilizationImpl.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="GameCreation.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="GameCreation.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>GameCreation.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\Package1_1150.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1111.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1132.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1134.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1141.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1150.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="OneGame.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="OneGame.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>OneGame.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="OneTurn.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="OneTurn.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>OneTurn.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Units.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Units.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Units.usecasediagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="Player.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Player.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Player.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\ModelingProject1.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4B24EEB9-1D4D-431C-908D-C1DED4AB53B6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModelingProject1Lib</RootNamespace>
+    <AssemblyName>ModelingProject1Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GeneratedCode\Implémentation\BossEII.cs" />
+    <Compile Include="GeneratedCode\Implémentation\BossINFO.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Case.cs" />
+    <Compile Include="GeneratedCode\Implémentation\CaseDecorator.cs" />
+    <Compile Include="GeneratedCode\Implémentation\CaseFactory.cs" />
+    <Compile Include="GeneratedCode\Implémentation\City.cs" />
+    <Compile Include="GeneratedCode\Implémentation\CivilizationType.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Desert.cs" />
+    <Compile Include="GeneratedCode\Implémentation\EIIFactory.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Fruit.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Game.cs" />
+    <Compile Include="GeneratedCode\Implémentation\GameBuilder.cs" />
+    <Compile Include="GeneratedCode\Implémentation\INFOFactory.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Iron.cs" />
+    <Compile Include="GeneratedCode\Implémentation\LargeMapStrategy.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Map.cs" />
+    <Compile Include="GeneratedCode\Implémentation\MapStrategy.cs" />
+    <Compile Include="GeneratedCode\Implémentation\MapType.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Mountain.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Plain.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Player.cs" />
+    <Compile Include="GeneratedCode\Implémentation\ProductionType.cs" />
+    <Compile Include="GeneratedCode\Implémentation\SmallMapStrategy.cs" />
+    <Compile Include="GeneratedCode\Implémentation\StudentEII.cs" />
+    <Compile Include="GeneratedCode\Implémentation\StudentINFO.cs" />
+    <Compile Include="GeneratedCode\Implémentation\TeacherEII.cs" />
+    <Compile Include="GeneratedCode\Implémentation\TeacherINFO.cs" />
+    <Compile Include="GeneratedCode\Implémentation\Unit.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Boss.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Case.cs" />
+    <Compile Include="GeneratedCode\Interfaces\CaseDecorator.cs" />
+    <Compile Include="GeneratedCode\Interfaces\CaseFactory.cs" />
+    <Compile Include="GeneratedCode\Interfaces\City.cs" />
+    <Compile Include="GeneratedCode\Interfaces\CivilizationFactory.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Desert.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Fruit.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Game.cs" />
+    <Compile Include="GeneratedCode\Interfaces\GameBuilder.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Iron.cs" />
+    <Compile Include="GeneratedCode\Interfaces\LargeMapStrategy.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Map.cs" />
+    <Compile Include="GeneratedCode\Interfaces\MapStrategy.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Mountain.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Plain.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Player.cs" />
+    <Compile Include="GeneratedCode\Interfaces\SmallMapStrategy.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Student.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Teacher.cs" />
+    <Compile Include="GeneratedCode\Interfaces\Unit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
