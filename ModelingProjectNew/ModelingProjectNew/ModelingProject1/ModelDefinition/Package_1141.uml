@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="f00a5e72-299d-4b1e-ae46-8e9fefcff246"
   name="Implémentation" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -616,6 +616,25 @@
                 LastKnownLocation="ModelingProject1.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="79c7a266-ac6a-4c3c-b34c-54d0d7dce15d"
+            name="creationTime"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -722,6 +741,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="cfbece14-7687-4bcf-95a6-259ee7779b0e"
+            name="defend"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -786,7 +813,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="8e7d322d-7b5c-4f46-9240-8aa6be55d103"
+            Id="cd8d0def-b616-46e6-a52b-5330f772a09f"
             isSubstitutable="false">
             <classMoniker
               Id="61bc6176-4861-4626-831b-db1612b2eee6"
@@ -899,6 +926,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="a3675214-852e-4cd6-a180-0f52320e245b"
+            name="defend"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -963,7 +998,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="1b49af44-c2c6-4885-97db-60c7a239ce54"
+            Id="c359e901-c0ee-480c-be41-0c4e302603f4"
             isSubstitutable="false">
             <classMoniker
               Id="61bc6176-4861-4626-831b-db1612b2eee6"
@@ -1128,6 +1163,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="44ce0093-747a-46ed-802d-200619b9502c"
+            name="defend"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1192,7 +1235,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="6ed7eb92-c8ab-445e-b064-7b5ad7ffc179"
+            Id="3186734d-75e2-4e61-9d13-f296153bb99a"
             isSubstitutable="false">
             <classMoniker
               Id="61bc6176-4861-4626-831b-db1612b2eee6"
@@ -1357,6 +1400,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="7b2170a9-711a-4500-bca0-2c2d9466bea4"
+            name="defend"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2304,6 +2355,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="624a4e80-9e10-4d00-bedf-01cc8328088e"
+            name="spawnUnit"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2368,7 +2427,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="87d03cfd-1b08-45e0-b40a-deb12f8fdf20"
+            Id="c77d7e20-e78f-4d0c-b646-27e46f136ccc"
             isSubstitutable="false">
             <classMoniker
               Id="61bc6176-4861-4626-831b-db1612b2eee6"
@@ -2481,6 +2540,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="8bc14ebf-c85b-4799-874d-170417863f2e"
+            name="defend"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2788,7 +2855,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="6a60a529-ffa8-42d2-a90a-1510b9ba8e53"
+            Id="9032380c-84d5-46a4-9e15-bde01780f5cc"
             isSubstitutable="false">
             <classMoniker
               Id="61bc6176-4861-4626-831b-db1612b2eee6"
@@ -2953,6 +3020,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="d7826da5-26e2-491a-b229-1244623f94ec"
+            name="defend"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -3017,7 +3092,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="c430dbfa-2642-49fa-88b3-d0d41819b416"
+            Id="faefb6d6-0a57-4b55-930a-f83c5372dfde"
             isSubstitutable="false">
             <classMoniker
               Id="61bc6176-4861-4626-831b-db1612b2eee6"
@@ -3182,6 +3257,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="7764f96f-93ae-4c7b-b798-efc08cc10dc6"
+            name="defend"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -3450,6 +3533,44 @@
                 Id="220a3521-e091-4221-bae9-3ef9018e845c"
                 LastKnownName="Integer"
                 LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="7b6c7a04-922b-4f58-8c10-5b69f0fde758"
+            name="cities"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="7ecda1e8-a77b-4498-8cba-bac36565ff89"
+                LastKnownName="List&lt;City&gt;"
+                LastKnownLocation="Package_1141.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="181bbbe2-c410-42e3-8b9e-f59adc32d627"
+            name="status"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="77ca5ef5-b8a4-478f-84d2-207b8732b9e4"
+                LastKnownName="StatusType"
+                LastKnownLocation="Package_1141.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -4169,7 +4290,140 @@
                 LastKnownLocation="ModelingProject1.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="5bc22ab3-df44-44ec-af09-04fdcc4c83dd"
+            name="players"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d8648433-f7bb-4ac2-95d3-cba916853b2e"
+                LastKnownName="List&lt;Player&gt;"
+                LastKnownLocation="Package_1141.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="fb4c47a2-30c3-4012-9be9-22ac8189f5b0"
+            name="winner"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="ba01b44e-c222-47f6-b8e9-1fc5febd25a6"
+                LastKnownName="Player"
+                LastKnownLocation="Package_1141.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="829cc64f-1d97-43c3-af8e-66b8f6061ce4"
+            name="loosers"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="ec595a0c-68bf-41b2-93a8-b0170861f247"
+                LastKnownName="List&lt;Players&gt;"
+                LastKnownLocation="Package_1141.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a5e6bd3b-c0a6-4f79-94cf-cf45a0195a6b"
+            name="addLooser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cf36bebb-e547-42c0-b85f-dd79ce6fe0a5"
+                  name="p"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="b26491c9-58b1-43ea-9164-cc2e439cf550"
+                      LastKnownName="Player"
+                      LastKnownLocation="Package_1134.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2a1e375b-8837-45ad-827e-660a1812de5f"
+            name="endGame"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="f4ada1cc-0e10-43b5-8135-527e19bf9aac"
+            name="isWinner"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="25b78a29-6f5f-4f75-9fd4-f7d36d126ec0"
+            name="isSpectator"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="34757c8b-02eb-4e7a-be3a-40aaa05057bc"
+                  name="p"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="b26491c9-58b1-43ea-9164-cc2e439cf550"
+                      LastKnownName="Player"
+                      LastKnownLocation="Package_1134.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="49258b1c-31e4-4cca-9033-f1022c289632"
+            name="startNewTurn"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -5875,6 +6129,25 @@
               <undefinedTypeMoniker
                 Id="db2d17f9-3600-4645-bf41-7886f86f4d52"
                 LastKnownName="List&lt;Unit&gt;"
+                LastKnownLocation="Package_1141.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="487e9404-0d19-435e-9813-434ed4715d9c"
+            name="city"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="30e6f5a2-02a9-4858-b25a-7c476d3dbb97"
+                LastKnownName="City"
                 LastKnownLocation="Package_1141.uml" />
             </type_NamedElement>
           </property>
@@ -7756,6 +8029,42 @@
       <undefinedType
         Id="db2d17f9-3600-4645-bf41-7886f86f4d52"
         name="List&lt;Unit&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="7ecda1e8-a77b-4498-8cba-bac36565ff89"
+        name="List&lt;City&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d8648433-f7bb-4ac2-95d3-cba916853b2e"
+        name="List&lt;Player&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ec595a0c-68bf-41b2-93a8-b0170861f247"
+        name="List&lt;Players&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="2d03631b-8dd1-4cb3-9a37-5cbc9ae7a147"
+        name="StatusType"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="a0a3bfba-8da3-478e-9960-9f71704eb9ee"
+            name="InGame" />
+          <enumerationLiteral
+            Id="ce7a9c1f-f457-48a6-9ff7-6b2d2635a6e5"
+            name="Spectator" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="77ca5ef5-b8a4-478f-84d2-207b8732b9e4"
+        name="StatusType" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

@@ -167,6 +167,43 @@
                   <elementDefinition Id="86e02311-5698-4cd1-9b7c-5758eeae1670" />
                 </association>
               </targetEnds>
+              <ownedOperations>
+                <operation Id="2ba85a63-f8ea-436c-aae3-32f766b03c77" name="addLooser" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="db5da78e-ee2c-4fc7-b6f7-9a2a8d2e1ee6" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="09c6a0d3-25cc-4931-a11e-eb6dfc6bd462" name="p" direction="In" isUnique="false">
+                        <elementDefinition Id="dbe7bace-21dd-41da-b108-32c8657f0958" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="f6209bf4-5bdc-4a3a-ba88-8052c4b2f896" LastKnownName="Player" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+                <operation Id="699cdad6-4ec5-4c64-95b9-48cc3d109f42" name="endGame" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="45228223-0cf1-4b01-a4c3-f727f0df86ee" />
+                </operation>
+                <operation Id="cb7985cf-2e0f-4782-b722-64442e8c5381" name="isWinner" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="a8089560-b59b-4c80-8e33-6c75773eef32" />
+                </operation>
+                <operation Id="da710afb-37ca-4292-903e-e6e1971cd751" name="isSpectator" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="b2ab59b0-fbf5-4a20-8c4a-0287bee5ea8b" />
+                  <ownedParameters>
+                    <operationHasOwnedParameters>
+                      <parameter Id="b7c4cf68-1964-4be1-89dc-7a0eed4a46bc" name="p" direction="In" isUnique="false">
+                        <elementDefinition Id="691c465e-7ceb-4f29-a9af-ffe8961f15dd" />
+                        <type_NamedElement>
+                          <referencedTypeMoniker Id="f6209bf4-5bdc-4a3a-ba88-8052c4b2f896" LastKnownName="Player" />
+                        </type_NamedElement>
+                      </parameter>
+                    </operationHasOwnedParameters>
+                  </ownedParameters>
+                </operation>
+                <operation Id="6b3a668c-e7e8-4c1e-ba22-67e057a0b53b" name="startNewTurn" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="99a84226-baf1-4b83-a78b-caf709bc0a9c" />
+                </operation>
+              </ownedOperations>
             </Interface>
           </packageHasNamedElement>
           <packageHasNamedElement>
@@ -928,6 +965,9 @@
                   </appliedStereotypesInternal>
                   <elementDefinition Id="39db1cbb-c2b3-45c3-811d-998203710a99" />
                 </operation>
+                <operation Id="fd9d9c97-bfd1-4d5e-a900-879146c6ca4d" name="defend" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="2becf39c-56ee-46da-83be-b8b2be65f770" />
+                </operation>
               </ownedOperations>
             </Interface>
           </packageHasNamedElement>
@@ -966,9 +1006,9 @@
               </appliedStereotypesInternal>
               <elementDefinition Id="f6def50a-7f9c-49c0-925f-6ff869b6f85c" />
               <generalsInternal>
-                <generalization Id="7c9325a3-eba7-4751-878c-9b8f37fda3f9" isSubstitutable="false">
+                <generalization Id="2f05624b-ea5b-44a6-aff0-914aa99bd5e3" isSubstitutable="false">
                   <interfaceMoniker Id="a494cd2c-7120-4144-8b90-429526beabf7" LastKnownName="Unit" />
-                  <elementDefinition Id="df8c0381-10af-4111-b957-964968adc5bd" />
+                  <elementDefinition Id="71c335d6-d615-4884-b338-93a5de555aa3" />
                 </generalization>
               </generalsInternal>
               <ownedOperations>
@@ -1050,9 +1090,9 @@
               </appliedStereotypesInternal>
               <elementDefinition Id="08fb0476-ebbb-42a4-bda5-b822910cae04" />
               <generalsInternal>
-                <generalization Id="b8ba8ba6-eae6-433b-8cdf-8fc8b32e3fbd" isSubstitutable="false">
+                <generalization Id="259ca974-ac86-4204-b766-edae1411c8bd" isSubstitutable="false">
                   <interfaceMoniker Id="a494cd2c-7120-4144-8b90-429526beabf7" LastKnownName="Unit" />
-                  <elementDefinition Id="5aaf91d6-19ad-49e4-bdfa-45bc7af098d4" />
+                  <elementDefinition Id="50efcbf6-2e34-4d08-97f2-324e81579c0e" />
                 </generalization>
               </generalsInternal>
             </Interface>
@@ -1271,9 +1311,9 @@
               </appliedStereotypesInternal>
               <elementDefinition Id="6f8fc9ad-319c-402f-8f95-f7b067b40b75" />
               <generalsInternal>
-                <generalization Id="6fcf1e32-e2f7-4d40-b2ac-b7c82bff173d" isSubstitutable="false">
+                <generalization Id="b879537d-a709-4fb7-96ff-363a7a5d33ca" isSubstitutable="false">
                   <interfaceMoniker Id="a494cd2c-7120-4144-8b90-429526beabf7" LastKnownName="Unit" />
-                  <elementDefinition Id="2af7f393-d8e9-46f4-ad79-a03a6bb35682" />
+                  <elementDefinition Id="b412983f-842c-476e-a888-9e3ac300812f" />
                 </generalization>
               </generalsInternal>
               <ownedOperations>
@@ -2221,6 +2261,9 @@
                   </appliedStereotypesInternal>
                   <elementDefinition Id="9d1bd418-6cff-434c-b659-5bc38f993aa5" />
                 </operation>
+                <operation Id="39ad49f2-0fac-426c-ac03-9b43998b6f88" name="spawnUnit" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="ebf594d8-7800-400a-a5fc-cfa7d291ac57" />
+                </operation>
               </ownedOperations>
             </Interface>
           </packageHasNamedElement>
@@ -2230,6 +2273,11 @@
     <packageHasNamedElement>
       <referencedType Id="d61deeff-18c6-4e75-b6fd-b9794e5b6783" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
         <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="f6209bf4-5bdc-4a3a-ba88-8052c4b2f896" name="Player" isAbstract="false" isLeaf="false" cachedFullName="ModelingProject1::Interfaces::Player">
+        <elementDefinition Id="b26491c9-58b1-43ea-9164-cc2e439cf550" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

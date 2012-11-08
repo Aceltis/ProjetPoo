@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="64090918-152c-427f-abb7-df88f477d197"
   name="Interfaces" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -87,6 +87,82 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedOperations>
+          <operation
+            Id="db5da78e-ee2c-4fc7-b6f7-9a2a8d2e1ee6"
+            name="addLooser"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dbe7bace-21dd-41da-b108-32c8657f0958"
+                  name="p"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="b26491c9-58b1-43ea-9164-cc2e439cf550"
+                      LastKnownName="Player"
+                      LastKnownLocation="Package_1134.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="45228223-0cf1-4b01-a4c3-f727f0df86ee"
+            name="endGame"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a8089560-b59b-4c80-8e33-6c75773eef32"
+            name="isWinner"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b2ab59b0-fbf5-4a20-8c4a-0287bee5ea8b"
+            name="isSpectator"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="691c465e-7ceb-4f29-a9af-ffe8961f15dd"
+                  name="p"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="b26491c9-58b1-43ea-9164-cc2e439cf550"
+                      LastKnownName="Player"
+                      LastKnownLocation="Package_1134.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="99a84226-baf1-4b83-a78b-caf709bc0a9c"
+            name="startNewTurn"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
       </Interface>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1063,6 +1139,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="2becf39c-56ee-46da-83be-b8b2be65f770"
+            name="defend"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperations>
       </Interface>
     </packageHasNamedElement>
@@ -1110,7 +1194,7 @@
         </appliedStereotypesInternal>
         <generalsInternal>
           <generalization
-            Id="df8c0381-10af-4111-b957-964968adc5bd"
+            Id="71c335d6-d615-4884-b338-93a5de555aa3"
             isSubstitutable="false">
             <interfaceMoniker
               Id="47aebc96-0d89-46f2-a424-a8ef209ee5ff"
@@ -1218,7 +1302,7 @@
         </appliedStereotypesInternal>
         <generalsInternal>
           <generalization
-            Id="5aaf91d6-19ad-49e4-bdfa-45bc7af098d4"
+            Id="50efcbf6-2e34-4d08-97f2-324e81579c0e"
             isSubstitutable="false">
             <interfaceMoniker
               Id="47aebc96-0d89-46f2-a424-a8ef209ee5ff"
@@ -1498,7 +1582,7 @@
         </appliedStereotypesInternal>
         <generalsInternal>
           <generalization
-            Id="2af7f393-d8e9-46f4-ad79-a03a6bb35682"
+            Id="b412983f-842c-476e-a888-9e3ac300812f"
             isSubstitutable="false">
             <interfaceMoniker
               Id="47aebc96-0d89-46f2-a424-a8ef209ee5ff"
@@ -2803,6 +2887,14 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </operation>
+          <operation
+            Id="ebf594d8-7800-400a-a5fc-cfa7d291ac57"
+            name="spawnUnit"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperations>
       </Interface>
     </packageHasNamedElement>
