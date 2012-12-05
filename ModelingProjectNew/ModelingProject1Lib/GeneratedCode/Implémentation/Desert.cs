@@ -14,6 +14,13 @@ namespace Implémentation
 
 	public class Desert : Case, IDesert
 	{
+        public Desert()
+        {
+            food = 0;
+            minerals = 2;
+
+        }
+
 		public override void removeUnit(int unit_id)
 		{
 			throw new System.NotImplementedException();

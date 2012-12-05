@@ -14,6 +14,14 @@ namespace Implémentation
 
 	public class StudentEII : Unit, IStudent
 	{
+        public StudentEII()
+        {
+            movePoints = 2;
+            attackPoints = 3;
+            defensePoints = 3;
+            HP = 10;
+        }
+
 		public virtual void attack()
 		{
 			throw new System.NotImplementedException();

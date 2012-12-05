@@ -14,6 +14,14 @@ namespace Implémentation
 
 	public class StudentINFO : Unit, IStudent
 	{
+        public StudentINFO()
+        {
+            movePoints = 2;
+            attackPoints = 4;
+            defensePoints = 2;
+            HP = 10;
+        }
+
 		public virtual void attack()
 		{
 			throw new System.NotImplementedException();
@@ -33,7 +41,6 @@ namespace Implémentation
 		{
 			throw new System.NotImplementedException();
 		}
-
 	}
 }
 
