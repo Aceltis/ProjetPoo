@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="901745fb-1b03-4afe-af87-4200660fe30d" name="abrunela@PC2-INFO6 2012-11-28 10:43:17" runUser="EDUC\abrunela" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="f1d7acff-5c14-4606-8cfb-ad01842aec5f">
+    <Description>Il s'agit des paramètres de test par défaut pour une série de tests locale.</Description>
+    <Deployment enabled="false" runDeploymentRoot="abrunela_PC2-INFO6 2012-11-28 10_43_17">
+      <DeploymentItem filename="H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-11-28T10:43:17.0413061+01:00" queuing="2012-11-28T10:43:25.9957061+01:00" start="2012-11-28T10:43:26.0113061+01:00" finish="2012-11-28T10:43:26.3857061+01:00" />
+  <ResultSummary outcome="Inconclusive">
+    <Counters total="3" executed="3" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="2" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="HPTest2" storage="h:\documents\nouveau dossier\projetpoo\modelingprojectnew\testproject1\bin\debug\testproject1.dll" id="cd806038-c4b9-e6f9-0998-3a77d562c6b4">
+      <Execution id="851dcc56-9931-4468-8d3b-6e6df8d09049" />
+      <TestMethod codeBase="H:/Documents/Nouveau dossier/ProjetPoo/ModelingProjectNew/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UnitTest, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="HPTest2" />
+    </UnitTest>
+    <UnitTest name="HPTest1" storage="h:\documents\nouveau dossier\projetpoo\modelingprojectnew\testproject1\bin\debug\testproject1.dll" id="72809ec9-61d5-8e60-55d0-c56dcedc1749">
+      <Execution id="0a63a14d-2e1f-4d4e-8627-2ef780b9a51b" />
+      <TestMethod codeBase="H:/Documents/Nouveau dossier/ProjetPoo/ModelingProjectNew/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UnitTest, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="HPTest1" />
+    </UnitTest>
+    <UnitTest name="HPTest" storage="h:\documents\nouveau dossier\projetpoo\modelingprojectnew\testproject1\bin\debug\testproject1.dll" id="f50d23ec-c7c2-f2f6-736e-571d11f64f33">
+      <Execution id="e48d9c4f-055a-4ae0-87fc-3579b1d01219" />
+      <TestMethod codeBase="H:/Documents/Nouveau dossier/ProjetPoo/ModelingProjectNew/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UnitTest, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="HPTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Les résultats ne figurent pas dans une liste" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Tous les résultats chargés" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="72809ec9-61d5-8e60-55d0-c56dcedc1749" executionId="0a63a14d-2e1f-4d4e-8627-2ef780b9a51b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cd806038-c4b9-e6f9-0998-3a77d562c6b4" executionId="851dcc56-9931-4468-8d3b-6e6df8d09049" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f50d23ec-c7c2-f2f6-736e-571d11f64f33" executionId="e48d9c4f-055a-4ae0-87fc-3579b1d01219" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0a63a14d-2e1f-4d4e-8627-2ef780b9a51b" testId="72809ec9-61d5-8e60-55d0-c56dcedc1749" testName="HPTest1" computerName="PC2-INFO6" duration="00:00:00.0726504" startTime="2012-11-28T10:43:26.0269061+01:00" endTime="2012-11-28T10:43:26.3545061+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0a63a14d-2e1f-4d4e-8627-2ef780b9a51b">
+      <Output>
+        <ErrorInfo>
+          <Message>Échec de Assert.Inconclusive. Vérifiez l'exactitude de cette méthode de test.</Message>
+          <StackTrace>   à TestProject1.UnitTest.HPTest1() dans H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\UnitTest.cs:ligne 94
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="851dcc56-9931-4468-8d3b-6e6df8d09049" testId="cd806038-c4b9-e6f9-0998-3a77d562c6b4" testName="HPTest2" computerName="PC2-INFO6" duration="00:00:00.0005542" startTime="2012-11-28T10:43:26.3545061+01:00" endTime="2012-11-28T10:43:26.3545061+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="851dcc56-9931-4468-8d3b-6e6df8d09049">
+      <Output>
+        <ErrorInfo>
+          <Message>Échec de Assert.Inconclusive. Vérifiez l'exactitude de cette méthode de test.</Message>
+          <StackTrace>   à TestProject1.UnitTest.HPTest2() dans H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\UnitTest.cs:ligne 109
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e48d9c4f-055a-4ae0-87fc-3579b1d01219" testId="f50d23ec-c7c2-f2f6-736e-571d11f64f33" testName="HPTest" computerName="PC2-INFO6" duration="00:00:00.0001357" startTime="2012-11-28T10:43:26.3701061+01:00" endTime="2012-11-28T10:43:26.3701061+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e48d9c4f-055a-4ae0-87fc-3579b1d01219">
+    </UnitTestResult>
+  </Results>
+</TestRun>

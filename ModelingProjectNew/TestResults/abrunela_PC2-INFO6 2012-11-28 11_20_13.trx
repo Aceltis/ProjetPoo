@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e42b179f-692f-40ec-9471-4349467d3fa6" name="abrunela@PC2-INFO6 2012-11-28 11:20:13" runUser="EDUC\abrunela" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="f1d7acff-5c14-4606-8cfb-ad01842aec5f">
+    <Description>Il s'agit des paramètres de test par défaut pour une série de tests locale.</Description>
+    <Deployment enabled="false" runDeploymentRoot="abrunela_PC2-INFO6 2012-11-28 11_20_13">
+      <DeploymentItem filename="H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-11-28T11:20:13.1432229+01:00" queuing="2012-11-28T11:20:13.3804229+01:00" start="2012-11-28T11:20:13.3960229+01:00" finish="2012-11-28T11:20:13.7236229+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="HPTest" storage="h:\documents\nouveau dossier\projetpoo\modelingprojectnew\testproject1\bin\debug\testproject1.dll" id="f50d23ec-c7c2-f2f6-736e-571d11f64f33">
+      <Execution id="3833bbc2-d6d4-4a8d-994d-f067d9e89d53" />
+      <TestMethod codeBase="H:/Documents/Nouveau dossier/ProjetPoo/ModelingProjectNew/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.UnitTest, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="HPTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Les résultats ne figurent pas dans une liste" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Tous les résultats chargés" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="f50d23ec-c7c2-f2f6-736e-571d11f64f33" executionId="3833bbc2-d6d4-4a8d-994d-f067d9e89d53" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="3833bbc2-d6d4-4a8d-994d-f067d9e89d53" testId="f50d23ec-c7c2-f2f6-736e-571d11f64f33" testName="HPTest" computerName="PC2-INFO6" duration="00:00:00.0295181" startTime="2012-11-28T11:20:13.4272229+01:00" endTime="2012-11-28T11:20:13.6924229+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3833bbc2-d6d4-4a8d-994d-f067d9e89d53">
+    </UnitTestResult>
+  </Results>
+</TestRun>

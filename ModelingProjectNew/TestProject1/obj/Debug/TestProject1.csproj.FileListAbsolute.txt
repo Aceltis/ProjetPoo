@@ -1,0 +1,9 @@
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\obj\Debug\ResolveAssemblyReference.cache
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\bin\Debug\TestProject1.dll
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\bin\Debug\TestProject1.pdb
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\bin\Debug\ModelingProject1Lib.dll
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\bin\Debug\ModelingProject1Lib.pdb
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\bin\Debug\ModelingProject1Lib_Accessor.dll
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\bin\Debug\ModelingProject1Lib_Accessor.pdb
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\obj\Debug\TestProject1.dll
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TestProject1\obj\Debug\TestProject1.pdb

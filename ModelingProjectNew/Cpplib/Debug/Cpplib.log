@@ -1,0 +1,26 @@
+﻿La génération a démarré 28/11/2012 11:27:05.
+     1>Projet "H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\Cpplib\Cpplib.vcxproj" sur le nœud 2 (rebuild cible(s)).
+     1>_PrepareForClean:
+         Suppression du fichier "Debug\Cpplib.lastbuildstate".
+       InitializeBuildStatus:
+         Création de "Debug\Cpplib.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+       GenerateTargetFrameworkMonikerAttribute:
+       La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /analyze- /errorReport:prompt mapalgo.cpp /clr:nostdlib 
+         mapalgo.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /analyze- /errorReport:prompt "C:\Users\abrunela\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\Debug\Cpplib.lib" /NOLOGO Debug\mapalgo.obj
+         "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+     1>.NETFramework,Version=v4.0.AssemblyAttributes.obj : warning LNK4221: Ce fichier objet ne dÚfinit pas de symboles publics jusqu'ici non dÚfinis. Par consÚquent, il ne sera utilisÚ par aucune opÚration de lien utilisant cette bibliothÞque
+         Cpplib.vcxproj -> H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\Debug\Cpplib.lib
+       FinalizeBuildStatus:
+         Suppression du fichier "Debug\Cpplib.unsuccessfulbuild".
+         Mise à jour de l'horodatage "Debug\Cpplib.lastbuildstate".
+     1>Génération du projet "H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\Cpplib\Cpplib.vcxproj" terminée (rebuild cible(s)).
+
+La génération a réussi.
+
+Temps écoulé 00:00:02.28

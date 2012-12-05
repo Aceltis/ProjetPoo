@@ -1,0 +1,8 @@
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TesingProject\bin\Debug\TesingProject.exe
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TesingProject\bin\Debug\TesingProject.pdb
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TesingProject\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TesingProject\obj\x86\Debug\TesingProject.Properties.Resources.resources
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TesingProject\obj\x86\Debug\GenerateResource.read.1.tlog
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TesingProject\obj\x86\Debug\GenerateResource.write.1.tlog
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TesingProject\obj\x86\Debug\TesingProject.exe
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\TesingProject\obj\x86\Debug\TesingProject.pdb
