@@ -14,6 +14,14 @@ namespace Implémentation
 
 	public class TeacherINFO : Unit, ITeacher
 	{
+        public TeacherINFO()
+        {
+            movePoints = 3;
+            attackPoints = 0;
+            defensePoints = 1;
+            HP = 1;
+        }
+
 		public virtual void createCity()
 		{
 			throw new System.NotImplementedException();

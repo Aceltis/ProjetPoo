@@ -14,6 +14,14 @@ namespace Implémentation
 
 	public class TeacherEII : Unit, ITeacher
 	{
+        public TeacherEII()
+        {
+            movePoints = 2;
+            attackPoints = 0;
+            defensePoints = 2;
+            HP = 1;
+        }
+
 		public virtual void createCity()
 		{
 			throw new System.NotImplementedException();
