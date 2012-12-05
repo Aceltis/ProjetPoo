@@ -14,6 +14,13 @@ namespace Implémentation
 
 	public class Mountain : Case, IMountain
 	{
+        public Mountain ()
+        {
+            food = 0;
+            minerals = 3;
+
+        }
+
 		public override void removeUnit(int unit_id)
 		{
 			throw new System.NotImplementedException();

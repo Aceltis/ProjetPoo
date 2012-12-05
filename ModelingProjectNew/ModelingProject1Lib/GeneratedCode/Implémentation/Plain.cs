@@ -14,6 +14,13 @@ namespace Implémentation
 
 	public class Plain : Case, IPlain
 	{
+        public Plain ()
+        {
+            food = 3;
+            minerals = 1;
+
+        }
+
 		public override void removeUnit(int unit_id)
 		{
 			throw new System.NotImplementedException();

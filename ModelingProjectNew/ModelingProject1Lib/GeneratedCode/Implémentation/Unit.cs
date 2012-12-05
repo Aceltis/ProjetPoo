@@ -15,11 +15,17 @@ namespace Implémentation
 	public class Unit : IUnit
 	{
         //Attribut nécessitant une condition ici HP positifs, mais en fait noneed dans le sens où HP nég = mort)
-        private int _HP;
+        /*private int _HP;
         public virtual int HP
         {
             get { return _HP; }
             set { if(value>=0) _HP=value; }
+        }*/
+
+        public virtual int HP
+        {
+            get;
+            set;
         }
 
         //Attribut ne nécessitant pas de condition (=> constructeurs C#)
