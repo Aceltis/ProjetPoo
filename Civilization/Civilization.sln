@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "CivilizationModel", "ModelingProject1\CivilizationModel.modelproj", "{F3BDA877-149E-4C1A-BC8E-587E8499B153}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Civilization", "ModelingProject1Lib\Civilization.csproj", "{04B31188-1345-4D9F-B80A-D66169C9EC8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3BDA877-149E-4C1A-BC8E-587E8499B153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BDA877-149E-4C1A-BC8E-587E8499B153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BDA877-149E-4C1A-BC8E-587E8499B153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BDA877-149E-4C1A-BC8E-587E8499B153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B31188-1345-4D9F-B80A-D66169C9EC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B31188-1345-4D9F-B80A-D66169C9EC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B31188-1345-4D9F-B80A-D66169C9EC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B31188-1345-4D9F-B80A-D66169C9EC8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

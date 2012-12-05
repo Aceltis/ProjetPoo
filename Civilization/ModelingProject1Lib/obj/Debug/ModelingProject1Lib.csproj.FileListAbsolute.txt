@@ -1,0 +1,5 @@
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\ModelingProject1Lib\obj\Debug\ResolveAssemblyReference.cache
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.dll
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.pdb
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.dll
+H:\Documents\Nouveau dossier\ProjetPoo\ModelingProjectNew\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.pdb
