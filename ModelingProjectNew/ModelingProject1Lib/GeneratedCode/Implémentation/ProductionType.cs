@@ -16,5 +16,6 @@ namespace Implémentation
 		Boss,
 		Student,
 		Teacher,
+        None,
 	}
 }

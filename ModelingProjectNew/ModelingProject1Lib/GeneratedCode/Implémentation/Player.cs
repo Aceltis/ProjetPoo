@@ -74,7 +74,7 @@ namespace Implémentation
 			throw new System.NotImplementedException();
 		}
 
-		public virtual void produceUnits()
+		public virtual void produceUnits(City city, Unit unit)
 		{
 			throw new System.NotImplementedException();
 		}
