@@ -14,23 +14,28 @@ namespace Implémentation
 
 	public class City : ICity
 	{
-		public virtual int population
-		{
-			get;
-			set;
-		}
+        public City(Player p, Case c)
+        {
+            population = 1;
+            position.pos_x = c.pos_x;
+            position.pos_y = c.pos_y;
+            player = p;
+            current_prod = ProductionType.None;
+            owned_food = c.food;
+            owned_minerals = c.minerals;
+        }
 
-		public virtual int pos_x
-		{
-			get;
-			set;
-		}
+        public virtual int population
+        {
+            get;
+            set;
+        }
 
-		public virtual int pos_y
-		{
-			get;
-			set;
-		}
+        public virtual Case position
+        {
+            get;
+            set;
+        }
 
 		public virtual Player player
 		{
@@ -56,10 +61,28 @@ namespace Implémentation
 			set;
 		}
 
-		public virtual void produceUnits()
+		public virtual void produceBoss(Unit unit)
 		{
-			throw new System.NotImplementedException();
+            if (current_prod == ProductionType.None && owned_minerals >= 200)
+            {
+                current_prod = ProductionType.Boss;
+
+                if (unit.cost == 0)
+                {
+                    spawnUnit(unit);
+                }
+            }
 		}
+
+        public virtual void produceStudent()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void produceTeacher()
+        {
+            throw new System.NotImplementedException();
+        }
 
 		public virtual void changeProduction()
 		{
@@ -71,7 +94,7 @@ namespace Implémentation
 			throw new System.NotImplementedException();
 		}
 
-		public virtual void spawnUnit()
+		public virtual void spawnUnit(Unit unit)
 		{
 			throw new System.NotImplementedException();
 		}

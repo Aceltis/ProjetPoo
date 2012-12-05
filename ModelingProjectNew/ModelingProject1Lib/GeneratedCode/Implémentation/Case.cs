@@ -52,8 +52,18 @@ namespace Implémentation
 
 		public virtual void removeUnit(int unit_id)
 		{
-			throw new System.NotImplementedException();
+            foreach (Unit unit in units)
+            {
+                if (unit.id == unit_id)
+                    units.Remove(unit);
+            }
 		}
+        
+        public virtual void addUnit(Unit unit)
+        {
+            units.Add(unit);
+        }
+
 
 		public virtual void afficher(int x, int y)
 		{
