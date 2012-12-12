@@ -14,6 +14,10 @@ namespace Implémentation
 
 	public class Unit : IUnit
 	{
+        public Unit(Player P, Case c)
+        {
+        }
+
         //Attribut nécessitant une condition ici HP positifs, mais en fait noneed dans le sens où HP nég = mort)
         /*private int _HP;
         public virtual int HP

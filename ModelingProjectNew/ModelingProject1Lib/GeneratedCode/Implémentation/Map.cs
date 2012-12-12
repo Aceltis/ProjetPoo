@@ -14,31 +14,35 @@ namespace Implémentation
 
 	public class Map : IMap
 	{
-		private int height
+        public Map(Game g)
+        {
+        }
+
+		public virtual int height
 		{
 			get;
 			set;
 		}
 
-		private int width
+        public virtual int width
 		{
 			get;
 			set;
 		}
 
-		private MapType type
+        public virtual MapType type
 		{
 			get;
 			set;
 		}
 
-		private List<Case> cases
+        public virtual List<Case> cases
 		{
 			get;
 			set;
 		}
 
-		private int map_id
+        public virtual int map_id
 		{
 			get;
 			set;
