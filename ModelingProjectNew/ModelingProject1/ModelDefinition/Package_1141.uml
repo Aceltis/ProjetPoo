@@ -6125,7 +6125,6 @@
           <property
             Id="32534d32-f098-4350-b94f-f860f1bfc622"
             name="height"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -6194,7 +6193,6 @@
           <property
             Id="b9545202-f948-4ac2-a952-cf1c481b2d13"
             name="width"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -6263,7 +6261,6 @@
           <property
             Id="51337d34-4c59-46e5-8548-43aae56a14c2"
             name="type"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -6332,7 +6329,6 @@
           <property
             Id="b8159270-1ae5-4ac1-8f0f-2af9f9dfcf02"
             name="cases"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -6413,7 +6409,6 @@
           <property
             Id="3d24b4e0-34d6-472a-a6c7-72c201422980"
             name="map_id"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"

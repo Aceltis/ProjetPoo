@@ -4628,7 +4628,7 @@
                 </association>
               </targetEnds>
               <ownedAttributesInternal>
-                <property Id="18d4921a-9883-4e12-b64b-9502b2f5ab05" name="height" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="18d4921a-9883-4e12-b64b-9502b2f5ab05" name="height" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="e4d48f26-30d5-45a7-9408-6add19939b44" name="property" profile="CSharpProfile">
                       <elementDefinition Id="12180f57-0700-44f7-ae9d-a4f54a1a042d" />
@@ -4674,10 +4674,10 @@
                   </appliedStereotypesInternal>
                   <elementDefinition Id="32534d32-f098-4350-b94f-f860f1bfc622" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="94946e86-2e1e-4096-ba35-e35255f46a2f" LastKnownName="Integer" />
+                    <referencedTypeMoniker Id="f137625a-20e6-4fa4-aa08-6cd1a7b8d36a" LastKnownName="Integer" />
                   </type_NamedElement>
                 </property>
-                <property Id="41b73dab-f3ec-4b54-b39a-6409ef2cb276" name="width" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="41b73dab-f3ec-4b54-b39a-6409ef2cb276" name="width" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="f52141ef-7ea8-48a5-a134-c06aaed41bf1" name="property" profile="CSharpProfile">
                       <elementDefinition Id="f3238d4a-e61d-4a1b-a67f-0ce501c43c5f" />
@@ -4723,10 +4723,10 @@
                   </appliedStereotypesInternal>
                   <elementDefinition Id="b9545202-f948-4ac2-a952-cf1c481b2d13" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="4660ae9d-ace7-43a5-8cc4-a150efa727fe" LastKnownName="Integer" />
+                    <referencedTypeMoniker Id="875b4554-b32c-4d3d-972c-9b340ec26fe1" LastKnownName="Integer" />
                   </type_NamedElement>
                 </property>
-                <property Id="cc656e99-4ba1-4c55-824f-1815821272cb" name="type" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="cc656e99-4ba1-4c55-824f-1815821272cb" name="type" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="cb9e5233-e8ca-4f84-b73c-ade7467d808b" name="property" profile="CSharpProfile">
                       <elementDefinition Id="3a46d511-bceb-4a25-b417-d19763211b69" />
@@ -4772,10 +4772,10 @@
                   </appliedStereotypesInternal>
                   <elementDefinition Id="51337d34-4c59-46e5-8548-43aae56a14c2" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="f77f1f01-2976-4c7a-84fd-2a3278f4fcd2" LastKnownName="MapType" />
+                    <referencedTypeMoniker Id="77998636-6c70-4671-82b5-7e15abf6cbe6" LastKnownName="MapType" />
                   </type_NamedElement>
                 </property>
-                <property Id="ea4eb0cd-d973-4af3-a48d-bb56768bc1ce" name="cases" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="ea4eb0cd-d973-4af3-a48d-bb56768bc1ce" name="cases" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="6ca9cd5e-c426-47cd-9539-52b8fe3d1374" name="property" profile="CSharpProfile">
                       <elementDefinition Id="f82d122c-981d-4812-9edb-3a3065b4b001" />
@@ -4831,10 +4831,10 @@
                   </upperValueInternal>
                   <elementDefinition Id="b8159270-1ae5-4ac1-8f0f-2af9f9dfcf02" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="53be1fdb-918e-4a85-81a2-50d05926fe20" LastKnownName="List&lt;Case&gt;" />
+                    <referencedTypeMoniker Id="b17eec37-2b84-477c-8b9f-2096c18fdb09" LastKnownName="List&lt;Case&gt;" />
                   </type_NamedElement>
                 </property>
-                <property Id="bbf40365-45f8-4c5b-b431-004d0c87aa46" name="map_id" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <property Id="bbf40365-45f8-4c5b-b431-004d0c87aa46" name="map_id" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <appliedStereotypesInternal>
                     <stereotypeInstance Id="fccce497-109c-466e-a846-fb8eabd5647e" name="property" profile="CSharpProfile">
                       <elementDefinition Id="4fc900cb-9ad7-4258-9105-dc25c29c9e15" />
@@ -4880,7 +4880,7 @@
                   </appliedStereotypesInternal>
                   <elementDefinition Id="3d24b4e0-34d6-472a-a6c7-72c201422980" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="15299f81-4441-4025-b06a-c6f0caa1707c" LastKnownName="Integer" />
+                    <referencedTypeMoniker Id="5baf18b9-2db0-48b9-94cf-e0c8ab84d5bb" LastKnownName="Integer" />
                   </type_NamedElement>
                 </property>
               </ownedAttributesInternal>
@@ -9222,31 +9222,6 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="94946e86-2e1e-4096-ba35-e35255f46a2f" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
-        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="4660ae9d-ace7-43a5-8cc4-a150efa727fe" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
-        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="f77f1f01-2976-4c7a-84fd-2a3278f4fcd2" name="MapType" isAbstract="false" isLeaf="false" cachedFullName="ModelingProject1::Implémentation::MapType">
-        <elementDefinition Id="c681c7c6-8696-4d65-a254-21543409c5ea" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="15299f81-4441-4025-b06a-c6f0caa1707c" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
-        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="53be1fdb-918e-4a85-81a2-50d05926fe20" name="List&lt;Case&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Case&gt;">
-        <elementDefinition Id="1902de7a-c3d0-4f69-88e3-9057d2412970" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <referencedType Id="e671bf4a-4600-4812-a057-8361356225ba" name="Player" isAbstract="false" isLeaf="false" cachedFullName="ModelingProject1::Interfaces::Player">
         <elementDefinition Id="b26491c9-58b1-43ea-9164-cc2e439cf550" />
       </referencedType>
@@ -9439,6 +9414,31 @@
     <packageHasNamedElement>
       <referencedType Id="7dd87c69-a1ce-4a71-acc6-73704c1f2a46" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
         <elementDefinition Id="7c41de32-2cb2-44ae-8d45-f05f0b9d8ee0" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="b17eec37-2b84-477c-8b9f-2096c18fdb09" name="List&lt;Case&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Case&gt;">
+        <elementDefinition Id="1902de7a-c3d0-4f69-88e3-9057d2412970" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="f137625a-20e6-4fa4-aa08-6cd1a7b8d36a" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="5baf18b9-2db0-48b9-94cf-e0c8ab84d5bb" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="77998636-6c70-4671-82b5-7e15abf6cbe6" name="MapType" isAbstract="false" isLeaf="false" cachedFullName="ModelingProject1::Implémentation::MapType">
+        <elementDefinition Id="c681c7c6-8696-4d65-a254-21543409c5ea" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="875b4554-b32c-4d3d-972c-9b340ec26fe1" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

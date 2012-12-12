@@ -18,7 +18,6 @@ namespace Implémentation
         {
             food = 0;
             minerals = 3;
-
         }
 
 		public override void removeUnit(int unit_id)

@@ -14,6 +14,11 @@ namespace Implémentation
 
 	public class Case : ICase
 	{
+        public Case(Map m)
+        {
+
+        }
+
 		public virtual int minerals
 		{
 			get;
