@@ -14,7 +14,7 @@ namespace Implémentation
 
 	public class Case : ICase
 	{
-        public Case(Map m)
+        public Case()
         {
 
         }

@@ -14,7 +14,7 @@ namespace Implémentation
 
 	public class Plain : Case, IPlain
 	{
-        public Plain ()
+        public Plain()
         {
             food = 3;
             minerals = 1;

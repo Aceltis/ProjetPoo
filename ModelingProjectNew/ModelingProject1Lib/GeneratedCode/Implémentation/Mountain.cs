@@ -14,7 +14,7 @@ namespace Implémentation
 
 	public class Mountain : Case, IMountain
 	{
-        public Mountain ()
+        public Mountain()
         {
             food = 0;
             minerals = 3;
