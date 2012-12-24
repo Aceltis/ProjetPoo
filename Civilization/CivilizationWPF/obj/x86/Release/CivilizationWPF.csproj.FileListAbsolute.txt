@@ -1,0 +1,7 @@
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\MainWindow.baml
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\MainWindow.g.cs
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\App.g.cs
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF_MarkupCompile.cache
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.g.resources
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.Properties.Resources.resources
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.csproj.GenerateResource.Cache
