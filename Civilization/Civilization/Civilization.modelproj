@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{35e97bed-af93-4b0d-99e5-563c7b8f6022}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>Civilization</Name>
+    <RootNamespace>Civilization</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Content Include="CivilizationImpl.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CivilizationImpl.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CivilizationImpl.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="GameCreation.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="GameCreation.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>GameCreation.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\Package1_1620.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1620.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="OneGame.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="OneGame.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>OneGame.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="OneTurn.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="OneTurn.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>OneTurn.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="Player.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Player.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Player.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="Unit.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Unit.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Unit.usecasediagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="CivilizationInterface.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CivilizationInterface.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>CivilizationInterface.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\Civilization.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>
