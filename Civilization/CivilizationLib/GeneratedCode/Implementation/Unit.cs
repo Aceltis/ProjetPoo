@@ -14,8 +14,9 @@ namespace Implementation
 
     public class Unit : IUnit
     {
-        public Unit(Player P, Case c)
+        public Unit(Player p, Case c)
         {
+
         }
 
         //Attribut nécessitant une condition ici HP positifs, mais en fait noneed dans le sens où HP nég = mort)

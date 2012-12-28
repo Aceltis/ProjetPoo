@@ -14,7 +14,7 @@ namespace Implementation
 
     public class StudentINFO : Unit, IStudent
     {
-        public StudentINFO()
+        public StudentINFO(Player p, Case c)
         {
             movePoints = 2;
             attackPoints = 4;
@@ -23,21 +23,6 @@ namespace Implementation
         }
 
         public virtual void attack()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void move()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void passTurn()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void defend()
         {
             throw new System.NotImplementedException();
         }

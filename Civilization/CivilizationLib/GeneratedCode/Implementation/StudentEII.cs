@@ -14,7 +14,7 @@ namespace Implementation
 
     public class StudentEII : Unit, IStudent
     {
-        public StudentEII()
+        public StudentEII(Player P, Case c)
         {
             movePoints = 2;
             attackPoints = 3;
@@ -26,22 +26,6 @@ namespace Implementation
         {
             throw new System.NotImplementedException();
         }
-
-        public override void move()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void passTurn()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void defend()
-        {
-            throw new System.NotImplementedException();
-        }
-
     }
 }
 

@@ -1,4 +1,4 @@
-﻿La génération a démarré 28/12/2012 17:21:12.
+﻿La génération a démarré 28/12/2012 18:09:33.
      1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 3 (build cible(s)).
      1>InitializeBuildStatus:
          Mise à jour de l'horodatage "Release\CivilizationWrapper.unsuccessfulbuild".
@@ -7,10 +7,10 @@
        ClCompile:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /analyze- /errorReport:prompt Wrapper.cpp /clr:nostdlib 
          Wrapper.cpp
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\../CivilizationAlgo/mapalgo.h(31): error C2143: erreur de syntaxe : absence de ';' avant '<'
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\../CivilizationAlgo/mapalgo.h(31): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\../CivilizationAlgo/mapalgo.h(32): error C2143: erreur de syntaxe : absence de ';' avant '<'
+     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\../CivilizationAlgo/mapalgo.h(32): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
      1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" terminée (build cible(s)) -- ÉCHEC.
 
 ÉCHEC de la build.
 
-Temps écoulé 00:00:00.51
+Temps écoulé 00:00:00.54

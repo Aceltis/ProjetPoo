@@ -14,6 +14,13 @@ namespace Implementation
 
 	public class BossINFO : Unit, IBoss
 	{
+        public BossINFO(Player p, Case c)
+        {
+            movePoints = 2;
+            attackPoints = 4;
+            defensePoints = 2;
+            HP = 10;
+        }
 	}
 }
 

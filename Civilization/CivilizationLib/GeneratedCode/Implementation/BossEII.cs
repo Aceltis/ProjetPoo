@@ -14,6 +14,13 @@ namespace Implementation
 
 	public class BossEII : Unit, IBoss
 	{
+        public BossEII(Player p, Case c)
+        {
+            movePoints = 2;
+            attackPoints = 4;
+            defensePoints = 2;
+            HP = 10;
+        }
 	}
 }
 

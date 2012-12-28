@@ -14,7 +14,7 @@ namespace Implementation
 
     public class TeacherINFO : Unit, ITeacher
     {
-        public TeacherINFO()
+        public TeacherINFO(Player p, Case c)
         {
             movePoints = 3;
             attackPoints = 0;
@@ -26,22 +26,6 @@ namespace Implementation
         {
             throw new System.NotImplementedException();
         }
-
-        public override void move()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void passTurn()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void defend()
-        {
-            throw new System.NotImplementedException();
-        }
-
     }
 }
 
