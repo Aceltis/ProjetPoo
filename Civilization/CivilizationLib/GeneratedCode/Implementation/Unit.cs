@@ -14,6 +14,11 @@ namespace Implementation
 
     public class Unit : IUnit
     {
+        public Unit()
+        {
+
+        }
+
         public Unit(Player p, Case c)
         {
 

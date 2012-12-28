@@ -14,7 +14,7 @@ namespace Implementation
 
     public class TeacherEII : Unit, ITeacher
     {
-        public TeacherEII(Player P, Case c)
+        public TeacherEII(Player p, Case c)
         {
             movePoints = 2;
             attackPoints = 0;
