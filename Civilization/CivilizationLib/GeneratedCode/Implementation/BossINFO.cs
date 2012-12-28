@@ -14,26 +14,6 @@ namespace Implementation
 
 	public class BossINFO : Unit, IBoss
 	{
-		public override void move()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public override void passTurn()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public override void defend()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public override int getHP()
-		{
-			throw new System.NotImplementedException();
-		}
-
 	}
 }
 

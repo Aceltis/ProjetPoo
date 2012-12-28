@@ -1,5 +1,6 @@
 #include <time.h>
 #include "mapalgo.h"
+#include <vector>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ vector<vector<square>> createSmallMap() {
 	int rand, bonus;
 	vector<vector<square>> smallMap;
 	
+
 	// Initialize random seed
 	srand(time(NULL));
 
@@ -28,7 +30,7 @@ vector<vector<square>> createSmallMap() {
 	smallMap.resize(height);
 	for (int i = 0; i < height; ++i)
 		smallMap[i].resize(width);
-
+	
 	// Free random on the first square
 	rand = rand() % 3 + 1;
 	smallMap[0][0].type = rand;

@@ -25,7 +25,7 @@ namespace Interfaces
 
 		void changeCityProduction();
 
-		void produceUnits();
+		void produceUnits(Implementation.City, Implementation.Unit);
 
 	}
 }

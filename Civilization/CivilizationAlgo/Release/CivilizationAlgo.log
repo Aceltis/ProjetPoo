@@ -1,14 +1,44 @@
-﻿Build started 24/12/2012 17:48:21.
-     1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" on node 2 (build target(s)).
-     1>InitializeBuildStatus:
-         Touching "Release\CivilizationAlgo.unsuccessfulbuild".
+﻿La génération a démarré 28/12/2012 17:21:12.
+     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" sur le nœud 2 (build cible(s)).
+     1>ResolveAssemblyReferences:
+         Référence primaire "CivilizationLib".
+             Impossible de trouver les fichiers dépendants. Le fichier attendu "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.dll" n'existe pas.
+             Impossible de trouver les fichiers dépendants. Le fichier spécifié est introuvable. (Exception de HRESULT : 0x80070002)
+             Le chemin de fichier résolu est "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.dll".
+             Référence trouvée dans l'emplacement du chemin d'accès de recherche "".
+       InitializeBuildStatus:
+         Mise à jour de l'horodatage "Release\CivilizationAlgo.unsuccessfulbuild".
        ClCompile:
-         All outputs are up-to-date.
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\CivilizationAlgo.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.lib" /MACHINE:X86 Release\mapalgo.obj
-     1>LINK : fatal error LNK1561: entry point must be defined
-     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" (build target(s)) -- FAILED.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt mapalgo.cpp
+         mapalgo.cpp
+     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31): error C2143: erreur de syntaxe : absence de ';' avant '<'
+     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+     1>mapalgo.cpp(20): error C2872: 'vector' : symbole ambigu
+                 est peut-être 'c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31) : int vector'
+                 ou       'c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vector(480) : std::vector'
+     1>mapalgo.cpp(20): error C2872: 'vector' : symbole ambigu
+                 est peut-être 'c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31) : int vector'
+                 ou       'c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vector(480) : std::vector'
+     1>mapalgo.cpp(20): error C2872: 'vector' : symbole ambigu
+                 est peut-être 'c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31) : int vector'
+                 ou       'c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vector(480) : std::vector'
+     1>mapalgo.cpp(20): error C2143: erreur de syntaxe : absence de ';' avant '<'
+     1>mapalgo.cpp(20): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+     1>mapalgo.cpp(20): error C2086: 'int vector' : redéfinition
+                 c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31) : voir la déclaration de 'vector'
+     1>mapalgo.cpp(20): error C2872: 'vector' : symbole ambigu
+                 est peut-être 'c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31) : int vector'
+                 ou       'c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vector(480) : std::vector'
+     1>mapalgo.cpp(20): error C2872: 'vector' : symbole ambigu
+                 est peut-être 'c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31) : int vector'
+                 ou       'c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vector(480) : std::vector'
+     1>mapalgo.cpp(20): error C2872: 'vector' : symbole ambigu
+                 est peut-être 'c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.h(31) : int vector'
+                 ou       'c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vector(480) : std::vector'
+     1>mapalgo.cpp(20): error C2143: erreur de syntaxe : absence de ';' avant '{'
+     1>mapalgo.cpp(20): error C2447: '{' : en-tête de fonction manquant (liste formelle à l'ancien format ?)
+     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" terminée (build cible(s)) -- ÉCHEC.
 
-Build FAILED.
+ÉCHEC de la build.
 
-Time Elapsed 00:00:00.08
+Temps écoulé 00:00:00.41

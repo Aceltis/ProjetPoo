@@ -5,3 +5,12 @@ D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\Civilizatio
 D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.g.resources
 D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.Properties.Resources.resources
 D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.csproj.GenerateResource.Cache
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\MainWindow.baml
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\MainWindow.g.cs
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\App.g.cs
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF_MarkupCompile.cache
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.g.resources
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.Properties.Resources.resources
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\GenerateResource.write.1.tlog

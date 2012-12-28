@@ -13,13 +13,17 @@ namespace Interfaces
 
 	public interface ICity 
 	{
-		void produceUnits();
+		void produceBoss(Implementation.Unit unit);
+
+        void produceStudent();
+
+        void produceTeacher();
 
 		void changeProduction();
 
 		void upgradePopulation();
 
-		void spawnUnit();
+        void spawnUnit(Implementation.Unit unit);
 
 	}
 }
