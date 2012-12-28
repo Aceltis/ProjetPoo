@@ -29,4 +29,4 @@ class DLL Algo {
 EXTERNC DLL Algo* Algo_new();
 EXTERNC DLL void Algo_delete(Algo* algo);
 EXTERNC DLL int Algo_computeAlgo(Algo* algo);
-EXTERNC DLL vector<vector<square>> createSmallMap();
+EXTERNC DLL square** createSmallMap();

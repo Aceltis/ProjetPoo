@@ -1,5 +1,16 @@
-﻿Build started 24/12/2012 17:09:01.
+﻿La génération a démarré 28/12/2012 19:17:23.
+     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" sur le nœud 2 (build cible(s)).
+     1>InitializeBuildStatus:
+         Mise à jour de l'horodatage "Debug\CivilizationAlgo.unsuccessfulbuild".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt mapalgo.cpp
+         mapalgo.cpp
+     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.cpp(25): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.cpp(33): error C2064: le terme ne correspond pas à une fonction qui prend 0 arguments
+     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.cpp(35): error C2064: le terme ne correspond pas à une fonction qui prend 0 arguments
+     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationalgo\mapalgo.cpp(43): error C2064: le terme ne correspond pas à une fonction qui prend 0 arguments
+     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" terminée (build cible(s)) -- ÉCHEC.
 
-Build succeeded.
+ÉCHEC de la build.
 
-Time Elapsed 00:00:00.00
+Temps écoulé 00:00:01.02

@@ -15,9 +15,9 @@ int Algo_computeAlgo(Algo* algo) { return algo->computeFoo(); }
  * Create a new 25x25 map
  * return vector<vector<square>>
  */
-vector<vector<square>> createSmallMap() {
+square** createSmallMap() {
 	int height, width = 25;
-	int rand, bonus;
+	int random, bonus;
 	vector<vector<square>> smallMap;
 	
 
@@ -30,8 +30,8 @@ vector<vector<square>> createSmallMap() {
 		smallMap[i].resize(width);
 
 	// Free random on the first square
-	rand = rand() % 3 + 1;
-	smallMap[0][0].type = rand;
+	random = rand() % 3 + 1;
+	smallMap[0][0].type = random;
 	bonus = rand() % 3 + 1;
 	smallMap[0][0].bonus = bonus;
 
@@ -40,7 +40,7 @@ vector<vector<square>> createSmallMap() {
 		for(int j = 0; j<25; j++)
 		{
 			
-			rand = rand() % 3 + 1;
+			random = rand() % 3 + 1;
 			smallMap[i][j].type;
 		}
 	}
