@@ -11,6 +11,8 @@
 #include <time.h>
 #include <vector>
 
+using namespace std;
+
 struct square {
 	// 1: Mountain, 2: Plain, 3: Desert
 	int type;
@@ -29,4 +31,4 @@ class DLL Algo {
 EXTERNC DLL Algo* Algo_new();
 EXTERNC DLL void Algo_delete(Algo* algo);
 EXTERNC DLL int Algo_computeAlgo(Algo* algo);
-EXTERNC DLL square** createSmallMap();
+EXTERNC DLL vector<vector<square>> createSmallMap();

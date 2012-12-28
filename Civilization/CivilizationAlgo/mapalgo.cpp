@@ -1,7 +1,5 @@
 #include "mapalgo.h"
 
-using namespace std;
-
 int Algo::computeFoo() {
 	return 1;
 }
@@ -15,7 +13,7 @@ int Algo_computeAlgo(Algo* algo) { return algo->computeFoo(); }
  * Create a new 25x25 map
  * return vector<vector<square>>
  */
-square** createSmallMap() {
+vector<vector<square>> createSmallMap() {
 	int height, width = 25;
 	int random, bonus;
 	vector<vector<square>> smallMap;
@@ -44,5 +42,5 @@ square** createSmallMap() {
 			smallMap[i][j].type;
 		}
 	}
-
+	return smallMap;
 }
