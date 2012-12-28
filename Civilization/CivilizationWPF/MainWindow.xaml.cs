@@ -20,6 +20,7 @@ namespace CivilizationWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Valable que quand on parle de pointeur
         unsafe public MainWindow()
         {
             WrapperAlgo algo = new WrapperAlgo();

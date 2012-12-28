@@ -13,7 +13,7 @@ namespace Wrapper {
 	public:
 		WrapperAlgo(){ algo = Algo_new(); }
 		~WrapperAlgo(){ Algo_delete(algo); }
-		int computeFoo() { return algo->computeFoo(); }
+		int* computeFoo() { return algo->computeFoo(); }
 	};
 }
 #endif

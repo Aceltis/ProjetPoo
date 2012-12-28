@@ -15,7 +15,6 @@ int Algo_computeAlgo(Algo* algo) { return algo->computeFoo(); }
  */
 vector<vector<square>> createSmallMap() {
 	int height, width = 25;
-	int random, bonus;
 	vector<vector<square>> smallMap;
 	
 
@@ -27,20 +26,61 @@ vector<vector<square>> createSmallMap() {
 	for (int i = 0; i < height; ++i)
 		smallMap[i].resize(width);
 
-	// Free random on the first square
-	random = rand() % 3 + 1;
-	smallMap[0][0].type = random;
-	bonus = rand() % 3 + 1;
-	smallMap[0][0].bonus = bonus;
+	while(!(map_full(smallMap))){
+		for(int i = 0; i<25; i++)
+		{
+			for(int j = 0; j<25; j++)
+			{
+				if(!(smallMap[i][j].frozen)) smallMap[i][j].type = rand() %3;
+			}
+		}
 
+		for(int i = 0; i<25; i++)
+		{
+			for(int j = 0; j<25; j++)
+			{
+				//Can the given square be included in a 4 (or more) square group ?
+				if(check_four_grps(smallMap, i, j, 0, smallMap[i][j].type)>=4)smallMap[i][j].frozen=1;
+			}
+		}
+	}
+
+	return smallMap;
+}
+
+bool map_full(vector<vector<square>> &map){
 	for(int i = 0; i<25; i++)
 	{
 		for(int j = 0; j<25; j++)
 		{
-			
-			random = rand() % 3 + 1;
-			smallMap[i][j].type;
+			if(!(map[i][j].frozen)) return false;
 		}
 	}
-	return smallMap;
+	//Vérifier que les 3 types de terrain soient bien présents sur la carte
+	if(!(three_types_present(map))) return false;
+	return true;
+}
+
+int check_four_grps(vector<vector<square>> &map, int i, int j, int compteur, int type){
+	compteur++;
+	map[i][j].frozen=1;
+	if (map[i+1][j].type==type && !(map[i+1][j].frozen))check_four_grps(map, i+1, j, compteur, type);
+	if (map[i][j+1].type==type && !(map[i+1][j].frozen))check_four_grps(map, i, j+1, compteur, type);
+	if (map[i-1][j].type==type && !(map[i+1][j].frozen))check_four_grps(map, i-1, j, compteur, type);
+	if (map[i][j-1].type==type && !(map[i+1][j].frozen))check_four_grps(map, i, j-1, compteur, type);
+	
+	return compteur;
+}
+
+bool three_types_present(vector<vector<square>> &map){
+	int types[3] = {0,0,0};
+	for(int i = 0; i<25; i++)
+	{
+		for(int j = 0; j<25; j++)
+		{
+			types[map[i][j].type]=1;
+		}
+	}
+	if ((types[0]+types[1]+types[2])==3) return true;
+	return false;
 }

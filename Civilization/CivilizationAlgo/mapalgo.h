@@ -14,10 +14,12 @@
 using namespace std;
 
 struct square {
-	// 1: Mountain, 2: Plain, 3: Desert
+	// 0: Mountain, 1: Plain, 2: Desert
 	int type;
-	// 1: No additionnal ressource, 2: Additionnal Iron, 3: Additionnal Food
+	// 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
 	int bonus;
+	// 0: free, 1: frozen
+	int frozen;
 };
 
 class DLL Algo {
