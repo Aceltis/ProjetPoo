@@ -38,6 +38,7 @@ EXTERNC DLL square** Algo_createSmallMap(Algo* algo);
 EXTERNC DLL square** Algo_createMediumMap(Algo* algo);
 EXTERNC DLL int Algo_computeAlgo(Algo* algo);
 
+//fonctions internes
 void generateMap(square** &m, int h, int w);
 bool mapFull(square** &m, int h, int w);
 int checkFourGroups(square** &m, int i, int j, int compteur, int type, int h, int w);

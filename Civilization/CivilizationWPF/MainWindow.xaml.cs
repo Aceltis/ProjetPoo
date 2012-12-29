@@ -35,7 +35,7 @@ namespace CivilizationWPF
         {
             WrapperAlgo algo = new WrapperAlgo();
 
-            square** map = (square**)algo.computeFoo();
+            square** map = (square**)algo.createMediumMap();
             for (int i = 0; i < 5; i++)
             {
             }

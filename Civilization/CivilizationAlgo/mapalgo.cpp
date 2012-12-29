@@ -18,7 +18,7 @@ square** Algo::createSmallMap() {
 	// Initialize random seed
 	srand(time(NULL));
 	
-	generateMap(smallMap, height, width);
+	//generateMap(smallMap, height, width);
 	return smallMap;
 }
 
@@ -36,7 +36,7 @@ square** Algo::createMediumMap() {
 	// Initialize random seed
 	srand(time(NULL));
 	
-	generateMap(mediumMap, height, width);
+	//generateMap(mediumMap, height, width);
 	return mediumMap;
 }
 
