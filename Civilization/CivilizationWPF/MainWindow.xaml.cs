@@ -15,6 +15,16 @@ using Wrapper;
 
 namespace CivilizationWPF
 {
+    struct square
+    {
+        // 0: Mountain, 1: Plain, 2: Desert
+        public int type;
+        // 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
+        public int bonus;
+        // 0: free, 1: checked, 2: frozen
+        public int state;
+    };
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -24,10 +34,10 @@ namespace CivilizationWPF
         unsafe public MainWindow()
         {
             WrapperAlgo algo = new WrapperAlgo();
-            int* tab = algo.computeFoo();
+
+            square** map = (square**)algo.computeFoo();
             for (int i = 0; i < 5; i++)
             {
-                System.Console.WriteLine(tab[i]);
             }
         }
     }

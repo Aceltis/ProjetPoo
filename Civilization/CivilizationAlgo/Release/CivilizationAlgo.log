@@ -1,11 +1,14 @@
-﻿La génération a démarré 28/12/2012 21:18:14.
+﻿La génération a démarré 29/12/2012 20:03:48.
      1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" sur le nœud 2 (build cible(s)).
      1>InitializeBuildStatus:
          Création de "Release\CivilizationAlgo.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
        ClCompile:
-         Toutes les sorties sont à jour.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt mapalgo.cpp
+         mapalgo.cpp
+     1>mapalgo.cpp(19): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+     1>mapalgo.cpp(37): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
        Lib:
-         Toutes les sorties sont à jour.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib" /NOLOGO /LTCG Release\mapalgo.obj
          CivilizationAlgo.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
        FinalizeBuildStatus:
          Suppression du fichier "Release\CivilizationAlgo.unsuccessfulbuild".
@@ -14,4 +17,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:00.10
+Temps écoulé 00:00:00.56
