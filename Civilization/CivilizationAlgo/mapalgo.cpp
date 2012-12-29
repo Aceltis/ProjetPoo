@@ -26,21 +26,25 @@ vector<vector<square>> createSmallMap() {
 	for (int i = 0; i < height; ++i)
 		smallMap[i].resize(width);
 
+	for(int i = 0; i<25; i++)
+	{
+		for(int j = 0; j<25; j++)
+		{
+			smallMap[i][j].type = rand() %3;
+		}
+	}
+
 	while(!(map_full(smallMap))){
 		for(int i = 0; i<25; i++)
 		{
 			for(int j = 0; j<25; j++)
 			{
-				if(!(smallMap[i][j].frozen)) smallMap[i][j].type = rand() %3;
-			}
-		}
+				if(smallMap[i][j].state!=2){
+					//Can the given square be included in a 4 (or more) square group ?
+					if(check_four_grps(smallMap, i, j, 0, smallMap[i][j].type)>=4)smallMap[i][j].state=2;
+					else smallMap[i][j].type = rand() %3;
 
-		for(int i = 0; i<25; i++)
-		{
-			for(int j = 0; j<25; j++)
-			{
-				//Can the given square be included in a 4 (or more) square group ?
-				if(check_four_grps(smallMap, i, j, 0, smallMap[i][j].type)>=4)smallMap[i][j].frozen=1;
+				}
 			}
 		}
 	}
@@ -53,7 +57,7 @@ bool map_full(vector<vector<square>> &map){
 	{
 		for(int j = 0; j<25; j++)
 		{
-			if(!(map[i][j].frozen)) return false;
+			if(map[i][j].state!=2) return false;
 		}
 	}
 	//Vérifier que les 3 types de terrain soient bien présents sur la carte
@@ -63,12 +67,17 @@ bool map_full(vector<vector<square>> &map){
 
 int check_four_grps(vector<vector<square>> &map, int i, int j, int compteur, int type){
 	compteur++;
-	map[i][j].frozen=1;
-	if (map[i+1][j].type==type && !(map[i+1][j].frozen))check_four_grps(map, i+1, j, compteur, type);
-	if (map[i][j+1].type==type && !(map[i+1][j].frozen))check_four_grps(map, i, j+1, compteur, type);
-	if (map[i-1][j].type==type && !(map[i+1][j].frozen))check_four_grps(map, i-1, j, compteur, type);
-	if (map[i][j-1].type==type && !(map[i+1][j].frozen))check_four_grps(map, i, j-1, compteur, type);
-	
+	map[i][j].state=1;
+	if (map[i+1][j].type==type && map[i+1][j].state==2)compteur=4;
+	else if (map[i][j+1].type==type && map[i+1][j].state==2)compteur=4;
+	else if (map[i-1][j].type==type && map[i+1][j].state==2)compteur=4;
+	else if (map[i][j-1].type==type && map[i+1][j].state==2)compteur=4;
+	else{
+		if (map[i+1][j].type==type && map[i+1][j].state!=1)check_four_grps(map, i+1, j, compteur, type);
+		if (map[i][j+1].type==type && map[i+1][j].state!=1)check_four_grps(map, i, j+1, compteur, type);
+		if (map[i-1][j].type==type && map[i+1][j].state!=1)check_four_grps(map, i-1, j, compteur, type);
+		if (map[i][j-1].type==type && map[i+1][j].state!=1)check_four_grps(map, i, j-1, compteur, type);
+	}
 	return compteur;
 }
 

@@ -18,8 +18,8 @@ struct square {
 	int type;
 	// 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
 	int bonus;
-	// 0: free, 1: frozen
-	int frozen;
+	// 0: free, 1: checked, 2: frozen
+	int state;
 };
 
 class DLL Algo {
