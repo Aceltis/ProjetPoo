@@ -75,20 +75,20 @@ void generateMap(square** &map, int height, int width){
 		}
 	}
 
-//	while(!(mapFull(map, height, width))){
-//		for(int i = 0; i<height; i++)
-//		{
-//			for(int j = 0; j<width; j++)
-//			{
-//				if(map[i][j].state!=2){
-//					//Can the given square be included in a 4 (or more) square group ?
-//					if(checkFourGroups(map, i, j, 0, map[i][j].type, height, width)>=4)map[i][j].state=2;
-//					else map[i][j].type = rand() %3;
-//
-//				}
-//			}
-//		}
-//	}
+	while(!(mapFull(map, height, width))){
+		for(int i = 0; i<height; i++)
+		{
+			for(int j = 0; j<width; j++)
+			{
+				if(map[i][j].state!=2){
+					//Can the given square be included in a 4 (or more) square group ?
+					if(checkFourGroups(map, i, j, height, width)>=4) map[i][j].state=2;
+					else map[i][j].type = rand() %3;
+
+				}
+			}
+		}
+	}
 //	while(!(threeTypesPresent(map, height, width))){
 //		int i = rand()%height, j =rand()%width;
 //		changeGroup(map, i, j, map[i][j].type, rand()%3);
@@ -106,18 +106,19 @@ bool mapFull(square** &map, int height, int width){
 	return true;
 }
 
-int checkFourGroups(square** &map, int i, int j, int compteur, int type, int height, int width){
-	compteur++;
+int checkFourGroups(square** &map, int i, int j, int height, int width){
+	int compteur=1;
 	map[i][j].state=1;
-	if (i+1<height && map[i+1][j].type==type && map[i+1][j].state==2)compteur=4;
-	else if (j+1<width && map[i][j+1].type==type && map[i+1][j].state==2)compteur=4;
-	else if (i>0 && map[i-1][j].type==type && map[i+1][j].state==2)compteur=4;
-	else if (j>0 && map[i][j-1].type==type && map[i+1][j].state==2)compteur=4;
+	//If a square standing next to current square is in a 4square group and is the same type, current square is in a 4sq groupe
+	if (i+1<height) {if(map[i+1][j].type==map[i][j].type && map[i+1][j].state==2) compteur=4;}
+	else if (j+1<width) {if(map[i][j+1].type==map[i][j].type && map[i+1][j].state==2) compteur=4;}
+	else if (i>0) {if(map[i-1][j].type==map[i][j].type && map[i+1][j].state==2) compteur=4;}
+	else if (j>0) {if(map[i][j-1].type==map[i][j].type && map[i+1][j].state==2) compteur=4;}
 	else{
-		if (i+1<height && map[i+1][j].type==type && map[i+1][j].state!=1)checkFourGroups(map, i+1, j, compteur, type, height, width);
-		if (j+1<width && map[i][j+1].type==type && map[i+1][j].state!=1)checkFourGroups(map, i, j+1, compteur, type, height, width);
-		if (i>0 && map[i-1][j].type==type && map[i+1][j].state!=1)checkFourGroups(map, i-1, j, compteur, type, height, width);
-		if (j>0 && map[i][j-1].type==type && map[i+1][j].state!=1)checkFourGroups(map, i, j-1, compteur, type, height, width);
+		if (i+1<height) {if(map[i+1][j].type==map[i][j].type && map[i+1][j].state!=1) compteur += checkFourGroups(map, i+1, j, height, width);}
+		if (j+1<width) {if(map[i][j+1].type==map[i][j].type && map[i+1][j].state!=1) compteur += checkFourGroups(map, i, j+1, height, width);}
+		if (i>0) {if(map[i-1][j].type==map[i][j].type && map[i+1][j].state!=1) compteur += checkFourGroups(map, i-1, j, height, width);}
+		if (j>0) {if(map[i][j-1].type==map[i][j].type && map[i+1][j].state!=1) compteur += checkFourGroups(map, i, j-1, height, width);}
 	}
 	return compteur;
 }

@@ -34,10 +34,10 @@ namespace CivilizationWPF
             WrapperAlgo algo = new WrapperAlgo();
 
             int** map = algo.createMediumMap();
-            for (int i = 0; i < 25; i++)
-            {
+            //for (int i = 0; i < 25; i++)
+            //{
 
-            }
+            //}
         }
     }
 }

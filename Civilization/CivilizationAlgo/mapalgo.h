@@ -40,6 +40,6 @@ EXTERNC DLL int** Algo_createMediumMap(Algo* algo);
 //fonctions internes
 void generateMap(square** &m, int h, int w);
 bool mapFull(square** &m, int h, int w);
-int checkFourGroups(square** &m, int i, int j, int compteur, int type, int h, int w);
+int checkFourGroups(square** &m, int i, int j, int h, int w);
 bool threeTypesPresent(square** &m, int h, int w);
 void changeGroup(square** &m, int i, int j, int itype, int dtype);
