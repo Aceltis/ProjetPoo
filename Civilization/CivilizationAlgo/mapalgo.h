@@ -38,7 +38,7 @@ EXTERNC DLL int** Algo_createBonusesMap(Algo* algo, int h, int w, double r);
 void generateBMap(int** &bm, int h, int w, double r);
 void generateMap(vector<vector<square>> &m);
 bool mapFull(vector<vector<square>> &m);
-int checkFourGroups(vector<vector<square>> &m, int i, int j);
+int groupSize(vector<vector<square>> &m, int i, int j);
 bool threeTypesPresent(vector<vector<square>> &m);
 bool rearrangeGroups(vector<vector<square>> &m, int* t);
 void changeGroup(vector<vector<square>> &m, int i, int j, int it, int dt);
