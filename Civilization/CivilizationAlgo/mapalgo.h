@@ -37,9 +37,9 @@ EXTERNC DLL int** Algo_createSmallMap(Algo* algo);
 EXTERNC DLL int** Algo_createMediumMap(Algo* algo);
 
 //fonctions internes
-void generateMap(square** &m, int h, int w);
-bool mapFull(square** &m, int h, int w);
-int checkFourGroups(square** &m, int i, int j, int h, int w);
-bool threeTypesPresent(square** &m, int h, int w);
-bool rearrangeGroups(square** &m, int h, int w, int* t);
-void changeGroup(square** &m, int i, int j, int h, int w, int it, int dt);
+void generateMap(vector<vector<square>> &m);
+bool mapFull(vector<vector<square>> &m);
+int checkFourGroups(vector<vector<square>> &m, int i, int j);
+bool threeTypesPresent(vector<vector<square>> &m);
+bool rearrangeGroups(vector<vector<square>> &m, int* t);
+void changeGroup(vector<vector<square>> &m, int i, int j, int it, int dt);
