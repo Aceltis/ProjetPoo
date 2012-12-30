@@ -13,9 +13,8 @@ namespace Wrapper {
 	public:
 		WrapperAlgo(){ algo = Algo_new(); }
 		~WrapperAlgo(){ Algo_delete(algo); }
-		square** createSmallMap() { return algo->createSmallMap(); }
-		square** createMediumMap() { return algo->createMediumMap(); }
-		int computeFoo() { return algo->computeFoo(); }
+		int** createSmallMap() { return algo->createSmallMap(); }
+		int** createMediumMap() { return algo->createMediumMap(); }
 	};
 }
 #endif

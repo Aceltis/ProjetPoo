@@ -21,8 +21,6 @@ namespace CivilizationWPF
         public int type;
         // 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
         public int bonus;
-        // 0: free, 1: checked, 2: frozen
-        public int state;
     };
 
     /// <summary>
@@ -35,9 +33,10 @@ namespace CivilizationWPF
         {
             WrapperAlgo algo = new WrapperAlgo();
 
-            square** map = (square**)algo.createMediumMap();
-            for (int i = 0; i < 5; i++)
+            int** map = algo.createMediumMap();
+            for (int i = 0; i < 25; i++)
             {
+
             }
         }
     }

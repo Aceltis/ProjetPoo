@@ -26,17 +26,16 @@ class DLL Algo {
 	public:
 		Algo() {}
 		~Algo() {}
-		square** createSmallMap();
-		square** createMediumMap();
+		int** createSmallMap();
+		int** createMediumMap();
 		int computeFoo();
 };
 
 // A ne pas implémenter dans le .h !
 EXTERNC DLL Algo* Algo_new();
 EXTERNC DLL void Algo_delete(Algo* algo);
-EXTERNC DLL square** Algo_createSmallMap(Algo* algo);
-EXTERNC DLL square** Algo_createMediumMap(Algo* algo);
-EXTERNC DLL int Algo_computeAlgo(Algo* algo);
+EXTERNC DLL int** Algo_createSmallMap(Algo* algo);
+EXTERNC DLL int** Algo_createMediumMap(Algo* algo);
 
 //fonctions internes
 void generateMap(square** &m, int h, int w);

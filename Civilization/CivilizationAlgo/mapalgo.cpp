@@ -1,15 +1,11 @@
 #include "mapalgo.h"
 
-int Algo::computeFoo() {
-return 1;
-}
-
 /*
  * createSmallMap()
  * Create a new 25x25 map
  * return square**
  */
-square** Algo::createSmallMap() {
+int** Algo::createSmallMap() {
 	int height = 25, width = 25;
 	square** smallMap = new square*[height];
 	for (int i=0; i<height; i++)
@@ -18,8 +14,19 @@ square** Algo::createSmallMap() {
 	// Initialize random seed
 	srand(time(NULL));
 	
-	//generateMap(smallMap, height, width);
-	return smallMap;
+	generateMap(smallMap, height, width);
+	int** map = new int*[height];
+	for (int i=0; i<height; i++)
+       map[i] = new int[width];
+
+	for(int i = 0; i<height; i++)
+	{
+		for(int j = 0; j<width; j++)
+		{
+			map[i][j] = smallMap[i][j].type;
+		}
+	}
+	return map;
 }
 
 /*
@@ -27,7 +34,7 @@ square** Algo::createSmallMap() {
  * Create a new 100x100 map
  * return square**
  */
-square** Algo::createMediumMap() {
+int** Algo::createMediumMap() {
 	int height = 100, width = 100;
 	square** mediumMap = new square*[height];
 	for (int i=0; i<height; i++)
@@ -36,15 +43,25 @@ square** Algo::createMediumMap() {
 	// Initialize random seed
 	srand(time(NULL));
 	
-	//generateMap(mediumMap, height, width);
-	return mediumMap;
+	generateMap(mediumMap, height, width);
+	int** map = new int*[height];
+	for (int i=0; i<height; i++)
+       map[i] = new int[width];
+
+	for(int i = 0; i<height; i++)
+	{
+		for(int j = 0; j<width; j++)
+		{
+			map[i][j] = mediumMap[i][j].type;
+		}
+	}
+	return map;
 }
 
 Algo* Algo_new() { return new Algo(); }
 void Algo_delete(Algo* algo) { delete algo; }
-square** Algo_createSmallMap(Algo* algo) { return algo->createSmallMap(); }
-square** Algo_createMediumMap(Algo* algo) { return algo->createMediumMap(); }
-int Algo_computeAlgo(Algo* algo) { return algo->computeFoo(); }
+int** Algo_createSmallMap(Algo* algo) { return algo->createSmallMap(); }
+int** Algo_createMediumMap(Algo* algo) { return algo->createMediumMap(); }
 
 
 

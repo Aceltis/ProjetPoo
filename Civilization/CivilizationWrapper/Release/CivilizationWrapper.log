@@ -1,26 +1,27 @@
-﻿La génération a démarré 29/12/2012 20:30:47.
+﻿La génération a démarré 30/12/2012 13:38:47.
      1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 2 (build cible(s)).
      1>InitializeBuildStatus:
          Création de "Release\CivilizationWrapper.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
        GenerateTargetFrameworkMonikerAttribute:
        La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /analyze- /errorReport:prompt Wrapper.cpp /clr:nostdlib 
-         Wrapper.cpp
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(17): error C2143: erreur de syntaxe : absence de ';' avant '*'
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(17): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(17): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(17): warning C4183: 'createSmallMap' : type de retour manquant ; fonction membre retournant 'int' prise par défaut
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(18): error C2143: erreur de syntaxe : absence de ';' avant '*'
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(18): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(18): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(18): warning C4183: 'createMediumMap' : type de retour manquant ; fonction membre retournant 'int' prise par défaut
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(17): error C2440: 'return' : impossible de convertir de 'square **' en 'int **'
-                 Les types pointés n'ont aucun rapport entre eux ; conversion nécessitant reinterpret_cast, cast de style C ou cast de style fonction
-     1>c:\users\msi\documents\github\projetpoo\civilization\civilizationwrapper\Wrapper.h(18): error C2440: 'return' : impossible de convertir de 'square **' en 'int **'
-                 Les types pointés n'ont aucun rapport entre eux ; conversion nécessitant reinterpret_cast, cast de style C ou cast de style fonction
-     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" terminée (build cible(s)) -- ÉCHEC.
+         Toutes les sorties sont à jour.
+         Toutes les sorties sont à jour.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\CivilizationWrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.pdb" /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Release\Wrapper.obj
+         "Release\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+         C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
+         CivilizationAlgo.lib(mapalgo.obj) : .netmodule ou module MSIL compilé avec /GL trouvé ; redémarrage de l'édition de liens avec /LTCG ; ajoutez /LTCG à la ligne de commande de l'édition de liens pour améliorer les performances de l'Éditeur de liens
+         Génération de code en cours
+         Fin de la génération du code
+         CivilizationWrapper.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll;#2" /manifest Release\CivilizationWrapper.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Suppression du fichier "Release\CivilizationWrapper.unsuccessfulbuild".
+         Mise à jour de l'horodatage "Release\CivilizationWrapper.lastbuildstate".
+     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" terminée (build cible(s)).
 
-ÉCHEC de la build.
+La génération a réussi.
 
-Temps écoulé 00:00:00.56
+Temps écoulé 00:00:00.90
