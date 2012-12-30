@@ -8,44 +8,38 @@ Algo* Algo_new() { return new Algo(); }
 void Algo_delete(Algo* algo) { delete algo; }
 int Algo_computeAlgo(Algo* algo) { return algo->computeFoo(); }
 
-/*
- * createSmallMap()
- * Create a new 25x25 map
- * return vector<vector<square>>
- */
-vector<vector<square>> createSmallMap() {
-	int height, width = 25;
-	vector<vector<square>> smallMap;
-	
+vector<vector<square>> createMap(int height,int width) {
 
-	// Initialize random seed
+	vector<vector<square>> map;
+
+	// Initialize random seed.
 	srand(time(NULL));
 
 	// Set up sizes. (height x width)
-	smallMap.resize(height);
+	map.resize(height);
 	for (int i = 0; i < height; ++i)
-		smallMap[i].resize(width);
+		map[i].resize(width);
 
-	while(!(map_full(smallMap))){
-		for(int i = 0; i<25; i++)
+	while(!(map_full(map))){
+		for(int i = 0; i<height; i++)
 		{
-			for(int j = 0; j<25; j++)
+			for(int j = 0; j<width; j++)
 			{
-				if(!(smallMap[i][j].frozen)) smallMap[i][j].type = rand() %3;
+				if(!(map[i][j].frozen)) map[i][j].type = rand() %3;
 			}
 		}
 
-		for(int i = 0; i<25; i++)
+		for(int i = 0; i<height; i++)
 		{
-			for(int j = 0; j<25; j++)
+			for(int j = 0; j<width; j++)
 			{
-				//Can the given square be included in a 4 (or more) square group ?
-				if(check_four_grps(smallMap, i, j, 0, smallMap[i][j].type)>=4)smallMap[i][j].frozen=1;
+				// Can the given square be included in a 4 (or more) square group ?
+				if(check_four_grps(map, i, j, 0, map[i][j].type)>=4)map[i][j].frozen=1;
 			}
 		}
 	}
 
-	return smallMap;
+	return map;
 }
 
 bool map_full(vector<vector<square>> &map){
@@ -56,7 +50,7 @@ bool map_full(vector<vector<square>> &map){
 			if(!(map[i][j].frozen)) return false;
 		}
 	}
-	//Vérifier que les 3 types de terrain soient bien présents sur la carte
+
 	if(!(three_types_present(map))) return false;
 	return true;
 }
