@@ -1,9 +1,7 @@
-﻿La génération a démarré 30/12/2012 13:38:43.
-     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" sur le nœud 2 (rebuild cible(s)).
-     1>_PrepareForClean:
-         Suppression du fichier "Release\CivilizationAlgo.lastbuildstate".
-       InitializeBuildStatus:
-         Création de "Release\CivilizationAlgo.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+﻿La génération a démarré 30/12/2012 13:51:41.
+     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" sur le nœud 2 (build cible(s)).
+     1>InitializeBuildStatus:
+         Mise à jour de l'horodatage "Release\CivilizationAlgo.unsuccessfulbuild".
        ClCompile:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt mapalgo.cpp
          mapalgo.cpp
@@ -12,14 +10,11 @@
        Lib:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib" /NOLOGO /LTCG Release\mapalgo.obj
          CivilizationAlgo.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
-       _CopyFilesMarkedCopyLocal:
-         Copie du fichier de "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.dll" vers "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationLib.dll".
-         Copie du fichier de "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.pdb" vers "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationLib.pdb".
        FinalizeBuildStatus:
          Suppression du fichier "Release\CivilizationAlgo.unsuccessfulbuild".
          Mise à jour de l'horodatage "Release\CivilizationAlgo.lastbuildstate".
-     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" terminée (rebuild cible(s)).
+     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" terminée (build cible(s)).
 
 La génération a réussi.
 
-Temps écoulé 00:00:00.60
+Temps écoulé 00:00:00.57

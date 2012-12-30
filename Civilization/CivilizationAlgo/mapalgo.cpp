@@ -75,24 +75,24 @@ void generateMap(square** &map, int height, int width){
 		}
 	}
 
-	while(!(mapFull(map, height, width))){
-		for(int i = 0; i<height; i++)
-		{
-			for(int j = 0; j<width; j++)
-			{
-				if(map[i][j].state!=2){
-					//Can the given square be included in a 4 (or more) square group ?
-					if(checkFourGroups(map, i, j, 0, map[i][j].type, height, width)>=4)map[i][j].state=2;
-					else map[i][j].type = rand() %3;
-
-				}
-			}
-		}
-	}
-	while(!(threeTypesPresent(map, height, width))){
-		int i = rand()%height, j =rand()%width;
-		changeGroup(map, i, j, map[i][j].type, rand()%3);
-	}
+//	while(!(mapFull(map, height, width))){
+//		for(int i = 0; i<height; i++)
+//		{
+//			for(int j = 0; j<width; j++)
+//			{
+//				if(map[i][j].state!=2){
+//					//Can the given square be included in a 4 (or more) square group ?
+//					if(checkFourGroups(map, i, j, 0, map[i][j].type, height, width)>=4)map[i][j].state=2;
+//					else map[i][j].type = rand() %3;
+//
+//				}
+//			}
+//		}
+//	}
+//	while(!(threeTypesPresent(map, height, width))){
+//		int i = rand()%height, j =rand()%width;
+//		changeGroup(map, i, j, map[i][j].type, rand()%3);
+//	}
 }
 
 bool mapFull(square** &map, int height, int width){
