@@ -5,18 +5,17 @@
  * Create a new 25x25 map
  * return square**
  */
-int** Algo::createSmallMap() {
-	int height = 25, width = 25;
-	vector<vector<square>> smallMap;
+int** Algo::createMap(int height, int width) {
+	vector<vector<square>> newMap;
 
-	smallMap.resize(height);
+	newMap.resize(height);
 	for(int i=0; i<height; i++)
-		smallMap[i].resize(width);
+		newMap[i].resize(width);
 
 	// Initialize random seed
 	srand(time(NULL));
 	
-	generateMap(smallMap);
+	generateMap(newMap);
 	int** map = new int*[height];
 	for (int i=0; i<height; i++)
        map[i] = new int[width];
@@ -25,50 +24,42 @@ int** Algo::createSmallMap() {
 	{
 		for(int j = 0; j<width; j++)
 		{
-			map[i][j] = smallMap[i][j].type;
+			map[i][j] = newMap[i][j].type;
 		}
 	}
 	return map;
 }
 
-/*
- * createMediumMap()
- * Create a new 100x100 map
- * return square**
- */
-int** Algo::createMediumMap() {
-	int height = 100, width = 100;
-	vector<vector<square>> mediumMap;
-
-	mediumMap.resize(height);
-	for(int i=0; i<height; i++)
-		mediumMap[i].resize(width);
+int** Algo::createBonusesMap(int height, int width, int ratio) {
+	int** newBMap = new int*[height];
+	for (int i=0; i<height; i++)
+       newBMap[i] = new int[width];
 
 	// Initialize random seed
 	srand(time(NULL));
 	
-	generateMap(mediumMap);
-	int** map = new int*[height];
-	for (int i=0; i<height; i++)
-       map[i] = new int[width];
-
-	for(int i = 0; i<height; i++)
-	{
-		for(int j = 0; j<width; j++)
-		{
-			map[i][j] = mediumMap[i][j].type;
-		}
-	}
-	return map;
+	generateBMap(newBMap, ratio, height, width);
+	return newBMap;
 }
+
 
 Algo* Algo_new() { return new Algo(); }
 void Algo_delete(Algo* algo) { delete algo; }
-int** Algo_createSmallMap(Algo* algo) { return algo->createSmallMap(); }
-int** Algo_createMediumMap(Algo* algo) { return algo->createMediumMap(); }
+int** Algo_createMap(Algo* algo, int height, int width) { return algo->createMap(height, width); }
+int** Algo_createBonusesMap(Algo* algo, int height, int width, int ratio) { return algo->createBonusesMap(height, width, ratio); }
 
-
-
+void generateBMap(int** &BMap, int ratio, int height, int width){
+	for(int i = 0; i<height; i++)
+	{
+		for(int j = 0; j<width; j++)
+		{
+			//ratio=0 : no bonus
+			//ratio=1 : all squares have additionnal ressources
+			// 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
+			if(rand()>=(1-ratio)) BMap[i][j] = 1 + rand() %2;
+		}
+	}
+}
 
 void generateMap(vector<vector<square>> &map){
 	do{
