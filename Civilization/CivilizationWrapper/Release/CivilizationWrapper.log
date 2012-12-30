@@ -1,11 +1,12 @@
-﻿La génération a démarré 30/12/2012 14:07:31.
+﻿La génération a démarré 30/12/2012 16:20:13.
      1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 3 (build cible(s)).
      1>InitializeBuildStatus:
          Création de "Release\CivilizationWrapper.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
        GenerateTargetFrameworkMonikerAttribute:
        La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
        ClCompile:
-         Toutes les sorties sont à jour.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /analyze- /errorReport:prompt Wrapper.cpp /clr:nostdlib 
+         Wrapper.cpp
          Toutes les sorties sont à jour.
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\CivilizationWrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.pdb" /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Release\Wrapper.obj
@@ -24,4 +25,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:00.85
+Temps écoulé 00:00:01.50

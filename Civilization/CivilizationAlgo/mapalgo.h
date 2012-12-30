@@ -41,4 +41,5 @@ void generateMap(square** &m, int h, int w);
 bool mapFull(square** &m, int h, int w);
 int checkFourGroups(square** &m, int i, int j, int h, int w);
 bool threeTypesPresent(square** &m, int h, int w);
-void changeGroup(square** &m, int i, int j, int itype, int dtype);
+bool rearrangeGroups(square** &m, int h, int w, int* t);
+void changeGroup(square** &m, int i, int j, int h, int w, int it, int dt);
