@@ -30,7 +30,7 @@ int** Algo::createMap(int height, int width) {
 	return map;
 }
 
-int** Algo::createBonusesMap(int height, int width, int ratio) {
+int** Algo::createBonusesMap(int height, int width, double ratio) {
 	int** newBMap = new int*[height];
 	for (int i=0; i<height; i++)
        newBMap[i] = new int[width];
@@ -46,9 +46,9 @@ int** Algo::createBonusesMap(int height, int width, int ratio) {
 Algo* Algo_new() { return new Algo(); }
 void Algo_delete(Algo* algo) { delete algo; }
 int** Algo_createMap(Algo* algo, int height, int width) { return algo->createMap(height, width); }
-int** Algo_createBonusesMap(Algo* algo, int height, int width, int ratio) { return algo->createBonusesMap(height, width, ratio); }
+int** Algo_createBonusesMap(Algo* algo, int height, int width, double ratio) { return algo->createBonusesMap(height, width, ratio); }
 
-void generateBMap(int** &BMap, int ratio, int height, int width){
+void generateBMap(int** &BMap, int height, int width, double ratio){
 	for(int i = 0; i<height; i++)
 	{
 		for(int j = 0; j<width; j++)
@@ -56,7 +56,9 @@ void generateBMap(int** &BMap, int ratio, int height, int width){
 			//ratio=0 : no bonus
 			//ratio=1 : all squares have additionnal ressources
 			// 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
-			if(rand()>=(1-ratio)) BMap[i][j] = 1 + rand() %2;
+			if(((double) rand() / (RAND_MAX))>=(1-ratio))
+				BMap[i][j] = 1 + (rand() %2);
+			else BMap[i][j] = 0;
 		}
 	}
 }

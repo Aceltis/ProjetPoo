@@ -11,5 +11,5 @@ Class Wrapper.WrapperAlgo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.IDisposable
   Methods:
     createMap(Int32, Int32): PrivateScope, Public, HideBySig
-    createBonusesMap(Int32, Int32): PrivateScope, Public, HideBySig
+    createBonusesMap(Int32, Int32, Double): PrivateScope, Public, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

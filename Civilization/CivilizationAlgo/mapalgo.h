@@ -25,17 +25,17 @@ class DLL Algo {
 		Algo() {}
 		~Algo() {}
 		int** createMap(int h, int w);
-		int** createBonusesMap(int h, int w, int r);
+		int** createBonusesMap(int h, int w, double r);
 };
 
 // A ne pas implémenter dans le .h !
 EXTERNC DLL Algo* Algo_new();
 EXTERNC DLL void Algo_delete(Algo* algo);
 EXTERNC DLL int** Algo_createMap(Algo* algo, int h, int w);
-EXTERNC DLL int** Algo_createBonusesMap(Algo* algo, int h, int w, int r);
+EXTERNC DLL int** Algo_createBonusesMap(Algo* algo, int h, int w, double r);
 
 //fonctions internes
-void generateBMap(int** &bm, int r, int h, int w);
+void generateBMap(int** &bm, int h, int w, double r);
 void generateMap(vector<vector<square>> &m);
 bool mapFull(vector<vector<square>> &m);
 int checkFourGroups(vector<vector<square>> &m, int i, int j);
