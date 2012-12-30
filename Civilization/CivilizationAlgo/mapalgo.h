@@ -28,7 +28,6 @@ class DLL Algo {
 		~Algo() {}
 		int** createSmallMap();
 		int** createMediumMap();
-		int computeFoo();
 };
 
 // A ne pas implémenter dans le .h !

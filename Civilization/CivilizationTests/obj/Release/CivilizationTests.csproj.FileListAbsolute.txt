@@ -1,0 +1,7 @@
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\ResolveAssemblyReference.cache
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationTests.dll
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationTests.pdb
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationLib.dll
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationLib.pdb
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.dll
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.pdb

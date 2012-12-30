@@ -1,0 +1,5 @@
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.dll
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.pdb
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\obj\Release\ResolveAssemblyReference.cache
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\obj\Release\CivilizationLib.dll
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\obj\Release\CivilizationLib.pdb
