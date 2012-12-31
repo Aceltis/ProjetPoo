@@ -18,17 +18,23 @@
         <Grid Name="map" Height="420" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,30,0,0">
             <ScrollBar Name="up_down" Height="400" HorizontalAlignment="Right" VerticalAlignment="Top" Width="18" />
         </Grid>
-        <Grid Name="information" Height="150" Width="600" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,34,0,0" Name="city_name" Text="AceltiCity" VerticalAlignment="Top" />
-                <TextBlock Height="23" HorizontalAlignment="Left" Margin="99,34,0,0" Name="city_population" Text="5 population" VerticalAlignment="Top" />
-                <TextBlock Height="23" HorizontalAlignment="Left" Margin="99,89,0,0" Name="pop_up_turns_left" Text="6 Turns before growing" VerticalAlignment="Top" />
-                <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,63,0,0" Name="iron" Text="3 iron available" VerticalAlignment="Top" />
-                <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,89,0,0" Name="food" Text="5 food available" VerticalAlignment="Top" />
-                <ComboBox Height="23" HorizontalAlignment="Left" Margin="302,57,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120" />
-                <TextBlock Height="23" HorizontalAlignment="Left" Margin="302,89,0,0" Name="end_prod" Text="End in... 0 turns" VerticalAlignment="Top" />
+        <Grid Name="information" Height="150" Width="600" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="Hidden">
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="259,6,0,0" Name="city_name" Text="AceltiCity" VerticalAlignment="Top" />
+            <TextBlock HorizontalAlignment="Left" Margin="259,27,0,100" Name="city_population" Text="5 Citizens" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="414,13,0,0" Name="pop_up_turns_left" Text="6 Turns until a new citizen is born" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="11,7,0,0" Name="iron" Text="3 iron available" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="11,27,0,0" Name="food" Text="5 food available" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="154,103,0,0" Name="timer_prod_boss" Text="5 turns" VerticalAlignment="Top" />
+            <Button Content="Boss" Height="23" HorizontalAlignment="Left" Margin="135,71,0,0" Name="build_boss" VerticalAlignment="Top" Width="75" />
+            <Button Content="Teacher" Height="23" HorizontalAlignment="Left" Margin="248,71,0,0" Name="build_teacher" VerticalAlignment="Top" Width="75" />
+            <Button Content="Student" Height="23" HorizontalAlignment="Left" Margin="362,71,0,0" Name="build_student" VerticalAlignment="Top" Width="75" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="267,102,0,0" Name="timer_prod_teach" Text="4 turns" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="381,103,0,0" Name="timer_prod_stud" Text="3 turns" VerticalAlignment="Top" />
+            <Button Content="Delete Town" Height="23" HorizontalAlignment="Right" Name="delete_city" VerticalAlignment="Bottom" Margin="0,0,2,2" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="11,74,0,0" Name="interface3" Text="Current production" VerticalAlignment="Top" />
         </Grid>
         <Grid Name="action" Height="150" Width="200" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-            <Button Content="Unit needs orders" Height="30" Width="200" HorizontalAlignment="Left" Name="button2" VerticalAlignment="Top"  />
+            <Button Content="A city needs orders" Height="30" Width="200" HorizontalAlignment="Left" Name="button2" VerticalAlignment="Top"  />
         </Grid>
     </Grid>
 </Window>
