@@ -20,3 +20,5 @@ C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\bin\Release
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\bin\Release\CivilizationWrapper.pdb
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.exe
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.exe
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.pdb
