@@ -1,0 +1,5 @@
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.dll
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\obj\Release\CivilizationLib.csprojResolveAssemblyReference.cache
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\obj\Release\CivilizationLib.dll
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\obj\Release\CivilizationLib.pdb

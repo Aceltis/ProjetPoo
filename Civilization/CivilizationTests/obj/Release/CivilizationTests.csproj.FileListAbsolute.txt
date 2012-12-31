@@ -1,0 +1,7 @@
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationTests.dll
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationTests.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationLib.dll
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationLib.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.csprojResolveAssemblyReference.cache
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.dll
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.pdb

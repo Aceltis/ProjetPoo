@@ -137,6 +137,16 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\ressources\fer.png" />
+    <Resource Include="Resource\ressources\foret.png" />
+    <Resource Include="Resource\ressources\fruit.png" />
+    <Resource Include="Resource\terrains\desert.png" />
+    <Resource Include="Resource\terrains\montagne.png" />
+    <Resource Include="Resource\terrains\neige.png" />
+    <Resource Include="Resource\terrains\plaine.png" />
+    <Resource Include="Resource\ville.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

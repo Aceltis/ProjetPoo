@@ -1,8 +1,17 @@
 ﻿<Window x:Class="CivilizationWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button Content="Button" Height="23" HorizontalAlignment="Left" Margin="204,159,0,0" Name="button1" VerticalAlignment="Top" Width="75" />
+        Title="Civilization" Height="600" Width="850">
+    <Grid Height="550" Width="800" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1">
+            <Grid Name="map" Height="400" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ScrollBar Name="up_down" Height="400" HorizontalAlignment="Right" VerticalAlignment="Top" Width="18" />
+            </Grid>
+        </Border>
+        <Grid Name="options" Height="150" Width="800" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Grid Name="player" Height="150" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="200">
+                <Button Name="end_turn" Content="End Turn" Click="endTurn" Height="20" Margin="2,0,0,2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" />
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

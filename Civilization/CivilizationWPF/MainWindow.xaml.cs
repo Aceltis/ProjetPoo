@@ -20,7 +20,7 @@ namespace CivilizationWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Valable que quand on parle de pointeur
+        // Valable que quand on parle de pointeur
         unsafe public MainWindow()
         {
             WrapperAlgo algo = new WrapperAlgo();
@@ -29,6 +29,11 @@ namespace CivilizationWPF
             {
                 System.Console.WriteLine(tab[i]);
             }
+        }
+
+        private void endTurn(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Passage au joueur suivant");
         }
     }
 }

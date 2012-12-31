@@ -1,17 +1,22 @@
-﻿La génération a démarré 28/12/2012 21:18:14.
-     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" sur le nœud 2 (build cible(s)).
+﻿Build started 31/12/2012 12:30:14.
+     1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Création de "Release\CivilizationAlgo.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+         Creating "Release\CivilizationAlgo.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         Toutes les sorties sont à jour.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt mapalgo.cpp
+         mapalgo.cpp
+     1>mapalgo.cpp(16): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
        Lib:
-         Toutes les sorties sont à jour.
-         CivilizationAlgo.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.lib" /NOLOGO /LTCG Release\mapalgo.obj
+         CivilizationAlgo.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
+       _CopyFilesMarkedCopyLocal:
+         Copying file from "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.dll" to "D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationLib.dll".
+         Copying file from "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.pdb" to "D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationLib.pdb".
        FinalizeBuildStatus:
-         Suppression du fichier "Release\CivilizationAlgo.unsuccessfulbuild".
-         Mise à jour de l'horodatage "Release\CivilizationAlgo.lastbuildstate".
-     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" terminée (build cible(s)).
+         Deleting file "Release\CivilizationAlgo.unsuccessfulbuild".
+         Touching "Release\CivilizationAlgo.lastbuildstate".
+     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" (build target(s)).
 
-La génération a réussi.
+Build succeeded.
 
-Temps écoulé 00:00:00.10
+Time Elapsed 00:00:01.67
