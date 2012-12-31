@@ -1,8 +1,34 @@
 ﻿<Window x:Class="CivilizationWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Civilization" Height="600" Width="850">
+    <Grid Height="550" Width="800" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1">
+            <Grid Name="map" Height="400" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ScrollBar Name="up_down" Height="400" HorizontalAlignment="Right" VerticalAlignment="Top" Width="18" />                
+            </Grid>
+        </Border>
+        <Grid Name="player" Height="150" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="200">
+            <Button Name="end_turn" Content="End Turn" Click="endTurn" Height="20" Margin="2,0,0,2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" />
+            <TextBlock Name="player_name" Height="23" HorizontalAlignment="Left" Margin="83,6,0,0"  Text="Aceltis" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,34,0,0" Name="civilization" Text="INFO" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,6,0,0" Name="interface1" Text="It's your turn," VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,63,0,0" Name="city_number" Text="3 Cities" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,92,0,0" Name="boss_status" Text="Boss is alive" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="116,34,0,0" Name="teacher_number" Text="2 Teachers" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="116,63,0,0" Name="student_number" Text="4 Students" VerticalAlignment="Top" />
+        </Grid>
+        <Grid Name="options" Height="150" Width="600" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="302,6,0,0" Name="interface2" Text="A city needs your orders !" VerticalAlignment="Top"  />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="544,6,0,0" Name="turn_id" Text="Turn n°11" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,34,0,0" Name="city_name" Text="AceltiCity" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="99,34,0,0" Name="city_population" Text="5 population" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,116,0,0" Name="pop_up_turns_left" Text="6 Turns before growing" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,63,0,0" Name="iron" Text="3 iron available" VerticalAlignment="Top" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="6,89,0,0" Name="food" Text="5 food available" VerticalAlignment="Top" />
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="302,57,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120" />
+            <TextBlock Height="23" HorizontalAlignment="Left" Margin="302,89,0,0" Name="end_prod" Text="End in... 0 turns" VerticalAlignment="Top" />
+            <Button Content="Continue" Height="23" HorizontalAlignment="Right" Margin="0,0,2,2" Name="check_actions" VerticalAlignment="Bottom" Width="75" />
+        </Grid>
     </Grid>
 </Window>
