@@ -40,13 +40,12 @@ int** Algo::createBonusesMap(int height, int width, double ratio) {
 	for (int i=0; i<height; i++)
        newBMap[i] = new int[width];
 
-	// Initialize random seed
+	// Initialize random seed.
 	srand(time(NULL));
 	
 	generateBMap(newBMap, ratio, height, width);
 	return newBMap;
 }
-
 
 Algo* Algo_new() { return new Algo(); }
 void Algo_delete(Algo* algo) { delete algo; }
@@ -140,19 +139,19 @@ bool mapFull(vector<vector<square>> &map){
  * return int
  */
 int groupSize(vector<vector<square>> &map, int i, int j){
-	int compteur=1, stop=0;
+	int counter=1, stop=0;
 	map[i][j].state=1;
 	//If a square standing next to current square is in a 4square group and is the same type, current square is in a 4sq groupe
-	if (i+1<map.size() && stop == 0)	{if(map[i+1][j].type==map[i][j].type && map[i+1][j].state==2)	{compteur=4; stop=1;}}
-	if (j+1<map[i].size() && stop == 0)	{if(map[i][j+1].type==map[i][j].type && map[i][j+1].state==2)	{compteur=4; stop=1;}}
-	if (i>0 && stop == 0)				{if(map[i-1][j].type==map[i][j].type && map[i-1][j].state==2)	{compteur=4; stop=1;}}
-	if (j>0 && stop == 0)				{if(map[i][j-1].type==map[i][j].type && map[i][j-1].state==2)	{compteur=4; stop=1;}}
+	if (i+1<map.size() && stop == 0)	{if(map[i+1][j].type==map[i][j].type && map[i+1][j].state==2)	{counter=4; stop=1;}}
+	if (j+1<map[i].size() && stop == 0)	{if(map[i][j+1].type==map[i][j].type && map[i][j+1].state==2)	{counter=4; stop=1;}}
+	if (i>0 && stop == 0)				{if(map[i-1][j].type==map[i][j].type && map[i-1][j].state==2)	{counter=4; stop=1;}}
+	if (j>0 && stop == 0)				{if(map[i][j-1].type==map[i][j].type && map[i][j-1].state==2)	{counter=4; stop=1;}}
 
-	if (i+1<map.size() && stop == 0)	{if(map[i+1][j].type==map[i][j].type && map[i+1][j].state!=1) compteur += groupSize(map, i+1, j);}
-	if (j+1<map[i].size() && stop == 0)	{if(map[i][j+1].type==map[i][j].type && map[i][j+1].state!=1) compteur += groupSize(map, i, j+1);}
-	if (i>0 && stop == 0)				{if(map[i-1][j].type==map[i][j].type && map[i-1][j].state!=1) compteur += groupSize(map, i-1, j);}
-	if (j>0 && stop == 0)				{if(map[i][j-1].type==map[i][j].type && map[i][j-1].state!=1) compteur += groupSize(map, i, j-1);}
-	return compteur;
+	if (i+1<map.size() && stop == 0)	{if(map[i+1][j].type==map[i][j].type && map[i+1][j].state!=1) counter += groupSize(map, i+1, j);}
+	if (j+1<map[i].size() && stop == 0)	{if(map[i][j+1].type==map[i][j].type && map[i][j+1].state!=1) counter += groupSize(map, i, j+1);}
+	if (i>0 && stop == 0)				{if(map[i-1][j].type==map[i][j].type && map[i-1][j].state!=1) counter += groupSize(map, i-1, j);}
+	if (j>0 && stop == 0)				{if(map[i][j-1].type==map[i][j].type && map[i][j-1].state!=1) counter += groupSize(map, i, j-1);}
+	return counter;
 }
 
 /*
