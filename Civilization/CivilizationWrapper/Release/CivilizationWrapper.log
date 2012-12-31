@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿Build started 31/12/2012 12:30:15.
      1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
+=======
+﻿La génération a démarré 31/12/2012 15:56:26.
+     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 3 (build cible(s)).
+>>>>>>> b4f24d8992a346ca654382d5d7e42809ef3fd6c0
      1>InitializeBuildStatus:
          Touching "Release\CivilizationWrapper.unsuccessfulbuild".
        GenerateTargetFrameworkMonikerAttribute:
@@ -7,6 +12,7 @@
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /analyze- /errorReport:prompt Wrapper.cpp /clr:nostdlib 
          Wrapper.cpp
+<<<<<<< HEAD
      1>d:\projet\dev\projetpoo\civilization\civilizationwrapper\Wrapper.h(16): error C2440: 'return' : cannot convert from 'int' to 'int *'
                  Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
      1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" (build target(s)) -- FAILED.
@@ -14,3 +20,24 @@
 Build FAILED.
 
 Time Elapsed 00:00:00.76
+=======
+         Toutes les sorties sont à jour.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\CivilizationWrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.pdb" /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Release\Wrapper.obj
+         "Release\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+         C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
+         CivilizationAlgo.lib(mapalgo.obj) : .netmodule ou module MSIL compilé avec /GL trouvé ; redémarrage de l'édition de liens avec /LTCG ; ajoutez /LTCG à la ligne de commande de l'édition de liens pour améliorer les performances de l'Éditeur de liens
+         Génération de code en cours
+         Fin de la génération du code
+         CivilizationWrapper.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll;#2" /manifest Release\CivilizationWrapper.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Suppression du fichier "Release\CivilizationWrapper.unsuccessfulbuild".
+         Mise à jour de l'horodatage "Release\CivilizationWrapper.lastbuildstate".
+     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" terminée (build cible(s)).
+
+La génération a réussi.
+
+Temps écoulé 00:00:02.13
+>>>>>>> b4f24d8992a346ca654382d5d7e42809ef3fd6c0

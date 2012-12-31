@@ -1,0 +1,15 @@
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\MainWindow.baml
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\MainWindow.g.cs
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\App.g.cs
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\CivilizationWPF_MarkupCompile.cache
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\CivilizationWPF.g.resources
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\CivilizationWPF.Properties.Resources.resources
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\bin\Debug\CivilizationWPF.exe
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\bin\Debug\CivilizationWPF.pdb
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\bin\Debug\CivilizationWrapper.dll
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\bin\Debug\CivilizationWrapper.pdb
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\CivilizationWPF.exe
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Debug\CivilizationWPF.pdb
