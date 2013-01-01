@@ -1,33 +1,17 @@
-<<<<<<< HEAD
-﻿Build started 01/01/2013 19:20:45.
+﻿Build started 01/01/2013 20:23:42.
      1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" on node 2 (build target(s)).
-=======
-﻿La génération a démarré 01/01/2013 15:51:01.
-     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" sur le nœud 2 (build cible(s)).
->>>>>>> fd1a00e387182d2ee813e6fd00d53dda96243a3d
      1>InitializeBuildStatus:
-         Création de "Release\CivilizationAlgo.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+         Creating "Release\CivilizationAlgo.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-<<<<<<< HEAD
          All outputs are up-to-date.
        Lib:
          All outputs are up-to-date.
          CivilizationAlgo.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
-=======
-         Toutes les sorties sont à jour.
-       Lib:
-         Toutes les sorties sont à jour.
-         CivilizationAlgo.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
->>>>>>> fd1a00e387182d2ee813e6fd00d53dda96243a3d
        FinalizeBuildStatus:
-         Suppression du fichier "Release\CivilizationAlgo.unsuccessfulbuild".
-         Mise à jour de l'horodatage "Release\CivilizationAlgo.lastbuildstate".
-     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" terminée (build cible(s)).
+         Deleting file "Release\CivilizationAlgo.unsuccessfulbuild".
+         Touching "Release\CivilizationAlgo.lastbuildstate".
+     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" (build target(s)).
 
-La génération a réussi.
+Build succeeded.
 
-<<<<<<< HEAD
-Time Elapsed 00:00:00.07
-=======
-Temps écoulé 00:00:00.32
->>>>>>> fd1a00e387182d2ee813e6fd00d53dda96243a3d
+Time Elapsed 00:00:00.15

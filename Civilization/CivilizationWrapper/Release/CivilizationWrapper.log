@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿Build started 01/01/2013 19:20:46.
+﻿Build started 01/01/2013 20:23:42.
      1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\CivilizationWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -15,14 +14,7 @@
          Deleting file "Release\CivilizationWrapper.unsuccessfulbuild".
          Touching "Release\CivilizationWrapper.lastbuildstate".
      1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" (build target(s)).
-=======
-﻿La génération a démarré 01/01/2013 15:51:02.
->>>>>>> fd1a00e387182d2ee813e6fd00d53dda96243a3d
 
 Build succeeded.
 
-<<<<<<< HEAD
 Time Elapsed 00:00:00.09
-=======
-Temps écoulé 00:00:00.01
->>>>>>> fd1a00e387182d2ee813e6fd00d53dda96243a3d

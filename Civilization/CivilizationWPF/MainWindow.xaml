@@ -3,11 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Civilization" Width="1024" Height="768" ResizeMode="NoResize">
     <Window.Resources>
-        <Style x:Key="menu" TargetType="Button">
+        <Style x:Key="menu" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="FontFamily" Value="Lithos Pro"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Name="content"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#fffef8d7" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Foreground" Value="AliceBlue" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     <Grid>
@@ -55,7 +78,8 @@
             <Image Grid.Column="10" Source="./Resource/interface/icons/dead.png" Height="24" Width="24"></Image>
             <TextBlock Grid.Column="12" Text="Turn" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center"/>
             <TextBlock Grid.Column="13" Text="24" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center"/>
-            <Button Click="endTurn" Grid.Column="14" Content="End Turn" Style="menu"></Button>
+            <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
+            <Button Grid.Column="15" Click="openMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
         <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2">
             <ScrollBar Name="up_down" Height="400" HorizontalAlignment="Right" VerticalAlignment="Top" Width="18" />
