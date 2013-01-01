@@ -22,3 +22,10 @@ C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Rel
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.pdb
 D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.exe
 D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\bin\Release\CivilizationWPF.exe
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\bin\Release\CivilizationWPF.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\bin\Release\CivilizationLib.dll
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\bin\Release\CivilizationWrapper.dll
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\bin\Release\CivilizationLib.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\bin\Release\CivilizationWrapper.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.csprojResolveAssemblyReference.cache

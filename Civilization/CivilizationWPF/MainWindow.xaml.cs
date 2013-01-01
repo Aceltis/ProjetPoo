@@ -46,5 +46,9 @@ namespace CivilizationWPF
         {
             MessageBox.Show("Passage au joueur suivant");
         }
+
+        private void openMenu(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
