@@ -15,7 +15,7 @@ namespace Implementation
     public class Map : IMap
     {
 
-        public virtual List<Case> map { get; set; }
+        public virtual List<Case> grid { get; set; }
         private MapStrategy mapStrategy { get; set; }
 
         public Map()
@@ -35,7 +35,7 @@ namespace Implementation
 
         public void createMap()
         {
-            mapStrategy.createMap(map);
+            mapStrategy.createMap(grid);
         }
 
         public void afficher()

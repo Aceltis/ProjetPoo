@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -191,6 +194,12 @@
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IUnit/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f7e084be1-a299-4938-9fae-f8411920046d</SourceModelReference>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CivilizationWrapper\CivilizationWrapper.vcxproj">
+      <Project>{02207F43-43A9-4023-930D-36D1EA87C2B4}</Project>
+      <Name>CivilizationWrapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

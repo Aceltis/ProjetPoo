@@ -33,11 +33,8 @@ namespace CivilizationWPF
         // Valable que quand on parle de pointeur
         public MainWindow()
         {
-            Map map = new Map();
-            map.setMapStrategy(new SmallMapStrategy());
             List<Case> newMap = createAlgoMap();
-            
-            map.createMap();
+
         }
 
         private void endTurn(object sender, RoutedEventArgs e)
@@ -47,10 +44,17 @@ namespace CivilizationWPF
 
         unsafe public List<Case> createAlgoMap ()
         {
+            Map newMap = new Map();
+            newMap.setMapStrategy(new SmallMapStrategy());
+
             WrapperAlgo algo = new WrapperAlgo();
             int** Algomap = algo.createMap(25, 25);
             int** bonuses = algo.createBonusesMap(25, 25, 0.2);
 
+            for (int i = 0; i < 25; i++)
+            {
+                newMap.createMap();
+            }
             return new List<Case>();
         }
     }

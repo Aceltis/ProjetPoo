@@ -15,7 +15,7 @@ namespace Interfaces
 	/// <remarks>Poids-Mouche</remarks>
 	public interface IMap 
 	{
-        List<Case> map { get; set; }
+        List<Case> grid { get; set; }
         MapType size { get; set; }
 
         void afficher();
