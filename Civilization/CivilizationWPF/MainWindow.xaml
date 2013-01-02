@@ -7,7 +7,7 @@
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="FontFamily" Value="Lithos Pro"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="#fffef8d7"/>
             <Setter Property="BorderBrush" Value="{x:Null}"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Template">
@@ -18,13 +18,13 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="#fffef8d7" />
+                                <Setter Property="Foreground" Value="#ffec921d" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Foreground" Value="AliceBlue" />
+                                <Setter Property="Foreground" Value="White" />
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="Foreground" Value="#ffec921d" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -64,19 +64,19 @@
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/top.png"/>
             </Grid.Background>
-            <TextBlock Name="intro_turn" Grid.Column="0" Text="It's your turn," FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <TextBlock Name="player_name" Grid.Column="1" Text="Aceltis" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="intro_turn" Grid.Column="0" Text="It's your turn," FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="player_name" Grid.Column="1" Text="{Binding ElementName=playerView, Path=Name}" FontFamily="Lithos Pro" Foreground="{Binding ElementName=playerView, Path=Color}" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="2" Source="./Resource/interface/icons/civ.png" Height="16" Width="16"></Image>
-            <TextBlock Name="civilization" Grid.Column="3" Text="INFO" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="civilization" Grid.Column="3" Text="{Binding ElementName=playerView, Path=Civilization}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="4" Source="./Resource/interface/icons/city.png" Height="24" Width="24"></Image>
-            <TextBlock Name="city_number" Grid.Column="5" Text="4" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="city_number" Grid.Column="5" Text="{Binding ElementName=playerView, Path=CityNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="6" Source="./Resource/interface/icons/teacher.png" Height="24" Width="24"></Image>
-            <TextBlock Name="teacher_number" Grid.Column="7" Text="3" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="teacher_number" Grid.Column="7" Text="{Binding ElementName=playerView, Path=TeacherNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="8" Source="./Resource/interface/icons/student.png" Height="24" Width="24"></Image>
-            <TextBlock Name="student_number" Grid.Column="9" Text="3" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <Image Grid.Column="10" Source="./Resource/interface/icons/dead.png" Height="24" Width="24"></Image>
-            <TextBlock Grid.Column="12" Text="Turn" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="13" Text="24" FontFamily="Lithos Pro" Foreground="White" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Name="student_number" Grid.Column="9" Text="{Binding ElementName=playerView, Path=StudentNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <Image Grid.Column="10" Source="{Binding ElementName=playerView, Path=BossStatus}" Height="24" Width="24"></Image>
+            <TextBlock Grid.Column="12" Text="Turn" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="13" Text="{Binding ElementName=turnView, Path=TurnNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="openMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
