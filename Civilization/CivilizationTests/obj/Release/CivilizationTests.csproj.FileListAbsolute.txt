@@ -5,3 +5,5 @@ C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Relea
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\ResolveAssemblyReference.cache
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.dll
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.pdb
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationWrapper.dll
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationWrapper.pdb

@@ -20,6 +20,7 @@ namespace Implementation
 
         public Map()
         {
+            grid = new List<Case>();
         }
 
         public void setMapStrategy(MapStrategy mapStrategy)
@@ -40,6 +41,10 @@ namespace Implementation
 
         public void afficher()
         {
+            foreach (Case square in grid)
+            {
+                square.afficher(square.pos_x, square.pos_y);
+            }
         }
     }
 }

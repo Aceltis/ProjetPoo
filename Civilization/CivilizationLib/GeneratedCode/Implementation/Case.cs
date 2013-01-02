@@ -16,7 +16,7 @@ namespace Implementation
     {
         public Case()
         {
-
+            units = new List<Unit>();
         }
 
         //Attributs

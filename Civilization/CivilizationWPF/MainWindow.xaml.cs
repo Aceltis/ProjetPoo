@@ -46,15 +46,10 @@ namespace CivilizationWPF
         {
             Map newMap = new Map();
             newMap.setMapStrategy(new SmallMapStrategy());
+            newMap.createMap();
 
-            WrapperAlgo algo = new WrapperAlgo();
-            int** Algomap = algo.createMap(25, 25);
-            int** bonuses = algo.createBonusesMap(25, 25, 0.2);
+            newMap.afficher();
 
-            for (int i = 0; i < 25; i++)
-            {
-                newMap.createMap();
-            }
             return new List<Case>();
         }
     }

@@ -19,6 +19,7 @@ namespace Implementation
 
         public CaseFactory()
         {
+            mapCases = new Dictionary<int,Case>();
             mapCases.Add(0, new Mountain());
             mapCases.Add(1, new Plain());
             mapCases.Add(2, new Desert());

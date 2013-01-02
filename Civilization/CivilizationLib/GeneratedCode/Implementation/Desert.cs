@@ -11,6 +11,7 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Drawing;
 
     public class Desert : Case, IDesert
     {
@@ -27,7 +28,9 @@ namespace Implementation
 
         public override void afficher(int x, int y)
         {
-            throw new System.NotImplementedException();
+            Image image;
+            Point point;
+            Graphics.DrawImage(image, point);
         }
 
     }
