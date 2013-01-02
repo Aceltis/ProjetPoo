@@ -80,8 +80,12 @@
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="openMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
-        <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2">
-            <ScrollBar Name="up_down" Height="400" HorizontalAlignment="Right" VerticalAlignment="Top" Width="18" />
+        <Grid Grid.Row="1" Name="menu" Grid.ColumnSpan="2" Visibility="Visible">
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/splash.png"></ImageBrush>
+            </Grid.Background>
+        </Grid>
+        <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2" Visibility="Visible">
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1" Name="information">
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="259,6,0,0" Name="city_name" Text="AceltiCity" VerticalAlignment="Top" />
@@ -99,7 +103,29 @@
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="11,74,0,0" Name="interface3" Text="Current production" VerticalAlignment="Top" />
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Name="action">
-            <Button Content="A city needs orders" Height="30" Width="200" HorizontalAlignment="Left" Name="button2" VerticalAlignment="Top"  />
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/teacher.png"></ImageBrush>
+            </Grid.Background>
+            <Button Name="order" Click="newAction" Content="Unit needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="0,3,0,0">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
+                </Button.Effect>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image Name="Normal" Source="./Resource/interface/bouton1.png"/>
+                            <Image Name="Over" Source="./Resource/interface/bouton2.png" Visibility="Hidden"/>
+                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
     </Grid>
 </Window>

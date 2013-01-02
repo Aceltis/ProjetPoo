@@ -50,5 +50,9 @@ namespace CivilizationWPF
         private void openMenu(object sender, RoutedEventArgs e)
         {
         }
+
+        private void newAction(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
