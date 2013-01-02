@@ -1,7 +1,0 @@
-C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Debug\CivilizationTests.dll
-C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Debug\CivilizationTests.pdb
-C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Debug\CivilizationLib.dll
-C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Debug\CivilizationLib.pdb
-C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Debug\CivilizationTests.dll
-C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Debug\CivilizationTests.pdb

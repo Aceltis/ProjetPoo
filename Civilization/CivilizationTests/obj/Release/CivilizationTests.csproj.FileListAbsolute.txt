@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationTests.dll
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationTests.pdb
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationLib.dll
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationLib.pdb
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.csprojResolveAssemblyReference.cache
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.dll
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.pdb
-=======
-C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\ResolveAssemblyReference.cache
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationTests.dll
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationTests.pdb
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationLib.dll
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\bin\Release\CivilizationLib.pdb
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\ResolveAssemblyReference.cache
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.dll
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationTests\obj\Release\CivilizationTests.pdb
->>>>>>> b4f24d8992a346ca654382d5d7e42809ef3fd6c0
