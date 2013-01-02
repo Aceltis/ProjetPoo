@@ -1,16 +1,20 @@
-﻿Build started 31/12/2012 12:30:15.
+﻿Build started 02/01/2013 11:10:55.
      1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "Release\CivilizationWrapper.unsuccessfulbuild".
+         Creating "Release\CivilizationWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
        GenerateTargetFrameworkMonikerAttribute:
        Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /analyze- /errorReport:prompt Wrapper.cpp /clr:nostdlib 
-         Wrapper.cpp
-     1>d:\projet\dev\projetpoo\civilization\civilizationwrapper\Wrapper.h(16): error C2440: 'return' : cannot convert from 'int' to 'int *'
-                 Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
-     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" (build target(s)) -- FAILED.
+         All outputs are up-to-date.
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         CivilizationWrapper.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationWrapper.dll
+       FinalizeBuildStatus:
+         Deleting file "Release\CivilizationWrapper.unsuccessfulbuild".
+         Touching "Release\CivilizationWrapper.lastbuildstate".
+     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" (build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.76
+Time Elapsed 00:00:00.07

@@ -16,6 +16,8 @@ using namespace std;
 struct square {
 	// 0: Mountain, 1: Plain, 2: Desert.
 	int type;
+	// 0: free, 1: checked, 2: frozen
+	int state;
 	// 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food.
 	int bonus;
 	// 0: free, 1: frozen.
@@ -26,23 +28,38 @@ class DLL Algo {
 	public:
 		Algo() {}
 		~Algo() {}
-		int computeFoo();
+		int** createMap(int h, int w);
+		int** createBonusesMap(int h, int w, double r);
 };
 
 // A ne pas implémenter dans le .h !
 EXTERNC DLL Algo* Algo_new();
 EXTERNC DLL void Algo_delete(Algo* algo);
-EXTERNC DLL int Algo_computeAlgo(Algo* algo);
 
-// Create a height x width map.
-EXTERNC DLL vector<vector<square>> createMap(int height,int width);
+// Creates a height x width map.
+EXTERNC DLL int** Algo_createMap(Algo* algo, int h, int w);
 
-// Return True if the map has all its squares.
-EXTERNC DLL bool map_full(vector<vector<square>> &map);
+// Creates a height x width map of additional ressources.
+EXTERNC DLL int** Algo_createBonusesMap(Algo* algo, int h, int w, double r);
 
-// Check if a group of four same lands exists.
-// Return a counter of the number of lands in this group.
-EXTERNC DLL int check_four_grps(vector<vector<square>> &map, int i, int j, int compteur, int type);
+//fonctions internes
+//Generates the bonus map
+void generateBMap(int** &bm, int h, int w, double r);
 
-// Check all 3 types are contained in the new map.
-EXTERNC DLL bool three_types_present(vector<vector<square>> &map);
+//Generates the types map
+void generateMap(vector<vector<square>> &m);
+
+// Returns True if the map has all its squares.
+bool mapFull(vector<vector<square>> &m);
+
+// Returns size of the current square's group.
+int groupSize(vector<vector<square>> &m, int i, int j);
+
+//Returns true if all types are present in the map
+bool threeTypesPresent(vector<vector<square>> &m);
+
+//Returns true if able to change a group's type in order to make all types present on the map
+bool rearrangeGroups(vector<vector<square>> &m, int* t);
+
+//Changes a group's type
+void changeGroup(vector<vector<square>> &m, int i, int j, int it, int dt);

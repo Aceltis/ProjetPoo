@@ -12,9 +12,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wrapper;
+using Interfaces;
 
 namespace CivilizationWPF
 {
+    struct square
+    {
+        // 0: Mountain, 1: Plain, 2: Desert
+        public int type;
+        // 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
+        public int bonus;
+    };
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -24,16 +33,22 @@ namespace CivilizationWPF
         unsafe public MainWindow()
         {
             WrapperAlgo algo = new WrapperAlgo();
-            int* tab = algo.computeFoo();
-            for (int i = 0; i < 5; i++)
-            {
-                System.Console.WriteLine(tab[i]);
-            }
+
+            int** map = algo.createMap(25, 25);
+            int** bonuses = algo.createBonusesMap(25, 25, 0.2);
+            //for (int i = 0; i < 25; i++)
+            //{
+
+            //}
         }
 
         private void endTurn(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Passage au joueur suivant");
+        }
+
+        private void openMenu(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
