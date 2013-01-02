@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wrapper;
 using Interfaces;
+using Implementation;
 
 namespace CivilizationWPF
 {
@@ -30,21 +31,27 @@ namespace CivilizationWPF
     public partial class MainWindow : Window
     {
         // Valable que quand on parle de pointeur
-        unsafe public MainWindow()
+        public MainWindow()
         {
-            WrapperAlgo algo = new WrapperAlgo();
-
-            int** map = algo.createMap(25, 25);
-            int** bonuses = algo.createBonusesMap(25, 25, 0.2);
-            //for (int i = 0; i < 25; i++)
-            //{
-
-            //}
+            Map map = new Map();
+            map.setMapStrategy(new SmallMapStrategy());
+            List<Case> newMap = createAlgoMap();
+            
+            map.createMap();
         }
 
         private void endTurn(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Passage au joueur suivant");
+        }
+
+        unsafe public List<Case> createAlgoMap ()
+        {
+            WrapperAlgo algo = new WrapperAlgo();
+            int** Algomap = algo.createMap(25, 25);
+            int** bonuses = algo.createBonusesMap(25, 25, 0.2);
+
+            return new List<Case>();
         }
     }
 }

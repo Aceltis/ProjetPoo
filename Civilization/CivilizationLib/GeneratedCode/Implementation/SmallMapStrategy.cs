@@ -14,9 +14,9 @@ namespace Implementation
 
 	public class SmallMapStrategy : MapStrategy, ISmallMapStrategy
 	{
-		public override void createMap()
+		public override void createMap(List<Case> map)
 		{
-			throw new System.NotImplementedException();
+            /*int** maBouleDroite;*/
 		}
 
 	}

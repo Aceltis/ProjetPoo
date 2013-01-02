@@ -10,12 +10,12 @@ namespace Interfaces
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using Implementation;
 
 	/// <remarks>Stratégie</remarks>
 	public interface IMapStrategy 
 	{
-		void createMap();
-
+        void createMap(List<Case> map);
 	}
 }
 

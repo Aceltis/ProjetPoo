@@ -1,4 +1,4 @@
-﻿La génération a démarré 01/01/2013 15:51:01.
+﻿La génération a démarré 02/01/2013 17:00:39.
      1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" sur le nœud 2 (build cible(s)).
      1>InitializeBuildStatus:
          Création de "Release\CivilizationAlgo.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
@@ -7,6 +7,9 @@
        Lib:
          Toutes les sorties sont à jour.
          CivilizationAlgo.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
+       _CopyFilesMarkedCopyLocal:
+         Copie du fichier de "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.dll" vers "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationLib.dll".
+         Copie du fichier de "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.pdb" vers "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationLib.pdb".
        FinalizeBuildStatus:
          Suppression du fichier "Release\CivilizationAlgo.unsuccessfulbuild".
          Mise à jour de l'horodatage "Release\CivilizationAlgo.lastbuildstate".
@@ -14,4 +17,4 @@
 
 La génération a réussi.
 
-Temps écoulé 00:00:00.32
+Temps écoulé 00:00:00.12

@@ -14,7 +14,7 @@ namespace Implementation
 
 	public class LargeMapStrategy : MapStrategy, ILargeMapStrategy
 	{
-		public override void createMap()
+        public override void createMap(List<Case> map)
 		{
 			throw new System.NotImplementedException();
 		}

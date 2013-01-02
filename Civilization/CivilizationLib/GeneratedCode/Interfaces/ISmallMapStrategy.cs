@@ -10,9 +10,11 @@ namespace Interfaces
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using Implementation;
 
 	public interface ISmallMapStrategy  : IMapStrategy
 	{
+        void createMap(List<Case> map);
 	}
 }
 

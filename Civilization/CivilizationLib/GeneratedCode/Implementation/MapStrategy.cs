@@ -12,7 +12,7 @@ namespace Implementation
 	using System.Linq;
 	using System.Text;
 
-	public class MapStrategy : IMapStrategy
+	public abstract class MapStrategy : IMapStrategy
 	{
 		public virtual int height
 		{
@@ -26,7 +26,7 @@ namespace Implementation
 			set;
 		}
 
-		public virtual void createMap()
+        public virtual void createMap(List<Case> map)
 		{
 			throw new System.NotImplementedException();
 		}

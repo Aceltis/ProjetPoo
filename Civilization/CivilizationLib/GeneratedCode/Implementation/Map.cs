@@ -14,52 +14,33 @@ namespace Implementation
 
     public class Map : IMap
     {
-        public Map(Game g)
+
+        public virtual List<Case> map { get; set; }
+        private MapStrategy mapStrategy { get; set; }
+
+        public Map()
         {
         }
 
-        public virtual int height
+        public void setMapStrategy(MapStrategy mapStrategy)
         {
-            get;
-            set;
+            this.mapStrategy = mapStrategy;
         }
 
-        public virtual int width
-        {
-            get;
-            set;
-        }
-
-        public virtual MapType type
+        public virtual MapType size
         {
             get;
             set;
         }
 
-        public virtual List<Case> cases
+        public void createMap()
         {
-            get;
-            set;
+            mapStrategy.createMap(map);
         }
 
-        public virtual int map_id
+        public void afficher()
         {
-            get;
-            set;
         }
-
-        public virtual CaseFactory CaseFactory
-        {
-            get;
-            set;
-        }
-
-        public virtual IEnumerable<Case> Case
-        {
-            get;
-            set;
-        }
-
     }
 }
 
