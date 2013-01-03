@@ -11,6 +11,7 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Windows.Forms;
 
     public class Iron : CaseDecorator, IIron
     {
@@ -30,7 +31,7 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
-        public override void afficher(int x, int y)
+        public override void afficher(object sender, PaintEventArgs e)
         {
             throw new System.NotImplementedException();
         }

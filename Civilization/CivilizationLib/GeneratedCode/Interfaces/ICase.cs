@@ -10,12 +10,13 @@ namespace Interfaces
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Windows.Forms;
 
 	public interface ICase 
 	{
 		void removeUnit(int unit_id);
 
-		void afficher(int x, int y);
+        void afficher(object sender, PaintEventArgs e);
 
 	}
 }

@@ -11,51 +11,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 using Wrapper;
 using Interfaces;
 using Implementation;
 
 namespace CivilizationWPF
 {
-    struct square
-    {
-        // 0: Mountain, 1: Plain, 2: Desert
-        public int type;
-        // 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
-        public int bonus;
-    };
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Valable que quand on parle de pointeur
         public MainWindow()
-        {
-            List<Case> newMap = createAlgoMap();
-
-        }
-
-        private void endTurn(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Passage au joueur suivant");
-        }
-
-<<<<<<< HEAD
-        unsafe public List<Case> createAlgoMap ()
         {
             Map newMap = new Map();
             newMap.setMapStrategy(new SmallMapStrategy());
             newMap.createMap();
 
-            newMap.afficher();
+            System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
+            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(newMap.grid[3].afficher);
+        }
 
-            return new List<Case>();
-=======
+
+        private void endTurn(object sender, RoutedEventArgs e)
+        {
+            System.Windows.MessageBox.Show("Passage au joueur suivant");
+        }
+
         private void openMenu(object sender, RoutedEventArgs e)
         {
->>>>>>> 4c836ca063126bb901693e50470f8d2f78533fae
         }
     }
 }

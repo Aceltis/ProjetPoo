@@ -11,6 +11,8 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Windows.Forms;
+    using System.Drawing;
 
     public class Case : ICase
     {
@@ -20,15 +22,16 @@ namespace Implementation
         }
 
         //Attributs
-        public virtual int minerals { get; set; }
         public virtual int pos_x { get; set; }
         public virtual int pos_y { get; set; }
+        public virtual int minerals { get; set; }
         public virtual int food { get; set; }
+        public virtual Image squareImage { get; set; }
         public virtual List<Unit> units { get; set; }
         public virtual City city { get; set; }
 
         //Méthodes
-        public virtual void afficher(int x, int y)
+        public virtual void afficher(object sender, PaintEventArgs e)
         {
             throw new System.NotImplementedException();
         }

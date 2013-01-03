@@ -43,7 +43,7 @@ int** Algo::createBonusesMap(int height, int width, double ratio) {
 	// Initialize random seed.
 	srand(time(NULL));
 	
-	generateBMap(newBMap, ratio, height, width);
+	generateBMap(newBMap, height, width, ratio);
 	return newBMap;
 }
 

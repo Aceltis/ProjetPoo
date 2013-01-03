@@ -14,7 +14,6 @@ namespace Interfaces
 
 	public interface ISmallMapStrategy  : IMapStrategy
 	{
-        void createMap(List<Case> map);
 	}
 }
 

@@ -11,12 +11,14 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Windows.Forms;
 
     public class Map : IMap
     {
 
         public virtual List<Case> grid { get; set; }
         private MapStrategy mapStrategy { get; set; }
+        public virtual MapType size { get; set; }
 
         public Map()
         {
@@ -28,11 +30,6 @@ namespace Implementation
             this.mapStrategy = mapStrategy;
         }
 
-        public virtual MapType size
-        {
-            get;
-            set;
-        }
 
         public void createMap()
         {
@@ -41,10 +38,6 @@ namespace Implementation
 
         public void afficher()
         {
-            foreach (Case square in grid)
-            {
-                square.afficher(square.pos_x, square.pos_y);
-            }
         }
     }
 }
