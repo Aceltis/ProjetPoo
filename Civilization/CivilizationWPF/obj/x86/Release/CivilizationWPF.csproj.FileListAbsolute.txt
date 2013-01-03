@@ -15,3 +15,8 @@ C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Rel
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\GenerateResource.write.1.tlog
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.exe
 C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.exe
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.pdb
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF.csprojResolveAssemblyReference.cache
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\App.g.cs
+D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\CivilizationWPF_MarkupCompile.cache

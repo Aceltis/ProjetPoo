@@ -17,8 +17,8 @@ namespace Implementation
         public City(Player p, Case c)
         {
             population = 1;
-            position.pos_x = c.pos_x;
-            position.pos_y = c.pos_y;
+            //position.pos_x = c.pos_x;
+            //position.pos_y = c.pos_y;
             player = p;
             current_prod = ProductionType.None;
             owned_food = c.food;

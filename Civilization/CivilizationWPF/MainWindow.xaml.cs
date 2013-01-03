@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms.Integration;
 using Wrapper;
 using Interfaces;
 using Implementation;
@@ -25,14 +26,19 @@ namespace CivilizationWPF
         public MainWindow()
         {
             InitializeComponent();
+
             Map newMap = new Map();
             newMap.setMapStrategy(new SmallMapStrategy());
             newMap.createMap();
+            System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
+            pictureBox.Width = 1250;
+            pictureBox.Height = 1250;
 
-            System.Windows.Forms.PictureBox pictureBox1 = new System.Windows.Forms.PictureBox();
-            pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(newMap.grid[3].afficher);
-
-            mainGrid.Children.Add(pictureBox1);
+            for (int i = 0; i < 25*25; i++)
+            {
+                pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(newMap.grid[i].afficher);
+            }
+            windowsFormsHost1.Child = pictureBox;
         }
 
 
@@ -42,6 +48,10 @@ namespace CivilizationWPF
         }
 
         private void openMenu(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void newAction(object sender, RoutedEventArgs e)
         {
         }
     }

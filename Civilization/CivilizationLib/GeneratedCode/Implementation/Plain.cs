@@ -20,7 +20,7 @@ namespace Implementation
         {
             food = 3;
             minerals = 1;
-            squareImage = Image.FromFile("C:/Users/msi/Documents/GitHub/ProjetPoo/Civilization/CivilizationWPF/Resource/terrains/desert.png");
+            squareImage = Image.FromFile("C:/Users/msi/Documents/GitHub/ProjetPoo/Civilization/CivilizationWPF/Resource/terrains/plaine.png");
         }
 
         public override void removeUnit(int unit_id)
@@ -30,9 +30,15 @@ namespace Implementation
 
         public override void afficher(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(squareImage, 20, 20, 50, 50);
+            while (pos_x_y.Count != 0)
+            {
+                int x = 50 * pos_x_y.First();
+                pos_x_y.Remove(pos_x_y.First());
+                int y = 50 * pos_x_y.First();
+                pos_x_y.Remove(pos_x_y.First());
+                e.Graphics.DrawImage(squareImage, x, y, 50, 50);
+            }
         }
-
     }
 }
 

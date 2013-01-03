@@ -56,10 +56,10 @@
                 <ColumnDefinition Width="40*" />
                 <ColumnDefinition Width="30*" />
                 <ColumnDefinition Width="140*" />
-                <ColumnDefinition Width="45*" />
+                <ColumnDefinition Width="50*" />
                 <ColumnDefinition Width="30*" />
-                <ColumnDefinition Width="106*" />
-                <ColumnDefinition Width="71*" />
+                <ColumnDefinition Width="115*" />
+                <ColumnDefinition Width="72*" />
             </Grid.ColumnDefinitions>
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/top.png"/>
@@ -80,67 +80,130 @@
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="openMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
-        
         <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            <Image Grid.Column="0" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
-            <Image Grid.Column="1" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
-            <Image Grid.Column="2" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
+            <WindowsFormsHost Name="windowsFormsHost1" Margin="0,0,0,0"/>
         </Grid>
-
+        <!--<Grid Grid.Row="1" Name="menu" Grid.ColumnSpan="2" Visibility="Visible">
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/splash.png"></ImageBrush>
+            </Grid.Background>
+        </Grid>-->
         <ScrollBar Name="up_down" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Width="18" Margin="0,0,0,18"/>
         <ScrollBar Name="left_right" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Height="18" VerticalAlignment="Bottom" Margin="0,0,18,0"/>
-
         <Grid Grid.Row="2" Grid.Column="1" Name="information">
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="259,6,0,0" Name="city_name" Text="AceltiCity" VerticalAlignment="Top" />
-            <TextBlock HorizontalAlignment="Left" Margin="259,27,0,100" Name="city_population" Text="5 Citizens" />
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="414,13,0,0" Name="pop_up_turns_left" Text="6 Turns until a new citizen is born" VerticalAlignment="Top" />
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="11,7,0,0" Name="iron" Text="3 iron available" VerticalAlignment="Top" />
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="11,27,0,0" Name="food" Text="5 food available" VerticalAlignment="Top" />
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="154,103,0,0" Name="timer_prod_boss" Text="5 turns" VerticalAlignment="Top" />
-            <Button Content="Boss" Height="23" HorizontalAlignment="Left" Margin="135,71,0,0" Name="build_boss" VerticalAlignment="Top" Width="75" />
-            <Button Content="Teacher" Height="23" HorizontalAlignment="Left" Margin="248,71,0,0" Name="build_teacher" VerticalAlignment="Top" Width="75" />
-            <Button Content="Student" Height="23" HorizontalAlignment="Left" Margin="362,71,0,0" Name="build_student" VerticalAlignment="Top" Width="75" />
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="267,102,0,0" Name="timer_prod_teach" Text="4 turns" VerticalAlignment="Top" />
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="381,103,0,0" Name="timer_prod_stud" Text="3 turns" VerticalAlignment="Top" />
-            <Button Content="Delete Town" Height="23" HorizontalAlignment="Right" Name="delete_city" VerticalAlignment="Bottom" Margin="0,0,2,2" />
-            <TextBlock Height="23" HorizontalAlignment="Left" Margin="11,74,0,0" Name="interface3" Text="Current production" VerticalAlignment="Top" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48*" />
+                <RowDefinition Height="42*" />
+                <RowDefinition Height="109*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="93*" />
+                <ColumnDefinition Width="36*" />
+                <ColumnDefinition Width="84*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="279*" />
+                <ColumnDefinition Width="21*" />
+                <ColumnDefinition Width="249*" />
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/bottom_right.png"></ImageBrush>
+            </Grid.Background>
+            <TextBlock Text="turn(s) until a new citizen is born" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="12" Grid.Column="6" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,3" />
+            <TextBlock Name="turn_born" Text="6" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="20" Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+            <TextBlock Name="citizens" Text="10" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" Grid.Column="4" Margin="133,9,120,18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Name="city_name" Text="AceltiCity" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" Grid.Column="4" Margin="85,38,84,28" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Image Source="./Resource/interface/icons/food.png" Height="32" Width="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,4" Grid.Column="1"></Image>
+            <TextBlock Name="food_number" Text="5 (+4)" Grid.Column="0" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,5"></TextBlock>
+            <Image Source="./Resource/interface/icons/iron.png" Height="38" Width="38" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="3"></Image>
+            <TextBlock Name="iron_number" Text="5 (+4)" Grid.Column="2" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,5"></TextBlock>
+            <TextBlock Text="Current Production" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="12" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="42,0,0,106" Grid.RowSpan="2"/>
+            <Button Name="boss_prod" Click="newAction" Content="Boss" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="2,7,195,52" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
+                </Button.Effect>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image Name="Normal" Source="./Resource/interface/prod_disabled.png" Height="26" Width="102"/>
+                            <Image Name="Over" Source="./Resource/interface/prod_enabled.png" Height="26" Width="102" Visibility="Hidden"/>
+                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="teacher_prod" Click="newAction" Content="Teacher" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="87,7,73,52" Grid.Column="4" Grid.Row="2">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
+                </Button.Effect>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image Name="Normal" Source="./Resource/interface/prod_disabled.png" Height="26" Width="102"/>
+                            <Image Name="Over" Source="./Resource/interface/prod_enabled.png" Height="26" Width="102" Visibility="Hidden"/>
+                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="student_prod" Click="newAction" Content="Student" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="248,23,182,26" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
+                </Button.Effect>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image Name="Normal" Source="./Resource/interface/prod_disabled.png" Height="26" Width="102"/>
+                            <Image Name="Over" Source="./Resource/interface/prod_enabled.png" Height="26" Width="102" Visibility="Hidden"/>
+                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Image Source="./Resource/interface/icons/timer.png" Height="19" Width="19" Grid.Column="4" Margin="125,53,135,38" Grid.Row="2"></Image>
+            <TextBlock Name="timer_prod" Text="5" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="15" Grid.Column="4" Margin="145,54,113,37" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" />
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Name="action">
-            <Button Content="A city needs orders" Height="30" Width="200" HorizontalAlignment="Left" Name="button2" VerticalAlignment="Top"  />
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/teacher.png"></ImageBrush>
+            </Grid.Background>
+            <Button Name="order" Click="newAction" Content="Unit needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="0,3,0,0">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
+                </Button.Effect>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image Name="Normal" Source="./Resource/interface/bouton1.png"/>
+                            <Image Name="Over" Source="./Resource/interface/bouton2.png" Visibility="Hidden"/>
+                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
     </Grid>
 </Window>

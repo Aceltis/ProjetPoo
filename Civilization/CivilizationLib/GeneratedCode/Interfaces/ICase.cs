@@ -11,13 +11,21 @@ namespace Interfaces
 	using System.Linq;
 	using System.Text;
     using System.Windows.Forms;
+    using Implementation;
+    using System.Drawing;
 
 	public interface ICase 
 	{
-		void removeUnit(int unit_id);
+        List<int> pos_x_y { get; set; }
+        int minerals { get; set; }
+        int food { get; set; }
+        Image squareImage { get; set; }
+        List<Unit> units { get; set; }
+        City city { get; set; }
 
         void afficher(object sender, PaintEventArgs e);
-
+        void addUnit(Unit unit);
+        void removeUnit(int unit_id);
 	}
 }
 

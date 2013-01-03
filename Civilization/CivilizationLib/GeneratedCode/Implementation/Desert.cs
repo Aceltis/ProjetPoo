@@ -30,7 +30,14 @@ namespace Implementation
 
         public override void afficher(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(squareImage, 20, 20, 50, 50);
+            while (pos_x_y.Count != 0)
+            {
+                int x = 50 * pos_x_y.First();
+                pos_x_y.Remove(pos_x_y.First());
+                int y = 50 * pos_x_y.First();
+                pos_x_y.Remove(pos_x_y.First());
+                e.Graphics.DrawImage(squareImage, x, y, 50, 50);
+            }
         }
     }
 }

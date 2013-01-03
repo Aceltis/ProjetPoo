@@ -19,11 +19,11 @@ namespace Implementation
         public Case()
         {
             units = new List<Unit>();
+            pos_x_y = new List<int>();
         }
 
         //Attributs
-        public virtual int pos_x { get; set; }
-        public virtual int pos_y { get; set; }
+        public virtual List<int> pos_x_y { get; set; }
         public virtual int minerals { get; set; }
         public virtual int food { get; set; }
         public virtual Image squareImage { get; set; }
@@ -36,6 +36,11 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
+        public virtual void addUnit(Unit unit)
+        {
+            units.Add(unit);
+        }
+
         public virtual void removeUnit(int unit_id)
         {
             foreach (Unit unit in units)
@@ -43,11 +48,6 @@ namespace Implementation
                 if (unit.id == unit_id)
                     units.Remove(unit);
             }
-        }
-
-        public virtual void addUnit(Unit unit)
-        {
-            units.Add(unit);
         }
     }
 }
