@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 ﻿Build started 02/01/2013 22:12:11.
      1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
+=======
+﻿La génération a démarré 03/01/2013 12:39:45.
+     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 3 (build cible(s)).
+>>>>>>> 2faed1f2ef3328768a00893f949424e5f4af8fd4
      1>InitializeBuildStatus:
-         Creating "Release\CivilizationWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Création de "Release\CivilizationWrapper.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
        GenerateTargetFrameworkMonikerAttribute:
-       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
        ClCompile:
+<<<<<<< HEAD
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /analyze- /errorReport:prompt Wrapper.cpp /clr:nostdlib 
          Wrapper.cpp
          All outputs are up-to-date.
@@ -18,11 +24,29 @@
          CivilizationWrapper.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationWrapper.dll
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationWrapper.dll;#2" /manifest Release\CivilizationWrapper.dll.intermediate.manifest
+=======
+         Toutes les sorties sont à jour.
+         Toutes les sorties sont à jour.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\CivilizationWrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.pdb" /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Release\Wrapper.obj
+         "Release\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+         C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
+         CivilizationAlgo.lib(mapalgo.obj) : .netmodule ou module MSIL compilé avec /GL trouvé ; redémarrage de l'édition de liens avec /LTCG ; ajoutez /LTCG à la ligne de commande de l'édition de liens pour améliorer les performances de l'Éditeur de liens
+         Génération de code en cours
+         Fin de la génération du code
+         CivilizationWrapper.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Release\CivilizationWrapper.dll;#2" /manifest Release\CivilizationWrapper.dll.intermediate.manifest
+>>>>>>> 2faed1f2ef3328768a00893f949424e5f4af8fd4
        FinalizeBuildStatus:
-         Deleting file "Release\CivilizationWrapper.unsuccessfulbuild".
-         Touching "Release\CivilizationWrapper.lastbuildstate".
-     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" (build target(s)).
+         Suppression du fichier "Release\CivilizationWrapper.unsuccessfulbuild".
+         Mise à jour de l'horodatage "Release\CivilizationWrapper.lastbuildstate".
+     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" terminée (build cible(s)).
 
-Build succeeded.
+La génération a réussi.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:01.17
+=======
+Temps écoulé 00:00:00.84
+>>>>>>> 2faed1f2ef3328768a00893f949424e5f4af8fd4

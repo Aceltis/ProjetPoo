@@ -11,55 +11,34 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Windows.Forms;
 
     public class Map : IMap
     {
-        public Map(Game g)
+
+        public virtual List<Case> grid { get; set; }
+        private MapStrategy mapStrategy { get; set; }
+        public virtual MapType size { get; set; }
+
+        public Map()
         {
+            grid = new List<Case>();
         }
 
-        public virtual int height
+        public void setMapStrategy(MapStrategy mapStrategy)
         {
-            get;
-            set;
+            this.mapStrategy = mapStrategy;
         }
 
-        public virtual int width
+
+        public void createMap()
         {
-            get;
-            set;
+            mapStrategy.createMap(grid);
         }
 
-        public virtual MapType type
+        public void afficher()
         {
-            get;
-            set;
         }
-
-        public virtual List<Case> cases
-        {
-            get;
-            set;
-        }
-
-        public virtual int map_id
-        {
-            get;
-            set;
-        }
-
-        public virtual CaseFactory CaseFactory
-        {
-            get;
-            set;
-        }
-
-        public virtual IEnumerable<Case> Case
-        {
-            get;
-            set;
-        }
-
     }
 }
 

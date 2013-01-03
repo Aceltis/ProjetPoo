@@ -55,6 +55,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -110,16 +112,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CivilizationLib\CivilizationLib.csproj">
-      <Project>{063F864D-6F7E-4C77-B473-440EF1BD2D99}</Project>
-      <Name>CivilizationLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CivilizationWrapper\CivilizationWrapper.vcxproj">
-      <Project>{02207F43-43A9-4023-930D-36D1EA87C2B4}</Project>
-      <Name>CivilizationWrapper</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -180,6 +172,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\bottom_right.png" />
+    <ProjectReference Include="..\CivilizationLib\CivilizationLib.csproj">
+      <Project>{063F864D-6F7E-4C77-B473-440EF1BD2D99}</Project>
+      <Name>CivilizationLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CivilizationWrapper\CivilizationWrapper.vcxproj">
+      <Project>{02207F43-43A9-4023-930D-36D1EA87C2B4}</Project>
+      <Name>CivilizationWrapper</Name>
+    </ProjectReference>
+    <Resource Include="Resource\interface\menu1.png" />
+    <Resource Include="Resource\interface\menu2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\icons\food.png" />

@@ -13,38 +13,45 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wrapper;
 using Interfaces;
+using Implementation;
 
 namespace CivilizationWPF
 {
-    struct square
-    {
-        // 0: Mountain, 1: Plain, 2: Desert
-        public int type;
-        // 0: No additionnal ressource, 1: Additionnal Iron, 2: Additionnal Food
-        public int bonus;
-    };
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Valable que quand on parle de pointeur
-        unsafe public MainWindow()
+        public MainWindow()
         {
-            WrapperAlgo algo = new WrapperAlgo();
 
-            int** map = algo.createMap(25, 25);
-            int** bonuses = algo.createBonusesMap(25, 25, 0.2);
-            //for (int i = 0; i < 25; i++)
-            //{
+            Map newMap = new Map();
+            newMap.setMapStrategy(new SmallMapStrategy());
+            newMap.createMap();
 
-            //}
+            System.Windows.Forms.PictureBox pictureBox1 = new System.Windows.Forms.PictureBox();
+            pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(newMap.grid[3].afficher);
+
+            Image myImage = new Image();
+            myImage.Width = 50;
+
+            BitmapImage myBitmapImage = new BitmapImage();
+
+            myBitmapImage.BeginInit();
+            myBitmapImage.UriSource = new Uri(@"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\Resource\terrains\desert.png");
+
+            myBitmapImage.DecodePixelWidth = 50;
+            myBitmapImage.EndInit();
+            myImage.Source = pictureBox1;
+
+            InitializeComponent();
+            map.Children.Add(pictureBox1);
         }
+
 
         private void endTurn(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Passage au joueur suivant");
+            System.Windows.MessageBox.Show("Passage au joueur suivant");
         }
 
         private void openMenu(object sender, RoutedEventArgs e)

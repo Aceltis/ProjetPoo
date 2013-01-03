@@ -11,12 +11,24 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using Wrapper;
 
 	public class SmallMapStrategy : MapStrategy, ISmallMapStrategy
 	{
-		public override void createMap()
+		unsafe public override void createMap(List<Case> map)
 		{
-			throw new System.NotImplementedException();
+            WrapperAlgo algo = new WrapperAlgo();
+            CaseFactory factory = new CaseFactory();
+            int** algoMap = algo.createMap(25, 25);
+            for (int j = 0; j < 25; j++)
+            {
+                for (int i = 0; i < 25; i++)
+                {
+                    map.Add(factory.getCase(algoMap[i][j]));
+                    map[map.Count - 1].pos_x = i;
+                    map[map.Count - 1].pos_y = 25 * j;
+                }
+            }
 		}
 
 	}

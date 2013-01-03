@@ -11,13 +11,25 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using Wrapper;
 
 	public class LargeMapStrategy : MapStrategy, ILargeMapStrategy
 	{
-		public override void createMap()
-		{
-			throw new System.NotImplementedException();
-		}
+        unsafe public override void createMap(List<Case> map)
+        {
+            WrapperAlgo algo = new WrapperAlgo();
+            CaseFactory factory = new CaseFactory();
+            int** algoMap = algo.createMap(100, 100);
+            for (int j = 0; j < 100; j++)
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    map.Add(factory.getCase(algoMap[i][j]));
+                    map[map.Count - 1].pos_x = i;
+                    map[map.Count - 1].pos_y = 100 * j;
+                }
+            }
+        }
 
 	}
 }

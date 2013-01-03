@@ -11,48 +11,29 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Windows.Forms;
+    using System.Drawing;
 
     public class Case : ICase
     {
         public Case()
         {
-
+            units = new List<Unit>();
         }
 
-        public virtual int minerals
-        {
-            get;
-            set;
-        }
+        //Attributs
+        public virtual int pos_x { get; set; }
+        public virtual int pos_y { get; set; }
+        public virtual int minerals { get; set; }
+        public virtual int food { get; set; }
+        public virtual Image squareImage { get; set; }
+        public virtual List<Unit> units { get; set; }
+        public virtual City city { get; set; }
 
-        public virtual int pos_x
+        //Méthodes
+        public virtual void afficher(object sender, PaintEventArgs e)
         {
-            get;
-            set;
-        }
-
-        public virtual int pos_y
-        {
-            get;
-            set;
-        }
-
-        public virtual int food
-        {
-            get;
-            set;
-        }
-
-        public virtual List<Unit> units
-        {
-            get;
-            set;
-        }
-
-        public virtual City city
-        {
-            get;
-            set;
+            throw new System.NotImplementedException();
         }
 
         public virtual void removeUnit(int unit_id)
@@ -68,13 +49,6 @@ namespace Implementation
         {
             units.Add(unit);
         }
-
-
-        public virtual void afficher(int x, int y)
-        {
-            throw new System.NotImplementedException();
-        }
-
     }
 }
 

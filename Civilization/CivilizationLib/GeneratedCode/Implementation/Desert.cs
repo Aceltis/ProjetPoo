@@ -11,6 +11,8 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Drawing;
+    using System.Windows.Forms;
 
     public class Desert : Case, IDesert
     {
@@ -18,7 +20,7 @@ namespace Implementation
         {
             food = 0;
             minerals = 2;
-
+            squareImage = Image.FromFile("C:/Users/msi/Documents/GitHub/ProjetPoo/Civilization/CivilizationWPF/Resource/terrains/desert.png");
         }
 
         public override void removeUnit(int unit_id)
@@ -26,11 +28,10 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
-        public override void afficher(int x, int y)
+        public override void afficher(object sender, PaintEventArgs e)
         {
-            throw new System.NotImplementedException();
+            e.Graphics.DrawImage(squareImage, 20, 20, 50, 50);
         }
-
     }
 }
 

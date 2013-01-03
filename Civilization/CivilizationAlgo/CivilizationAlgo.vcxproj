@@ -65,11 +65,6 @@
   <ItemGroup>
     <ClCompile Include="mapalgo.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CivilizationLib\CivilizationLib.csproj">
-      <Project>{063f864d-6f7e-4c77-b473-440ef1bd2d99}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

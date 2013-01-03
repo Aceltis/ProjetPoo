@@ -14,29 +14,21 @@ namespace Implementation
 
 	public class CaseFactory : ICaseFactory
 	{
-		public virtual string errors
-		{
-			get;
-			set;
-		}
 
-		public virtual Dictionary<int, Case> mapCases
-		{
-			get;
-			set;
-		}
+        private Dictionary<int, Case> mapCases;
 
-		public virtual IEnumerable<Case> Case
-		{
-			get;
-			set;
-		}
+        public CaseFactory()
+        {
+            mapCases = new Dictionary<int,Case>();
+            mapCases.Add(0, new Mountain());
+            mapCases.Add(1, new Plain());
+            mapCases.Add(2, new Desert());
+        }
 
-		public virtual void createCase()
-		{
-			throw new System.NotImplementedException();
-		}
-
+        public Case getCase(int key)
+        {
+            return (mapCases[key]);
+        }
 	}
 }
 

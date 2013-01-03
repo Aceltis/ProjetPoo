@@ -4,16 +4,20 @@
 winexe
 C#
 .cs
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\obj\x86\Release\
 CivilizationWPF
 none
 false
 TRACE
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWPF\App.xaml
+C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\App.xaml
 11151548125
 
 7-1849696324
+<<<<<<< HEAD
 14-914561384
+=======
+16-1984583226
+>>>>>>> 2faed1f2ef3328768a00893f949424e5f4af8fd4
 MainWindow.xaml;
 
 False

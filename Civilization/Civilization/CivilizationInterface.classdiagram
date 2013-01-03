@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="eeee7fe3-301d-4164-9175-541a71dabc94" name="CivilizationInterface" linkedPackageId="18a54a37-9992-446b-b729-ac15b3946832" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="eeee7fe3-301d-4164-9175-541a71dabc94" name="CivilizationInterface" linkedPackageId="18a54a37-9992-446b-b729-ac15b3946832" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <appliedStereotypesInternal>
     <stereotypeInstance Id="65f72f00-2ac3-48d1-968f-861b8da28f5c" name="namespace" profile="CSharpProfile">
       <elementDefinition Id="6504a23d-cdb3-46e4-8d5f-60270c6962cc" />
@@ -72,20 +72,6 @@
       </propertyInstances>
     </stereotypeInstance>
   </appliedStereotypesInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="c4fe361d-8189-456d-8e0f-e7b652b2644c">
-      <profileInstance Id="17cf031e-2dbd-49ca-833b-4be6c63faed0" name="CSharpProfile">
-        <elementDefinition Id="336a22fa-d6d9-444a-b5d5-823bd2b99b5f" />
-      </profileInstance>
-      <elementDefinition Id="94643b00-a21a-4a1f-aedc-4bd8b1b8166b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="574a9620-9d07-42dd-bbc3-cea9d94beb62">
-      <profileInstance Id="4eb802e5-7be8-4c78-810d-06a5075bc482" name="TextTemplateBindings">
-        <elementDefinition Id="c79f2a54-9965-410a-b6c8-0dc6d6de6e86" />
-      </profileInstance>
-      <elementDefinition Id="f16d822a-d11b-4182-a5f2-f5fc08196c8d" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <packageHasNamedElement>
       <referencedType Id="e495077b-e0ff-400e-ae6c-755428bde405" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
@@ -2475,6 +2461,18 @@
           <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
         </profileInstance>
         <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="c4fe361d-8189-456d-8e0f-e7b652b2644c">
+        <profileInstance Id="17cf031e-2dbd-49ca-833b-4be6c63faed0" name="CSharpProfile">
+          <elementDefinition Id="336a22fa-d6d9-444a-b5d5-823bd2b99b5f" />
+        </profileInstance>
+        <elementDefinition Id="94643b00-a21a-4a1f-aedc-4bd8b1b8166b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="574a9620-9d07-42dd-bbc3-cea9d94beb62">
+        <profileInstance Id="4eb802e5-7be8-4c78-810d-06a5075bc482" name="TextTemplateBindings">
+          <elementDefinition Id="c79f2a54-9965-410a-b6c8-0dc6d6de6e86" />
+        </profileInstance>
+        <elementDefinition Id="f16d822a-d11b-4182-a5f2-f5fc08196c8d" />
       </packageHasProfileInstances>
     </profileInstances>
   </package>
