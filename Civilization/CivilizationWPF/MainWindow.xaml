@@ -80,15 +80,11 @@
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="openMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
-<<<<<<< HEAD
         <Grid Grid.Row="1" Name="menu" Grid.ColumnSpan="2" Visibility="Visible">
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/splash.png"></ImageBrush>
             </Grid.Background>
-        </Grid>
-        <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2" Visibility="Visible">
-=======
-        
+        </Grid>    
         <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50" />
@@ -127,12 +123,9 @@
             <Image Grid.Column="0" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
             <Image Grid.Column="1" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
             <Image Grid.Column="2" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
->>>>>>> 2faed1f2ef3328768a00893f949424e5f4af8fd4
         </Grid>
-
         <ScrollBar Name="up_down" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Width="18" Margin="0,0,0,18"/>
         <ScrollBar Name="left_right" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Height="18" VerticalAlignment="Bottom" Margin="0,0,18,0"/>
-
         <Grid Grid.Row="2" Grid.Column="1" Name="information">
             <Grid.RowDefinitions>
                 <RowDefinition Height="48*" />
