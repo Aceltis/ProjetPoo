@@ -154,18 +154,12 @@
     <Resource Include="Resource\ville.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\top.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resource\interface\icons\alive.png" />
     <Resource Include="Resource\interface\icons\city.png" />
     <Resource Include="Resource\interface\icons\civ.png" />
     <Resource Include="Resource\interface\icons\dead.png" />
     <Resource Include="Resource\interface\icons\student.png" />
     <Resource Include="Resource\interface\icons\teacher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resource\interface\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\accueil.png" />
@@ -177,6 +171,26 @@
   <ItemGroup>
     <Resource Include="Resource\interface\bouton1.png" />
     <Resource Include="Resource\interface\bouton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottom_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\icons\food.png" />
+    <Resource Include="Resource\interface\icons\iron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\icons\timer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\prod_disabled.png" />
+    <Resource Include="Resource\interface\prod_enabled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

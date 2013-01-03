@@ -1,39 +1,12 @@
-﻿Build started 02/01/2013 19:54:32.
+﻿Build started 03/01/2013 14:43:00.
      1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\CivilizationAlgo.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt mapalgo.cpp
-         mapalgo.cpp
-     1>mapalgo.cpp(16): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>mapalgo.cpp(44): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>mapalgo.cpp(46): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>mapalgo.cpp(72): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(74): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(82): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(84): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(91): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(93): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(103): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(105): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(125): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(127): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(145): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(146): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(150): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(151): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(164): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(166): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(186): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(188): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(209): warning C4018: '<' : signed/unsigned mismatch
-     1>mapalgo.cpp(210): warning C4018: '<' : signed/unsigned mismatch
+         All outputs are up-to-date.
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.lib" /NOLOGO /LTCG Release\mapalgo.obj
+         All outputs are up-to-date.
          CivilizationAlgo.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
-       _CopyFilesMarkedCopyLocal:
-         Copying file from "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.dll" to "D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationLib.dll".
-         Copying file from "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Release\CivilizationLib.pdb" to "D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationLib.pdb".
        FinalizeBuildStatus:
          Deleting file "Release\CivilizationAlgo.unsuccessfulbuild".
          Touching "Release\CivilizationAlgo.lastbuildstate".
@@ -41,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.78
+Time Elapsed 00:00:00.10
