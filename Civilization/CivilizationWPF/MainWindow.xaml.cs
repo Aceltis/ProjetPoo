@@ -24,7 +24,7 @@ namespace CivilizationWPF
     {
         public MainWindow()
         {
-
+            InitializeComponent();
             Map newMap = new Map();
             newMap.setMapStrategy(new SmallMapStrategy());
             newMap.createMap();
@@ -32,20 +32,7 @@ namespace CivilizationWPF
             System.Windows.Forms.PictureBox pictureBox1 = new System.Windows.Forms.PictureBox();
             pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(newMap.grid[3].afficher);
 
-            Image myImage = new Image();
-            myImage.Width = 50;
-
-            BitmapImage myBitmapImage = new BitmapImage();
-
-            myBitmapImage.BeginInit();
-            myBitmapImage.UriSource = new Uri(@"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\Resource\terrains\desert.png");
-
-            myBitmapImage.DecodePixelWidth = 50;
-            myBitmapImage.EndInit();
-            myImage.Source = pictureBox1;
-
-            InitializeComponent();
-            map.Children.Add(pictureBox1);
+            mainGrid.Children.Add(pictureBox1);
         }
 
 

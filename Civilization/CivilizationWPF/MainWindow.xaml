@@ -32,7 +32,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*" />
             <ColumnDefinition Width="802*" />
