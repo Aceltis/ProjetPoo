@@ -80,12 +80,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TurnView.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlayerView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -142,6 +144,9 @@
     <Resource Include="Resource\ville.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resource\interface\endturn.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resource\interface\top.png" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +158,16 @@
       <Project>{02207F43-43A9-4023-930D-36D1EA87C2B4}</Project>
       <Name>CivilizationWrapper</Name>
     </ProjectReference>
+    <Resource Include="Resource\interface\menu1.png" />
+    <Resource Include="Resource\interface\menu2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\icons\alive.png" />
+    <Resource Include="Resource\interface\icons\city.png" />
+    <Resource Include="Resource\interface\icons\civ.png" />
+    <Resource Include="Resource\interface\icons\dead.png" />
+    <Resource Include="Resource\interface\icons\student.png" />
+    <Resource Include="Resource\interface\icons\teacher.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

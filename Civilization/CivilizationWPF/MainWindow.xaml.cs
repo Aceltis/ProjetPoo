@@ -42,6 +42,7 @@ namespace CivilizationWPF
             MessageBox.Show("Passage au joueur suivant");
         }
 
+<<<<<<< HEAD
         unsafe public List<Case> createAlgoMap ()
         {
             Map newMap = new Map();
@@ -51,6 +52,10 @@ namespace CivilizationWPF
             newMap.afficher();
 
             return new List<Case>();
+=======
+        private void openMenu(object sender, RoutedEventArgs e)
+        {
+>>>>>>> 4c836ca063126bb901693e50470f8d2f78533fae
         }
     }
 }

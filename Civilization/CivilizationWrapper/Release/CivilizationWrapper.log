@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿La génération a démarré 02/01/2013 17:43:27.
      1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 3 (build cible(s)).
      1>InitializeBuildStatus:
@@ -16,7 +17,29 @@
          Suppression du fichier "Release\CivilizationWrapper.unsuccessfulbuild".
          Mise à jour de l'horodatage "Release\CivilizationWrapper.lastbuildstate".
      1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" terminée (build cible(s)).
+=======
+﻿Build started 02/01/2013 11:10:55.
+     1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\CivilizationWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       ClCompile:
+         All outputs are up-to-date.
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         CivilizationWrapper.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationWrapper.dll
+       FinalizeBuildStatus:
+         Deleting file "Release\CivilizationWrapper.unsuccessfulbuild".
+         Touching "Release\CivilizationWrapper.lastbuildstate".
+     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" (build target(s)).
+>>>>>>> 4c836ca063126bb901693e50470f8d2f78533fae
 
-La génération a réussi.
+Build succeeded.
 
+<<<<<<< HEAD
 Temps écoulé 00:00:00.11
+=======
+Time Elapsed 00:00:00.07
+>>>>>>> 4c836ca063126bb901693e50470f8d2f78533fae
