@@ -14,6 +14,7 @@ namespace Implementation
 
     public class Unit : IUnit
     {
+
         public virtual Player Player { get; set; }
         public virtual int HP { get; set; }
         public virtual int AttackPoints { get; set; }

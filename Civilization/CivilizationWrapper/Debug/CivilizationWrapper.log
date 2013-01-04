@@ -1,29 +1,20 @@
-﻿La génération a démarré 04/01/2013 21:14:06.
-     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 3 (rebuild cible(s)).
-     1>_PrepareForClean:
-         Suppression du fichier "Debug\CivilizationWrapper.lastbuildstate".
-       InitializeBuildStatus:
-         Création de "Debug\CivilizationWrapper.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+﻿Build started 04/01/2013 21:50:29.
+     1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\CivilizationWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
        GenerateTargetFrameworkMonikerAttribute:
-       La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /analyze- /errorReport:prompt Wrapper.cpp /clr:nostdlib 
-         Wrapper.cpp
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /analyze- /errorReport:prompt "C:\Users\msi\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cpp"
-         .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+         All outputs are up-to-date.
+         All outputs are up-to-date.
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Debug\CivilizationWrapper.dll" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\CivilizationWrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Debug\CivilizationWrapper.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Debug\Wrapper.obj
-         "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
-         C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Debug\CivilizationAlgo.lib
-     1>CivilizationAlgo.lib(mapalgo.obj) : warning LNK4075: ' /EDITANDCONTINUE' ignoré à cause de la spécification '/INCREMENTAL:NO'
-         CivilizationWrapper.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Debug\CivilizationWrapper.dll
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Debug\CivilizationWrapper.dll;#2" /manifest Debug\CivilizationWrapper.dll.intermediate.manifest
+         All outputs are up-to-date.
+         CivilizationWrapper.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Debug\CivilizationWrapper.dll
        FinalizeBuildStatus:
-         Suppression du fichier "Debug\CivilizationWrapper.unsuccessfulbuild".
-         Mise à jour de l'horodatage "Debug\CivilizationWrapper.lastbuildstate".
-     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" terminée (rebuild cible(s)).
+         Deleting file "Debug\CivilizationWrapper.unsuccessfulbuild".
+         Touching "Debug\CivilizationWrapper.lastbuildstate".
+     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" (build target(s)).
 
-La génération a réussi.
+Build succeeded.
 
-Temps écoulé 00:00:01.44
+Time Elapsed 00:00:00.09

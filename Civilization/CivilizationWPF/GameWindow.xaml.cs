@@ -24,14 +24,18 @@ namespace CivilizationWPF
     public partial class GameWindow : Window
     {
         Game game;
+        PlayerViewModel pvm1;
+        PlayerViewModel pvm2;
+        PlayerViewModel pvm3;
+        PlayerViewModel pvm4;
 
         public GameWindow(GameBuilder builder)
         {
             InitializeComponent();
-
             game = (Game)builder.build();
+            createPVM(game);
 
-            beginTurn(1);
+            beginTurn(pvm1);
             
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
@@ -40,11 +44,32 @@ namespace CivilizationWPF
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
             windowsFormsHost1.Child = sc;
-            
+
         }
 
-        private void beginTurn(int turn_number)
+        private void beginTurn(PlayerViewModel p)
         {
+            top.DataContext = p;
+        }
+
+        private void afficherTop(PlayerViewModel pvm)
+        {
+        }
+
+        private void createPVM(Game g)
+        {
+            pvm1 = new PlayerViewModel(g.Players[1]);
+            pvm2 = new PlayerViewModel(g.Players[2]);
+
+            if (g.Players.Count() == 3)
+            {
+                pvm3 = new PlayerViewModel(g.Players[3]);
+            }
+            else if (g.Players.Count() == 4)
+            {
+                pvm3 = new PlayerViewModel(g.Players[3]);
+                pvm4 = new PlayerViewModel(g.Players[4]);
+            }
         }
 
         private void endTurn(object sender, RoutedEventArgs e)
