@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Implementation;
+using Interfaces;
 
 namespace CivilizationWPF
 {
-    class PlayerViewModel : INotifyPropertyChanged
+    public class PlayerViewModel : INotifyPropertyChanged
     {
         // property changed event
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string _name;
-        private string _color;
-        private string _civilization;
-        private string _cityNumber;
-        private string _teacherNumber;
-        private string _studentNumber;
-        private string _bossStatus;
+        private string name;
+        private string color;
+        private string civilization;
+        private string cityNumber;
+        private string teacherNumber;
+        private string studentNumber;
+        private string bossStatus;
 
         private void OnPropertyChanged(String property)
         {
@@ -27,26 +29,30 @@ namespace CivilizationWPF
             }
         }
 
-        public PlayerViewModel(String name, String color, String civ)
+        public PlayerViewModel()
         {
-            _name = name;
-            _color = color;
-            _civilization = civ;
-            _teacherNumber = "1";
-            _studentNumber = "1";
-            _cityNumber = "0";
-            _bossStatus = "./Resource/interface/icons/dead.png";
+        }
+
+        public PlayerViewModel(Player p)
+        {
+            name = p.Pseudo;
+            color = p.Color;
+            civilization = p.Civilization.ToString();
+            teacherNumber = p.Teachers.Count().ToString();
+            studentNumber = p.Students.Count().ToString();
+            cityNumber = p.Cities.Count().ToString();
+            bossStatus = "./Resource/interface/icons/dead.png";
         }
 
         public String Name
         {
             get
             {
-                return _name;
+                return name;
             }
             set
             {
-                _name = value;
+                name = value;
                 OnPropertyChanged("Name");
             }
         }
@@ -55,11 +61,11 @@ namespace CivilizationWPF
         {
             get
             {
-                return _color;
+                return color;
             }
             set
             {
-                _color = value;
+                color = value;
                 OnPropertyChanged("Color");
             }
         }
@@ -68,11 +74,11 @@ namespace CivilizationWPF
         {
             get
             {
-                return _civilization;
+                return civilization;
             }
             set
             {
-                _civilization = value;
+                civilization = value;
                 OnPropertyChanged("Civilization");
             }
         }
@@ -81,11 +87,11 @@ namespace CivilizationWPF
         {
             get
             {
-                return _cityNumber;
+                return cityNumber;
             }
             set
             {
-                _cityNumber = value;
+                cityNumber = value;
                 OnPropertyChanged("CityNumber");
             }
         }
@@ -94,11 +100,11 @@ namespace CivilizationWPF
         {
             get
             {
-                return _teacherNumber;
+                return teacherNumber;
             }
             set
             {
-                _teacherNumber = value;
+                teacherNumber = value;
                 OnPropertyChanged("TeacherNumber");
             }
         }
@@ -107,11 +113,11 @@ namespace CivilizationWPF
         {
             get
             {
-                return _studentNumber;
+                return studentNumber;
             }
             set
             {
-                _studentNumber = value;
+                studentNumber = value;
                 OnPropertyChanged("StudentNumber");
             }
         }
@@ -120,11 +126,11 @@ namespace CivilizationWPF
         {
             get
             {
-                return _bossStatus;
+                return bossStatus;
             }
             set
             {
-                _bossStatus = value;
+                bossStatus = value;
                 OnPropertyChanged("BossStatus");
             }
         }

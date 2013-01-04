@@ -24,25 +24,51 @@ namespace CivilizationWPF
     public partial class GameWindow : Window
     {
         Game game;
+        PlayerViewModel pvm1;
+        PlayerViewModel pvm2;
+        PlayerViewModel pvm3;
+        PlayerViewModel pvm4;
 
         public GameWindow(GameBuilder builder)
         {
             InitializeComponent();
-
             game = (Game)builder.build();
 
-            beginTurn(1);
-            /*
+            createPVM(game);
+
+            beginTurn(pvm1);
+
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = game.map.grid.Count * 2; pictureBox.Height = game.map.grid.Count * 2;
-            game.map.afficher(pictureBox);
-            windowsFormsHost1.Width = game.map.grid.Count * 2; windowsFormsHost1.Height = game.map.grid.Count * 2;
+            pictureBox.Width = game.Map.grid.Count * 2; pictureBox.Height = game.Map.grid.Count * 2;
+            game.Map.afficher(pictureBox);
+            windowsFormsHost1.Width = game.Map.grid.Count * 2; windowsFormsHost1.Height = game.Map.grid.Count * 2;
             windowsFormsHost1.Child = pictureBox;
-            */
         }
 
-        private void beginTurn(int turn_number)
+        private void beginTurn(PlayerViewModel p)
         {
+            top.DataContext = p;
+        }
+
+        private void afficherTop(PlayerViewModel pvm)
+        {
+            nameView.Text = pvm.Name;
+        }
+
+        private void createPVM(Game g)
+        {
+            pvm1 = new PlayerViewModel(g.Players[1]);
+            pvm2 = new PlayerViewModel(g.Players[2]);
+
+            if (g.Players.Count() == 3)
+            {
+                pvm3 = new PlayerViewModel(g.Players[3]);
+            }
+            else if (g.Players.Count() == 4)
+            {
+                pvm3 = new PlayerViewModel(g.Players[3]);
+                pvm4 = new PlayerViewModel(g.Players[4]);
+            }
         }
 
         private void endTurn(object sender, RoutedEventArgs e)
