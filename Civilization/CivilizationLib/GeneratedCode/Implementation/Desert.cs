@@ -30,8 +30,8 @@ namespace Implementation
 
         public override void afficher(object sender, PaintEventArgs e)
         {
-            foreach (int[] tabPos in sqPos)
-                e.Graphics.DrawImage(squareImage, 50 * tabPos[0], 50 * tabPos[1], 50, 50);
+            for (int i = 0; i < sqPos.Count; i++)
+                e.Graphics.DrawImage(squareImage, 50 * sqPos[i][0], 50 * sqPos[i][1], 50, 50);
         }
     }
 }

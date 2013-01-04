@@ -31,10 +31,9 @@ namespace CivilizationWPF
             newMap.setMapStrategy(new SmallMapStrategy());
             newMap.createMap();
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = 1250; pictureBox.Height = 1250;
-
+            pictureBox.Width = newMap.grid.Count * 2; pictureBox.Height = newMap.grid.Count * 2;
             newMap.afficher(pictureBox);
-
+            windowsFormsHost1.Width = newMap.grid.Count * 2; windowsFormsHost1.Height = newMap.grid.Count * 2;
             windowsFormsHost1.Child = pictureBox;
         }
 

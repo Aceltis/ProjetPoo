@@ -41,7 +41,12 @@
             <RowDefinition Height="30*" />
             <RowDefinition Height="500*" />
             <RowDefinition Height="199*" />
-        </Grid.RowDefinitions> 
+        </Grid.RowDefinitions>
+        
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Name="map" Margin="0,0,0,0" PanningMode="Both" HorizontalScrollBarVisibility="Visible" Background="DarkGray">
+            <WindowsFormsHost Name="windowsFormsHost1" Cursor="Cross" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </ScrollViewer>
+
         <Grid Name="player" Height="30" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120*" />
@@ -80,16 +85,11 @@
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="openMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
-        <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2">
-            <WindowsFormsHost Name="windowsFormsHost1" Margin="0,-1,18,18"/>
-        </Grid>
         <!--<Grid Grid.Row="1" Name="menu" Grid.ColumnSpan="2" Visibility="Visible">
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/splash.png"></ImageBrush>
             </Grid.Background>
         </Grid>-->
-        <ScrollBar Name="up_down" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Width="18" Margin="0,0,0,18"/>
-        <ScrollBar Name="left_right" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Height="18" VerticalAlignment="Bottom" Margin="0,0,18,0"/>
         <Grid Grid.Row="2" Grid.Column="1" Name="information">
             <Grid.RowDefinitions>
                 <RowDefinition Height="48*" />
