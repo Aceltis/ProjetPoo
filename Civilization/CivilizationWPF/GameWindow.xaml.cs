@@ -32,13 +32,15 @@ namespace CivilizationWPF
             game = (Game)builder.build();
 
             beginTurn(1);
-            /*
+            
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = game.map.grid.Count * 2; pictureBox.Height = game.map.grid.Count * 2;
-            game.map.afficher(pictureBox);
-            windowsFormsHost1.Width = game.map.grid.Count * 2; windowsFormsHost1.Height = game.map.grid.Count * 2;
-            windowsFormsHost1.Child = pictureBox;
-            */
+            pictureBox.Width = game.Map.grid.Count * 2; pictureBox.Height = game.Map.grid.Count * 2;
+            game.Map.afficher(pictureBox);
+            System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
+            sc.Controls.Add(pictureBox);
+            sc.AutoScroll = true;
+            windowsFormsHost1.Child = sc;
+            
         }
 
         private void beginTurn(int turn_number)

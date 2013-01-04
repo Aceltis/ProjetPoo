@@ -43,9 +43,9 @@
             <RowDefinition Height="199*" />
         </Grid.RowDefinitions>
         
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2" Name="scrollmap" Margin="0,0,0,0" PanningMode="Both" HorizontalScrollBarVisibility="Visible" Background="DarkGray">
-            <WindowsFormsHost Name="windowsFormsHost1" Cursor="Cross" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        </ScrollViewer>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Name="map">
+            <WindowsFormsHost Margin="0,0,0,0" Name="windowsFormsHost1" Cursor="Cross"/>
+        </Grid>
 
         <Grid Name="player" Height="30" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -85,47 +85,6 @@
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="endGame" Content="Exit" Style="{StaticResource menu}"/>
         </Grid>
-        <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            <Image Grid.Column="0" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
-            <Image Grid.Column="1" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
-            <Image Grid.Column="2" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50" />
-        </Grid>
-        <ScrollBar Name="up_down" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Width="18" Margin="0,0,0,18"/>
-        <ScrollBar Name="left_right" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Height="18" VerticalAlignment="Bottom" Margin="0,0,18,0"/>
         <Grid Grid.Row="2" Grid.Column="1" Name="information">
             <Grid.RowDefinitions>
                 <RowDefinition Height="48*" />

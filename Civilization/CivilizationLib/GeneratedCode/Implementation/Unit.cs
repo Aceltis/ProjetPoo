@@ -14,53 +14,15 @@ namespace Implementation
 
     public class Unit : IUnit
     {
-        public virtual Player Player
-        {
-            get;
-            set;
-        }
-
-        public virtual int HP
-        {
-            get;
-            set;
-        }
-
-        public virtual int AttackPoints
-        {
-            get;
-            set;
-        }
-
-        public virtual int DefensePoints
-        {
-            get;
-            set;
-        }
-
-        public virtual Case Case
-        {
-            get;
-            set;
-        }
-
-        public virtual int MovePoints
-        {
-            get;
-            set;
-        }
-
-        public virtual int Cost
-        {
-            get;
-            set;
-        }
-
-        public virtual int CreationTime
-        {
-            get;
-            set;
-        }
+        public virtual Player Player { get; set; }
+        public virtual int HP { get; set; }
+        public virtual int AttackPoints { get; set; }
+        public virtual int DefensePoints { get; set; }
+        public virtual Case Case { get; set; }
+        public virtual int MovePoints { get; set; }
+        public virtual int Cost { get; set; }
+        public virtual int CreationTime { get; set; }
+        public virtual int Id { get; set; }
 
         public virtual void move(int x, int y)
         {

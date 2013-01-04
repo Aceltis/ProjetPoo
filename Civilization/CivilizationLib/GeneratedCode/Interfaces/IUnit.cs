@@ -10,9 +10,20 @@ namespace Interfaces
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using Implementation;
 
 	public interface IUnit 
 	{
+        Player Player { get; set; }
+        int HP { get; set; }
+        int AttackPoints { get; set; }
+        int DefensePoints { get; set; }
+        Case Case { get; set; }
+        int MovePoints { get; set; }
+        int Cost { get; set; }
+        int CreationTime { get; set; }
+        int Id { get; set; }
+
 		void move(int x, int y);
 
 		void passTurn();
