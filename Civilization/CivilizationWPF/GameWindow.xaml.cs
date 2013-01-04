@@ -33,9 +33,9 @@ namespace CivilizationWPF
         {
             InitializeComponent();
             game = (Game)builder.build();
+            createPVM(game);
 
-<<<<<<< HEAD
-            beginTurn(1);
+            beginTurn(pvm1);
             
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
@@ -44,18 +44,7 @@ namespace CivilizationWPF
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
             windowsFormsHost1.Child = sc;
-            
-=======
-            createPVM(game);
 
-            beginTurn(pvm1);
-
-            System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = game.Map.grid.Count * 2; pictureBox.Height = game.Map.grid.Count * 2;
-            game.Map.afficher(pictureBox);
-            windowsFormsHost1.Width = game.Map.grid.Count * 2; windowsFormsHost1.Height = game.Map.grid.Count * 2;
-            windowsFormsHost1.Child = pictureBox;
->>>>>>> aceltis
         }
 
         private void beginTurn(PlayerViewModel p)
@@ -65,7 +54,6 @@ namespace CivilizationWPF
 
         private void afficherTop(PlayerViewModel pvm)
         {
-            nameView.Text = pvm.Name;
         }
 
         private void createPVM(Game g)
