@@ -138,14 +138,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\ressources\fer.png" />
-    <Resource Include="Resource\ressources\foret.png" />
-    <Resource Include="Resource\ressources\fruit.png" />
-    <Resource Include="Resource\terrains\desert.png" />
-    <Resource Include="Resource\terrains\montagne.png" />
-    <Resource Include="Resource\terrains\neige.png" />
-    <Resource Include="Resource\terrains\plaine.png" />
-    <Resource Include="Resource\ville.png" />
+    <Resource Include="Resource\map\fields\neige.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\icons\alive.png" />
@@ -195,6 +188,21 @@
   <ItemGroup>
     <Resource Include="Resource\interface\prod_disabled.png" />
     <Resource Include="Resource\interface\prod_enabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\fields\desert.png" />
+    <Resource Include="Resource\map\fields\mountain.png" />
+    <Resource Include="Resource\map\fields\plain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\cities\city_blue.png" />
+    <Resource Include="Resource\map\cities\City_green.png" />
+    <Resource Include="Resource\map\cities\city_orange.png" />
+    <Resource Include="Resource\map\cities\city_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\bonus\food.png" />
+    <Resource Include="Resource\map\bonus\iron.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
