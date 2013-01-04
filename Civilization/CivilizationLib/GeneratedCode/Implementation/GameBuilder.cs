@@ -70,7 +70,7 @@ namespace Implementation
                 Players.Add(1, new Player(names[0], civs[0], "Red"));
                 Players.Add(2, new Player(names[1], civs[1], "Blue"));
                 Players.Add(3, new Player(names[2], civs[2], "Orange"));
-                Players.Add(3, new Player(names[2], civs[2], "Green"));
+                Players.Add(4, new Player(names[3], civs[3], "Green"));
             }
 		}
 
