@@ -23,46 +23,20 @@ namespace CivilizationWPF
     /// </summary>
     public partial class GameWindow : Window
     {
-<<<<<<< HEAD:Civilization/CivilizationWPF/MainWindow.xaml.cs
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            Map newMap = new Map();
-            newMap.setMapStrategy(new SmallMapStrategy());
-            newMap.createMap();
-            System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = newMap.grid.Count * 2; pictureBox.Height = newMap.grid.Count * 2;
-            newMap.afficher(pictureBox);
-            windowsFormsHost1.Width = newMap.grid.Count * 2; windowsFormsHost1.Height = newMap.grid.Count * 2;
-            windowsFormsHost1.Child = pictureBox;
-=======
         Game game;
 
         public GameWindow(GameBuilder builder)
         {
-            game = (Game)builder.build();
-            /*
-            System.Windows.Forms.PictureBox pictureBox1 = new System.Windows.Forms.PictureBox();
-            pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(newMap.grid[3].afficher);
-
-            Image myImage = new Image();
-            myImage.Width = 50;
-
-            BitmapImage myBitmapImage = new BitmapImage();
-
-            myBitmapImage.BeginInit();
-            myBitmapImage.UriSource = new Uri(@"C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWPF\Resource\terrains\desert.png");
-
-            myBitmapImage.DecodePixelWidth = 50;
-            myBitmapImage.EndInit();
-
-            */
             InitializeComponent();
 
->>>>>>> aceltis:Civilization/CivilizationWPF/GameWindow.xaml.cs
-        }
+            game = (Game)builder.build();
 
+            System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
+            pictureBox.Width = game.map.grid.Count * 2; pictureBox.Height = game.map.grid.Count * 2;
+            game.map.afficher(pictureBox);
+            windowsFormsHost1.Width = game.map.grid.Count * 2; windowsFormsHost1.Height = game.map.grid.Count * 2;
+            windowsFormsHost1.Child = pictureBox;
+        }
 
         private void endTurn(object sender, RoutedEventArgs e)
         {

@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-﻿La génération a démarré 04/01/2013 12:35:47.
-     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 3 (build cible(s)).
-=======
-﻿Build started 04/01/2013 10:51:18.
+﻿Build started 04/01/2013 17:01:57.
      1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
->>>>>>> aceltis
      1>InitializeBuildStatus:
          Creating "Debug\CivilizationWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
        GenerateTargetFrameworkMonikerAttribute:
@@ -22,8 +17,4 @@
 
 Build succeeded.
 
-<<<<<<< HEAD
-Temps écoulé 00:00:00.86
-=======
-Time Elapsed 00:00:00.13
->>>>>>> aceltis
+Time Elapsed 00:00:00.07

@@ -31,6 +31,48 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="OnOffToggleImageStyle" TargetType="ToggleButton" BasedOn="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="./Resource/interface/prod_enabled.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="./Resource/interface/prod_disabled.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="boxDesign" TargetType="TextBox" BasedOn="{StaticResource {x:Static ToolBar.TextBoxStyleKey}}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background" Value="#ff491b07"/>
+            <Setter Property="Foreground" Value="#fffef9dc"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="FontFamily" Value="Lithos Pro"/>
+        </Style>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="#fffef9dc"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+        </ControlTemplate>
+        <Style x:Key="comboBoxDesign" TargetType="ComboBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#ffec921d"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="FontFamily" Value="Lithos Pro"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -50,66 +92,9 @@
                 <ColumnDefinition Width="130*" />
                 <ColumnDefinition Width="312*" />
             </Grid.ColumnDefinitions>
-            <Button Name="two_players" Click="twoPlayers" Grid.Row="1" Grid.Column="1" Content="2 players" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc">
-                <Button.Effect>
-                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
-                </Button.Effect>
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Image Name="Normal" Source="./Resource/interface/prod_disabled.png" Height="26" Width="102"/>
-                            <Image Name="Over" Source="./Resource/interface/prod_enabled.png" Height="26" Width="102" Visibility="Hidden"/>
-                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button Name="three_players" Click="threePlayers" Grid.Row="1" Grid.Column="2" Content="3 players" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc">
-                <Button.Effect>
-                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
-                </Button.Effect>
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Image Name="Normal" Source="./Resource/interface/prod_disabled.png" Height="26" Width="102"/>
-                            <Image Name="Over" Source="./Resource/interface/prod_enabled.png" Height="26" Width="102" Visibility="Hidden"/>
-                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button Name="four_players" Click="fourPlayers" Grid.Row="1" Grid.Column="3" Content="4 players" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc">
-                <Button.Effect>
-                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
-                </Button.Effect>
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Image Name="Normal" Source="./Resource/interface/prod_disabled.png" Height="26" Width="102"/>
-                            <Image Name="Over" Source="./Resource/interface/prod_enabled.png" Height="26" Width="102" Visibility="Hidden"/>
-                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <ToggleButton Name="two_players" Click="twoPlayers" Grid.Row="1" Grid.Column="1" Content="2 players" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+            <ToggleButton Name="three_players" Click="threePlayers" Grid.Row="1" Grid.Column="2" Content="3 players" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+            <ToggleButton Name="four_players" Click="fourPlayers" Grid.Row="1" Grid.Column="3" Content="4 players" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
         </Grid>
         <Grid Name="playersNamesGrid" Height="100" Width="1002" Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -119,35 +104,35 @@
                 <ColumnDefinition Width="252*" />
             </Grid.ColumnDefinitions>
             <StackPanel Name="first_player" Grid.Column="0" Visibility="Hidden">
-                <TextBox Grid.Row="2" Height="23" Name="playerOne" Width="150" Margin="15"/>
-                <ComboBox Height="23" Name="civ1" Width="120">
+                <TextBox Grid.Row="2" Height="23" Name="playerOne" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                <ComboBox Height="23" Name="civ1" Width="120" Style="{StaticResource comboBoxDesign}">
                     <ComboBoxItem>INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="second_player" Grid.Column="1" Visibility="Hidden">
-                <TextBox Grid.Row="2" Height="23" Name="playerTwo" Width="150" Margin="15"/>
-                <ComboBox Height="23" Name="civ2" Width="120">
+                <TextBox Grid.Row="2" Height="23" Name="playerTwo" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                <ComboBox Height="23" Name="civ2" Width="120" Style="{StaticResource comboBoxDesign}">
                     <ComboBoxItem>INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="third_player" Grid.Column="2" Visibility="Hidden">
-                <TextBox Grid.Row="2" Height="23" Name="playerThree" Width="150" Margin="15"/>
-                <ComboBox Height="23" Name="civ3" Width="120">
+                <TextBox Grid.Row="2" Height="23" Name="playerThree" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                <ComboBox Height="23" Name="civ3" Width="120" Style="{StaticResource comboBoxDesign}">
                     <ComboBoxItem>INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="fourth_player" Grid.Column="3" Visibility="Hidden">
-                <TextBox Grid.Row="2" Height="23" Name="playerFour" Width="150" Margin="15"/>
-                <ComboBox Height="23" Name="civ4" Width="120">
+                <TextBox Grid.Row="2" Height="23" Name="playerFour" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                <ComboBox Height="23" Name="civ4" Width="120" Style="{StaticResource comboBoxDesign}">
                     <ComboBoxItem>INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
         </Grid>
-        <Button Name="exit" Click="quitGame" Height="32" Width="32" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+        <Button Name="exit" Click="quitGame" Height="32" Width="32" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="{x:Null}" BorderThickness="0">
             <Button.Background>
                 <ImageBrush ImageSource="./Resource/exit.png"></ImageBrush>
             </Button.Background>

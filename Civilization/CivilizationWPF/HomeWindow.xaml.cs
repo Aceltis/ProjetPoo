@@ -83,6 +83,9 @@ namespace CivilizationWPF
 
         public void twoPlayers(Object sender, RoutedEventArgs e)
         {
+            three_players.IsChecked = false;
+            four_players.IsChecked = false;
+            two_players.IsChecked = true;
             first_player.Visibility = Visibility.Visible;
             second_player.Visibility = Visibility.Visible;
             third_player.Visibility = Visibility.Hidden;
@@ -92,6 +95,9 @@ namespace CivilizationWPF
 
         public void threePlayers(Object sender, RoutedEventArgs e)
         {
+            three_players.IsChecked = true;
+            four_players.IsChecked = false;
+            two_players.IsChecked = false;
             first_player.Visibility = Visibility.Visible;
             second_player.Visibility = Visibility.Visible;
             third_player.Visibility = Visibility.Visible;
@@ -101,6 +107,9 @@ namespace CivilizationWPF
 
         public void fourPlayers(Object sender, RoutedEventArgs e)
         {
+            three_players.IsChecked = false;
+            four_players.IsChecked = true;
+            two_players.IsChecked = false;
             first_player.Visibility = Visibility.Visible;
             second_player.Visibility = Visibility.Visible;
             third_player.Visibility = Visibility.Visible;

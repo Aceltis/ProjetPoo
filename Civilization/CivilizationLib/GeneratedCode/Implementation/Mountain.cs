@@ -20,11 +20,7 @@ namespace Implementation
         {
             food = 0;
             minerals = 3;
-<<<<<<< HEAD
             squareImage = Image.FromFile("../../../CivilizationWPF/Resource/map/fields/mountain.png");
-=======
-            squareImage = Image.FromFile("D:\\PROJET\\Dev\\ProjetPoo\\Civilization\\CivilizationWPF\\Resource\\map\\fields\\mountain.png");
->>>>>>> aceltis
         }
 
         public override void removeUnit(int unit_id)
