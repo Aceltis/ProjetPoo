@@ -31,13 +31,10 @@ namespace CivilizationWPF
             newMap.setMapStrategy(new SmallMapStrategy());
             newMap.createMap();
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = 1250;
-            pictureBox.Height = 1250;
+            pictureBox.Width = 1250; pictureBox.Height = 1250;
 
-            for (int i = 0; i < 25*25; i++)
-            {
-                pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(newMap.grid[i].afficher);
-            }
+            newMap.afficher(pictureBox);
+
             windowsFormsHost1.Child = pictureBox;
         }
 

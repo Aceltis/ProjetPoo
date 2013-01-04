@@ -14,11 +14,12 @@ namespace Interfaces
     using Implementation;
     using System.Drawing;
 
-	public interface ICase 
-	{
-        List<int> pos_x_y { get; set; }
+	public interface ICase
+    {
+        List<int[]> sqPos { get; set; }
         int minerals { get; set; }
         int food { get; set; }
+        bool drawn { get; set; }
         Image squareImage { get; set; }
         List<Unit> units { get; set; }
         City city { get; set; }

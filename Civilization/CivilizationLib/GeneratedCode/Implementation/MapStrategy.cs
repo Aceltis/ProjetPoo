@@ -14,18 +14,6 @@ namespace Implementation
 
 	public abstract class MapStrategy : IMapStrategy
 	{
-		public virtual int height
-		{
-			get;
-			set;
-		}
-
-		public virtual int width
-		{
-			get;
-			set;
-		}
-
         public virtual void createMap(List<Case> map)
 		{
 			throw new System.NotImplementedException();

@@ -17,8 +17,7 @@ namespace Implementation
     {
 
         public virtual List<Case> grid { get; set; }
-        private MapStrategy mapStrategy { get; set; }
-        public virtual MapType size { get; set; }
+        private MapStrategy mapStrategy;
 
         public Map()
         {
@@ -36,8 +35,16 @@ namespace Implementation
             mapStrategy.createMap(grid);
         }
 
-        public void afficher()
+        public void afficher(PictureBox pb)
         {
+            for (int i = 0; i < grid.Count; i++)
+            {
+                if (!grid[i].drawn)
+                {
+                    pb.Paint += new System.Windows.Forms.PaintEventHandler(grid[i].afficher);
+                    grid[i].drawn = true;
+                }
+            }
         }
     }
 }

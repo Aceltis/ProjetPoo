@@ -16,16 +16,20 @@ namespace Implementation
 
     public class Case : ICase
     {
+        
+
         public Case()
         {
             units = new List<Unit>();
-            pos_x_y = new List<int>();
+            sqPos = new List<int[]>();
+            drawn = false;
         }
 
         //Attributs
-        public virtual List<int> pos_x_y { get; set; }
+        public virtual List<int[]> sqPos { get; set; }
         public virtual int minerals { get; set; }
         public virtual int food { get; set; }
+        public virtual bool drawn { get; set; }
         public virtual Image squareImage { get; set; }
         public virtual List<Unit> units { get; set; }
         public virtual City city { get; set; }

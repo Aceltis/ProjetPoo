@@ -81,7 +81,7 @@
             <Button Grid.Column="15" Click="openMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
         <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2">
-            <WindowsFormsHost Name="windowsFormsHost1" Margin="0,0,0,0"/>
+            <WindowsFormsHost Name="windowsFormsHost1" Margin="0,-1,18,18"/>
         </Grid>
         <!--<Grid Grid.Row="1" Name="menu" Grid.ColumnSpan="2" Visibility="Visible">
             <Grid.Background>

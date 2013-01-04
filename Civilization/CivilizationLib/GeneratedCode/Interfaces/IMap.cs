@@ -17,9 +17,8 @@ namespace Interfaces
 	public interface IMap 
 	{
         List<Case> grid { get; set; }
-        MapType size { get; set; }
 
-        void afficher();
+        void afficher(PictureBox pb);
 	}
 }
 
