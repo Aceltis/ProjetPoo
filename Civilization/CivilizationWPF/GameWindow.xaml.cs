@@ -34,7 +34,7 @@ namespace CivilizationWPF
             beginTurn(1);
             
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = game.Map.grid.Count * 2; pictureBox.Height = game.Map.grid.Count * 2;
+            pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             game.Map.afficher(pictureBox);
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
