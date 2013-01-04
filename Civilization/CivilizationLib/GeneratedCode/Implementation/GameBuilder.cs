@@ -14,20 +14,57 @@ namespace Implementation
 
 	public class GameBuilder : IGameBuilder
 	{
-		public virtual void createMap()
+        public Dictionary<int,Player> Players
+        {
+            get;
+            set;
+        }
+
+        public Map Map
+        {
+            get;
+            set;
+        }
+
+        public GameBuilder(int players, List<String> names, List<String> civs)
+        {
+            createPlayers(players, names, civs);
+            createMap(players);
+        }
+
+		public virtual void createMap(int players)
 		{
-			throw new System.NotImplementedException();
+            if (players > 2)
+            {
+                Map = new Map();
+                LargeMapStrategy strat = new LargeMapStrategy();
+                Map.setMapStrategy(strat);
+                Map.createMap();
+            }
+            else
+            {
+                Map = new Map();
+                SmallMapStrategy strat = new SmallMapStrategy();
+                Map.setMapStrategy(strat);
+                Map.createMap();
+            }
 		}
 
-		public virtual void createPlayers()
+		public virtual void createPlayers(int players, List<String> names, List<String> civs)
 		{
-			throw new System.NotImplementedException();
+            Players = new Dictionary<int, Player>();
+            
+            for(int i=0; i<players; i++)
+            {
+                Players.Add(i, new Player(names[i], civs[i]));
+            }
 		}
 
-		public virtual void createGame()
-		{
-			throw new System.NotImplementedException();
-		}
+        public virtual IGame build()
+        {
+            Game game = new Game(Players, Map);
+            return game;
+        }
 
 	}
 }

@@ -1,14 +1,12 @@
-﻿Build started 03/01/2013 16:25:25.
+﻿Build started 03/01/2013 21:34:08.
      1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Creating "Release\CivilizationWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Release\CivilizationWrapper.unsuccessfulbuild".
        GenerateTargetFrameworkMonikerAttribute:
        Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /analyze- /errorReport:prompt Wrapper.cpp /clr:nostdlib 
-         Wrapper.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /TP /analyze- /errorReport:prompt "C:\Users\Aceltis\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cpp"
-         .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+         All outputs are up-to-date.
+         All outputs are up-to-date.
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationWrapper.dll" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\CivilizationWrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationWrapper.pdb" /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Release\Wrapper.obj
          "Release\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
@@ -18,4 +16,4 @@
 
 Build FAILED.
 
-Time Elapsed 00:00:00.97
+Time Elapsed 00:00:00.09

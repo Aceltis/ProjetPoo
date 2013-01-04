@@ -14,6 +14,7 @@ namespace Implementation
 
     public class Player : IPlayer
     {
+        
         public virtual string pseudo
         {
             get;
@@ -42,6 +43,18 @@ namespace Implementation
         {
             get;
             set;
+        }
+
+        public Player(String name, String Civ)
+        {
+            if (Civ == "INFO")
+                civilization = CivilizationType.INFO;
+            else
+                civilization = CivilizationType.EII;
+            pseudo = name;
+            score = 0;
+            cities = new List<City>();
+            status = StatusType.InGame;
         }
 
         public virtual void chooseCivilization()

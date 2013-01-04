@@ -74,7 +74,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="HomeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -82,9 +86,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HomeWindow.xaml.cs">
+      <DependentUpon>HomeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TriStatesButton.cs" />
     <Compile Include="TurnView.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -147,11 +155,7 @@
     <Resource Include="Resource\interface\icons\teacher.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\accueil.png" />
-    <Resource Include="Resource\interface\Boss.png" />
     <Resource Include="Resource\interface\city.png" />
-    <Resource Include="Resource\interface\student.png" />
-    <Resource Include="Resource\interface\teacher.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\bouton1.png" />
@@ -201,6 +205,18 @@
   <ItemGroup>
     <Resource Include="Resource\map\bonus\food.png" />
     <Resource Include="Resource\map\bonus\iron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\gamecreation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\accueil.png" />
+    <Resource Include="Resource\interface\Boss.png" />
+    <Resource Include="Resource\interface\student.png" />
+    <Resource Include="Resource\interface\teacher.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
