@@ -14,12 +14,14 @@ namespace Implementation
 
     public class StudentEII : Unit, IStudent
     {
-        public StudentEII(Player P, Case c)
+        public StudentEII(Player p, Case c)
         {
-            movePoints = 2;
-            attackPoints = 3;
-            defensePoints = 3;
+            MovePoints = 2;
+            AttackPoints = 3;
+            DefensePoints = 3;
             HP = 10;
+            Player = p;
+            Case = c;
         }
 
         public virtual void attack()

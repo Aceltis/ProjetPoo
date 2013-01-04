@@ -13,22 +13,11 @@ namespace Interfaces
 
 	public interface IUnit 
 	{
-		//Getters et Setters d'attributs
-        int HP {get;set;}
-        int attackPoints {get;set;}
-        int defensePoints {get;set;}
-        int pos_x {get;set;}
-        int pos_y {get;set;}
-        int movePoints {get;set;}
-        int cost {get;set;}
-        int id {get;set;}
-        int creationTime {get;set;}
-
-        //Méthodes
 		void move(int x, int y);
-		void passTurn();
-		void defend();
 
+		void passTurn();
+
+		void defend();
 	}
 }
 

@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace CivilizationWPF
 {
-    class PlayerView : INotifyPropertyChanged
+    class PlayerViewModel : INotifyPropertyChanged
     {
         // property changed event
         public event PropertyChangedEventHandler PropertyChanged;
@@ -27,7 +27,7 @@ namespace CivilizationWPF
             }
         }
 
-        public PlayerView(String name, String color, String civ)
+        public PlayerViewModel(String name, String color, String civ)
         {
             _name = name;
             _color = color;

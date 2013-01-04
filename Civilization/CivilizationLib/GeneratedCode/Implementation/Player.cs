@@ -11,20 +11,9 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
-    using System.ComponentModel;
 
-    public class Player : IPlayer, INotifyPropertyChanged
+    public class Player : IPlayer
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(String property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
-        }
-
         public virtual string Pseudo
         {
             get;
@@ -37,19 +26,13 @@ namespace Implementation
             set;
         }
 
-        public virtual int Score
-        {
-            get;
-            set;
-        }
-
         public virtual List<City> Cities
         {
             get;
             set;
         }
 
-        public virtual List<IBoss> Boss
+        public virtual IBoss Boss
         {
             get;
             set;
@@ -89,17 +72,25 @@ namespace Implementation
                 Teachers.Add(new TeacherINFO(this, new Case()));
 
                 Students = new List<IStudent>();
-                Teachers.Add(new TeacherINFO());
-
+                Students.Add(new StudentINFO(this, new Case()));
             }
             else
+            {
                 Civilization = CivilizationType.EII;
+
+                Teachers = new List<ITeacher>();
+                Teachers.Add(new TeacherEII(this, new Case()));
+
+                Students = new List<IStudent>();
+                Students.Add(new StudentEII(this, new Case()));
+            }
+
             Pseudo = name;
-            Score = 0;
             Cities = new List<City>();
-            Cities.add(new City(this, 
+            Cities.Add(new City(this, new Case()));
             Status = StatusType.InGame;
             Color = col;
+            Boss = null;
         }
 
         public virtual void chooseCivilization()

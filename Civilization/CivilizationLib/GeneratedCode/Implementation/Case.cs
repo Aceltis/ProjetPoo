@@ -49,7 +49,7 @@ namespace Implementation
         {
             foreach (Unit unit in units)
             {
-                if (unit.id == unit_id)
+                if (unit.Id == unit_id)
                     units.Remove(unit);
             }
         }

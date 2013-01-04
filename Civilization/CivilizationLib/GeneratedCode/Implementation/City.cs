@@ -16,46 +16,45 @@ namespace Implementation
     {
         public City(Player p, Case c)
         {
-            population = 1;
-            //position.pos_x = c.pos_x;
-            //position.pos_y = c.pos_y;
-            player = p;
-            current_prod = ProductionType.None;
-            owned_food = c.food;
-            owned_minerals = c.minerals;
+            Population = 1;
+            Position = c;
+            Player = p;
+            Current_prod = ProductionType.None;
+            Owned_food = c.food;
+            Owned_minerals = c.minerals;
         }
 
-        public virtual int population
+        public virtual int Population
         {
             get;
             set;
         }
 
-        public virtual Case position
+        public virtual Case Position
         {
             get;
             set;
         }
 
-        public virtual Player player
+        public virtual Player Player
         {
             get;
             set;
         }
 
-        public virtual ProductionType current_prod
+        public virtual ProductionType Current_prod
         {
             get;
             set;
         }
 
-        public virtual int owned_minerals
+        public virtual int Owned_minerals
         {
             get;
             set;
         }
 
-        public virtual int owned_food
+        public virtual int Owned_food
         {
             get;
             set;
@@ -63,11 +62,11 @@ namespace Implementation
 
         public virtual void produceBoss(Unit unit)
         {
-            if (current_prod == ProductionType.None && owned_minerals >= 200)
+            if (Current_prod == ProductionType.None && Owned_minerals >= 200)
             {
-                current_prod = ProductionType.Boss;
+                Current_prod = ProductionType.Boss;
 
-                if (unit.cost == 0)
+                if (unit.Cost == 0)
                 {
                     spawnUnit(unit);
                 }

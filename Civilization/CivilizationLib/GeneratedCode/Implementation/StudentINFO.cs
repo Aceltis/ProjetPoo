@@ -16,10 +16,12 @@ namespace Implementation
     {
         public StudentINFO(Player p, Case c)
         {
-            movePoints = 2;
-            attackPoints = 4;
-            defensePoints = 2;
+            MovePoints = 2;
+            AttackPoints = 4;
+            DefensePoints = 2;
             HP = 10;
+            Player = p;
+            Case = c;
         }
 
         public virtual void attack()
