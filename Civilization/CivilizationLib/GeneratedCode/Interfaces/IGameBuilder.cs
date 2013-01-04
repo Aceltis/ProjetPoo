@@ -14,11 +14,11 @@ namespace Interfaces
 	/// <remarks>Monteur</remarks>
 	public interface IGameBuilder 
 	{
-		void createMap();
+        void createMap(int players);
 
-		void createPlayers();
+        void createPlayers(int players, List<String> names, List<String> civs);
 
-		void createGame();
+        IGame build();
 
 	}
 }

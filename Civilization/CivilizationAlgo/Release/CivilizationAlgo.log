@@ -1,0 +1,17 @@
+﻿Build started 03/01/2013 21:34:07.
+     1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\CivilizationAlgo.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.lib" /NOLOGO /LTCG Release\mapalgo.obj
+         CivilizationAlgo.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Release\CivilizationAlgo.lib
+       FinalizeBuildStatus:
+         Deleting file "Release\CivilizationAlgo.unsuccessfulbuild".
+         Touching "Release\CivilizationAlgo.lastbuildstate".
+     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationAlgo\CivilizationAlgo.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.09

@@ -14,13 +14,7 @@ namespace Implementation
 
     public class Game : IGame
     {
-        public virtual int game_id
-        {
-            get;
-            set;
-        }
-
-        public virtual List<Player> players
+        public virtual Dictionary<int,Player> players
         {
             get;
             set;
@@ -32,16 +26,24 @@ namespace Implementation
             set;
         }
 
-        public virtual List<Player> loosers
+        public virtual Dictionary<int,Player> loosers
         {
             get;
             set;
         }
 
-        public virtual MapStrategy MapStrategy
+        public virtual Map map
         {
             get;
             set;
+        }
+
+        public Game(Dictionary<int, Player> joueurs, Map carte)
+        {
+            players = joueurs;
+            winner = null;
+            loosers = new Dictionary<int, Player>();
+            map = carte;
         }
 
         public virtual void addLooser(IPlayer p)
