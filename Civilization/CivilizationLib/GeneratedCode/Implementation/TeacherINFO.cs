@@ -16,10 +16,12 @@ namespace Implementation
     {
         public TeacherINFO(Player p, Case c)
         {
-            movePoints = 3;
-            attackPoints = 0;
-            defensePoints = 1;
+            MovePoints = 3;
+            AttackPoints = 0;
+            DefensePoints = 1;
             HP = 1;
+            Player = p;
+            Case = c;
         }
 
         public virtual void createCity()

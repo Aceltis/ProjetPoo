@@ -53,10 +53,24 @@ namespace Implementation
 		public virtual void createPlayers(int players, List<String> names, List<String> civs)
 		{
             Players = new Dictionary<int, Player>();
-            
-            for(int i=0; i<players; i++)
+
+            if (players == 2)
             {
-                Players.Add(i, new Player(names[i], civs[i]));
+                Players.Add(1, new Player(names[0], civs[0], "Red"));
+                Players.Add(2, new Player(names[1], civs[1], "Blue"));
+            }
+            else if (players == 3)
+            {
+                Players.Add(1, new Player(names[0], civs[0], "Red"));
+                Players.Add(2, new Player(names[1], civs[1], "Blue"));
+                Players.Add(3, new Player(names[2], civs[2], "Orange"));
+            }
+            else
+            {
+                Players.Add(1, new Player(names[0], civs[0], "Red"));
+                Players.Add(2, new Player(names[1], civs[1], "Blue"));
+                Players.Add(3, new Player(names[2], civs[2], "Orange"));
+                Players.Add(3, new Player(names[2], civs[2], "Green"));
             }
 		}
 

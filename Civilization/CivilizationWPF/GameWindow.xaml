@@ -81,9 +81,9 @@
             <TextBlock Name="student_number" Grid.Column="9" Text="{Binding ElementName=playerView, Path=StudentNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="10" Source="{Binding ElementName=playerView, Path=BossStatus}" Height="24" Width="24"></Image>
             <TextBlock Grid.Column="12" Text="Turn" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="13" Text="{Binding ElementName=turnView, Path=TurnNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="13" Text="{Binding ElementName=game, Path=Turns}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
-            <Button Grid.Column="15" Click="openMenu" Content="Menu" Style="{StaticResource menu}"/>
+            <Button Grid.Column="15" Click="endGame" Content="Exit" Style="{StaticResource menu}"/>
         </Grid>
         <Grid Grid.Row="1" Name="map" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>

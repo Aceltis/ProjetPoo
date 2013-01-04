@@ -106,36 +106,48 @@
             <StackPanel Name="first_player" Grid.Column="0" Visibility="Hidden">
                 <TextBox Grid.Row="2" Height="23" Name="playerOne" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
                 <ComboBox Height="23" Name="civ1" Width="120" Style="{StaticResource comboBoxDesign}">
-                    <ComboBoxItem>INFO</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="second_player" Grid.Column="1" Visibility="Hidden">
                 <TextBox Grid.Row="2" Height="23" Name="playerTwo" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
                 <ComboBox Height="23" Name="civ2" Width="120" Style="{StaticResource comboBoxDesign}">
-                    <ComboBoxItem>INFO</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="third_player" Grid.Column="2" Visibility="Hidden">
                 <TextBox Grid.Row="2" Height="23" Name="playerThree" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
                 <ComboBox Height="23" Name="civ3" Width="120" Style="{StaticResource comboBoxDesign}">
-                    <ComboBoxItem>INFO</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="fourth_player" Grid.Column="3" Visibility="Hidden">
                 <TextBox Grid.Row="2" Height="23" Name="playerFour" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
                 <ComboBox Height="23" Name="civ4" Width="120" Style="{StaticResource comboBoxDesign}">
-                    <ComboBoxItem>INFO</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
         </Grid>
         <Button Name="exit" Click="quitGame" Height="32" Width="32" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" BorderBrush="{x:Null}" BorderThickness="0">
-            <Button.Background>
-                <ImageBrush ImageSource="./Resource/exit.png"></ImageBrush>
-            </Button.Background>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Image Name="Normal" Source="./Resource/exit.png" Height="32" Width="32"/>
+                        <Image Name="Over" Source="./Resource/exit_enabled.png" Height="32" Width="32" Visibility="Hidden"/>
+                        <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
         </Button>
         <Button Name="next" Click="play" Content="Play!" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource menu}" Margin="0,7,5,6" Height="33" Width="73"/>
     </Grid>

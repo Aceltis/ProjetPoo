@@ -11,50 +11,95 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.ComponentModel;
 
-    public class Player : IPlayer
+    public class Player : IPlayer, INotifyPropertyChanged
     {
-        
-        public virtual string pseudo
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(String property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
+
+        public virtual string Pseudo
         {
             get;
             set;
         }
 
-        public virtual CivilizationType civilization
+        public virtual CivilizationType Civilization
         {
             get;
             set;
         }
 
-        public virtual int score
+        public virtual int Score
         {
             get;
             set;
         }
 
-        public virtual List<City> cities
+        public virtual List<City> Cities
         {
             get;
             set;
         }
 
-        public virtual StatusType status
+        public virtual List<IBoss> Boss
         {
             get;
             set;
         }
 
-        public Player(String name, String Civ)
+        public virtual List<IStudent> Students
+        {
+            get;
+            set;
+        }
+
+        public virtual List<ITeacher> Teachers
+        {
+            get;
+            set;
+        }
+
+        public virtual StatusType Status
+        {
+            get;
+            set;
+        }
+        public virtual String Color
+        {
+            get;
+            set;
+        }
+
+        public Player(String name, String Civ, String col)
         {
             if (Civ == "INFO")
-                civilization = CivilizationType.INFO;
+            {
+                Civilization = CivilizationType.INFO;
+
+                // Il me faut les positions de départ ! :)
+                Teachers = new List<ITeacher>();
+                Teachers.Add(new TeacherINFO(this, new Case()));
+
+                Students = new List<IStudent>();
+                Teachers.Add(new TeacherINFO());
+
+            }
             else
-                civilization = CivilizationType.EII;
-            pseudo = name;
-            score = 0;
-            cities = new List<City>();
-            status = StatusType.InGame;
+                Civilization = CivilizationType.EII;
+            Pseudo = name;
+            Score = 0;
+            Cities = new List<City>();
+            Cities.add(new City(this, 
+            Status = StatusType.InGame;
+            Color = col;
         }
 
         public virtual void chooseCivilization()

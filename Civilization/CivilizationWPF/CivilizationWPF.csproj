@@ -92,7 +92,6 @@
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TriStatesButton.cs" />
-    <Compile Include="TurnView.cs" />
     <Compile Include="GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -219,6 +218,9 @@
     <Resource Include="Resource\interface\Boss.png" />
     <Resource Include="Resource\interface\student.png" />
     <Resource Include="Resource\interface\teacher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\exit_enabled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

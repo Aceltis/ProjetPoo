@@ -14,23 +14,11 @@ namespace Implementation
 
     public class Unit : IUnit
     {
-        public Unit()
+        public virtual Player Player
         {
-
+            get;
+            set;
         }
-
-        public Unit(Player p, Case c)
-        {
-
-        }
-
-        //Attribut nécessitant une condition ici HP positifs, mais en fait noneed dans le sens où HP nég = mort)
-        /*private int _HP;
-        public virtual int HP
-        {
-            get { return _HP; }
-            set { if(value>=0) _HP=value; }
-        }*/
 
         public virtual int HP
         {
@@ -38,58 +26,43 @@ namespace Implementation
             set;
         }
 
-        //Attribut ne nécessitant pas de condition (=> constructeurs C#)
-        //private int _attackPoints;
-        public virtual int attackPoints
+        public virtual int AttackPoints
         {
             get;
             set;
         }
 
-        //private int _defense;
-        public virtual int defensePoints
+        public virtual int DefensePoints
         {
             get;
             set;
         }
 
-        //private int _pos_x;
-        public virtual int pos_x
+        public virtual Case Case
         {
             get;
             set;
         }
 
-        //private int _pos_y;
-        public virtual int pos_y
+        public virtual int MovePoints
         {
             get;
             set;
         }
 
-        //private int _movePoints;
-        public virtual int movePoints
+        public virtual int Cost
         {
             get;
             set;
         }
 
-        //private int _cost;
-        public virtual int cost
+        public virtual int Id
         {
             get;
             set;
         }
 
-        //private int _id;
-        public virtual int id
-        {
-            get;
-            set;
-        }
-
-        //private int _creationTime;
-        public virtual int creationTime
+        public virtual int CreationTime
         {
             get;
             set;
@@ -97,11 +70,13 @@ namespace Implementation
 
         public virtual void move(int x, int y)
         {
+            /*
             if (movePoints >= pos_x + pos_y - x - y)
             {
                 pos_x = x;
                 pos_y = y;
             }
+             * */
         }
 
         public virtual void passTurn()

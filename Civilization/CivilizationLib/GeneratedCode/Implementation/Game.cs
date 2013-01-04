@@ -11,39 +11,65 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.ComponentModel;
 
-    public class Game : IGame
+    public class Game : IGame, INotifyPropertyChanged
     {
-        public virtual Dictionary<int,Player> players
+        public event PropertyChangedEventHandler PropertyChanged;
+        private int turns;
+        
+        public virtual Dictionary<int,Player> Players
         {
             get;
             set;
         }
 
-        public virtual Player winner
+        public virtual Player Winner
         {
             get;
             set;
         }
 
-        public virtual Dictionary<int,Player> loosers
+        public virtual Dictionary<int,Player> Loosers
         {
             get;
             set;
         }
 
-        public virtual Map map
+        public virtual Map Map
         {
             get;
             set;
+        }
+
+        public virtual int Turns
+        {
+            get
+            {
+                return turns;
+            }
+            set
+            {
+                turns = value;
+                OnPropertyChanged("Turns");
+            }
+        }
+
+        private void OnPropertyChanged(String property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
         }
 
         public Game(Dictionary<int, Player> joueurs, Map carte)
         {
-            players = joueurs;
-            winner = null;
-            loosers = new Dictionary<int, Player>();
-            map = carte;
+            Players = joueurs;
+            Winner = null;
+            Loosers = new Dictionary<int, Player>();
+            Map = carte;
+            turns = 1;
         }
 
         public virtual void addLooser(IPlayer p)

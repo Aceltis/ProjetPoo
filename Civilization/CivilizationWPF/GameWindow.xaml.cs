@@ -31,11 +31,18 @@ namespace CivilizationWPF
 
             game = (Game)builder.build();
 
+            beginTurn(1);
+            /*
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = game.map.grid.Count * 2; pictureBox.Height = game.map.grid.Count * 2;
             game.map.afficher(pictureBox);
             windowsFormsHost1.Width = game.map.grid.Count * 2; windowsFormsHost1.Height = game.map.grid.Count * 2;
             windowsFormsHost1.Child = pictureBox;
+            */
+        }
+
+        private void beginTurn(int turn_number)
+        {
         }
 
         private void endTurn(object sender, RoutedEventArgs e)
@@ -43,8 +50,9 @@ namespace CivilizationWPF
             System.Windows.MessageBox.Show("Passage au joueur suivant");
         }
 
-        private void openMenu(object sender, RoutedEventArgs e)
+        private void endGame(object sender, RoutedEventArgs e)
         {
+            Application.Current.Windows[0].Close();
         }
 
         private void newAction(object sender, RoutedEventArgs e)
