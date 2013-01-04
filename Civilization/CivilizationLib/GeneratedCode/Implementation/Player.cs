@@ -87,7 +87,6 @@ namespace Implementation
 
             Pseudo = name;
             Cities = new List<City>();
-            Cities.Add(new City(this, new Case()));
             Status = StatusType.InGame;
             Color = col;
             Boss = null;

@@ -1,6 +1,7 @@
 ﻿<Window x:Class="CivilizationWPF.GameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CivilizationWPF"
         Title="Civilization" Width="1024" Height="768" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="menu" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
@@ -47,7 +48,7 @@
             <WindowsFormsHost Margin="0,0,0,0" Name="windowsFormsHost1" Cursor="Cross"/>
         </Grid>
 
-        <Grid Name="player" Height="30" Grid.ColumnSpan="2">
+        <Grid Name="top" Height="30" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120*" />
                 <ColumnDefinition Width="150*" />
@@ -70,18 +71,18 @@
                 <ImageBrush ImageSource="./Resource/interface/top.png"/>
             </Grid.Background>
             <TextBlock Name="intro_turn" Grid.Column="0" Text="It's your turn," FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <TextBlock Name="player_name" Grid.Column="1" Text="{Binding ElementName=playerView, Path=Name}" FontFamily="Lithos Pro" Foreground="{Binding ElementName=playerView, Path=Color}" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="nameView" Grid.Column="1" Text="{Binding Path=Name}" FontFamily="Lithos Pro" Foreground="{Binding Path=Color}" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="2" Source="./Resource/interface/icons/civ.png" Height="16" Width="16"></Image>
-            <TextBlock Name="civilization" Grid.Column="3" Text="{Binding ElementName=playerView, Path=Civilization}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="civilization" Grid.Column="3" Text="{Binding Path=Civilization}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="4" Source="./Resource/interface/icons/city.png" Height="24" Width="24"></Image>
-            <TextBlock Name="city_number" Grid.Column="5" Text="{Binding ElementName=playerView, Path=CityNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="city_number" Grid.Column="5" Text="{Binding Path=CityNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="6" Source="./Resource/interface/icons/teacher.png" Height="24" Width="24"></Image>
-            <TextBlock Name="teacher_number" Grid.Column="7" Text="{Binding ElementName=playerView, Path=TeacherNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <TextBlock Name="teacher_number" Grid.Column="7" Text="{Binding Path=TeacherNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="8" Source="./Resource/interface/icons/student.png" Height="24" Width="24"></Image>
-            <TextBlock Name="student_number" Grid.Column="9" Text="{Binding ElementName=playerView, Path=StudentNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <Image Grid.Column="10" Source="{Binding ElementName=playerView, Path=BossStatus}" Height="24" Width="24"></Image>
+            <TextBlock Name="student_number" Grid.Column="9" Text="{Binding Path=StudentNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <Image Grid.Column="10" Source="{Binding Path=BossStatus}" Height="24" Width="24"></Image>
             <TextBlock Grid.Column="12" Text="Turn" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="13" Text="{Binding ElementName=game, Path=Turns}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="13" Text="{Binding Path=Turns}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="endGame" Content="Exit" Style="{StaticResource menu}"/>
         </Grid>
