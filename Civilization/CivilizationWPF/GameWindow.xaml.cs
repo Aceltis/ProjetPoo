@@ -36,7 +36,7 @@ namespace CivilizationWPF
             createPVM(game);
 
             beginTurn(pvm1);
-            
+
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             game.Map.afficher(pictureBox);
