@@ -44,7 +44,6 @@ namespace CivilizationWPF
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
             windowsFormsHost1.Child = sc;
-
         }
 
         private void beginTurn(PlayerViewModel p)

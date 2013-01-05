@@ -47,19 +47,19 @@ EXTERNC DLL int** Algo_createBonusesMap(Algo* algo, int h, int w, double r);
 void generateBMap(int** &bm, int h, int w, double r);
 
 //Generates the types map
-void generateMap(vector<vector<square>> &m);
+void generateMap(square** &m, int height, int width);
 
 // Returns True if the map has all its squares.
-bool mapFull(vector<vector<square>> &m);
+bool mapFull(square** &m, int height, int width);
 
 // Returns size of the current square's group.
-int groupSize(vector<vector<square>> &m, int i, int j);
+int groupSize(square** &m, int height, int width, int i, int j);
 
 //Returns true if all types are present in the map
-bool threeTypesPresent(vector<vector<square>> &m);
+bool threeTypesPresent(square** &m, int height, int width);
 
 //Returns true if able to change a group's type in order to make all types present on the map
-bool rearrangeGroups(vector<vector<square>> &m, int* t);
+bool rearrangeGroups(square** &m, int height, int width, int* t);
 
 //Changes a group's type
-void changeGroup(vector<vector<square>> &m, int i, int j, int it, int dt);
+void changeGroup(square** &m, int height, int width, int i, int j, int it, int dt);

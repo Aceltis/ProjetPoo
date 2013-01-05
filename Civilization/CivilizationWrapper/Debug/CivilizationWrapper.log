@@ -1,20 +1,22 @@
-﻿Build started 04/01/2013 21:50:29.
-     1>Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" on node 2 (build target(s)).
+﻿La génération a démarré 04/01/2013 22:39:10.
+     1>Projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" sur le nœud 2 (build cible(s)).
      1>InitializeBuildStatus:
-         Creating "Debug\CivilizationWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Création de "Debug\CivilizationWrapper.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
        GenerateTargetFrameworkMonikerAttribute:
-       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
        ClCompile:
-         All outputs are up-to-date.
-         All outputs are up-to-date.
+         Toutes les sorties sont à jour.
+         Toutes les sorties sont à jour.
        Link:
-         All outputs are up-to-date.
-         CivilizationWrapper.vcxproj -> D:\PROJET\Dev\ProjetPoo\Civilization\Debug\CivilizationWrapper.dll
+         Toutes les sorties sont à jour.
+         CivilizationWrapper.vcxproj -> C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\Debug\CivilizationWrapper.dll
+       MetaGen:
+       La cible est ignorée "MetaGen", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
        FinalizeBuildStatus:
-         Deleting file "Debug\CivilizationWrapper.unsuccessfulbuild".
-         Touching "Debug\CivilizationWrapper.lastbuildstate".
-     1>Done Building Project "D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" (build target(s)).
+         Suppression du fichier "Debug\CivilizationWrapper.unsuccessfulbuild".
+         Mise à jour de l'horodatage "Debug\CivilizationWrapper.lastbuildstate".
+     1>Génération du projet "C:\Users\msi\Documents\GitHub\ProjetPoo\Civilization\CivilizationWrapper\CivilizationWrapper.vcxproj" terminée (build cible(s)).
 
-Build succeeded.
+La génération a réussi.
 
-Time Elapsed 00:00:00.09
+Temps écoulé 00:00:00.15
