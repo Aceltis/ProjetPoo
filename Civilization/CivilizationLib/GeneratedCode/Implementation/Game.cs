@@ -14,46 +14,11 @@ namespace Implementation
 
     public class Game : IGame
     {
-<<<<<<< HEAD
-        public event PropertyChangedEventHandler PropertyChanged;
-        private int turns;
-        
         public virtual Dictionary<int,Player> Players { get; set; }
         public virtual Player Winner { get; set; }
         public virtual Dictionary<int,Player> Loosers { get; set; }
         public virtual Map Map { get; set; }
-=======
-        public virtual Dictionary<int,Player> Players
-        {
-            get;
-            set;
-        }
-
-        public virtual Player Winner
-        {
-            get;
-            set;
-        }
-
-        public virtual Dictionary<int,Player> Loosers
-        {
-            get;
-            set;
-        }
-
-        public virtual Map Map
-        {
-            get;
-            set;
-        }
->>>>>>> aceltis
-
-        public virtual int Turns
-        {
-            get;
-            set;
-        }
-
+        public virtual int Turns { get; set; }
 
         public Game(Dictionary<int, Player> joueurs, Map carte)
         {
