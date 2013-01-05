@@ -1,7 +1,0 @@
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Debug\CivilizationLib.dll
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Debug\CivilizationLib.pdb
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Debug\CivilizationWrapper.dll
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\bin\Debug\CivilizationWrapper.pdb
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\obj\Debug\CivilizationLib.csprojResolveAssemblyReference.cache
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\obj\Debug\CivilizationLib.dll
-D:\PROJET\Dev\ProjetPoo\Civilization\CivilizationLib\obj\Debug\CivilizationLib.pdb
