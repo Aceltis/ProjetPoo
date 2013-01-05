@@ -37,15 +37,13 @@ namespace Implementation
             if (players > 2)
             {
                 Map = new Map();
-                LargeMapStrategy strat = new LargeMapStrategy();
-                Map.setMapStrategy(strat);
+                Map.setMapStrategy(new LargeMapStrategy());
                 Map.createMap();
             }
             else
             {
                 Map = new Map();
-                SmallMapStrategy strat = new SmallMapStrategy();
-                Map.setMapStrategy(strat);
+                Map.setMapStrategy(new SmallMapStrategy());
                 Map.createMap();
             }
 		}

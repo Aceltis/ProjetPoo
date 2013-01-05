@@ -18,7 +18,7 @@ namespace Interfaces
 	{
         List<Case> grid { get; set; }
 
-        void afficher(PictureBox pb);
+        void afficher(object sender, PaintEventArgs e);
 	}
 }
 

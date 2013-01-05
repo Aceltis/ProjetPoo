@@ -12,16 +12,19 @@ namespace Implementation
 	using System.Linq;
 	using System.Text;
     using System.Windows.Forms;
+    using System.Drawing;
 
     public class Map : IMap
     {
 
         public virtual List<Case> grid { get; set; }
         private MapStrategy mapStrategy;
+        private CaseImageFlyweight FWimages;
 
         public Map()
         {
             grid = new List<Case>();
+            FWimages = new CaseImageFlyweight();
         }
 
         public void setMapStrategy(MapStrategy mapStrategy)
@@ -35,16 +38,10 @@ namespace Implementation
             mapStrategy.createMap(grid);
         }
 
-        public void afficher(PictureBox pb)
+        public void afficher(object sender, PaintEventArgs e)
         {
             for (int i = 0; i < grid.Count; i++)
-            {
-                if (!grid[i].drawn)
-                {
-                    pb.Paint += new System.Windows.Forms.PaintEventHandler(grid[i].afficher);
-                    grid[i].drawn = true;
-                }
-            }
+                grid[i].afficher(sender, e, FWimages);
         }
     }
 }

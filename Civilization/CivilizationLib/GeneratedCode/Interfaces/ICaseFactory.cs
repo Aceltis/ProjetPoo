@@ -15,7 +15,7 @@ namespace Interfaces
 	/// <remarks>Poids-Mouche</remarks>
 	public interface ICaseFactory 
 	{
-		Case getCase(int key);
+		Case makeCase(int type);
 	}
 }
 

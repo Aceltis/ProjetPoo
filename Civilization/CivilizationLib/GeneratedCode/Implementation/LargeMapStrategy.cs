@@ -24,8 +24,9 @@ namespace Implementation
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    map.Add(factory.getCase(algoMap[i][j]));
-                    factory.getCase(algoMap[i][j]).sqPos.Add(new int[2] { i, j });
+                    Case newCase = factory.makeCase(algoMap[i][j]);
+                    map.Add(newCase);
+                    newCase.sqPos = new int[2] { i, j };
                 }
             }
         }

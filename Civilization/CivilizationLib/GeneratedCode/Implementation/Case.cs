@@ -21,21 +21,17 @@ namespace Implementation
         public Case()
         {
             units = new List<Unit>();
-            sqPos = new List<int[]>();
-            drawn = false;
         }
 
         //Attributs
-        public virtual List<int[]> sqPos { get; set; }
+        public virtual int[] sqPos { get; set; }
         public virtual int minerals { get; set; }
         public virtual int food { get; set; }
-        public virtual bool drawn { get; set; }
-        public virtual Image squareImage { get; set; }
         public virtual List<Unit> units { get; set; }
         public virtual City city { get; set; }
 
         //Méthodes
-        public virtual void afficher(object sender, PaintEventArgs e)
+        public virtual void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw)
         {
             throw new System.NotImplementedException();
         }

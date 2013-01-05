@@ -11,23 +11,28 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Drawing;
 
 	public class CaseFactory : ICaseFactory
 	{
 
-        private Dictionary<int, Case> mapCases;
-
         public CaseFactory()
         {
-            mapCases = new Dictionary<int,Case>();
-            mapCases.Add(0, new Mountain());
-            mapCases.Add(1, new Plain());
-            mapCases.Add(2, new Desert());
         }
 
-        public Case getCase(int key)
+        public Case makeCase(int type)
         {
-            return (mapCases[key]);
+            switch (type)
+            {
+                case 0:
+                    return new Mountain();
+                case 1:
+                    return new Plain();
+                case 2:
+                    return new Desert();
+                default :
+                    throw new System.NotImplementedException();
+            }
         }
 	}
 }

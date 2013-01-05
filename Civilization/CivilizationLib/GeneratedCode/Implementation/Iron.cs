@@ -31,7 +31,7 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
-        public override void afficher(object sender, PaintEventArgs e)
+        public override void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw)
         {
             throw new System.NotImplementedException();
         }

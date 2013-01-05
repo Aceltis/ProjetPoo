@@ -39,7 +39,7 @@ namespace CivilizationWPF
             
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
-            game.Map.afficher(pictureBox);
+            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(game.Map.afficher);
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;

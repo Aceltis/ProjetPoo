@@ -62,6 +62,7 @@
     <Compile Include="GeneratedCode\Implementation\CaseFactory.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/CaseFactory/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fbaf5f57c-6ac9-4c2a-a727-8018f3ec5b2b</SourceModelReference>
     </Compile>
+    <Compile Include="GeneratedCode\Implementation\CaseImageFlyweight.cs" />
     <Compile Include="GeneratedCode\Implementation\City.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/City/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f1c899b86-58a2-4c3c-8043-cf46bcf25bf4</SourceModelReference>
     </Compile>
@@ -146,6 +147,7 @@
     <Compile Include="GeneratedCode\Interfaces\ICaseFactory.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ICaseFactory/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fd06b508f-c4aa-4330-be63-d445b970e40d</SourceModelReference>
     </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ICaseImageFlyweight.cs" />
     <Compile Include="GeneratedCode\Interfaces\ICity.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ICity/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f0fcda552-135a-4a7d-9e0d-70be405874a4</SourceModelReference>
     </Compile>

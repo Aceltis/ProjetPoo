@@ -20,8 +20,6 @@ namespace Implementation
         {
             food = 0;
             minerals = 2;
-
-            squareImage = Image.FromFile("../../../CivilizationWPF/Resource/map/fields/desert.png");
         }
 
         public override void removeUnit(int unit_id)
@@ -29,10 +27,9 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
-        public override void afficher(object sender, PaintEventArgs e)
+        public override void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw)
         {
-            for (int i = 0; i < sqPos.Count; i++)
-                e.Graphics.DrawImage(squareImage, 50 * sqPos[i][0], 50 * sqPos[i][1], 50, 50);
+            e.Graphics.DrawImage(fw.getCaseImage(2), 50 * sqPos[0], 50 * sqPos[1], 50, 50);
         }
     }
 }

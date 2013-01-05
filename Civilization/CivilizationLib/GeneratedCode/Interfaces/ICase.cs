@@ -16,15 +16,13 @@ namespace Interfaces
 
 	public interface ICase
     {
-        List<int[]> sqPos { get; set; }
+        int[] sqPos { get; set; }
         int minerals { get; set; }
         int food { get; set; }
-        bool drawn { get; set; }
-        Image squareImage { get; set; }
         List<Unit> units { get; set; }
         City city { get; set; }
 
-        void afficher(object sender, PaintEventArgs e);
+        void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw);
         void addUnit(Unit unit);
         void removeUnit(int unit_id);
 	}
