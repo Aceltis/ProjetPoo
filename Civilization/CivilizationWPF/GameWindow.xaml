@@ -56,13 +56,13 @@
     </Window.Resources>
     <Grid Name="mainGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*" />
-            <ColumnDefinition Width="802*" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="802" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*" />
-            <RowDefinition Height="500*" />
-            <RowDefinition Height="199*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="500" />
+            <RowDefinition Height="199" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Grid.ColumnSpan="2" Name="map" >
             <WindowsFormsHost Margin="0,0,0,0" Name="windowsFormsHost1" Cursor="Cross"/>
@@ -107,8 +107,10 @@
             <Button Grid.Column="15" Click="endGame" Content="Exit" Style="{StaticResource menu}"/>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="1" Name="field" Height="199" Width="802">
-            <Image Source="./Resource/interface/bottomRight/bottomField.png"  Height="199" Width="802" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+        <Grid Grid.Row="2" Grid.Column="1" Name="field" Visibility="Visible">
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomField.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
+            </Grid.Background>
             <TextBlock Text="{Binding Path=Food}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,535,39"/>
             <TextBlock Text="{Binding Path=AddFood}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,499,39"/>
             <TextBlock Text="{Binding Path=Iron}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,296,39"/>
@@ -130,7 +132,7 @@
                 <ColumnDefinition Width="127*" />
                 <ColumnDefinition Width="85*" />
             </Grid.ColumnDefinitions>
-            <Image Source="./Resource/interface/bottomRight/bottomUnit.png" Height="199" Width="802" Stretch="None" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            
             <TextBlock Text="{Binding Path=UnitType}" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4" Margin="146,36,133,30" Grid.RowSpan="2" />
             <TextBlock Text="{Binding Path=MovePoints}" Grid.Column="2" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,11"/>
             <TextBlock Text="{Binding Path=HP}" Grid.Column="0" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,13"/>
@@ -156,7 +158,9 @@
                 <ColumnDefinition Width="21*" />
                 <ColumnDefinition Width="249*" />
             </Grid.ColumnDefinitions>
-            <Image Source="./Resource/interface/bottomRight/bottomCity.png" Height="199" Width="802" Stretch="None" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomCity.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
+            </Grid.Background>
             <TextBlock Text="food(s) until a new citizen is born" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="12" Grid.Column="6" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,3" />
             <TextBlock Text="{Binding Path=NeededFood}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="20" Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
             <TextBlock Text="{Binding Path=Population}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" Grid.Column="4" Margin="133,9,120,18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
