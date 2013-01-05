@@ -11,10 +11,10 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
-    using System.ComponentModel;
 
-    public class Game : IGame, INotifyPropertyChanged
+    public class Game : IGame
     {
+<<<<<<< HEAD
         public event PropertyChangedEventHandler PropertyChanged;
         private int turns;
         
@@ -43,6 +43,13 @@ namespace Implementation
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
         }
+=======
+        public virtual Dictionary<int,Player> Players { get; set; }
+        public virtual Player Winner { get; set; }
+        public virtual Dictionary<int,Player> Loosers { get; set; }
+        public virtual Map Map { get; set; }
+        public virtual int Turns { get; set; }
+>>>>>>> 478377829635ac9860bfed7304a79b4cda7d6d5b
 
         public Game(Dictionary<int, IPlayer> joueurs, IMap carte)
         {
@@ -50,7 +57,7 @@ namespace Implementation
             Winner = null;
             Loosers = new Dictionary<int, IPlayer>();
             Map = carte;
-            turns = 1;
+            Turns = 1;
         }
 
         public virtual void addLooser(IPlayer p)

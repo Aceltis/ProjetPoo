@@ -88,6 +88,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GameViewModel.cs" />
     <Compile Include="HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
@@ -221,6 +222,44 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\exit_enabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\units\Blue\boss.png" />
+    <Resource Include="Resource\map\units\Blue\student.png" />
+    <Resource Include="Resource\map\units\Blue\student_alone.png" />
+    <Resource Include="Resource\map\units\Blue\student_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Blue\student_bonus.png" />
+    <Resource Include="Resource\map\units\Blue\teacher.png" />
+    <Resource Include="Resource\map\units\Blue\teacher_alone.png" />
+    <Resource Include="Resource\map\units\Blue\teacher_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Blue\teacher_bonus.png" />
+    <Resource Include="Resource\map\units\Green\boss.png" />
+    <Resource Include="Resource\map\units\Green\student.png" />
+    <Resource Include="Resource\map\units\Green\student_alone.png" />
+    <Resource Include="Resource\map\units\Green\student_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Green\student_bonus.png" />
+    <Resource Include="Resource\map\units\Green\teacher.png" />
+    <Resource Include="Resource\map\units\Green\teacher_alone.png" />
+    <Resource Include="Resource\map\units\Green\teacher_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Green\teacher_bonus.png" />
+    <Resource Include="Resource\map\units\Orange\boss.png" />
+    <Resource Include="Resource\map\units\Orange\student.png" />
+    <Resource Include="Resource\map\units\Orange\student_alone.png" />
+    <Resource Include="Resource\map\units\Orange\student_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Orange\student_bonus.png" />
+    <Resource Include="Resource\map\units\Orange\teacher.png" />
+    <Resource Include="Resource\map\units\Orange\teacher_alone.png" />
+    <Resource Include="Resource\map\units\Orange\teacher_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Orange\teacher_bonus.png" />
+    <Resource Include="Resource\map\units\Red\boss.png" />
+    <Resource Include="Resource\map\units\Red\student.png" />
+    <Resource Include="Resource\map\units\Red\student_alone.png" />
+    <Resource Include="Resource\map\units\Red\student_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Red\student_bonus.png" />
+    <Resource Include="Resource\map\units\Red\teacher.png" />
+    <Resource Include="Resource\map\units\Red\teacher_alone.png" />
+    <Resource Include="Resource\map\units\Red\teacher_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Red\teacher_bonus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
