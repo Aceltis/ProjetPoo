@@ -11,13 +11,14 @@ namespace Interfaces
 	using System.Linq;
 	using System.Text;
     using System.Windows.Forms;
-    using Implementation;
 
 	/// <remarks>Poids-Mouche</remarks>
 	public interface IMap 
 	{
-        List<Case> grid { get; set; }
+        List<ICase> grid { get; set; }
 
+        void setMapStrategy(IMapStrategy mapStrategy);
+        void createMap();
         void afficher(object sender, PaintEventArgs e);
 	}
 }

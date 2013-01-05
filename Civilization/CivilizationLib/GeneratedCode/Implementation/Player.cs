@@ -14,52 +14,14 @@ namespace Implementation
 
     public class Player : IPlayer
     {
-        public virtual string Pseudo
-        {
-            get;
-            set;
-        }
-
-        public virtual CivilizationType Civilization
-        {
-            get;
-            set;
-        }
-
-        public virtual List<City> Cities
-        {
-            get;
-            set;
-        }
-
-        public virtual IBoss Boss
-        {
-            get;
-            set;
-        }
-
-        public virtual List<IStudent> Students
-        {
-            get;
-            set;
-        }
-
-        public virtual List<ITeacher> Teachers
-        {
-            get;
-            set;
-        }
-
-        public virtual StatusType Status
-        {
-            get;
-            set;
-        }
-        public virtual String Color
-        {
-            get;
-            set;
-        }
+        public virtual string Pseudo { get; set; }
+        public virtual CivilizationType Civilization { get; set; }
+        public virtual List<ICity> Cities { get; set; }
+        public virtual IBoss Boss { get; set; }
+        public virtual List<IStudent> Students { get; set; }
+        public virtual List<ITeacher> Teachers { get; set; }
+        public virtual StatusType Status { get; set; }
+        public virtual String Color { get; set; }
 
         public Player(String name, String Civ, String col)
         {
@@ -86,7 +48,7 @@ namespace Implementation
             }
 
             Pseudo = name;
-            Cities = new List<City>();
+            Cities = new List<ICity>();
             Status = StatusType.InGame;
             Color = col;
             Boss = null;
@@ -122,7 +84,7 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
-        public virtual void produceUnits(City city, Unit unit)
+        public virtual void produceUnits(ICity city, IUnit unit)
         {
             throw new System.NotImplementedException();
         }

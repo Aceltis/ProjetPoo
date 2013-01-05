@@ -18,10 +18,10 @@ namespace Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private int turns;
         
-        public virtual Dictionary<int,Player> Players { get; set; }
-        public virtual Player Winner { get; set; }
-        public virtual Dictionary<int,Player> Loosers { get; set; }
-        public virtual Map Map { get; set; }
+        public virtual Dictionary<int,IPlayer> Players { get; set; }
+        public virtual IPlayer Winner { get; set; }
+        public virtual Dictionary<int,IPlayer> Loosers { get; set; }
+        public virtual IMap Map { get; set; }
 
         public virtual int Turns
         {
@@ -44,11 +44,11 @@ namespace Implementation
             }
         }
 
-        public Game(Dictionary<int, Player> joueurs, Map carte)
+        public Game(Dictionary<int, IPlayer> joueurs, IMap carte)
         {
             Players = joueurs;
             Winner = null;
-            Loosers = new Dictionary<int, Player>();
+            Loosers = new Dictionary<int, IPlayer>();
             Map = carte;
             turns = 1;
         }

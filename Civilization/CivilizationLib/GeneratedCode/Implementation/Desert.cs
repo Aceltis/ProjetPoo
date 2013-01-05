@@ -27,7 +27,7 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
-        public override void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw)
+        public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
         {
             e.Graphics.DrawImage(fw.getCaseImage(2), 50 * sqPos[0], 50 * sqPos[1], 50, 50);
         }

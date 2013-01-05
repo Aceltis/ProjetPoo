@@ -14,17 +14,8 @@ namespace Implementation
 
 	public class GameBuilder : IGameBuilder
 	{
-        public Dictionary<int,Player> Players
-        {
-            get;
-            set;
-        }
-
-        public Map Map
-        {
-            get;
-            set;
-        }
+        private Dictionary<int, IPlayer> Players;
+        public IMap Map { get; set; }
 
         public GameBuilder(int players, List<String> names, List<String> civs)
         {
@@ -50,7 +41,7 @@ namespace Implementation
 
 		public virtual void createPlayers(int players, List<String> names, List<String> civs)
 		{
-            Players = new Dictionary<int, Player>();
+            Players = new Dictionary<int, IPlayer>();
 
             if (players == 2)
             {
@@ -74,8 +65,7 @@ namespace Implementation
 
         public virtual IGame build()
         {
-            Game game = new Game(Players, Map);
-            return game;
+            return new Game(Players, Map);
         }
 
 	}

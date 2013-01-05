@@ -13,6 +13,16 @@ namespace Interfaces
 
 	public interface IPlayer 
 	{
+        string Pseudo { get; set; }
+        Implementation.CivilizationType Civilization { get; set; }
+        List<ICity> Cities { get; set; }
+        IBoss Boss { get; set; }
+        List<IStudent> Students { get; set; }
+        List<ITeacher> Teachers { get; set; }
+        Implementation.StatusType Status { get; set; }
+        String Color { get; set; }
+
+
 		void chooseCivilization();
 
 		void endTurn();
@@ -25,7 +35,7 @@ namespace Interfaces
 
 		void changeCityProduction();
 
-		void produceUnits(Implementation.City c, Implementation.Unit u);
+		void produceUnits(ICity c, IUnit u);
 
 	}
 }

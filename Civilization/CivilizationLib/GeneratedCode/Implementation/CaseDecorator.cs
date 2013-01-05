@@ -15,18 +15,14 @@ namespace Implementation
 
 	public class CaseDecorator : Case, ICaseDecorator
 	{
-		public virtual Case Case
-		{
-			get;
-			set;
-		}
+		public virtual Case Case { get;	set; }
 
 		public override void removeUnit(int unit_id)
 		{
 			throw new System.NotImplementedException();
 		}
 
-        public override void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw)
+        public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
 		{
 			throw new System.NotImplementedException();
 		}

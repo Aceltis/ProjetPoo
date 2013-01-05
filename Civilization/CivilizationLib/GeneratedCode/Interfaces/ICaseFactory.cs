@@ -10,12 +10,11 @@ namespace Interfaces
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
-    using Implementation;
 
 	/// <remarks>Poids-Mouche</remarks>
 	public interface ICaseFactory 
 	{
-		Case makeCase(int type);
+		ICase makeCase(int type);
 	}
 }
 

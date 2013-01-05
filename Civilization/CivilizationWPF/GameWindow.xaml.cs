@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
 using Wrapper;
 using Interfaces;
-using Implementation;
 
 namespace CivilizationWPF
 {
@@ -23,16 +22,16 @@ namespace CivilizationWPF
     /// </summary>
     public partial class GameWindow : Window
     {
-        Game game;
+        IGame game;
         PlayerViewModel pvm1;
         PlayerViewModel pvm2;
         PlayerViewModel pvm3;
         PlayerViewModel pvm4;
 
-        public GameWindow(GameBuilder builder)
+        public GameWindow(IGameBuilder builder)
         {
             InitializeComponent();
-            game = (Game)builder.build();
+            game = builder.build();
             createPVM(game);
 
             beginTurn(pvm1);
@@ -55,7 +54,7 @@ namespace CivilizationWPF
         {
         }
 
-        private void createPVM(Game g)
+        private void createPVM(IGame g)
         {
             pvm1 = new PlayerViewModel(g.Players[1]);
             pvm2 = new PlayerViewModel(g.Players[2]);

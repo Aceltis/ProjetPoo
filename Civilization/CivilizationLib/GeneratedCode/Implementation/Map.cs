@@ -17,17 +17,17 @@ namespace Implementation
     public class Map : IMap
     {
 
-        public virtual List<Case> grid { get; set; }
-        private MapStrategy mapStrategy;
+        public virtual List<ICase> grid { get; set; }
+        private IMapStrategy mapStrategy;
         private CaseImageFlyweight FWimages;
 
         public Map()
         {
-            grid = new List<Case>();
+            grid = new List<ICase>();
             FWimages = new CaseImageFlyweight();
         }
 
-        public void setMapStrategy(MapStrategy mapStrategy)
+        public void setMapStrategy(IMapStrategy mapStrategy)
         {
             this.mapStrategy = mapStrategy;
         }

@@ -13,6 +13,11 @@ namespace Interfaces
 
 	public interface IGame 
 	{
+        Dictionary<int, IPlayer> Players { get; set; }
+        IPlayer Winner { get; set; }
+        Dictionary<int, IPlayer> Loosers { get; set; }
+        IMap Map { get; set; }
+
 		void addLooser(IPlayer p);
 
 		void endGame();

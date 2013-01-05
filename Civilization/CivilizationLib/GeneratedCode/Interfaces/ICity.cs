@@ -13,7 +13,14 @@ namespace Interfaces
 
 	public interface ICity 
 	{
-		void produceBoss(Implementation.Unit unit);
+        int Population { get; set; }
+        ICase Position { get; set; }
+        IPlayer Player { get; set; }
+        Implementation.ProductionType Current_prod { get; set; }
+        int Owned_minerals { get; set; }
+        int Owned_food { get; set; }
+
+		void produceBoss(IUnit unit);
 
         void produceStudent();
 
@@ -23,7 +30,7 @@ namespace Interfaces
 
 		void upgradePopulation();
 
-        void spawnUnit(Implementation.Unit unit);
+        void spawnUnit(IUnit unit);
 
 	}
 }

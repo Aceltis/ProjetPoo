@@ -14,7 +14,7 @@ namespace Implementation
 
     public class TeacherINFO : Unit, ITeacher
     {
-        public TeacherINFO(Player p, Case c)
+        public TeacherINFO(IPlayer p, ICase c)
         {
             MovePoints = 3;
             AttackPoints = 0;

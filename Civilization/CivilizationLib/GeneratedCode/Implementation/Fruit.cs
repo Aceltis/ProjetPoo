@@ -15,11 +15,7 @@ namespace Implementation
 
 	public class Fruit : CaseDecorator, IFruit
 	{
-		public virtual int additional_food
-		{
-			get;
-			set;
-		}
+		public virtual int additional_food { get; set; }
 
 		public virtual void addFood(int additional_food)
 		{
@@ -31,7 +27,7 @@ namespace Implementation
 			throw new System.NotImplementedException();
 		}
 
-        public override void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw)
+        public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
 		{
 			throw new System.NotImplementedException();
 		}

@@ -24,43 +24,14 @@ namespace Implementation
             Owned_minerals = c.minerals;
         }
 
-        public virtual int Population
-        {
-            get;
-            set;
-        }
+        public virtual int Population { get; set; }
+        public virtual ICase Position { get; set; }
+        public virtual IPlayer Player { get; set; }
+        public virtual ProductionType Current_prod { get; set; }
+        public virtual int Owned_minerals { get; set; }
+        public virtual int Owned_food { get; set; }
 
-        public virtual Case Position
-        {
-            get;
-            set;
-        }
-
-        public virtual Player Player
-        {
-            get;
-            set;
-        }
-
-        public virtual ProductionType Current_prod
-        {
-            get;
-            set;
-        }
-
-        public virtual int Owned_minerals
-        {
-            get;
-            set;
-        }
-
-        public virtual int Owned_food
-        {
-            get;
-            set;
-        }
-
-        public virtual void produceBoss(Unit unit)
+        public virtual void produceBoss(IUnit unit)
         {
             if (Current_prod == ProductionType.None && Owned_minerals >= 200)
             {
@@ -93,7 +64,7 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
-        public virtual void spawnUnit(Unit unit)
+        public virtual void spawnUnit(IUnit unit)
         {
             throw new System.NotImplementedException();
         }

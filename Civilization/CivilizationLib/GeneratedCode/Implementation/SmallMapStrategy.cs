@@ -15,7 +15,7 @@ namespace Implementation
 
 	public class SmallMapStrategy : MapStrategy, ISmallMapStrategy
 	{
-		unsafe public override void createMap(List<Case> map)
+		unsafe public override void createMap(List<ICase> map)
 		{
             WrapperAlgo algo = new WrapperAlgo();
             CaseFactory factory = new CaseFactory();
@@ -24,7 +24,7 @@ namespace Implementation
             {
                 for (int i = 0; i < 25; i++)
                 {
-                    Case newCase = factory.makeCase(algoMap[i][j]);
+                    ICase newCase = factory.makeCase(algoMap[i][j]);
                     map.Add(newCase);
                     newCase.sqPos = new int[2] { i, j };
                 }

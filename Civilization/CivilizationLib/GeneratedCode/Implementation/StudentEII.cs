@@ -14,7 +14,7 @@ namespace Implementation
 
     public class StudentEII : Unit, IStudent
     {
-        public StudentEII(Player p, Case c)
+        public StudentEII(IPlayer p, ICase c)
         {
             MovePoints = 2;
             AttackPoints = 3;

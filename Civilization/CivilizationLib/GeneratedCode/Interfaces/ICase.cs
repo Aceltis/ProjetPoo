@@ -11,7 +11,6 @@ namespace Interfaces
 	using System.Linq;
 	using System.Text;
     using System.Windows.Forms;
-    using Implementation;
     using System.Drawing;
 
 	public interface ICase
@@ -19,11 +18,11 @@ namespace Interfaces
         int[] sqPos { get; set; }
         int minerals { get; set; }
         int food { get; set; }
-        List<Unit> units { get; set; }
-        City city { get; set; }
+        List<IUnit> units { get; set; }
+        ICity city { get; set; }
 
-        void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw);
-        void addUnit(Unit unit);
+        void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw);
+        void addUnit(IUnit unit);
         void removeUnit(int unit_id);
 	}
 }

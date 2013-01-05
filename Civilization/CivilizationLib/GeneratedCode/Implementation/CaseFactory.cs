@@ -20,7 +20,7 @@ namespace Implementation
         {
         }
 
-        public Case makeCase(int type)
+        public ICase makeCase(int type)
         {
             switch (type)
             {

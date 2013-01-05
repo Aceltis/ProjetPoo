@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
-using Implementation;
 using Interfaces;
 
 namespace CivilizationWPF
@@ -33,7 +32,7 @@ namespace CivilizationWPF
         {
         }
 
-        public PlayerViewModel(Player p)
+        public PlayerViewModel(IPlayer p)
         {
             name = p.Pseudo;
             color = p.Color;

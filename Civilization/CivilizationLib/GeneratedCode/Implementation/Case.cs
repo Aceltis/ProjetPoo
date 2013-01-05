@@ -20,30 +20,30 @@ namespace Implementation
 
         public Case()
         {
-            units = new List<Unit>();
+            units = new List<IUnit>();
         }
 
         //Attributs
         public virtual int[] sqPos { get; set; }
         public virtual int minerals { get; set; }
         public virtual int food { get; set; }
-        public virtual List<Unit> units { get; set; }
-        public virtual City city { get; set; }
+        public virtual List<IUnit> units { get; set; }
+        public virtual ICity city { get; set; }
 
         //Méthodes
-        public virtual void afficher(object sender, PaintEventArgs e, CaseImageFlyweight fw)
+        public virtual void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
         {
             throw new System.NotImplementedException();
         }
 
-        public virtual void addUnit(Unit unit)
+        public virtual void addUnit(IUnit unit)
         {
             units.Add(unit);
         }
 
         public virtual void removeUnit(int unit_id)
         {
-            foreach (Unit unit in units)
+            foreach (IUnit unit in units)
             {
                 if (unit.Id == unit_id)
                     units.Remove(unit);

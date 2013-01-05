@@ -14,7 +14,7 @@ namespace Implementation
 
 	public abstract class MapStrategy : IMapStrategy
 	{
-        public virtual void createMap(List<Case> map)
+        public virtual void createMap(List<ICase> map)
 		{
 			throw new System.NotImplementedException();
 		}
