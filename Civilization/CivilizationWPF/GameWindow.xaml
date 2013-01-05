@@ -32,6 +32,26 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="OnOffToggleImageStyle" TargetType="ToggleButton" BasedOn="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="./Resource/interface/prod_enabled.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="./Resource/interface/prod_disabled.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid Name="mainGrid">
         <Grid.ColumnDefinitions>
@@ -82,7 +102,7 @@
             <TextBlock Name="student_number" Grid.Column="9" Text="{Binding Path=StudentNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="10" Source="{Binding Path=BossStatus}" Height="24" Width="24"></Image>
             <TextBlock Grid.Column="12" Text="Turn" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="13" Text="{Binding Path=Turns}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
+            <TextBlock Name="turnsView" Grid.Column="13" Text="{Binding Path=Turns}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
             <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="endGame" Content="Exit" Style="{StaticResource menu}"/>
         </Grid>
@@ -113,26 +133,7 @@
             <Image Source="./Resource/interface/icons/iron.png" Height="38" Width="38" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="3"></Image>
             <TextBlock Name="iron_number" Text="5 (+4)" Grid.Column="2" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,5"></TextBlock>
             <TextBlock Text="Current Production" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="12" Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="42,0,0,106" Grid.RowSpan="2"/>
-            <Button Name="boss_prod" Click="prodBoss" Content="Boss" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="2,7,195,52" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3">
-                <Button.Effect>
-                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
-                </Button.Effect>
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Image Name="Normal" Source="./Resource/interface/prod_disabled.png" Height="26" Width="102"/>
-                            <Image Name="Over" Source="./Resource/interface/prod_enabled.png" Height="26" Width="102" Visibility="Hidden"/>
-                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
-                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <ToggleButton Name="prodBossView" Click="prodBoss" Content="Boss" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="2,7,195,52" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
             <Button Name="teacher_prod" Click="prodTeacher" Content="Teacher" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="87,7,73,52" Grid.Column="4" Grid.Row="2">
                 <Button.Effect>
                     <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>

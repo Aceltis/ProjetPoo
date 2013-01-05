@@ -24,6 +24,7 @@ namespace CivilizationWPF
     public partial class GameWindow : Window
     {
         Game game;
+        GameViewModel gvm;
         PlayerViewModel pvm1;
         PlayerViewModel pvm2;
         PlayerViewModel pvm3;
@@ -34,9 +35,16 @@ namespace CivilizationWPF
             InitializeComponent();
             game = (Game)builder.build();
             createPVM(game);
+            createGVM(game);
 
-            beginTurn(pvm1);
-            
+            beginTurn(pvm1, gvm);
+
+            drawMap(game);
+           
+        }
+        
+        private void drawMap(Game game)
+        {
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             game.Map.afficher(pictureBox);
@@ -46,13 +54,10 @@ namespace CivilizationWPF
             windowsFormsHost1.Child = sc;
         }
 
-        private void beginTurn(PlayerViewModel p)
+        private void beginTurn(PlayerViewModel p, GameViewModel g)
         {
             top.DataContext = p;
-        }
-
-        private void afficherTop(PlayerViewModel pvm)
-        {
+            turnsView.DataContext = g;
         }
 
         private void createPVM(Game g)
@@ -69,6 +74,11 @@ namespace CivilizationWPF
                 pvm3 = new PlayerViewModel(g.Players[3]);
                 pvm4 = new PlayerViewModel(g.Players[4]);
             }
+        }
+
+        private void createGVM(Game g)
+        {
+            gvm = new GameViewModel(g);
         }
 
         private void endTurn(object sender, RoutedEventArgs e)

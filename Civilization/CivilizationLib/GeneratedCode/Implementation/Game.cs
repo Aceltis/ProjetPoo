@@ -11,13 +11,9 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
-    using System.ComponentModel;
 
-    public class Game : IGame, INotifyPropertyChanged
+    public class Game : IGame
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private int turns;
-        
         public virtual Dictionary<int,Player> Players
         {
             get;
@@ -44,24 +40,10 @@ namespace Implementation
 
         public virtual int Turns
         {
-            get
-            {
-                return turns;
-            }
-            set
-            {
-                turns = value;
-                OnPropertyChanged("Turns");
-            }
+            get;
+            set;
         }
 
-        private void OnPropertyChanged(String property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
-        }
 
         public Game(Dictionary<int, Player> joueurs, Map carte)
         {
@@ -69,7 +51,7 @@ namespace Implementation
             Winner = null;
             Loosers = new Dictionary<int, Player>();
             Map = carte;
-            turns = 1;
+            Turns = 1;
         }
 
         public virtual void addLooser(IPlayer p)
