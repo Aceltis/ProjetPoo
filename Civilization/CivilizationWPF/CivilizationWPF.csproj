@@ -88,6 +88,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CityViewModel.cs" />
     <Compile Include="GameViewModel.cs" />
     <Compile Include="HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
@@ -157,20 +158,17 @@
     <Resource Include="Resource\interface\icons\teacher.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\city.png" />
+    <Resource Include="Resource\interface\bottomLeft\city.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\bouton1.png" />
-    <Resource Include="Resource\interface\bouton2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resource\interface\splash.png" />
+    <Resource Include="Resource\interface\bottomLeft\order1.png" />
+    <Resource Include="Resource\interface\bottomLeft\order2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\top.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\bottom_right.png" />
+    <Resource Include="Resource\interface\bottomRight\bottomCity.png" />
     <ProjectReference Include="..\CivilizationLib\CivilizationLib.csproj">
       <Project>{063F864D-6F7E-4C77-B473-440EF1BD2D99}</Project>
       <Name>CivilizationLib</Name>
@@ -179,8 +177,6 @@
       <Project>{02207F43-43A9-4023-930D-36D1EA87C2B4}</Project>
       <Name>CivilizationWrapper</Name>
     </ProjectReference>
-    <Resource Include="Resource\interface\menu1.png" />
-    <Resource Include="Resource\interface\menu2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\icons\food.png" />
@@ -190,8 +186,8 @@
     <Resource Include="Resource\interface\icons\timer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\prod_disabled.png" />
-    <Resource Include="Resource\interface\prod_enabled.png" />
+    <Resource Include="Resource\interface\bottomRight\prod_disabled.png" />
+    <Resource Include="Resource\interface\bottomRight\prod_enabled.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\map\fields\desert.png" />
@@ -215,10 +211,10 @@
     <Resource Include="Resource\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\accueil.png" />
-    <Resource Include="Resource\interface\Boss.png" />
-    <Resource Include="Resource\interface\student.png" />
-    <Resource Include="Resource\interface\teacher.png" />
+    <Resource Include="Resource\interface\bottomLeft\accueil.png" />
+    <Resource Include="Resource\interface\bottomLeft\Boss.png" />
+    <Resource Include="Resource\interface\bottomLeft\student.png" />
+    <Resource Include="Resource\interface\bottomLeft\teacher.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\exit_enabled.png" />
@@ -260,6 +256,11 @@
     <Resource Include="Resource\map\units\Red\teacher_alone.png" />
     <Resource Include="Resource\map\units\Red\teacher_alone_bonus.png" />
     <Resource Include="Resource\map\units\Red\teacher_bonus.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomRight\bottomField.png" />
+    <Resource Include="Resource\interface\bottomRight\bottomUnit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

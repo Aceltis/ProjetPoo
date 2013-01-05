@@ -38,14 +38,14 @@
                 <Trigger Property="IsChecked" Value="True">
                     <Setter Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="./Resource/interface/prod_enabled.png" />
+                            <ImageBrush ImageSource="./Resource/interface/bottomRight/prod_enabled.png" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
                 <Trigger Property="IsChecked" Value="False">
                     <Setter Property="Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="./Resource/interface/prod_disabled.png"/>
+                            <ImageBrush ImageSource="./Resource/interface/bottomRight/prod_disabled.png"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>

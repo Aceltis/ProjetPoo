@@ -24,6 +24,7 @@ namespace Implementation
             Owned_minerals = c.minerals;
         }
 
+        public virtual String Name { get; set; }
         public virtual int Population { get; set; }
         public virtual ICase Position { get; set; }
         public virtual IPlayer Player { get; set; }

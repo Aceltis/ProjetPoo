@@ -12,6 +12,7 @@ namespace Implementation
 	using System.Linq;
 	using System.Text;
 
+
     public class Player : IPlayer
     {
         public virtual string Pseudo { get; set; }

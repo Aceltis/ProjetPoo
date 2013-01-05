@@ -13,6 +13,7 @@ namespace Interfaces
 
 	public interface ICity 
 	{
+        String Name { get; set; }
         int Population { get; set; }
         ICase Position { get; set; }
         IPlayer Player { get; set; }

@@ -25,10 +25,10 @@ namespace CivilizationWPF
 
         IGame game;
         GameViewModel gvm;
-        PlayerViewModel pvm1;
-        PlayerViewModel pvm2;
-        PlayerViewModel pvm3;
-        PlayerViewModel pvm4;
+        Dictionary<IPlayer, PlayerViewModel> pToPvm;
+        Dictionary<IPlayer, Dictionary<ICity, CityViewModel>> cToCvm;
+        IPlayer currentPlayer;
+        Object selectedItem;
 
         public GameWindow(IGameBuilder builder)
         {
@@ -37,10 +37,9 @@ namespace CivilizationWPF
             createPVM(game);
             createGVM(game);
 
-            beginTurn(pvm1, gvm);
+            beginTurn(pToPvm[game.Players[1]], gvm);
 
             drawMap(game);
-           
         }
         
         private void drawMap(IGame game)
@@ -58,21 +57,39 @@ namespace CivilizationWPF
         {
             top.DataContext = p;
             turnsView.DataContext = g;
+
+            /*
+            if (selectedItem == typeof(ICase))
+            {
+            }
+            else if (selectedItem == typeof(ICity))
+            {
+            }
+            else
+            {
+                //unit
+            } */
+        }
+
+        private void nextTurn()
+        {
+            
         }
 
         private void createPVM(IGame g)
         {
-            pvm1 = new PlayerViewModel(g.Players[1]);
-            pvm2 = new PlayerViewModel(g.Players[2]);
+            pToPvm = new Dictionary<IPlayer, PlayerViewModel>();
+            pToPvm.Add(g.Players[1], new PlayerViewModel(g.Players[1]));
+            pToPvm.Add(g.Players[2], new PlayerViewModel(g.Players[2]));
 
             if (g.Players.Count() == 3)
             {
-                pvm3 = new PlayerViewModel(g.Players[3]);
+                pToPvm.Add(g.Players[3], new PlayerViewModel(g.Players[3]));
             }
             else if (g.Players.Count() == 4)
             {
-                pvm3 = new PlayerViewModel(g.Players[3]);
-                pvm4 = new PlayerViewModel(g.Players[4]);
+                pToPvm.Add(g.Players[3], new PlayerViewModel(g.Players[3]));
+                pToPvm.Add(g.Players[4], new PlayerViewModel(g.Players[4]));
             }
         }
 
@@ -97,15 +114,30 @@ namespace CivilizationWPF
 
         private void prodStudent(object sender, RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show("Enabled");
+            prodBossView.IsChecked = false;
+            prodTeacherView.IsChecked = false;
+            prodStudentView.IsChecked = true;
+            timerStudentView.Visibility = Visibility.Visible;
+            timerTeacherView.Visibility = Visibility.Hidden;
+            timerBossView.Visibility = Visibility.Hidden;
         }
         private void prodBoss(object sender, RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show("Enabled");
+            prodBossView.IsChecked = true;
+            prodTeacherView.IsChecked = false;
+            prodStudentView.IsChecked = false;
+            timerStudentView.Visibility = Visibility.Hidden;
+            timerTeacherView.Visibility = Visibility.Hidden;
+            timerBossView.Visibility = Visibility.Visible;
         }
         private void prodTeacher(object sender, RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show("Enabled");
+            prodBossView.IsChecked = false;
+            prodTeacherView.IsChecked = true;
+            prodStudentView.IsChecked = false;
+            timerStudentView.Visibility = Visibility.Hidden;
+            timerTeacherView.Visibility = Visibility.Visible;
+            timerBossView.Visibility = Visibility.Hidden;
         }
     }
 }
