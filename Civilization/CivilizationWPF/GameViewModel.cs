@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
-using Implementation;
 using Interfaces;
 
 namespace CivilizationWPF
@@ -23,7 +22,7 @@ namespace CivilizationWPF
             }
         }
 
-        public GameViewModel(Game g)
+        public GameViewModel(IGame g)
         {
             turns = g.Turns.ToString();
         }

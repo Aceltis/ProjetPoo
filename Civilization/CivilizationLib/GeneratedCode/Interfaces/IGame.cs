@@ -17,6 +17,7 @@ namespace Interfaces
         IPlayer Winner { get; set; }
         Dictionary<int, IPlayer> Loosers { get; set; }
         IMap Map { get; set; }
+        int Turns { get; set; }
 
 		void addLooser(IPlayer p);
 

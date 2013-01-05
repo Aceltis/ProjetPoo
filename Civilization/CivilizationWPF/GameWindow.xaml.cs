@@ -22,12 +22,9 @@ namespace CivilizationWPF
     /// </summary>
     public partial class GameWindow : Window
     {
-<<<<<<< HEAD
+
         IGame game;
-=======
-        Game game;
         GameViewModel gvm;
->>>>>>> 478377829635ac9860bfed7304a79b4cda7d6d5b
         PlayerViewModel pvm1;
         PlayerViewModel pvm2;
         PlayerViewModel pvm3;
@@ -46,7 +43,7 @@ namespace CivilizationWPF
            
         }
         
-        private void drawMap(Game game)
+        private void drawMap(IGame game)
         {
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
@@ -79,7 +76,7 @@ namespace CivilizationWPF
             }
         }
 
-        private void createGVM(Game g)
+        private void createGVM(IGame g)
         {
             gvm = new GameViewModel(g);
         }

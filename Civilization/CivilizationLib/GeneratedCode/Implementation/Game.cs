@@ -14,42 +14,11 @@ namespace Implementation
 
     public class Game : IGame
     {
-<<<<<<< HEAD
-        public event PropertyChangedEventHandler PropertyChanged;
-        private int turns;
-        
         public virtual Dictionary<int,IPlayer> Players { get; set; }
         public virtual IPlayer Winner { get; set; }
         public virtual Dictionary<int,IPlayer> Loosers { get; set; }
         public virtual IMap Map { get; set; }
-
-        public virtual int Turns
-        {
-            get
-            {
-                return turns;
-            }
-            set
-            {
-                turns = value;
-                OnPropertyChanged("Turns");
-            }
-        }
-
-        private void OnPropertyChanged(String property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
-        }
-=======
-        public virtual Dictionary<int,Player> Players { get; set; }
-        public virtual Player Winner { get; set; }
-        public virtual Dictionary<int,Player> Loosers { get; set; }
-        public virtual Map Map { get; set; }
         public virtual int Turns { get; set; }
->>>>>>> 478377829635ac9860bfed7304a79b4cda7d6d5b
 
         public Game(Dictionary<int, IPlayer> joueurs, IMap carte)
         {
