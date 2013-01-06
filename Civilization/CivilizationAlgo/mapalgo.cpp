@@ -83,7 +83,7 @@ void generateMap(square** &map, int height, int width){
 				{
 					if(map[i][j].state!=2){
 						//Can the given square be included in a 4 (or more) square group ?
-						if(groupSize(map, height, width, i, j)>=4){
+						if(groupSize(map, height, width, i, j)>=8){
 							//Yes. Then all the squares in the same groupe are to be frozen
 							map[i][j].state=2;
 							for(int k = 0; k<height; k++)
@@ -140,15 +140,15 @@ int groupSize(square** &map, int height, int width, int i, int j){
 	int counter=1, stop=0;
 	map[i][j].state=1;
 	//If a square standing next to current square is in a 4square group and is the same type, current square is in a 4sq groupe
-	if (i+1<height && stop == 0)	{if(map[i+1][j].type==map[i][j].type && map[i+1][j].state==2)	{counter=4; stop=1;}}
-	if (j+1<width && stop == 0)	{if(map[i][j+1].type==map[i][j].type && map[i][j+1].state==2)	{counter=4; stop=1;}}
-	if (i>0 && stop == 0)				{if(map[i-1][j].type==map[i][j].type && map[i-1][j].state==2)	{counter=4; stop=1;}}
-	if (j>0 && stop == 0)				{if(map[i][j-1].type==map[i][j].type && map[i][j-1].state==2)	{counter=4; stop=1;}}
+	if (i+1<height && stop == 0){if(map[i+1][j].type==map[i][j].type && map[i+1][j].state==2)	{counter=8; stop=1;}}
+	if (j+1<width && stop == 0)	{if(map[i][j+1].type==map[i][j].type && map[i][j+1].state==2)	{counter=8; stop=1;}}
+	if (i>0 && stop == 0)		{if(map[i-1][j].type==map[i][j].type && map[i-1][j].state==2)	{counter=8; stop=1;}}
+	if (j>0 && stop == 0)		{if(map[i][j-1].type==map[i][j].type && map[i][j-1].state==2)	{counter=8; stop=1;}}
 
-	if (i+1<height && stop == 0)	{if(map[i+1][j].type==map[i][j].type && map[i+1][j].state!=1) counter += groupSize(map, height, width, i+1, j);}
+	if (i+1<height && stop == 0){if(map[i+1][j].type==map[i][j].type && map[i+1][j].state!=1) counter += groupSize(map, height, width, i+1, j);}
 	if (j+1<width && stop == 0)	{if(map[i][j+1].type==map[i][j].type && map[i][j+1].state!=1) counter += groupSize(map, height, width, i, j+1);}
-	if (i>0 && stop == 0)				{if(map[i-1][j].type==map[i][j].type && map[i-1][j].state!=1) counter += groupSize(map, height, width, i-1, j);}
-	if (j>0 && stop == 0)				{if(map[i][j-1].type==map[i][j].type && map[i][j-1].state!=1) counter += groupSize(map, height, width, i, j-1);}
+	if (i>0 && stop == 0)		{if(map[i-1][j].type==map[i][j].type && map[i-1][j].state!=1) counter += groupSize(map, height, width, i-1, j);}
+	if (j>0 && stop == 0)		{if(map[i][j-1].type==map[i][j].type && map[i][j-1].state!=1) counter += groupSize(map, height, width, i, j-1);}
 	return counter;
 }
 

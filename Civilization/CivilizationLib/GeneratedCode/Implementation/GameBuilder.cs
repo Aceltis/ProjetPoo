@@ -25,22 +25,31 @@ namespace Implementation
 
 		public virtual void createMap(int players)
 		{
-            if (players > 2)
+            if (players == 4)
             {
                 Map = new Map();
                 Map.setMapStrategy(new LargeMapStrategy());
                 Map.createMap();
+                Map.grid[10 + 10 * 100].addUnit(new TeacherEII(Players.ElementAt(0), Map.grid[10 + 10 * 100]));
+                Map.grid[90 + 10 * 100].addUnit(new TeacherEII(Players.ElementAt(1), Map.grid[90 + 10 * 100]));
+                Map.grid[10 + 90 * 100].addUnit(new TeacherEII(Players.ElementAt(2), Map.grid[10 + 90 * 100]));
+                Map.grid[90 + 90 * 100].addUnit(new TeacherEII(Players.ElementAt(3), Map.grid[90 + 90 * 100]));
+            }
+            else if (players == 3)
+            {
+                Map = new Map();
+                Map.setMapStrategy(new LargeMapStrategy());
+                Map.createMap();
+                Map.grid[5 + 5 * 25].addUnit(new TeacherEII(Players.ElementAt(0), Map.grid[5 + 5 * 25]));
+                Map.grid[20 + 20 * 25].addUnit(new TeacherEII(Players.ElementAt(1), Map.grid[20 + 20 * 25]));
             }
             else
             {
                 Map = new Map();
                 Map.setMapStrategy(new SmallMapStrategy());
                 Map.createMap();
-                Map.grid[60].addUnit(new TeacherEII(Players.First(), Map.grid[60]));
-                Map.grid[45].addUnit(new StudentEII(Players.First(), Map.grid[45]));
-                Map.grid[75].addUnit(new TeacherEII(Players.First(), Map.grid[75]));
-                Map.grid[30].addUnit(new TeacherEII(Players.First(), Map.grid[30]));
-                Map.grid[100].city = new City(Players.First(), Map.grid[100]);
+                Map.grid[5 + 5 * 25].addUnit(new TeacherEII(Players.ElementAt(0), Map.grid[5 + 5 * 25]));
+                Map.grid[20 + 20 * 25].addUnit(new TeacherEII(Players.ElementAt(1), Map.grid[20 + 20 * 25]));
             }
 		}
 
