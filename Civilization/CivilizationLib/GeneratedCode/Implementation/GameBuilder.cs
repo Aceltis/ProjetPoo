@@ -36,6 +36,11 @@ namespace Implementation
                 Map = new Map();
                 Map.setMapStrategy(new SmallMapStrategy());
                 Map.createMap();
+                Map.grid[60].addUnit(new TeacherEII(Players.First(), Map.grid[60]));
+                Map.grid[45].addUnit(new StudentEII(Players.First(), Map.grid[45]));
+                Map.grid[75].addUnit(new TeacherEII(Players.First(), Map.grid[75]));
+                Map.grid[30].addUnit(new TeacherEII(Players.First(), Map.grid[30]));
+                Map.grid[100].city = new City(Players.First(), Map.grid[100]);
             }
 		}
 
@@ -45,21 +50,21 @@ namespace Implementation
 
             if (players == 2)
             {
-                Players.Enqueue(new Player(names[0], civs[0], "Red"));
-                Players.Enqueue(new Player(names[1], civs[1], "Blue"));
+                Players.Enqueue(new Player(names[0], civs[0], PlayerColor.Red));
+                Players.Enqueue(new Player(names[1], civs[1], PlayerColor.Blue));
             }
             else if (players == 3)
             {
-                Players.Enqueue(new Player(names[0], civs[0], "Red"));
-                Players.Enqueue(new Player(names[1], civs[1], "Blue"));
-                Players.Enqueue(new Player(names[2], civs[2], "Orange"));
+                Players.Enqueue(new Player(names[0], civs[0], PlayerColor.Red));
+                Players.Enqueue(new Player(names[1], civs[1], PlayerColor.Blue));
+                Players.Enqueue(new Player(names[2], civs[2], PlayerColor.Orange));
             }
             else
             {
-                Players.Enqueue(new Player(names[0], civs[0], "Red"));
-                Players.Enqueue(new Player(names[1], civs[1], "Blue"));
-                Players.Enqueue(new Player(names[2], civs[2], "Orange"));
-                Players.Enqueue(new Player(names[3], civs[3], "Green"));
+                Players.Enqueue(new Player(names[0], civs[0], PlayerColor.Red));
+                Players.Enqueue(new Player(names[1], civs[1], PlayerColor.Blue));
+                Players.Enqueue(new Player(names[2], civs[2], PlayerColor.Orange));
+                Players.Enqueue(new Player(names[3], civs[3], PlayerColor.Green));
             }
 		}
 

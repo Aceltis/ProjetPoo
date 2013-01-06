@@ -9,7 +9,8 @@ namespace Interfaces
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
+    using System.Text;
+    using System.Windows.Forms;
 
 	public interface IUnit 
 	{
@@ -23,11 +24,14 @@ namespace Interfaces
         int CreationTime { get; set; }
         int Id { get; set; }
 
+
 		void move(int x, int y);
 
 		void passTurn();
 
 		void defend();
+
+        void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y);
 	}
 }
 

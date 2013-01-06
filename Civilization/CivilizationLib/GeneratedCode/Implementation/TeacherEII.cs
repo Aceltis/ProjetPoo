@@ -11,6 +11,8 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Windows.Forms;
+    using System.Drawing;
 
     public class TeacherEII : Unit, ITeacher
     {
@@ -27,6 +29,11 @@ namespace Implementation
         public virtual void createCity()
         {
             throw new System.NotImplementedException();
+        }
+
+        public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)
+        {
+            e.Graphics.DrawImage(fw.getUnitImage(6, Player.Color), x + 6, y + 6, 38, 38);
         }
     }
 }

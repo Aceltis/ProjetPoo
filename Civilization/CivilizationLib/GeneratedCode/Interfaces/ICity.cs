@@ -9,7 +9,8 @@ namespace Interfaces
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
+    using System.Text;
+    using System.Windows.Forms;
 
 	public interface ICity 
 	{
@@ -33,6 +34,7 @@ namespace Interfaces
 
         void spawnUnit(IUnit unit);
 
+        void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y);
 	}
 }
 

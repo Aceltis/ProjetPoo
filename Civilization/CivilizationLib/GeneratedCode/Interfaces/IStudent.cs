@@ -9,11 +9,12 @@ namespace Interfaces
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
+    using System.Text;
+    using System.Windows.Forms;
 
 	public interface IStudent  : IUnit
 	{
-		void attack();
+        void attack();
 	}
 }
 

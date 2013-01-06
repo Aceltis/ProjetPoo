@@ -23,6 +23,11 @@ namespace Implementation
             units = new List<IUnit>();
         }
 
+        public Case(Case caseToCopy)
+        {
+
+        }
+
         //Attributs
         public virtual int[] sqPos { get; set; }
         public virtual int minerals { get; set; }

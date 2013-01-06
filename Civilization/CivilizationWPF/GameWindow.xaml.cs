@@ -172,12 +172,14 @@ namespace CivilizationWPF
         {
         }
 
+        //Give focus to the map when mouse enters map's area
         private void pictureBox_giveFocus(object sender, EventArgs e)
         {
             windowsFormsHost1.Child.Focus();
         }
 
-        //Give focus to the map when mouse enters corresponding area
+        //Give focus to the map when mouse clicks map's area
+        //+ Select appropriate Square
         private void pictureBox_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             windowsFormsHost1.Child.Focus();
@@ -188,7 +190,7 @@ namespace CivilizationWPF
             pb.Refresh();
         }
 
-/*        private void sc_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
+/*      private void sc_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
         {
             System.Windows.Forms.ScrollableControl sc = (System.Windows.Forms.ScrollableControl)sender;
             switch (e.KeyValue)

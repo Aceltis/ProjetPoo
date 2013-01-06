@@ -9,5 +9,8 @@
     public interface ICaseImageFlyweight
     {
         Image getCaseImage(int key);
+        Image getBonusImage(int key);
+        Image getCityImage(int key);
+        Image getUnitImage(int key, Implementation.PlayerColor col);
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="GeneratedCode\Implementation\CivilizationType.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/CivilizationType/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fb2d71d48-a588-439c-abb6-0a23fdbaeb54</SourceModelReference>
     </Compile>
+    <Compile Include="GeneratedCode\Implementation\PlayerColor.cs" />
     <Compile Include="GeneratedCode\Implementation\Desert.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Desert/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fec51e243-3ce0-4c3f-8a03-4ef7ab951111</SourceModelReference>
     </Compile>

@@ -41,7 +41,31 @@ namespace Implementation
         public void afficher(object sender, PaintEventArgs e)
         {
             for (int i = 0; i < grid.Count; i++)
+            {
+                int x = 50 * grid[i].sqPos[0];
+                int y = 50 * grid[i].sqPos[1];
                 grid[i].afficher(sender, e, FWimages);
+
+                //Affichage des unités
+                foreach (IUnit unit in grid[i].units)
+                    unit.afficher(sender, e, FWimages, x, y);
+
+                //Affichage de la ville
+                if (grid[i].city != null)
+                    grid[i].city.afficher(sender, e, FWimages, x, y);
+
+                //Surligne la case
+                //Doit être mis ici pour être 100% sûr que cela soit ce qui s'affiche en DERNIER
+                //et aussi éviter les répétitions
+                if (grid[i].Selected)
+                {
+                    Pen brown = new Pen(Color.SaddleBrown, 2);
+                    e.Graphics.DrawLine(brown, x + 1, y + 1, x + 49, y + 1);
+                    e.Graphics.DrawLine(brown, x + 49, y + 1, x + 49, y + 49);
+                    e.Graphics.DrawLine(brown, x + 49, y + 49, x + 1, y + 49);
+                    e.Graphics.DrawLine(brown, x + 1, y + 49, x + 1, y + 1);
+                }
+            }
         }
 
         public void select(int x, int y)

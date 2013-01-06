@@ -12,28 +12,27 @@ namespace Implementation
 	using System.Linq;
 	using System.Text;
     using System.Windows.Forms;
+    using System.Drawing;
 
     public class Iron : CaseDecorator, IIron
     {
-        public virtual int additional_minerals
+        public Iron(ICase caseToDecorate)
         {
-            get;
-            set;
+            Case = caseToDecorate;
+            additional_minerals = 2;
         }
+
+        public virtual int additional_minerals { get; set; }
 
         public virtual void addMinerals(int additional_minerals)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void removeUnit(int unit_id)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
         {
-            throw new System.NotImplementedException();
+            Case.afficher(sender, e, fw);
+            e.Graphics.DrawImage(fw.getBonusImage(1), 50 * sqPos[0], 50 * sqPos[1], 50, 50);
         }
 
     }

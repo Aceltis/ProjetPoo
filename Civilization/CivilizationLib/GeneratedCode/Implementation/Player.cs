@@ -22,9 +22,9 @@ namespace Implementation
         public virtual List<IStudent> Students { get; set; }
         public virtual List<ITeacher> Teachers { get; set; }
         public virtual StatusType Status { get; set; }
-        public virtual String Color { get; set; }
+        public virtual Implementation.PlayerColor Color { get; set; }
 
-        public Player(String name, String Civ, String col)
+        public Player(String name, String Civ, Implementation.PlayerColor col)
         {
             if (Civ == "INFO")
             {

@@ -10,7 +10,9 @@ namespace Implementation
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
+    using System.Text;
+    using System.Windows.Forms;
+    using System.Drawing;
 
     public class Unit : IUnit
     {
@@ -42,6 +44,11 @@ namespace Implementation
         }
 
         public virtual void defend()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public virtual void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)
         {
             throw new System.NotImplementedException();
         }

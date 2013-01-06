@@ -13,7 +13,7 @@ namespace CivilizationWPF
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string name;
-        private string color;
+        private Implementation.PlayerColor color;
         private string civilization;
         private string cityNumber;
         private string teacherNumber;
@@ -56,7 +56,7 @@ namespace CivilizationWPF
             }
         }
 
-        public String Color
+        public Implementation.PlayerColor Color
         {
             get
             {

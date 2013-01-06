@@ -10,10 +10,14 @@ namespace Interfaces
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using System.Windows.Forms;
 
 	/// <remarks>Decorateur</remarks>
 	public interface ICaseDecorator  : ICase
 	{
+        ICase Case { get; set; }
+
+        void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw);
 	}
 }
 

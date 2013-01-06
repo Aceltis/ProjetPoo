@@ -10,11 +10,13 @@ namespace Implementation
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
+    using System.Text;
+    using System.Windows.Forms;
+    using System.Drawing;
 
     public class City : ICity
     {
-        public City(Player p, Case c)
+        public City(IPlayer p, ICase c)
         {
             Population = 1;
             Position = c;
@@ -70,6 +72,10 @@ namespace Implementation
             throw new System.NotImplementedException();
         }
 
+        public virtual void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)
+        {
+            e.Graphics.DrawImage(fw.getCityImage((int)Player.Color), x, y, 50, 50);
+        }
     }
 }
 

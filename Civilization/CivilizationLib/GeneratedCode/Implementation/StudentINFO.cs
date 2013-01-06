@@ -10,7 +10,9 @@ namespace Implementation
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
+    using System.Text;
+    using System.Windows.Forms;
+    using System.Drawing;
 
     public class StudentINFO : Unit, IStudent
     {
@@ -27,6 +29,11 @@ namespace Implementation
         public virtual void attack()
         {
             throw new System.NotImplementedException();
+        }
+
+        public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)
+        {
+            e.Graphics.DrawImage(fw.getUnitImage(2, Player.Color), x + 6, y + 6, 38, 38);
         }
     }
 }

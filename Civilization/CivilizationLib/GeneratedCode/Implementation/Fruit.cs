@@ -12,9 +12,16 @@ namespace Implementation
 	using System.Linq;
 	using System.Text;
     using System.Windows.Forms;
+    using System.Drawing;
 
 	public class Fruit : CaseDecorator, IFruit
 	{
+        public Fruit(ICase caseToDecorate)
+        {
+            Case = caseToDecorate;
+            additional_food = 2;
+        }
+
 		public virtual int additional_food { get; set; }
 
 		public virtual void addFood(int additional_food)
@@ -22,14 +29,10 @@ namespace Implementation
 			throw new System.NotImplementedException();
 		}
 
-		public override void removeUnit(int unit_id)
-		{
-			throw new System.NotImplementedException();
-		}
-
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
-		{
-			throw new System.NotImplementedException();
+        {
+            Case.afficher(sender, e, fw);
+            e.Graphics.DrawImage(fw.getBonusImage(0), 50 * sqPos[0], 50 * sqPos[1], 50, 50);
 		}
 
 	}

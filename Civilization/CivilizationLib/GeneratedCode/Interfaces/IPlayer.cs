@@ -20,7 +20,7 @@ namespace Interfaces
         List<IStudent> Students { get; set; }
         List<ITeacher> Teachers { get; set; }
         Implementation.StatusType Status { get; set; }
-        String Color { get; set; }
+        Implementation.PlayerColor Color { get; set; }
 
 
 		void chooseCivilization();
