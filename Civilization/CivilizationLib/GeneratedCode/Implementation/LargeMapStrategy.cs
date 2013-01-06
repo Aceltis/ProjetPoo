@@ -20,7 +20,7 @@ namespace Implementation
             WrapperAlgo algo = new WrapperAlgo();
             CaseFactory factory = new CaseFactory();
             int** algoMap = algo.createMap(100, 100);
-            int** algoBonusesMap = algo.createBonusesMap(100, 100, 0.1);
+            int** algoBonusesMap = algo.createBonusesMap(100, 100, 0.05);
             for (int j = 0; j < 100; j++)
             {
                 for (int i = 0; i < 100; i++)

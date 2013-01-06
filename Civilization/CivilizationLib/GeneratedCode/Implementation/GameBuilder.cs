@@ -30,10 +30,10 @@ namespace Implementation
                 Map = new Map();
                 Map.setMapStrategy(new LargeMapStrategy());
                 Map.createMap();
-                Map.grid[10 + 10 * 100].addUnit(new TeacherEII(Players.ElementAt(0), Map.grid[10 + 10 * 100]));
-                Map.grid[90 + 10 * 100].addUnit(new TeacherEII(Players.ElementAt(1), Map.grid[90 + 10 * 100]));
-                Map.grid[10 + 90 * 100].addUnit(new TeacherEII(Players.ElementAt(2), Map.grid[10 + 90 * 100]));
-                Map.grid[90 + 90 * 100].addUnit(new TeacherEII(Players.ElementAt(3), Map.grid[90 + 90 * 100]));
+                Map.grid[19 + 19 * 100].addUnit(new TeacherEII(Players.ElementAt(0), Map.grid[19 + 19 * 100]));
+                Map.grid[90 + 19 * 100].addUnit(new TeacherEII(Players.ElementAt(1), Map.grid[89 + 19 * 100]));
+                Map.grid[19 + 89 * 100].addUnit(new TeacherEII(Players.ElementAt(2), Map.grid[19 + 89 * 100]));
+                Map.grid[89 + 89 * 100].addUnit(new TeacherEII(Players.ElementAt(3), Map.grid[89 + 89 * 100]));
             }
             else if (players == 3)
             {
@@ -48,7 +48,7 @@ namespace Implementation
                 Map = new Map();
                 Map.setMapStrategy(new SmallMapStrategy());
                 Map.createMap();
-                Map.grid[5 + 5 * 25].addUnit(new TeacherEII(Players.ElementAt(0), Map.grid[5 + 5 * 25]));
+                Map.grid[4 + 4 * 25].addUnit(new TeacherEII(Players.ElementAt(0), Map.grid[4 + 4 * 25]));
                 Map.grid[20 + 20 * 25].addUnit(new TeacherEII(Players.ElementAt(1), Map.grid[20 + 20 * 25]));
             }
 		}

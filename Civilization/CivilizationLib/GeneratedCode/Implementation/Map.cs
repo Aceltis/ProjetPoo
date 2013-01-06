@@ -48,10 +48,11 @@ namespace Implementation
 
                 //Affichage des unités
                 foreach (IUnit unit in grid[i].units)
-                    unit.afficher(sender, e, FWimages, x, y);
+                    if(grid[i].Visible)
+                        unit.afficher(sender, e, FWimages, x, y);
 
                 //Affichage de la ville
-                if (grid[i].city != null)
+                if (grid[i].city != null && grid[i].Visible)
                     grid[i].city.afficher(sender, e, FWimages, x, y);
 
                 //Surligne la case
@@ -60,10 +61,7 @@ namespace Implementation
                 if (grid[i].Selected)
                 {
                     Pen brown = new Pen(Color.SaddleBrown, 2);
-                    e.Graphics.DrawLine(brown, x + 1, y + 1, x + 49, y + 1);
-                    e.Graphics.DrawLine(brown, x + 49, y + 1, x + 49, y + 49);
-                    e.Graphics.DrawLine(brown, x + 49, y + 49, x + 1, y + 49);
-                    e.Graphics.DrawLine(brown, x + 1, y + 49, x + 1, y + 1);
+                    e.Graphics.DrawRectangle(brown, x + 1, y + 1, 48, 48);
                 }
             }
         }
@@ -74,7 +72,7 @@ namespace Implementation
                 c.Selected = false;
             int x_pos = x / 50;
             int y_pos = y / 50;
-            grid[x_pos + 25 * y_pos].Selected = true;
+            grid[x_pos + (int)Math.Sqrt((double)grid.Count) * y_pos].Selected = true;
         }
     }
 }

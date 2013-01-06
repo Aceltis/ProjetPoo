@@ -21,6 +21,7 @@ namespace Interfaces
         List<IUnit> units { get; set; }
         ICity city { get; set; }
         bool Selected { get; set; }
+        bool Visible { get; set; }
 
         void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw);
         void addUnit(IUnit unit);

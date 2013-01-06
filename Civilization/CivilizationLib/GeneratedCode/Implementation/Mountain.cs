@@ -32,7 +32,10 @@ namespace Implementation
             //Points qui définissent le coin supérieur gauche de la case
             int x = 50 * sqPos[0];
             int y = 50 * sqPos[1];
-            e.Graphics.DrawImage(fw.getCaseImage(0), x, y, 50, 50);
+            if(Visible)
+                e.Graphics.DrawImage(fw.getCaseImage(0), x, y, 50, 50);
+            else
+                e.Graphics.DrawImage(fw.getFoWCaseImage(0), x, y, 50, 50);
         }
     }
 }

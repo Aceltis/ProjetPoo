@@ -13,12 +13,15 @@
     public class CaseImageFlyweight : ICaseImageFlyweight
     {
         private Dictionary<int, Image> CaseImages;
+        private Dictionary<int, Image> FoWCaseImages;
         private Dictionary<int, Image> BonusImages;
+        private Dictionary<int, Image> FoWBonusImages;
         private Dictionary<int, Image> CityImages;
         private Dictionary<int, Image> RedUnitsImages;
         private Dictionary<int, Image> BlueUnitsImages;
         private Dictionary<int, Image> OrangeUnitsImages;
         private Dictionary<int, Image> GreenUnitsImages;
+        private Image FoW;
 
         public CaseImageFlyweight() 
         {
@@ -28,10 +31,21 @@
             CaseImages.Add(1, Image.FromFile("../../../CivilizationWPF/Resource/map/fields/plain.png"));
             CaseImages.Add(2, Image.FromFile("../../../CivilizationWPF/Resource/map/fields/desert.png"));
 
+            //Dimmed Lands
+            FoWCaseImages = new Dictionary<int, Image>();
+            FoWCaseImages.Add(0, Image.FromFile("../../../CivilizationWPF/Resource/map/fields/fowmountain.png"));
+            FoWCaseImages.Add(1, Image.FromFile("../../../CivilizationWPF/Resource/map/fields/fowplain.png"));
+            FoWCaseImages.Add(2, Image.FromFile("../../../CivilizationWPF/Resource/map/fields/fowdesert.png"));
+
             //Bonuses
             BonusImages = new Dictionary<int, Image>();
             BonusImages.Add(0, Image.FromFile("../../../CivilizationWPF/Resource/map/bonus/food.png"));
             BonusImages.Add(1, Image.FromFile("../../../CivilizationWPF/Resource/map/bonus/iron.png"));
+
+            //Dimmed Bonuses
+            FoWBonusImages = new Dictionary<int, Image>();
+            FoWBonusImages.Add(0, Image.FromFile("../../../CivilizationWPF/Resource/map/bonus/fowfood.png"));
+            FoWBonusImages.Add(1, Image.FromFile("../../../CivilizationWPF/Resource/map/bonus/fowiron.png"));
 
             //Cities
             CityImages = new Dictionary<int, Image>();
@@ -87,11 +101,12 @@
             GreenUnitsImages.Add(6, Image.FromFile("../../../CivilizationWPF/Resource/map/units/Green/teacher_alone.png"));
             GreenUnitsImages.Add(7, Image.FromFile("../../../CivilizationWPF/Resource/map/units/Green/teacher_alone_bonus.png"));
             GreenUnitsImages.Add(8, Image.FromFile("../../../CivilizationWPF/Resource/map/units/Green/teacher_bonus.png"));
-
         }
 
-        public Image getCaseImage(int key)  { return (CaseImages[key]); }
+        public Image getCaseImage(int key) { return (CaseImages[key]); }
+        public Image getFoWCaseImage(int key) { return (FoWCaseImages[key]); }
         public Image getBonusImage(int key) { return (BonusImages[key]); }
+        public Image getFoWBonusImage(int key) { return (FoWBonusImages[key]); }
         public Image getCityImage(int key)  { return (CityImages[key]); }
         public Image getUnitImage(int key, PlayerColor col)
         {
@@ -110,5 +125,4 @@
             }
         }
     }
-
 }

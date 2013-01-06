@@ -42,17 +42,26 @@ namespace CivilizationWPF
         
         private void drawMap()
         {
+            int height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
+            int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
+            pictureBox.Width = width; pictureBox.Height = height;
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(game.Map.afficher);
             pictureBox.MouseEnter += pictureBox_giveFocus;
             pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
 
+            //Setting up scrollableContent and adapting it to the game
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
-            /*sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
-            sc.KeyUp += pictureBox_giveFocus;*/
+            sc.HorizontalScroll.Maximum = pictureBox.Height;
+            sc.VerticalScroll.Maximum = pictureBox.Height;
+            sc.HorizontalScroll.SmallChange = 50;
+            sc.VerticalScroll.SmallChange = 50;
+            sc.HorizontalScroll.LargeChange = 500;
+            sc.VerticalScroll.LargeChange = 500;
+            sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
+
             windowsFormsHost1.Child = sc;
         }
 
@@ -190,8 +199,9 @@ namespace CivilizationWPF
             pb.Refresh();
         }
 
-/*      private void sc_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
+        private void sc_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
         {
+            e.IsInputKey = true;
             System.Windows.Forms.ScrollableControl sc = (System.Windows.Forms.ScrollableControl)sender;
             switch (e.KeyValue)
             {
@@ -209,35 +219,10 @@ namespace CivilizationWPF
                 case (int)System.Windows.Forms.Keys.Left:
                     if (sc.HorizontalScroll.Value - 50 < 0)
                         sc.HorizontalScroll.Value = 0;
-                    else sc.HorizontalScroll.Value -= 50;
+                    else
+                        sc.HorizontalScroll.Value -= 50;
                     break;
             }
-            windowsFormsHost1.Child.Focus();
-        }*/
-
-        //Scroll bars with keyboard
-/*        private void sc_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            System.Windows.Forms.ScrollableControl sc = (System.Windows.Forms.ScrollableControl)sender;
-            switch (e.KeyChar)
-            {
-                case (char)System.Windows.Forms.Keys.Down:
-                    sc.VerticalScroll.Value += 50;
-                    break;
-                case (char)System.Windows.Forms.Keys.Up:
-                    if (sc.VerticalScroll.Value - 50 < 0)
-                        sc.VerticalScroll.Value = 0;
-                    else sc.VerticalScroll.Value -= 50;
-                    break;
-                case (char)System.Windows.Forms.Keys.Right:
-                    sc.HorizontalScroll.Value += 50;
-                    break;
-                case (char)System.Windows.Forms.Keys.Left:
-                    if (sc.HorizontalScroll.Value - 50 < 0)
-                        sc.HorizontalScroll.Value = 0;
-                    else sc.HorizontalScroll.Value -= 50;
-                    break;
-            }
-        }*/
+        }
     }
 }
