@@ -33,12 +33,15 @@ namespace Implementation
             int x = 50 * sqPos[0];
             int y = 50 * sqPos[1];
             e.Graphics.DrawImage(fw.getCaseImage(1), x, y, 50, 50);
+
+            //Si la case est une case sélectionnée, on affiche un contour
             if (Selected)
             {
-                e.Graphics.DrawLine(new Pen(Color.SaddleBrown, 1), x, y, x + 49, y);
-                e.Graphics.DrawLine(new Pen(Color.SaddleBrown, 1), x + 49, y, x + 49, y + 49);
-                e.Graphics.DrawLine(new Pen(Color.SaddleBrown, 1), x + 49, y + 49, x, y + 49);
-                e.Graphics.DrawLine(new Pen(Color.SaddleBrown, 1), x, y + 49, x, y);
+                Pen brown = new Pen(Color.SaddleBrown, 2);
+                e.Graphics.DrawLine(brown, x + 1, y + 1, x + 49, y + 1);
+                e.Graphics.DrawLine(brown, x + 49, y + 1, x + 49, y + 49);
+                e.Graphics.DrawLine(brown, x + 49, y + 49, x + 1, y + 49);
+                e.Graphics.DrawLine(brown, x + 1, y + 49, x + 1, y + 1);
             }
         }
     }
