@@ -20,6 +20,7 @@ namespace Interfaces
         void setMapStrategy(IMapStrategy mapStrategy);
         void createMap();
         void afficher(object sender, PaintEventArgs e);
+        void select(int x, int y);
 	}
 }
 

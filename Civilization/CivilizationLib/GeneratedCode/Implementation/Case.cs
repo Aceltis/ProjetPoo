@@ -29,6 +29,7 @@ namespace Implementation
         public virtual int food { get; set; }
         public virtual List<IUnit> units { get; set; }
         public virtual ICity city { get; set; }
+        public virtual bool Selected { get; set; }
 
         //Méthodes
         public virtual void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)

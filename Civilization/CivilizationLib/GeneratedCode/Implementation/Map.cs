@@ -43,6 +43,15 @@ namespace Implementation
             for (int i = 0; i < grid.Count; i++)
                 grid[i].afficher(sender, e, FWimages);
         }
+
+        public void select(int x, int y)
+        {
+            foreach (Case c in grid)
+                c.Selected = false;
+            int x_pos = x / 50;
+            int y_pos = y / 50;
+            grid[x_pos + 25 * y_pos].Selected = true;
+        }
     }
 }
 

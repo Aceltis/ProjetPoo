@@ -20,6 +20,7 @@ namespace Interfaces
         int food { get; set; }
         List<IUnit> units { get; set; }
         ICity city { get; set; }
+        bool Selected { get; set; }
 
         void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw);
         void addUnit(IUnit unit);
