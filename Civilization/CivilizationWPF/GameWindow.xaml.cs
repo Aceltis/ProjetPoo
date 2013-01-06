@@ -163,11 +163,12 @@ namespace CivilizationWPF
             timerTeacherView.Visibility = Visibility.Visible;
             timerBossView.Visibility = Visibility.Hidden;
         }
-<<<<<<< HEAD
-        private void newCityAction(object sender, RoutedEventArgs e)
+
+        private void newUnitAction(object sender, RoutedEventArgs e)
         {
         }
-        private void newUnitAction(object sender, RoutedEventArgs e)
+
+        private void newCityAction(object sender, RoutedEventArgs e)
         {
         }
 
@@ -236,15 +237,5 @@ namespace CivilizationWPF
                     break;
             }
         }*/
-=======
-
-        private void newUnitAction(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void newCityAction(object sender, RoutedEventArgs e)
-        {
-        }
->>>>>>> aceltis
     }
 }
