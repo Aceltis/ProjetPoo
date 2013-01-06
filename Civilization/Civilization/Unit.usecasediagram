@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="ada37af9-b4b4-436f-aae1-16784d4f2134" name="Unit" linkedPackageId="51404157-6b2e-4873-b5b3-ccd47532ee38" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="c098d140-0062-4a4f-92ba-a6de9d5a6f82">
+      <profileInstance Id="8de89943-4cd1-40b4-90f3-d8c9d9297545" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="cda3e997-342d-4ea6-ae55-c35c7d182fd6">
+      <profileInstance Id="0fe74ede-abf6-45f0-932f-010c97007a51" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="e3e5f50e-68e9-47c4-8799-151b887a6f15" name="Unit" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3e61dc8a-604b-44e9-9bf6-b59df17e2b7f" />
+        <targetEnds>
+          <association Id="f8a902ce-e050-4410-8da7-ee9aeacf53f5" isDerived="false" sourceEndRoleName="Unit" targetEndRoleName="Move" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="846d5c3b-29f7-40ea-a622-52e8df23a9dd" LastKnownName="Move" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f6478262-9c04-4d30-8a14-f211357fb952" name="Unit" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6ca589c5-455b-4a11-bbd0-7ccf644430dd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3ffcac7a-4716-4e12-bb78-172f72b79d8e" name="Move" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6a29334e-7d37-402a-8970-dbcfa6d108ce" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3c4ac95b-4690-4cb3-b4bf-2cd14e145c01" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="fd5e6a02-4dbd-41c5-880b-2d190d9709d6" name="DDD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="167c8715-1576-482c-b0b7-24a74cec116e" />
+        <generalsInternal>
+          <generalization Id="eb3387be-e0c0-4c1b-9cb6-342665604393" isSubstitutable="false">
+            <actorMoniker Id="e3e5f50e-68e9-47c4-8799-151b887a6f15" LastKnownName="Unit" />
+            <elementDefinition Id="37622db9-7766-4818-bcf5-493a218a2159" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="16662029-2440-4dde-9e75-b7e3914d48af" name="Student" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6df32889-aa42-4a94-8286-858a0946d187" />
+        <generalsInternal>
+          <generalization Id="c310bdad-7354-4ce7-ae47-54f4242752b2" isSubstitutable="false">
+            <actorMoniker Id="e3e5f50e-68e9-47c4-8799-151b887a6f15" LastKnownName="Unit" />
+            <elementDefinition Id="90210be9-25b4-43c5-94ae-36661919c1ff" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="544b7c17-e82d-45d0-8bc9-be23fc271681" isDerived="false" sourceEndRoleName="Student" targetEndRoleName="Attack !" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6cd77688-cbf3-4531-ad90-2bef27172762" LastKnownName="Attack !1" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e45eeb2c-b3a1-41ed-8e14-d36c08858ff9" name="Student" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="721e1f60-fc46-4b2e-ae2b-9f49a4209183" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="17fe33eb-9551-4712-bba4-5997181aff0c" name="Attack !" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8883169c-131e-4273-bcb0-84e36e38ed2d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b678f126-3b2d-464f-ba16-2605de8b5c74" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="117b9367-c617-43be-9fb6-2cc6bd5aba58" name="Teacher" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6204bb14-9d35-4112-8b73-1b92850c2e1d" />
+        <generalsInternal>
+          <generalization Id="7a559258-ef70-45b6-873e-13c3452f4f16" isSubstitutable="false">
+            <actorMoniker Id="e3e5f50e-68e9-47c4-8799-151b887a6f15" LastKnownName="Unit" />
+            <elementDefinition Id="58333355-bc6f-4b8e-9da6-89382057ddbe" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="c353d2bf-916b-4cf8-bc96-2e41fe938eca" isDerived="false" sourceEndRoleName="Teacher" targetEndRoleName="Ceate new city" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="344dad51-4a89-4b45-b9ca-fb3d38c6a17b" LastKnownName="Create new city" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a319887d-3aba-46fc-a0ac-48ba8bd81430" name="Teacher" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7f819c8e-96fb-4805-996c-d7efd0afbf26" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f587af52-5eda-4d97-8729-147489878703" name="Ceate new city" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ac78bc85-a5ae-4f1f-9365-23b44fda2729" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="63e56fcf-aaab-4a44-b18a-aa86d7ee3e0a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="efeb626d-df3a-435e-a985-355b0e6b6577" name="Units' Actions" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5ed6acf3-9b03-43e3-ab12-eebb7e6b4f61" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="846d5c3b-29f7-40ea-a622-52e8df23a9dd" name="Move" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="801856a5-69c4-42f8-98d5-4e2b738ce9d1" />
+        <subjects>
+          <subsystemMoniker Id="efeb626d-df3a-435e-a985-355b0e6b6577" LastKnownName="Units' Actions" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6cd77688-cbf3-4531-ad90-2bef27172762" name="Attack !1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="da1e909b-0b8a-499e-b1a5-d6cb5419dc2a" />
+        <subjects>
+          <subsystemMoniker Id="efeb626d-df3a-435e-a985-355b0e6b6577" LastKnownName="Units' Actions" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="344dad51-4a89-4b45-b9ca-fb3d38c6a17b" name="Create new city" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a829c74a-9295-4d32-b216-b6e3256560a6" />
+        <subjects>
+          <subsystemMoniker Id="efeb626d-df3a-435e-a985-355b0e6b6577" LastKnownName="Units' Actions" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="51404157-6b2e-4873-b5b3-ccd47532ee38" name="Civilization">
+    <elementDefinition Id="439df75f-1500-4484-82ef-5b5eec6d4791" />
+  </package>
+</useCaseModelRoot>

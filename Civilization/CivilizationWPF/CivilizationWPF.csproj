@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61F55661-8853-42CD-9167-36A9305E21E9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CivilizationWPF</RootNamespace>
+    <AssemblyName>CivilizationWPF</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="EndWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CityViewModel.cs" />
+    <Compile Include="EndWindow.xaml.cs">
+      <DependentUpon>EndWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameViewModel.cs" />
+    <Compile Include="HomeWindow.xaml.cs">
+      <DependentUpon>HomeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TriStatesButton.cs" />
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayerViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\fields\neige.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\icons\alive.png" />
+    <Resource Include="Resource\interface\icons\city.png" />
+    <Resource Include="Resource\interface\icons\civ.png" />
+    <Resource Include="Resource\interface\icons\dead.png" />
+    <Resource Include="Resource\interface\icons\student.png" />
+    <Resource Include="Resource\interface\icons\teacher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomLeft\city.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomLeft\order1.png" />
+    <Resource Include="Resource\interface\bottomLeft\order2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomRight\bottomCity.png" />
+    <ProjectReference Include="..\CivilizationLib\CivilizationLib.csproj">
+      <Project>{063F864D-6F7E-4C77-B473-440EF1BD2D99}</Project>
+      <Name>CivilizationLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CivilizationWrapper\CivilizationWrapper.vcxproj">
+      <Project>{02207F43-43A9-4023-930D-36D1EA87C2B4}</Project>
+      <Name>CivilizationWrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\icons\food.png" />
+    <Resource Include="Resource\interface\icons\iron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\icons\timer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomRight\prod_disabled.png" />
+    <Resource Include="Resource\interface\bottomRight\prod_enabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\fields\desert.png" />
+    <Resource Include="Resource\map\fields\mountain.png" />
+    <Resource Include="Resource\map\fields\plain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\cities\city_blue.png" />
+    <Resource Include="Resource\map\cities\City_green.png" />
+    <Resource Include="Resource\map\cities\city_orange.png" />
+    <Resource Include="Resource\map\cities\city_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\bonus\food.png" />
+    <Resource Include="Resource\map\bonus\iron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\gamecreation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomLeft\Boss.png" />
+    <Resource Include="Resource\interface\bottomLeft\student.png" />
+    <Resource Include="Resource\interface\bottomLeft\teacher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\exit_enabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\map\units\Blue\boss.png" />
+    <Resource Include="Resource\map\units\Blue\student.png" />
+    <Resource Include="Resource\map\units\Blue\student_alone.png" />
+    <Resource Include="Resource\map\units\Blue\student_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Blue\student_bonus.png" />
+    <Resource Include="Resource\map\units\Blue\teacher.png" />
+    <Resource Include="Resource\map\units\Blue\teacher_alone.png" />
+    <Resource Include="Resource\map\units\Blue\teacher_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Blue\teacher_bonus.png" />
+    <Resource Include="Resource\map\units\Green\boss.png" />
+    <Resource Include="Resource\map\units\Green\student.png" />
+    <Resource Include="Resource\map\units\Green\student_alone.png" />
+    <Resource Include="Resource\map\units\Green\student_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Green\student_bonus.png" />
+    <Resource Include="Resource\map\units\Green\teacher.png" />
+    <Resource Include="Resource\map\units\Green\teacher_alone.png" />
+    <Resource Include="Resource\map\units\Green\teacher_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Green\teacher_bonus.png" />
+    <Resource Include="Resource\map\units\Orange\boss.png" />
+    <Resource Include="Resource\map\units\Orange\student.png" />
+    <Resource Include="Resource\map\units\Orange\student_alone.png" />
+    <Resource Include="Resource\map\units\Orange\student_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Orange\student_bonus.png" />
+    <Resource Include="Resource\map\units\Orange\teacher.png" />
+    <Resource Include="Resource\map\units\Orange\teacher_alone.png" />
+    <Resource Include="Resource\map\units\Orange\teacher_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Orange\teacher_bonus.png" />
+    <Resource Include="Resource\map\units\Red\boss.png" />
+    <Resource Include="Resource\map\units\Red\student.png" />
+    <Resource Include="Resource\map\units\Red\student_alone.png" />
+    <Resource Include="Resource\map\units\Red\student_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Red\student_bonus.png" />
+    <Resource Include="Resource\map\units\Red\teacher.png" />
+    <Resource Include="Resource\map\units\Red\teacher_alone.png" />
+    <Resource Include="Resource\map\units\Red\teacher_alone_bonus.png" />
+    <Resource Include="Resource\map\units\Red\teacher_bonus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomLeft\Field.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomRight\bottomField.png" />
+    <Resource Include="Resource\interface\bottomRight\bottomUnit.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

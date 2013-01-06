@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{063F864D-6F7E-4C77-B473-440EF1BD2D99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CivilizationLib</RootNamespace>
+    <AssemblyName>CivilizationLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GeneratedCode\Implementation\BossEII.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/BossEII/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fc0d04d75-556d-4bdd-923e-fdbefb216661</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\BossINFO.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/BossINFO/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f661d0b50-39bf-42f2-8403-f0696bfcf4c9</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Case.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Case/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f9e83b8ff-0223-4e7a-84d0-58063766fe59</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\CaseDecorator.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/CaseDecorator/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f30d5f83a-14bb-4fc3-8006-fa885e2107f5</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\CaseFactory.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/CaseFactory/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fbaf5f57c-6ac9-4c2a-a727-8018f3ec5b2b</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\CaseImageFlyweight.cs" />
+    <Compile Include="GeneratedCode\Implementation\City.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/City/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f1c899b86-58a2-4c3c-8043-cf46bcf25bf4</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\CivilizationType.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/CivilizationType/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fb2d71d48-a588-439c-abb6-0a23fdbaeb54</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\PlayerColor.cs" />
+    <Compile Include="GeneratedCode\Implementation\Desert.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Desert/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fec51e243-3ce0-4c3f-8a03-4ef7ab951111</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\EIIFactory.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/EIIFactory/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fd7b2b9a1-f1fd-40c9-95ad-ea7b21910aea</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Fruit.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Fruit/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f1c38c3b0-a931-4a05-b665-80f0f30ce61b</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Game.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Game/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f30341dc7-7acc-49b4-8d78-ef98b9f17d73</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\GameBuilder.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/GameBuilder/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252feed43ba3-78e7-458f-9c4f-4179d8c72ed2</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\INFOFactory.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/INFOFactory/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f539b26f5-a741-4028-8a3c-555d9363a5d4</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Iron.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Iron/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f09eb3b42-a1a0-42f6-b3f7-e40af9aeb1f2</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\LargeMapStrategy.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/LargeMapStrategy/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f20e8eef7-659d-46fd-8b1b-7be1c285037a</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Map.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Map/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f564e97db-93fb-4482-ae4a-0fcab8fd51fd</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\MapStrategy.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/MapStrategy/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fd0214ad5-a47e-4cc9-b9d2-c3ea6e40df27</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\MapType.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/MapType/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fefd08d53-43e9-406f-9e0f-250ec632d1bb</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Mountain.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Mountain/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f97348556-4311-4b4f-8a1f-9d5d5964501c</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Plain.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Plain/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fce47f906-1cb0-4db8-b970-b2d9f74770d7</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Player.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Player/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fe4f981f2-3ffe-4fdb-802e-9878be352936</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\ProductionType.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ProductionType/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f4b7e2256-6543-4ac1-a997-12fdef80d6d6</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\SmallMapStrategy.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/SmallMapStrategy/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f5e45eb44-68d2-4279-ae81-b9f0f2781e32</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\StatusType.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/StatusType/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f10f7774a-dd6e-44b4-93c8-9b7903fb1b48</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\StudentEII.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/StudentEII/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f366737d4-5a8c-4475-9a4d-c052a2494c2a</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\StudentINFO.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/StudentINFO/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f157c889d-ee68-4a00-94ae-ff8aa3d77586</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\TeacherEII.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/TeacherEII/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fa2548262-42de-4a43-aaed-eb0055ee9348</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\TeacherINFO.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/TeacherINFO/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f50b8f51f-c906-4b53-b67e-c62965acae3b</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Implementation\Unit.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Unit/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f04508be7-2a1e-4677-8791-b8edcc16a712</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IBoss.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IBoss/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fb181387e-c45b-42ef-8b9f-0ec5fbe985d3</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ICase.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ICase/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f5f61eaaa-ab1b-4b8c-905b-374a9832e0d5</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ICaseDecorator.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ICaseDecorator/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f6cf74ce7-f4f0-4ec6-bc01-06b6948cb095</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ICaseFactory.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ICaseFactory/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fd06b508f-c4aa-4330-be63-d445b970e40d</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ICaseImageFlyweight.cs" />
+    <Compile Include="GeneratedCode\Interfaces\ICity.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ICity/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f0fcda552-135a-4a7d-9e0d-70be405874a4</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ICivilizationFactory.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ICivilizationFactory/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f418e3117-a96f-480c-bcc9-653fa0eef1c3</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IDesert.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IDesert/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fc103c514-0baa-4d27-922d-97ae54c78f49</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IFruit.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IFruit/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fd29844a5-b2cd-4cda-b3f1-9a0add6a332a</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IGame.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IGame/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f09da53c6-6d8c-4d2c-943b-293c2b4b4a0a</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IGameBuilder.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IGameBuilder/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fc1a97af4-c887-4c46-8369-bb6670702583</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IIron.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IIron/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fb95ad014-32f2-42be-9083-b9a357ea3698</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ILargeMapStrategy.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ILargeMapStrategy/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f29890111-ffaf-440a-a3e6-9d8451a455ed</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IMap.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IMap/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f09156e92-bf44-45bc-9f9f-476c5d3550bc</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IMapStrategy.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IMapStrategy/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fa65be330-62a2-41ec-a608-c1427623297b</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IMountain.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IMountain/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f0493abc9-1a72-446e-9fcb-81b9d2a28511</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IPlain.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IPlain/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f02c0fb96-9635-4b10-9bd8-d899e8936d8c</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IPlayer.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IPlayer/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fb744e98c-31c7-42d0-99f9-9bcdcaddb1cf</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ISmallMapStrategy.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ISmallMapStrategy/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f734623f5-9687-4f9f-9950-433c4e57211d</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IStudent.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IStudent/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fa62a6540-2462-449f-9a9c-e0ffc0063ecf</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\ITeacher.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/ITeacher/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252fa92e333f-d6e6-4873-9a6e-d402eb9dbe69</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\Interfaces\IUnit.cs">
+      <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IUnit/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f7e084be1-a299-4938-9fae-f8411920046d</SourceModelReference>
+    </Compile>
+    <Compile Include="GeneratedCode\MVVM\ObservableObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CivilizationWrapper\CivilizationWrapper.vcxproj">
+      <Project>{02207F43-43A9-4023-930D-36D1EA87C2B4}</Project>
+      <Name>CivilizationWrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
