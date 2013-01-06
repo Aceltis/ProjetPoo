@@ -19,6 +19,7 @@ namespace Implementation
         public Iron(ICase caseToDecorate)
         {
             Case = caseToDecorate;
+            this.sqPos = caseToDecorate.sqPos;
             additional_minerals = 2;
         }
 
@@ -32,7 +33,7 @@ namespace Implementation
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
         {
             Case.afficher(sender, e, fw);
-            e.Graphics.DrawImage(fw.getBonusImage(1), 50 * sqPos[0], 50 * sqPos[1], 50, 50);
+            e.Graphics.DrawImage(fw.getBonusImage(1), 50 * Case.sqPos[0], 50 * Case.sqPos[1], 50, 50);
         }
 
     }
