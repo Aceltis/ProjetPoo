@@ -211,7 +211,6 @@
     <Resource Include="Resource\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\bottomLeft\accueil.png" />
     <Resource Include="Resource\interface\bottomLeft\Boss.png" />
     <Resource Include="Resource\interface\bottomLeft\student.png" />
     <Resource Include="Resource\interface\bottomLeft\teacher.png" />
@@ -257,7 +256,9 @@
     <Resource Include="Resource\map\units\Red\teacher_alone_bonus.png" />
     <Resource Include="Resource\map\units\Red\teacher_bonus.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomLeft\Field.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\bottomRight\bottomField.png" />
     <Resource Include="Resource\interface\bottomRight\bottomUnit.png" />
