@@ -15,6 +15,9 @@ namespace Implementation
 
 	public class SmallMapStrategy : MapStrategy, ISmallMapStrategy
 	{
+        public int height { get; set; }
+        public int width { get; set; }
+
 		unsafe public override void createMap(List<ICase> map)
 		{
             WrapperAlgo algo = new WrapperAlgo();

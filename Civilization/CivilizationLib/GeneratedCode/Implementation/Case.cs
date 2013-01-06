@@ -21,7 +21,11 @@ namespace Implementation
         public Case()
         {
             units = new List<IUnit>();
+<<<<<<< HEAD
             Visible = true;
+=======
+            Visible = false;
+>>>>>>> aceltis
         }
 
         public Case(Case caseToCopy)

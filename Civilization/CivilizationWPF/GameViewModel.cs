@@ -4,39 +4,30 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using Interfaces;
+using Implementation;
+using MVVM;
 
 namespace CivilizationWPF
 {
-    class GameViewModel : INotifyPropertyChanged
+    class GameViewModel : ObservableObject
     {
-        // property changed event
-        public event PropertyChangedEventHandler PropertyChanged;
+        private int _turns;
 
-        private String turns;
-
-        private void OnPropertyChanged(String property)
+        public GameViewModel(Game g)
         {
-            if (PropertyChanged != null)
+            g.PropertyChanged += new PropertyChangedEventHandler(delegate(object sender, PropertyChangedEventArgs args)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
+                Turns = ((Game)sender).Turns;
+            });
+            Turns = g.Turns;
         }
 
-        public GameViewModel(IGame g)
+        public int Turns
         {
-            turns = g.Turns.ToString();
-        }
-
-        public String Turns
-        {
-            get
-            {
-                return turns;
-            }
+            get { return _turns; }
             set
             {
-                turns = value;
-                OnPropertyChanged("Name");
+                SetAndNotify(ref _turns, value, () => Turns);
             }
         }
     }

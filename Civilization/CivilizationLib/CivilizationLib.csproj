@@ -200,6 +200,7 @@
     <Compile Include="GeneratedCode\Interfaces\IUnit.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/IUnit/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f7e084be1-a299-4938-9fae-f8411920046d</SourceModelReference>
     </Compile>
+    <Compile Include="GeneratedCode\MVVM\ObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
