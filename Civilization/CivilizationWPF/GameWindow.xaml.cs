@@ -47,6 +47,10 @@ namespace CivilizationWPF
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(game.Map.afficher);
+            pictureBox.MouseEnter += pictureBoxFocus;
+            pictureBox.Click += pictureBoxFocus;
+            pictureBox.Click += mapClicked;
+
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
@@ -138,6 +142,22 @@ namespace CivilizationWPF
             timerStudentView.Visibility = Visibility.Hidden;
             timerTeacherView.Visibility = Visibility.Visible;
             timerBossView.Visibility = Visibility.Hidden;
+        }
+        private void newCityAction(object sender, RoutedEventArgs e)
+        {
+        }
+        private void newUnitAction(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void pictureBoxFocus(object sender, EventArgs e)
+        {
+            windowsFormsHost1.Child.Focus();
+        }
+
+        private void mapClicked(object sender, EventArgs e)
+        {
+            windowsFormsHost1.Child.Focus();
         }
     }
 }

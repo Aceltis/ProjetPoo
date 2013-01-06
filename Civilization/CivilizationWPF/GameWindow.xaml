@@ -65,7 +65,7 @@
             <RowDefinition Height="199" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Grid.ColumnSpan="2" Name="map" >
-            <WindowsFormsHost Margin="0,0,0,0" Name="windowsFormsHost1" Cursor="Cross"/>
+            <WindowsFormsHost Margin="0,0,0,0" Name="windowsFormsHost1" Cursor="Cross" />
         </Grid>
 
         <Grid Name="top" Height="30" Grid.ColumnSpan="2">
