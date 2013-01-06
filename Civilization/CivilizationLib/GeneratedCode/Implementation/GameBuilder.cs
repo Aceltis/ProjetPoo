@@ -14,7 +14,7 @@ namespace Implementation
 
 	public class GameBuilder : IGameBuilder
 	{
-        private Dictionary<int, IPlayer> Players;
+        private Queue<IPlayer> Players;
         public IMap Map { get; set; }
 
         public GameBuilder(int players, List<String> names, List<String> civs)
@@ -41,25 +41,25 @@ namespace Implementation
 
 		public virtual void createPlayers(int players, List<String> names, List<String> civs)
 		{
-            Players = new Dictionary<int, IPlayer>();
+            Players = new Queue<IPlayer>();
 
             if (players == 2)
             {
-                Players.Add(1, new Player(names[0], civs[0], "Red"));
-                Players.Add(2, new Player(names[1], civs[1], "Blue"));
+                Players.Enqueue(new Player(names[0], civs[0], "Red"));
+                Players.Enqueue(new Player(names[1], civs[1], "Blue"));
             }
             else if (players == 3)
             {
-                Players.Add(1, new Player(names[0], civs[0], "Red"));
-                Players.Add(2, new Player(names[1], civs[1], "Blue"));
-                Players.Add(3, new Player(names[2], civs[2], "Orange"));
+                Players.Enqueue(new Player(names[0], civs[0], "Red"));
+                Players.Enqueue(new Player(names[1], civs[1], "Blue"));
+                Players.Enqueue(new Player(names[2], civs[2], "Orange"));
             }
             else
             {
-                Players.Add(1, new Player(names[0], civs[0], "Red"));
-                Players.Add(2, new Player(names[1], civs[1], "Blue"));
-                Players.Add(3, new Player(names[2], civs[2], "Orange"));
-                Players.Add(4, new Player(names[3], civs[3], "Green"));
+                Players.Enqueue(new Player(names[0], civs[0], "Red"));
+                Players.Enqueue(new Player(names[1], civs[1], "Blue"));
+                Players.Enqueue(new Player(names[2], civs[2], "Orange"));
+                Players.Enqueue(new Player(names[3], civs[3], "Green"));
             }
 		}
 

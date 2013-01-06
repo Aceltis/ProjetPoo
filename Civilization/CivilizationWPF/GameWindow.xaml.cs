@@ -27,22 +27,20 @@ namespace CivilizationWPF
         GameViewModel gvm;
         Dictionary<IPlayer, PlayerViewModel> pToPvm;
         Dictionary<IPlayer, Dictionary<ICity, CityViewModel>> cToCvm;
-        IPlayer currentPlayer;
-        Object selectedItem;
 
         public GameWindow(IGameBuilder builder)
         {
             InitializeComponent();
             game = builder.build();
-            createPVM(game);
-            createGVM(game);
+            createPVM();
+            createGVM();
 
-            beginTurn(pToPvm[game.Players[1]], gvm);
+            beginTurn();
 
-            drawMap(game);
+            drawMap();
         }
         
-        private void drawMap(IGame game)
+        private void drawMap()
         {
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50; pictureBox.Height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
@@ -58,10 +56,10 @@ namespace CivilizationWPF
             windowsFormsHost1.Child = sc;
         }
 
-        private void beginTurn(PlayerViewModel p, GameViewModel g)
+        private void beginTurn()
         {
-            top.DataContext = p;
-            turnsView.DataContext = g;
+            top.DataContext = pToPvm[game.CurrentPlayer];
+            turnsView.DataContext = gvm;
 
             /*
             if (selectedItem == typeof(ICase))
@@ -76,39 +74,60 @@ namespace CivilizationWPF
             } */
         }
 
-        private void nextTurn()
+        private void nextTurn(object sender, RoutedEventArgs e)
         {
-            
+            // Is there a winner among all players ?
+            if (game.isWinner())
+            {
+                endGame();
+            }
+
+            game.nextPlayer();
+
+            // Add a turn to the game
+            int turns = game.Turns++;
+            gvm.Turns = turns.ToString();
+
+            beginTurn();
         }
 
-        private void createPVM(IGame g)
+        private void endGame()
+        {
+            System.Windows.MessageBox.Show(game.CurrentPlayer.Pseudo + " wins!", "End Game", MessageBoxButton.OK);
+        }
+
+        private void createPVM()
         {
             pToPvm = new Dictionary<IPlayer, PlayerViewModel>();
-            pToPvm.Add(g.Players[1], new PlayerViewModel(g.Players[1]));
-            pToPvm.Add(g.Players[2], new PlayerViewModel(g.Players[2]));
+            pToPvm.Add(game.CurrentPlayer, new PlayerViewModel(game.CurrentPlayer));
 
-            if (g.Players.Count() == 3)
+            IPlayer second = game.Players.Dequeue();
+            pToPvm.Add(second, new PlayerViewModel(second));
+            game.Players.Enqueue(second);
+
+            if (game.Players.Count() == 2)
             {
-                pToPvm.Add(g.Players[3], new PlayerViewModel(g.Players[3]));
+                IPlayer third = game.Players.Dequeue();
+                pToPvm.Add(third, new PlayerViewModel(third));
+                game.Players.Enqueue(third);
             }
-            else if (g.Players.Count() == 4)
+            else if (game.Players.Count() == 3)
             {
-                pToPvm.Add(g.Players[3], new PlayerViewModel(g.Players[3]));
-                pToPvm.Add(g.Players[4], new PlayerViewModel(g.Players[4]));
+                IPlayer third = game.Players.Dequeue();
+                pToPvm.Add(third, new PlayerViewModel(third));
+                game.Players.Enqueue(third);
+                IPlayer fourth = game.Players.Dequeue();
+                pToPvm.Add(fourth, new PlayerViewModel(fourth));
+                game.Players.Enqueue(fourth);
             }
         }
 
-        private void createGVM(IGame g)
+        private void createGVM()
         {
-            gvm = new GameViewModel(g);
+            gvm = new GameViewModel(game);
         }
 
-        private void endTurn(object sender, RoutedEventArgs e)
-        {
-            System.Windows.MessageBox.Show("Passage au joueur suivant");
-        }
-
-        private void endGame(object sender, RoutedEventArgs e)
+        private void quitGame(object sender, RoutedEventArgs e)
         {
             Application.Current.Windows[0].Close();
         }
@@ -144,10 +163,12 @@ namespace CivilizationWPF
             timerTeacherView.Visibility = Visibility.Visible;
             timerBossView.Visibility = Visibility.Hidden;
         }
-        private void newCityAction(object sender, RoutedEventArgs e)
+
+        private void newUnitAction(object sender, RoutedEventArgs e)
         {
         }
-        private void newUnitAction(object sender, RoutedEventArgs e)
+
+        private void newCityAction(object sender, RoutedEventArgs e)
         {
         }
 
