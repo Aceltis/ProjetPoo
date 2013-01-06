@@ -14,6 +14,9 @@ namespace Interfaces
 	/// <remarks>Stratégie</remarks>
 	public interface IMapStrategy 
 	{
+        int height { get; set; }
+        int width { get; set; }
+
         void createMap(List<ICase> map);
 	}
 }

@@ -46,7 +46,7 @@ namespace CivilizationWPF
             int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = width; pictureBox.Height = height;
-            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(game.Map.afficher);
+            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
             pictureBox.MouseEnter += pictureBox_giveFocus;
             pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
 
@@ -63,6 +63,11 @@ namespace CivilizationWPF
             sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
 
             windowsFormsHost1.Child = sc;
+        }
+
+        public void afficherPlayerMap(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            game.Map.afficher(sender, e, game.CurrentPlayer);
         }
 
         private void beginTurn()

@@ -38,10 +38,25 @@ namespace Implementation
             mapStrategy.createMap(grid);
         }
 
-        public void afficher(object sender, PaintEventArgs e)
+        public void afficher(object sender, PaintEventArgs e, IPlayer currPlayer)
         {
             for (int i = 0; i < grid.Count; i++)
             {
+                if (grid[i].city != null)
+                {
+                    if (grid[i].city.Player == currPlayer)
+                    {
+                        for (int k = -3; k < 4; k++)
+                        {
+                            for (int l = -3 -k; l < 4-k; l++)
+                            {
+                                grid[i + k + 25*l].Visible = true;
+                            }
+                        }
+
+                    }
+                }
+
                 int x = 50 * grid[i].sqPos[0];
                 int y = 50 * grid[i].sqPos[1];
                 grid[i].afficher(sender, e, FWimages);
