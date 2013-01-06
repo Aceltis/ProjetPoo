@@ -104,28 +104,29 @@
                 <ColumnDefinition Width="252*" />
             </Grid.ColumnDefinitions>
             <StackPanel Name="first_player" Grid.Column="0" Visibility="Hidden">
-                <TextBox Grid.Row="2" Height="23" Name="playerOne" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                <TextBox Text="Player 1" Grid.Row="2" Height="23" Name="playerOne" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
                 <ComboBox Height="23" Name="civ1" Width="120" Style="{StaticResource comboBoxDesign}">
                     <ComboBoxItem IsSelected="True">INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="second_player" Grid.Column="1" Visibility="Hidden">
-                <TextBox Grid.Row="2" Height="23" Name="playerTwo" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                <TextBox Text="Player 2" Grid.Row="2" Height="23" Name="playerTwo" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}">
+                </TextBox>
                 <ComboBox Height="23" Name="civ2" Width="120" Style="{StaticResource comboBoxDesign}">
                     <ComboBoxItem IsSelected="True">INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="third_player" Grid.Column="2" Visibility="Hidden">
-                <TextBox Grid.Row="2" Height="23" Name="playerThree" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                <TextBox Text="Player 3" Grid.Row="2" Height="23" Name="playerThree" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
                 <ComboBox Height="23" Name="civ3" Width="120" Style="{StaticResource comboBoxDesign}">
                     <ComboBoxItem IsSelected="True">INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Name="fourth_player" Grid.Column="3" Visibility="Hidden">
-                <TextBox Grid.Row="2" Height="23" Name="playerFour" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
+                <TextBox Text="Player 4" Grid.Row="2" Height="23" Name="playerFour" Width="150" Margin="15" Style="{StaticResource boxDesign}" Template="{StaticResource TextBoxBaseControlTemplate}"/>
                 <ComboBox Height="23" Name="civ4" Width="120" Style="{StaticResource comboBoxDesign}">
                     <ComboBoxItem IsSelected="True">INFO</ComboBoxItem>
                     <ComboBoxItem>EII</ComboBoxItem>
