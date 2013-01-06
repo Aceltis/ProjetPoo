@@ -97,8 +97,8 @@
             <TextBlock Grid.Column="9" Text="{Binding Path=StudentNumber}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="10" Source="{Binding Path=BossStatus}" Height="24" Width="24"></Image>
             <TextBlock Name="turnsView" Grid.Column="13" Text="{Binding Path=Turns}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
-            <Button Grid.Column="14" Click="endTurn" Content="End Turn" Style="{StaticResource menu}"/>
-            <Button Grid.Column="15" Click="endGame" Content="Exit" Style="{StaticResource menu}"/>
+            <Button Grid.Column="14" Click="nextTurn" Content="End Turn" Style="{StaticResource menu}"/>
+            <Button Grid.Column="15" Click="quitGame" Content="Exit" Style="{StaticResource menu}"/>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="1" Name="field" Visibility="Hidden">

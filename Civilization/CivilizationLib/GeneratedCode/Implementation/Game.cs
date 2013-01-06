@@ -14,44 +14,66 @@ namespace Implementation
 
     public class Game : IGame
     {
-        public virtual Dictionary<int,IPlayer> Players { get; set; }
+        public virtual Queue<IPlayer> Players { get; set; }
+        public virtual IPlayer CurrentPlayer { get; set; }
         public virtual IPlayer Winner { get; set; }
-        public virtual Dictionary<int,IPlayer> Loosers { get; set; }
+        public virtual List<IPlayer> Loosers { get; set; }
         public virtual IMap Map { get; set; }
         public virtual int Turns { get; set; }
 
-        public Game(Dictionary<int, IPlayer> joueurs, IMap carte)
+        public Game(Queue<IPlayer> joueurs, IMap carte)
         {
             Players = joueurs;
             Winner = null;
-            Loosers = new Dictionary<int, IPlayer>();
+            Loosers = new List<IPlayer>();
+            CurrentPlayer = Players.Dequeue();
             Map = carte;
             Turns = 1;
         }
 
-        public virtual void addLooser(IPlayer p)
+        public virtual void addLooser()
         {
-            throw new System.NotImplementedException();
+            CurrentPlayer.Status = StatusType.Spectator;
+            Loosers.Add(CurrentPlayer);
         }
 
-        public virtual void endGame()
+        public virtual bool isWinner()
         {
-            throw new System.NotImplementedException();
+            return Players.Count() == 0;
         }
 
-        public virtual void isWinner()
+        public virtual bool isLooser()
         {
-            throw new System.NotImplementedException();
+            if (Turns > 4 && CurrentPlayer.Cities.Count() == 0 && Players.Count() > 0)
+            {
+                addLooser();
+                return true;
+            }
+            else
+                return false;
         }
 
-        public virtual void isSpectator(IPlayer p)
+        public virtual bool isSpectator(IPlayer p)
         {
-            throw new System.NotImplementedException();
+            return (p.Status == StatusType.Spectator);
         }
 
-        public virtual void startNewTurn()
+        public virtual void nextPlayer()
         {
-            throw new System.NotImplementedException();
+            if (isLooser())
+            {
+                CurrentPlayer = Players.Dequeue();
+
+            }
+            else if (isWinner())
+            {
+                Winner = CurrentPlayer;
+            }
+            else
+            {
+                Players.Enqueue(CurrentPlayer);
+                CurrentPlayer = Players.Dequeue();
+            }      
         }
 
     }

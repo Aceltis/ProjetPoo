@@ -14,6 +14,7 @@ namespace Interfaces
 	/// <remarks>Monteur</remarks>
 	public interface IGameBuilder 
 	{
+
         IMap Map { get; set; }
 
         void createMap(int players);
