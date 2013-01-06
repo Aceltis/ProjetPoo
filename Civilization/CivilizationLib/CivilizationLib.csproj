@@ -133,6 +133,7 @@
     <Compile Include="GeneratedCode\Implementation\TeacherINFO.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/TeacherINFO/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f50b8f51f-c906-4b53-b67e-c62965acae3b</SourceModelReference>
     </Compile>
+    <Compile Include="GeneratedCode\Implementation\tuto.cs" />
     <Compile Include="GeneratedCode\Implementation\Unit.cs">
       <SourceModelReference>modelbus://ModelStoreAdapter.1.0/Civilization/Unit/D:\PROJET\Dev\Civilization\Civilization\Civilization.modelproj%252f04508be7-2a1e-4677-8791-b8edcc16a712</SourceModelReference>
     </Compile>

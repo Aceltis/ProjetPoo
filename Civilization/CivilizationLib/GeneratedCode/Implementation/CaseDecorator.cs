@@ -17,8 +17,10 @@ namespace Implementation
 	{
         public virtual ICase Case { get; set; }
 
-        public CaseDecorator()
+        public CaseDecorator(ICase caseToDecorate)
         {
+            sqPos = caseToDecorate.sqPos;
+            Case = caseToDecorate;
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)

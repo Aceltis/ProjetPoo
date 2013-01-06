@@ -16,8 +16,6 @@ namespace Interfaces
 	public interface ICaseDecorator  : ICase
 	{
         ICase Case { get; set; }
-
-        void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw);
 	}
 }
 

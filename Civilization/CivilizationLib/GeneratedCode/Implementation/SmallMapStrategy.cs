@@ -31,11 +31,11 @@ namespace Implementation
                     switch (algoBonusesMap[i][j])
                     {
                         case 1:
-                            ICaseDecorator newFruitCase = new Fruit(newCase);
+                            IFruit newFruitCase = new Fruit(newCase);
                             map.Add(newFruitCase);
                             break;
                         case 2:
-                            ICaseDecorator newIronCase = new Iron(newCase);
+                            IIron newIronCase = new Iron(newCase);
                             map.Add(newIronCase);
                             break;
                         default:

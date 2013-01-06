@@ -16,10 +16,8 @@ namespace Implementation
 
 	public class Fruit : CaseDecorator, IFruit
 	{
-        public Fruit(ICase caseToDecorate)
+        public Fruit(ICase caseToDecorate) : base(caseToDecorate)
         {
-            Case = caseToDecorate;
-            this.sqPos = caseToDecorate.sqPos;
             additional_food = 2;
         }
 

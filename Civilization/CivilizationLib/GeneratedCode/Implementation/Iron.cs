@@ -16,10 +16,8 @@ namespace Implementation
 
     public class Iron : CaseDecorator, IIron
     {
-        public Iron(ICase caseToDecorate)
+        public Iron(ICase caseToDecorate) : base(caseToDecorate)
         {
-            Case = caseToDecorate;
-            this.sqPos = caseToDecorate.sqPos;
             additional_minerals = 2;
         }
 
