@@ -20,13 +20,34 @@ namespace Implementation
             WrapperAlgo algo = new WrapperAlgo();
             CaseFactory factory = new CaseFactory();
             int** algoMap = algo.createMap(100, 100);
+            int** algoBonusesMap = algo.createBonusesMap(100, 100, 0.1);
             for (int j = 0; j < 100; j++)
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    ICase newCase = factory.makeCase(algoMap[i][j]);
-                    map.Add(newCase);
-                    newCase.sqPos = new int[2] { i, j };
+                    switch (algoBonusesMap[i][j])
+                    {
+                        case 1:
+                            ICaseDecorator newFruitCase;
+                            newFruitCase = new Fruit(factory.makeCase(algoMap[i][j]));
+                            newFruitCase.sqPos = new int[2] { i, j };
+                            newFruitCase.Case.sqPos = new int[2] { i, j };
+                            map.Add(newFruitCase);
+                            break;
+                        case 2:
+                            ICaseDecorator newIronCase;
+                            newIronCase = new Iron(factory.makeCase(algoMap[i][j]));
+                            newIronCase.sqPos = new int[2] { i, j };
+                            newIronCase.Case.sqPos = new int[2] { i, j };
+                            map.Add(newIronCase);
+                            break;
+                        default:
+                            ICase newCase;
+                            newCase = factory.makeCase(algoMap[i][j]);
+                            newCase.sqPos = new int[2] { i, j };
+                            map.Add(newCase);
+                            break;
+                    }
                 }
             }
         }
