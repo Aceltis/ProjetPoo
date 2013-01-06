@@ -4,134 +4,137 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using Interfaces;
+using Implementation;
+using MVVM;
 
 namespace CivilizationWPF
 {
-    public class PlayerViewModel : INotifyPropertyChanged
+    public class PlayerViewModel : ObservableObject, INotifyPropertyChanged
     {
-        // property changed event
-        public event PropertyChangedEventHandler PropertyChanged;
+        private string _name;
+        private string _color;
+        private string _civilization;
+        private string _cities;
+        private string _boss;
+        private string _students;
+        private string _teachers;
 
-        private string name;
-        private Implementation.PlayerColor color;
-        private string civilization;
-        private string cityNumber;
-        private string teacherNumber;
-        private string studentNumber;
-        private string bossStatus;
-
-        private void OnPropertyChanged(String property)
+        public PlayerViewModel(Player p)
         {
-            if (PropertyChanged != null)
+            p.PropertyChanged += new PropertyChangedEventHandler(delegate(object sender, PropertyChangedEventArgs args)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
+                Name = ((Player)sender).Name;
+                Color = colorLabel(((Player)sender).Color);
+                Civilization = civilizationLabel(((Player)sender).Civilization);
+                Cities = citiesLabel(((Player)sender).Cities);
+                Boss = bossLabel(((Player)sender).Boss);
+                Students = studentsLabel(((Player)sender).Students);
+                Teachers = teachersLabel(((Player)sender).Teachers);
+            });
+
+            Name = p.Name;
+            Color = colorLabel(p.Color);
+            Civilization = civilizationLabel(p.Civilization);
+            Cities = citiesLabel(p.Cities);
+            Boss = bossLabel(p.Boss);
+            Students = studentsLabel(p.Students);
+            Teachers = teachersLabel(p.Teachers);
         }
 
-        public PlayerViewModel()
+        public string Name
         {
-        }
-
-        public PlayerViewModel(IPlayer p)
-        {
-            name = p.Pseudo;
-            color = p.Color;
-            civilization = p.Civilization.ToString();
-            teacherNumber = p.Teachers.Count().ToString();
-            studentNumber = p.Students.Count().ToString();
-            cityNumber = p.Cities.Count().ToString();
-            bossStatus = "./Resource/interface/icons/dead.png";
-        }
-
-        public String Name
-        {
-            get
-            {
-                return name;
-            }
+            get { return _name; }
             set
             {
-                name = value;
-                OnPropertyChanged("Name");
+                SetAndNotify(ref _name, value, () => Name);
             }
         }
 
-        public Implementation.PlayerColor Color
+        public string Color
         {
-            get
-            {
-                return color;
-            }
+            get { return _color; }
             set
             {
-                color = value;
-                OnPropertyChanged("Color");
+                SetAndNotify(ref _color, value, () => Color);
             }
         }
 
-        public String Civilization
+        public string colorLabel(PlayerColor c)
         {
-            get
-            {
-                return civilization;
-            }
+            return c.ToString();
+        }
+
+        public string Civilization
+        {
+            get { return _civilization; }
             set
             {
-                civilization = value;
-                OnPropertyChanged("Civilization");
+                SetAndNotify(ref _civilization, value, () => Civilization);
             }
         }
 
-        public String CityNumber
+        public string civilizationLabel(CivilizationType c)
         {
-            get
-            {
-                return cityNumber;
-            }
+            return c.ToString();
+        }
+
+        public string Cities
+        {
+            get { return _cities; }
             set
             {
-                cityNumber = value;
-                OnPropertyChanged("CityNumber");
+                SetAndNotify(ref _cities, value, () => Cities);
             }
         }
 
-        public String TeacherNumber
+        public string citiesLabel(List<ICity> cities)
         {
-            get
-            {
-                return teacherNumber;
-            }
+            return cities.Count().ToString();
+        }
+
+        public string Boss
+        {
+            get { return _boss; }
             set
             {
-                teacherNumber = value;
-                OnPropertyChanged("TeacherNumber");
+                SetAndNotify(ref _boss, value, () => Boss);
             }
         }
 
-        public String StudentNumber
+        public string bossLabel(IBoss b)
         {
-            get
-            {
-                return studentNumber;
-            }
+            if (b == null)
+                return "./Resource/interface/icons/dead.png";
+            else
+                return "./Resource/interface/icons/alive.png";
+        }
+
+        public string Students
+        {
+            get { return _students; }
             set
             {
-                studentNumber = value;
-                OnPropertyChanged("StudentNumber");
+                SetAndNotify(ref _students, value, () => Students);
             }
         }
 
-        public String BossStatus
+        public string studentsLabel(List<IStudent> s)
         {
-            get
-            {
-                return bossStatus;
-            }
+            return s.Count().ToString();
+        }
+
+        public string Teachers
+        {
+            get { return _teachers; }
             set
             {
-                bossStatus = value;
-                OnPropertyChanged("BossStatus");
+                SetAndNotify(ref _teachers, value, () => Teachers);
             }
+        }
+
+        public string teachersLabel(List<ITeacher> t)
+        {
+            return t.Count().ToString();
         }
     }
 }
