@@ -96,7 +96,7 @@ namespace CivilizationWPF
 
             // Add a turn to the game
             game.Turns++;
-
+            windowsFormsHost1.Child.Refresh();
             beginTurn();
         }
 
