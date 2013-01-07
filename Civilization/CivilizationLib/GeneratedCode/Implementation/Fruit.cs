@@ -18,7 +18,18 @@ namespace Implementation
 	{
         public Fruit(ICase caseToDecorate) : base(caseToDecorate)
         {
-            caseToDecorate.Foods += 2;
+        }
+
+        public override int Foods
+        {
+            get
+            {
+                return base.Foods + 2;
+            }
+            set
+            {
+                base.Foods = value;
+            }
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)

@@ -18,7 +18,18 @@ namespace Implementation
     {
         public Iron(ICase caseToDecorate) : base(caseToDecorate)
         {
-            caseToDecorate.Minerals += 2;
+        }
+
+        public override int Minerals
+        {
+            get
+            {
+                return base.Minerals + 2;
+            }
+            set
+            {
+                base.Minerals = value;
+            }
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)

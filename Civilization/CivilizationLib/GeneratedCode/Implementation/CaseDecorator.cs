@@ -19,10 +19,32 @@ namespace Implementation
 
         public CaseDecorator(ICase caseToDecorate)
         {
-            Foods = caseToDecorate.Foods;
-            Minerals = caseToDecorate.Minerals;
             SqPos = caseToDecorate.SqPos;
-            Case = caseToDecorate;
+            this.Case = caseToDecorate;
+        }
+
+        public override int Foods
+        {
+            get
+            {
+                return Case.Foods;
+            }
+            set
+            {
+                Case.Foods = value;
+            }
+        }
+
+        public override int Minerals
+        {
+            get
+            {
+                return Case.Minerals;
+            }
+            set
+            {
+                Case.Minerals = value;
+            }
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
