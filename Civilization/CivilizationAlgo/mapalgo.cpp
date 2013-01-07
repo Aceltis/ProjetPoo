@@ -62,8 +62,8 @@ int** Algo::giveInitPos(int height, int width, int nbPlayers)
 		{
 			newIPos[i] = new int[2];
 			//dans le rand, on enlève les cases trop proches du bord pour éviter un sentiment de "dos au mur" au joueur
-			newIPos[i][0] = rand()%(width - (int)(width/16))+ (int)(width/8);;
-			newIPos[i][1] = rand()%(height - (int)(height/16))+ (int)(height/8);;
+			newIPos[i][0] = rand()%(width - (int)(width/4))+ (int)(width/8);;
+			newIPos[i][1] = rand()%(height - (int)(height/4))+ (int)(height/8);;
 		}
 		while(tooClose(newIPos, i, height, width));
 	}
