@@ -48,13 +48,9 @@ namespace CivilizationWPF
             int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = width; pictureBox.Height = height;
-<<<<<<< HEAD
+
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
-=======
 
-            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(game.Map.afficher);
-
->>>>>>> aceltis
             pictureBox.MouseEnter += pictureBox_giveFocus;
             pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
 
