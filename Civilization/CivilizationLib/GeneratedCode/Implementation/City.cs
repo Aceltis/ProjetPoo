@@ -13,26 +13,42 @@ namespace Implementation
     using System.Text;
     using System.Windows.Forms;
     using System.Drawing;
+    using MVVM;
 
-    public class City : ICity
+    public class City : ObservableObject, ICity
     {
-        public City(IPlayer p, ICase c)
+        private String _name;
+        public virtual String Name
         {
-            Population = 1;
-            Position = c;
-            Player = p;
-            Current_prod = ProductionType.None;
-            Owned_food = c.food;
-            Owned_minerals = c.minerals;
+            get { return this._name; }
+            set { this.SetAndNotify(ref this._name, value, () => this._name); }
         }
 
-        public virtual String Name { get; set; }
-        public virtual int Population { get; set; }
+        private int _population;
+        public virtual int Population
+        {
+            get { return this._population; }
+            set { this.SetAndNotify(ref this._population, value, () => this._population); }
+        }
+
+        private int _owned_minerals;
+        public virtual int Owned_minerals
+        {
+            get { return this._owned_minerals; }
+            set { this.SetAndNotify(ref this._owned_minerals, value, () => this._owned_minerals); }
+        }
+
+        private int _owned_food;
+        public virtual int Owned_food
+        {
+            get { return this._owned_food; }
+            set { this.SetAndNotify(ref this._owned_food, value, () => this._owned_food); }
+        }
+
         public virtual ICase Position { get; set; }
         public virtual IPlayer Player { get; set; }
         public virtual ProductionType Current_prod { get; set; }
-        public virtual int Owned_minerals { get; set; }
-        public virtual int Owned_food { get; set; }
+
 
         public virtual void produceBoss(IUnit unit)
         {
@@ -45,6 +61,16 @@ namespace Implementation
                     spawnUnit(unit);
                 }
             }
+        }
+
+        public City(IPlayer p, ICase c)
+        {
+            Population = 1;
+            Position = c;
+            Player = p;
+            Current_prod = ProductionType.None;
+            Owned_food = c.food;
+            Owned_minerals = c.minerals;
         }
 
         public virtual void produceStudent()

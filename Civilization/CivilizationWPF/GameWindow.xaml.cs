@@ -48,11 +48,9 @@ namespace CivilizationWPF
             int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = width; pictureBox.Height = height;
-<<<<<<< HEAD
+
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(game.Map.afficher);
-=======
-            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
->>>>>>> aceltis
+
             pictureBox.MouseEnter += pictureBox_giveFocus;
             pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
 
@@ -84,19 +82,6 @@ namespace CivilizationWPF
         private void beginTurn()
         {
             top.DataContext = pToPvm[game.CurrentPlayer];
-
-
-            /*
-            if (selectedItem == typeof(ICase))
-            {
-            }
-            else if (selectedItem == typeof(ICity))
-            {
-            }
-            else
-            {
-                //unit
-            } */
         }
 
         private void nextTurn(object sender, RoutedEventArgs e)
@@ -212,6 +197,28 @@ namespace CivilizationWPF
             //Cast du sender en l'objet approprié
             System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
             pb.Refresh();
+
+            // Select the interface linked to the type of the square
+            ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
+            if (selectedCase.city != null)
+            {
+                field.Visibility = Visibility.Hidden;
+                unit.Visibility = Visibility.Hidden;
+                city.Visibility = Visibility.Visible;
+            }
+            else if (selectedCase.units.Count() > 0)
+            {
+                field.Visibility = Visibility.Hidden;
+                unit.Visibility = Visibility.Visible;
+                city.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                field.Visibility = Visibility.Visible;
+                unit.Visibility = Visibility.Hidden;
+                city.Visibility = Visibility.Hidden;
+            }
+
         }
 
         private void sc_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
