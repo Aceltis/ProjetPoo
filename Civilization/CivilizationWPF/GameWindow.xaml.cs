@@ -268,12 +268,23 @@ namespace CivilizationWPF
         /// <param name="e"></param>
         private void moveSelectedUnit(object sender, RoutedEventArgs e)
         {
-
+            moveAction.Click -= new RoutedEventHandler(moveSelectedUnit);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
             game.Map.drawBorders();
             windowsFormsHost1.Child.Refresh();
+            moveAction.Click += new RoutedEventHandler(cancellMove);
+        }
 
+        private void cancellMove(object sender, RoutedEventArgs e)
+        {
+            moveAction.Click -= new RoutedEventHandler(cancellMove);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            foreach (ICase c in game.Map.grid)
+                c.UnderUnitMoveRange = false;
+            windowsFormsHost1.Child.Refresh();
+            moveAction.Click += new RoutedEventHandler(moveSelectedUnit);
         }
 
         //Give focus to the map when mouse enters map's area
@@ -323,6 +334,8 @@ namespace CivilizationWPF
         //Move selected unit, Move button have been pressed
         private void pictureBox_MoveUnit(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            moveAction.IsChecked = false;
+            moveAction.Click -= new RoutedEventHandler(cancellMove);
             windowsFormsHost1.Child.Focus();
             game.Map.moveTo(e.X, e.Y);
 
@@ -357,6 +370,7 @@ namespace CivilizationWPF
                 field.DataContext = new CaseViewModel((Case)selectedCase);
                 showUnitInterface(null);
             }
+            moveAction.Click += new RoutedEventHandler(moveSelectedUnit);
         }
 
         private void showUnitInterface(IUnit unit)

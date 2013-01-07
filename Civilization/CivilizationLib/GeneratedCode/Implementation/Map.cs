@@ -165,9 +165,11 @@ namespace Implementation
             foreach (ICase c in grid)
                 c.UnderUnitMoveRange = false;
 
+            //S'il y a une case de sélectionnée, on la désélectionne
             if (SelectedCase != null)
                 SelectedCase.Selected = false;
 
+            //On séléctionne la nouvelle case
             grid[x_pos + y_pos].Selected = true;
             SelectedCase = grid[x_pos + y_pos];
 
