@@ -11,15 +11,22 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using MVVM;
 
-    public class Game : IGame
+    public class Game : ObservableObject, IGame
     {
         public virtual Queue<IPlayer> Players { get; set; }
         public virtual IPlayer CurrentPlayer { get; set; }
         public virtual IPlayer Winner { get; set; }
         public virtual List<IPlayer> Loosers { get; set; }
         public virtual IMap Map { get; set; }
-        public virtual int Turns { get; set; }
+
+        private int _turns;
+        public virtual int Turns
+        {
+            get { return this._turns; }
+            set { this.SetAndNotify(ref this._turns, value, () => this._turns); }
+        }
 
         public Game(Queue<IPlayer> joueurs, IMap carte)
         {

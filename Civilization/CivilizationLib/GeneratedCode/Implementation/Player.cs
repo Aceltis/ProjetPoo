@@ -11,18 +11,60 @@ namespace Implementation
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
+    using MVVM;
 
-
-    public class Player : IPlayer
+    public class Player : ObservableObject, IPlayer
     {
-        public virtual string Pseudo { get; set; }
-        public virtual CivilizationType Civilization { get; set; }
-        public virtual List<ICity> Cities { get; set; }
-        public virtual IBoss Boss { get; set; }
-        public virtual List<IStudent> Students { get; set; }
-        public virtual List<ITeacher> Teachers { get; set; }
+        private string _name;
+        public virtual string Name
+        {
+            get { return this._name; }
+            set { this.SetAndNotify(ref this._name, value, () => this._name); }
+        }
+
+        private CivilizationType _civilization;
+        public virtual CivilizationType Civilization 
+        {
+            get { return this._civilization; }
+            set { this.SetAndNotify(ref this._civilization, value, () => this._civilization); }
+        }
+
+        private List<ICity> _cities;
+        public virtual List<ICity> Cities
+        {
+            get { return this._cities; }
+            set { this.SetAndNotify(ref this._cities, value, () => this._cities); }
+        }
+
+        private IBoss _boss;
+        public virtual IBoss Boss
+        {
+            get { return this._boss; }
+            set { this.SetAndNotify(ref this._boss, value, () => this._boss); }
+        }
+
+        private List<IStudent> _students;
+        public virtual List<IStudent> Students
+        {
+            get { return this._students; }
+            set { this.SetAndNotify(ref this._students, value, () => this._students); }
+        }
+
+        private List<ITeacher> _teachers;
+        public virtual List<ITeacher> Teachers
+        {
+            get { return this._teachers; }
+            set { this.SetAndNotify(ref this._teachers, value, () => this._teachers); }
+        }
+
         public virtual StatusType Status { get; set; }
-        public virtual Implementation.PlayerColor Color { get; set; }
+
+        private Implementation.PlayerColor _color;
+        public virtual Implementation.PlayerColor Color
+        {
+            get { return this._color; }
+            set { this.SetAndNotify(ref this._color, value, () => this._color); }
+        }
 
         public Player(String name, String Civ, Implementation.PlayerColor col)
         {
@@ -48,7 +90,7 @@ namespace Implementation
                 Students.Add(new StudentEII(this, new Case()));
             }
 
-            Pseudo = name;
+            Name = name;
             Cities = new List<ICity>();
             Status = StatusType.InGame;
             Color = col;

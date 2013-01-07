@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
 using Wrapper;
+using Implementation;
 using Interfaces;
 
 namespace CivilizationWPF
@@ -35,6 +36,7 @@ namespace CivilizationWPF
             createPVM();
             createGVM();
 
+            initializeDataContext();
             beginTurn();
 
             drawMap();
@@ -70,10 +72,15 @@ namespace CivilizationWPF
             game.Map.afficher(sender, e, game.CurrentPlayer);
         }
 
+        private void initializeDataContext()
+        {
+            turnsView.DataContext = gvm;
+        }
+
         private void beginTurn()
         {
             top.DataContext = pToPvm[game.CurrentPlayer];
-            turnsView.DataContext = gvm;
+
 
             /*
             if (selectedItem == typeof(ICase))
@@ -99,46 +106,45 @@ namespace CivilizationWPF
             game.nextPlayer();
 
             // Add a turn to the game
-            int turns = game.Turns++;
-            gvm.Turns = turns.ToString();
+            game.Turns++;
 
             beginTurn();
         }
 
         private void endGame()
         {
-            System.Windows.MessageBox.Show(game.CurrentPlayer.Pseudo + " wins!", "End Game", MessageBoxButton.OK);
+            System.Windows.MessageBox.Show(game.CurrentPlayer.Name + " wins!", "End Game", MessageBoxButton.OK);
         }
 
         private void createPVM()
         {
             pToPvm = new Dictionary<IPlayer, PlayerViewModel>();
-            pToPvm.Add(game.CurrentPlayer, new PlayerViewModel(game.CurrentPlayer));
+            pToPvm.Add(game.CurrentPlayer, new PlayerViewModel((Player)game.CurrentPlayer));
 
             IPlayer second = game.Players.Dequeue();
-            pToPvm.Add(second, new PlayerViewModel(second));
+            pToPvm.Add(second, new PlayerViewModel((Player)second));
             game.Players.Enqueue(second);
 
             if (game.Players.Count() == 2)
             {
                 IPlayer third = game.Players.Dequeue();
-                pToPvm.Add(third, new PlayerViewModel(third));
+                pToPvm.Add(third, new PlayerViewModel((Player)third));
                 game.Players.Enqueue(third);
             }
             else if (game.Players.Count() == 3)
             {
                 IPlayer third = game.Players.Dequeue();
-                pToPvm.Add(third, new PlayerViewModel(third));
+                pToPvm.Add(third, new PlayerViewModel((Player)third));
                 game.Players.Enqueue(third);
                 IPlayer fourth = game.Players.Dequeue();
-                pToPvm.Add(fourth, new PlayerViewModel(fourth));
+                pToPvm.Add(fourth, new PlayerViewModel((Player)fourth));
                 game.Players.Enqueue(fourth);
             }
         }
 
         private void createGVM()
         {
-            gvm = new GameViewModel(game);
+            gvm = new GameViewModel((Game)game);
         }
 
         private void quitGame(object sender, RoutedEventArgs e)
