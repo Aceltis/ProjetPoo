@@ -18,6 +18,7 @@ namespace Implementation
     {
         public StudentINFO(IPlayer p, ICase c)
         {
+            AttackRange = 1;
             MaxMovePoints = 2;
             MovePoints = 2;
             AttackPoints = 4;

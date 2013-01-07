@@ -22,11 +22,6 @@ namespace Implementation
             Minerals = 3;
         }
 
-        public override void removeUnit(int unit_id)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
         {
             //Points qui définissent le coin supérieur gauche de la case

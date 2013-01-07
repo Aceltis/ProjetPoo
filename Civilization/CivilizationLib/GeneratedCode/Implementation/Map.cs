@@ -40,6 +40,7 @@ namespace Implementation
             mapStrategy.createMap(grid, playersqueue);
         }
 
+        #region MapDisplay
         //Change la propriété Visible suivant le joueur qui est en train de jouer
         private void updateVisibility(IPlayer currPlayer)
         {
@@ -66,7 +67,6 @@ namespace Implementation
                             }
                         }
                     }
-                    else grid[i].Visible = false;
 
                 if (grid[i].Units.Count != 0)
                     if (grid[i].Units.First().Player.Color == currPlayer.Color)
@@ -87,7 +87,6 @@ namespace Implementation
                             }
                         }
                     }
-                    else grid[i].Visible = false;
             }
         }
 
@@ -134,12 +133,58 @@ namespace Implementation
                         if (!grid[i - mapStrategy.width].UnderUnitMoveRange)
                             e.Graphics.DrawLine(green, x, y+1, x + 50, y+1);
                 }
+
+                //Surligne une case ennemie
+                if (grid[i].UnderUnitAttackRange)
+                {
+                    Pen royalBlue = new Pen(Color.RoyalBlue, 2);
+                    e.Graphics.DrawRectangle(royalBlue, x + 1, y + 1, 48, 48);
+                }
+
+                //Surligne une case ennemie
+                if (grid[i].EnemyInRange)
+                {
+                    Pen red = new Pen(Color.Red, 2);
+                    e.Graphics.DrawRectangle(red, x + 1, y + 1, 48, 48);
+                }
             }
         }
 
+        //Affiche la map complète : fin de partie
+        public virtual void reveal(object sender, PaintEventArgs e)
+        {
+            foreach (Case square in grid)
+                square.Visible = true;
+
+            //Affichage par case, l'ordre d'appel définit la priorité d'affichage des différents logos
+            for (int i = 0; i < grid.Count; i++)
+            {
+                int x = 50 * grid[i].SqPos[0];
+                int y = 50 * grid[i].SqPos[1];
+                grid[i].afficher(sender, e, FWimages);
+
+                //Affichage de la ville
+                if (grid[i].City != null)
+                    grid[i].City.afficher(sender, e, FWimages, x, y);
+
+                //Affichage des unités
+                foreach (IUnit unit in grid[i].Units)
+                    unit.afficher(sender, e, FWimages, x, y);
+
+                //Surligne la case
+                if (grid[i].Selected)
+                {
+                    Pen brown = new Pen(Color.SaddleBrown, 2);
+                    e.Graphics.DrawRectangle(brown, x + 1, y + 1, 48, 48);
+                }
+            }
+        }
+        #endregion
+
+        #region Actions
         public void select(int x, int y)
         {
-            if(SelectedCase!=null)
+            if (SelectedCase != null)
                 SelectedCase.Selected = false;
             int x_pos = x / 50;
             int y_pos = mapStrategy.width * (y / 50);
@@ -177,37 +222,84 @@ namespace Implementation
                 SelectedUnit = SelectedCase.Units.First();
         }
 
-        //Affiche la map complète : fin de partie
-        public virtual void reveal(object sender, PaintEventArgs e)
+        public void attack(int x, int y)
         {
-            foreach (Case square in grid)
-                square.Visible = true;
+            //Position de la case cliquée sur la map
+            int x_pos = x / 50;
+            int y_pos = mapStrategy.width * (y / 50);
 
-            //Affichage par case, l'ordre d'appel définit la priorité d'affichage des différents logos
-            for (int i = 0; i < grid.Count; i++)
+            //TODO
+            /*if (grid[x_pos + y_pos].UnderUnitMoveRange)
+                SelectedUnit.move(grid[x_pos + y_pos]);*/
+
+            foreach (ICase c in grid)
             {
-                int x = 50 * grid[i].SqPos[0];
-                int y = 50 * grid[i].SqPos[1];
-                grid[i].afficher(sender, e, FWimages);
-
-                //Affichage de la ville
-                if (grid[i].City != null)
-                    grid[i].City.afficher(sender, e, FWimages, x, y);
-
-                //Affichage des unités
-                foreach (IUnit unit in grid[i].Units)
-                    unit.afficher(sender, e, FWimages, x, y);
-
-                //Surligne la case
-                if (grid[i].Selected)
-                {
-                    Pen brown = new Pen(Color.SaddleBrown, 2);
-                    e.Graphics.DrawRectangle(brown, x + 1, y + 1, 48, 48);
-                }
+                c.UnderUnitMoveRange = false;
+                c.UnderUnitAttackRange = false;
+                c.EnemyInRange = false;
             }
+
+            //S'il y a une case de sélectionnée, on la désélectionne
+            if (SelectedCase != null)
+                SelectedCase.Selected = false;
+
+            //On séléctionne la nouvelle case
+            grid[x_pos + y_pos].Selected = true;
+            SelectedCase = grid[x_pos + y_pos];
+
+            if (SelectedCase.Units.Count != 0)
+                SelectedUnit = SelectedCase.Units.First();
         }
 
-        public virtual void drawBorders()
+        //Cheks if the clicked square is within unit range and if a city can be built in it
+        //if yes, move unit to it and build City
+        //then selects the square
+        public void buildCity(int x, int y, IPlayer currPlayer)
+        {
+            //Position de la case cliquée sur la map
+            int x_pos = x / 50;
+            int y_pos = mapStrategy.width * (y / 50);
+
+            if (grid[x_pos + y_pos].UnderUnitMoveRange)
+            {
+                if (grid[x_pos + y_pos].Units.Count != 0)
+                {
+                    if (grid[x_pos + y_pos].Units.First().Player.Color == currPlayer.Color)
+                    {
+                        SelectedUnit.move(grid[x_pos + y_pos]);
+                        grid[x_pos + y_pos].City = new City(currPlayer, grid[x_pos + y_pos]);
+                        grid[x_pos + y_pos].removeUnit(SelectedUnit);
+                    }
+                }
+                else
+                {
+                    SelectedUnit.move(grid[x_pos + y_pos]);
+                    grid[x_pos + y_pos].City = new City(currPlayer, grid[x_pos + y_pos]);
+                    grid[x_pos + y_pos].removeUnit(SelectedUnit);
+                }
+            }
+
+
+            foreach (ICase c in grid)
+                c.UnderUnitMoveRange = false;
+
+            //S'il y a une case de sélectionnée, on la désélectionne
+            if (SelectedCase != null)
+                SelectedCase.Selected = false;
+
+            //On séléctionne la nouvelle case
+            grid[x_pos + y_pos].Selected = true;
+            SelectedCase = grid[x_pos + y_pos];
+
+            if (SelectedCase.Units.Count != 0)
+                SelectedUnit = SelectedCase.Units.First();
+        }
+        #endregion
+
+        #region UnitsZones
+
+        //Affiche la distance de parcours possible de l'unité
+        public virtual void drawMoveBorders()
         {
             int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
             for (int k = -SelectedUnit.MovePoints; k <= SelectedUnit.MovePoints; k++)
@@ -226,6 +318,72 @@ namespace Implementation
                 }
             }
         }
+
+        //Affiche la portée de l'unité
+        public virtual void drawAttackBorders()
+        {
+            int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
+            for (int k = -SelectedUnit.AttackRange; k <= SelectedUnit.AttackRange; k++)
+            {
+                //Tests en cas de bord de map horizontal
+                bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                if (cond1 && cond2)
+                {
+                    for (int l = -SelectedUnit.AttackRange + Math.Abs(k); l <= SelectedUnit.AttackRange - Math.Abs(k); l++)
+                    {
+                        //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
+                        if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count))
+                            grid[i + k + mapStrategy.width * l].UnderUnitAttackRange = true;
+                    }
+                }
+            }
+        }
+
+        //Entoure les ennemis à portée
+        public virtual void circleEnemies(IPlayer currPlayer)
+        {
+            int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
+            for (int k = -SelectedUnit.AttackRange; k <= SelectedUnit.AttackRange; k++)
+            {
+                //Tests en cas de bord de map horizontal
+                bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                if (cond1 && cond2)
+                {
+                    for (int l = -SelectedUnit.AttackRange + Math.Abs(k); l <= SelectedUnit.AttackRange - Math.Abs(k); l++)
+                    {
+                        //Test en cas de bord de map vertical + comparaison unité
+                        if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count) && (grid[i + k + mapStrategy.width * l].Units.Count != 0))
+                            if (grid[i + k + mapStrategy.width * l].Units.First().Player.Color != currPlayer.Color)
+                                grid[i + k + mapStrategy.width * l].EnemyInRange = true;
+                    }
+                }
+            }
+        }
+
+        //Affiche les endroits proposés pour construire une ville
+        public virtual void drawCityPossibilities(IPlayer currPlayer)
+        {
+            int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
+            for (int k = -SelectedUnit.MovePoints; k <= SelectedUnit.MovePoints; k++)
+            {
+                //Tests en cas de bord de map horizontal
+                bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                if (cond1 && cond2)
+                {
+                    for (int l = -SelectedUnit.MovePoints + Math.Abs(k); l <= SelectedUnit.MovePoints - Math.Abs(k); l++)
+                    {
+                        //Test en cas de bord de map vertical + comparaison unité
+                        if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count) && (grid[i + k + mapStrategy.width * l].Units.Count != 0))
+                            if (grid[i + k + mapStrategy.width * l].Units.First().Player.Color != currPlayer.Color)
+                                /*TODO : algoHERE grid[i + k + mapStrategy.width * l].EnemyInRange = true*/;
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }
 

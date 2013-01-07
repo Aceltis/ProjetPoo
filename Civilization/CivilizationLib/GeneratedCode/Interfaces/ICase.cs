@@ -23,10 +23,13 @@ namespace Interfaces
         bool Selected { get; set; }
         bool Visible { get; set; }
         bool UnderUnitMoveRange { get; set; }
+        bool UnderUnitAttackRange { get; set; }
+        bool EnemyInRange { get; set; }
+        bool CitySuggestion { get; set; }
 
         void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw);
         void addUnit(IUnit unit);
-        void removeUnit(int unit_id);
+        void removeUnit(IUnit unit);
 	}
 }
 

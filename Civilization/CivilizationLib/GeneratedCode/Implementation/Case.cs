@@ -22,6 +22,7 @@ namespace Implementation
             Units = new List<IUnit>();
             Visible = false;
             UnderUnitMoveRange = false;
+            UnderUnitAttackRange = false;
         }
 
         public Case(Case caseToCopy)
@@ -51,6 +52,9 @@ namespace Implementation
         public virtual bool Selected { get; set; }
         public virtual bool Visible { get; set; }
         public virtual bool UnderUnitMoveRange { get; set; }
+        public virtual bool UnderUnitAttackRange { get; set; }
+        public virtual bool EnemyInRange { get; set; }
+        public virtual bool CitySuggestion { get; set; }
 
         //Méthodes
         public virtual void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
@@ -63,13 +67,16 @@ namespace Implementation
             Units.Add(unit);
         }
 
-        public virtual void removeUnit(int unit_id)
+        public virtual void removeUnit(IUnit unit)
         {
-            foreach (IUnit unit in Units)
-            {
-                if (unit.Id == unit_id)
                     Units.Remove(unit);
-            }
+                    if (unit.Player.Teachers.Find(x => x.Id == unit.Id) != null)
+                        unit.Player.Teachers.Remove(unit.Player.Teachers.Find(x => x.Id == unit.Id));
+                    if (unit.Player.Students.Find(x => x.Id == unit.Id) != null)
+                        unit.Player.Students.Remove(unit.Player.Students.Find(x => x.Id == unit.Id));
+                    if(unit.Player.Boss != null)
+                        if (unit.Player.Boss.Id == unit.Id)
+                            unit.Player.Boss = null;
         }
     }
 }

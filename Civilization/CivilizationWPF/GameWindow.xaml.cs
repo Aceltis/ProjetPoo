@@ -161,42 +161,112 @@ namespace CivilizationWPF
 
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
-            game.Map.drawBorders();
+            game.Map.drawMoveBorders();
             windowsFormsHost1.Child.Refresh();
+
             moveActionView.Click += new RoutedEventHandler(cancellMove);
+            buildActionView.Click += new RoutedEventHandler(cancellMove);
+            attackActionView.Click += new RoutedEventHandler(cancellMove);
         }
 
         private void cancellMove(object sender, RoutedEventArgs e)
         {
             moveActionView.Click -= new RoutedEventHandler(cancellMove);
+            buildActionView.Click -= new RoutedEventHandler(cancellMove);
+            attackActionView.Click -= new RoutedEventHandler(cancellMove);
 
             //Uncheck other buttons
-            moveActionView.IsChecked = true;
-            attackActionView.IsChecked = false;
-            buildActionView.IsChecked = false;
+            moveActionView.IsChecked = false;
 
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
             foreach (ICase c in game.Map.grid)
                 c.UnderUnitMoveRange = false;
             windowsFormsHost1.Child.Refresh();
+
             moveActionView.Click += new RoutedEventHandler(moveAction);
         }
 
         private void attackAction(object sender, RoutedEventArgs e)
         {
+            attackActionView.Click -= new RoutedEventHandler(attackAction);
+
             // Uncheck others actions
             moveActionView.IsChecked = false;
             attackActionView.IsChecked = true;
             buildActionView.IsChecked = false;
+
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
+            game.Map.drawAttackBorders();
+            game.Map.circleEnemies(game.CurrentPlayer);
+            windowsFormsHost1.Child.Refresh();
+
+            moveActionView.Click += new RoutedEventHandler(cancellAttack);
+            buildActionView.Click += new RoutedEventHandler(cancellAttack);
+            attackActionView.Click += new RoutedEventHandler(cancellAttack);
+        }
+
+        private void cancellAttack(object sender, RoutedEventArgs e)
+        {
+            moveActionView.Click -= new RoutedEventHandler(cancellAttack);
+            buildActionView.Click -= new RoutedEventHandler(cancellAttack);
+            attackActionView.Click -= new RoutedEventHandler(cancellAttack);
+
+            attackActionView.IsChecked = false;
+
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            foreach (ICase c in game.Map.grid)
+            {
+                c.UnderUnitMoveRange = false;
+                c.UnderUnitAttackRange = false;
+                c.EnemyInRange = false;
+            }
+            windowsFormsHost1.Child.Refresh();
+
+            attackActionView.Click += new RoutedEventHandler(attackAction);
         }
 
         private void buildAction(object sender, RoutedEventArgs e)
         {
+            buildActionView.Click -= new RoutedEventHandler(buildAction);
+
             // Uncheck others actions
             moveActionView.IsChecked = false;
             attackActionView.IsChecked = false;
             buildActionView.IsChecked = true;
+
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
+            game.Map.drawMoveBorders();
+            game.Map.drawCityPossibilities(game.CurrentPlayer);
+            windowsFormsHost1.Child.Refresh();
+
+            moveActionView.Click += new RoutedEventHandler(cancellBuild);
+            buildActionView.Click += new RoutedEventHandler(cancellBuild);
+            attackActionView.Click += new RoutedEventHandler(cancellBuild);
+        }
+
+        private void cancellBuild(object sender, RoutedEventArgs e)
+        {
+            moveActionView.Click -= new RoutedEventHandler(cancellBuild);
+            buildActionView.Click -= new RoutedEventHandler(cancellBuild);
+            attackActionView.Click -= new RoutedEventHandler(cancellBuild);
+
+            //Uncheck other buttons
+            buildActionView.IsChecked = false;
+
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            foreach (ICase c in game.Map.grid)
+            {
+                c.UnderUnitMoveRange = false;
+                c.CitySuggestion = false;
+            }
+            windowsFormsHost1.Child.Refresh();
+
+            buildActionView.Click += new RoutedEventHandler(buildAction);
         }
 
         private void prodStudent(object sender, RoutedEventArgs e)
@@ -340,50 +410,84 @@ namespace CivilizationWPF
             System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
             pb.Refresh();
 
-            // Select the interface linked to the type of the square
-            ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
-            if (selectedCase.City != null && selectedCase.Visible == true)
-            {
-                field.Visibility = Visibility.Hidden;
-                unit.Visibility = Visibility.Hidden;
-                city.Visibility = Visibility.Visible;
-                city.DataContext = new CityViewModel((City)selectedCase.City);
-                showUnitInterface(selectedCase);
-
-            }
-            else if (selectedCase.Units.Count() > 0 && selectedCase.Visible == true)
-            {
-                field.Visibility = Visibility.Hidden;
-                unit.Visibility = Visibility.Visible;
-                city.Visibility = Visibility.Hidden;
-                unit.DataContext = new UnitViewModel((Unit)selectedCase.Units[0]);
-                showUnitInterface(selectedCase);
-            }
-            else
-            {
-                field.Visibility = Visibility.Visible;
-                unit.Visibility = Visibility.Hidden;
-                city.Visibility = Visibility.Hidden;
-                field.DataContext = new CaseViewModel((Case)selectedCase);
-                showUnitInterface(selectedCase);
-            }
+            updateInterface();
         }
 
         //Move selected unit, Move button have been pressed
         private void pictureBox_MoveUnit(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             moveActionView.IsChecked = false;
+
             moveActionView.Click -= new RoutedEventHandler(cancellMove);
+            buildActionView.Click -= new RoutedEventHandler(cancellMove);
+            attackActionView.Click -= new RoutedEventHandler(cancellMove);
+
             windowsFormsHost1.Child.Focus();
             game.Map.moveTo(e.X, e.Y);
 
-            //Cast du sender en l'objet approprié
+            //Cast du sender en l'objet approprié. Mode déplacement -> mode sélection
             System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
             pb.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
             pb.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
             pb.Refresh();
 
-            // Select the interface linked to the type of the square
+            updateInterface();
+
+            //Re-activate button
+            moveActionView.Click += new RoutedEventHandler(moveAction);
+        }
+
+        //Attack unit with selected unit, Attack button have been pressed
+        private void pictureBox_AttackUnit(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            attackActionView.IsChecked = false;
+
+            moveActionView.Click -= new RoutedEventHandler(cancellAttack);
+            buildActionView.Click -= new RoutedEventHandler(cancellAttack);
+            attackActionView.Click -= new RoutedEventHandler(cancellAttack);
+
+            windowsFormsHost1.Child.Focus();
+            game.Map.attack(e.X, e.Y);
+
+            //Cast du sender en l'objet approprié. Mode attaque -> mode sélection
+            System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
+            pb.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
+            pb.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            pb.Refresh();
+
+            updateInterface();
+
+            //Re-activate button
+            attackActionView.Click += new RoutedEventHandler(attackAction);
+        }
+
+        //Build City with selected unit, Build button have been pressed
+        private void pictureBox_BuildCity(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            buildActionView.IsChecked = false;
+
+            moveActionView.Click -= new RoutedEventHandler(cancellBuild);
+            buildActionView.Click -= new RoutedEventHandler(cancellBuild);
+            attackActionView.Click -= new RoutedEventHandler(cancellBuild);
+
+            windowsFormsHost1.Child.Focus();
+            game.Map.buildCity(e.X, e.Y, game.CurrentPlayer);
+
+            //Cast du sender en l'objet approprié. Mode attaque -> mode sélection
+            System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
+            pb.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
+            pb.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            pb.Refresh();
+
+            updateInterface();
+
+            //Re-activate button
+            buildActionView.Click += new RoutedEventHandler(buildAction);
+        }
+
+        // Selects the interface linked to the type of the square
+        private void updateInterface()
+        {
             ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
             if (selectedCase.City != null && selectedCase.Visible == true)
             {
@@ -412,25 +516,21 @@ namespace CivilizationWPF
                 field.DataContext = new CaseViewModel((Case)selectedCase);
                 showUnitInterface(selectedCase);
             }
-            moveActionView.Click += new RoutedEventHandler(moveAction);
         }
 
         // Draw the bottom interface according to the selected Case
         private void showUnitInterface(ICase c)
         {
             ImageBrush unitDrawing = new ImageBrush();
-            if (c.Units != null)
+            if (c.Units.Count() > 0)
             {
-                if (c.Units.Count() > 0)
-                {
-                    if (c.Units[0] is ITeacher)
-                        unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
-                    else if (c.Units[0] is IStudent)
+                if (c.Units[0] is ITeacher)
+                    unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
+                else if (c.Units[0] is IStudent)
 
-                        unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
-                    else if (c.Units[0] is IBoss)
-                        unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
-                }
+                    unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
+                else if (c.Units[0] is IBoss)
+                    unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
             }
             else if (c.City != null)
             {

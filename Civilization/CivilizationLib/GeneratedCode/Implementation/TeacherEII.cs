@@ -18,6 +18,7 @@ namespace Implementation
     {
         public TeacherEII(IPlayer p, ICase c)
         {
+            AttackRange = 0;
             MaxMovePoints = 2;
             MovePoints = 2;
             AttackPoints = 0;
