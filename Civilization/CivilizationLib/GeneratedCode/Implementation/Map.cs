@@ -18,7 +18,7 @@ namespace Implementation
     {
 
         public virtual List<ICase> grid { get; set; }
-        private IMapStrategy mapStrategy;
+        public virtual IMapStrategy mapStrategy { get; set; }
         private CaseImageFlyweight FWimages;
 
         public Map()
@@ -92,9 +92,7 @@ namespace Implementation
                 //Affichage des unités
                 if (grid[i].Visible)
                     foreach (IUnit unit in grid[i].units)
-                    {
                         unit.afficher(sender, e, FWimages, x, y);
-                    }
 
                 //Surligne la case
                 if (grid[i].Selected)
@@ -112,6 +110,36 @@ namespace Implementation
             int x_pos = x / 50;
             int y_pos = y / 50;
             grid[x_pos + mapStrategy.width * y_pos].Selected = true;
+        }
+
+        //Affiche la map complète : fin de partie
+        public virtual void reveal(object sender, PaintEventArgs e)
+        {
+            foreach (Case square in grid)
+                square.Visible = true;
+
+            //Affichage par case, l'ordre d'appel définit la priorité d'affichage des différents logos
+            for (int i = 0; i < grid.Count; i++)
+            {
+                int x = 50 * grid[i].sqPos[0];
+                int y = 50 * grid[i].sqPos[1];
+                grid[i].afficher(sender, e, FWimages);
+
+                //Affichage de la ville
+                if (grid[i].city != null)
+                    grid[i].city.afficher(sender, e, FWimages, x, y);
+
+                //Affichage des unités
+                foreach (IUnit unit in grid[i].units)
+                    unit.afficher(sender, e, FWimages, x, y);
+
+                //Surligne la case
+                if (grid[i].Selected)
+                {
+                    Pen brown = new Pen(Color.SaddleBrown, 2);
+                    e.Graphics.DrawRectangle(brown, x + 1, y + 1, 48, 48);
+                }
+            }
         }
     }
 }

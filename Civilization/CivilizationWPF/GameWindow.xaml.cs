@@ -48,13 +48,7 @@ namespace CivilizationWPF
             int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = width; pictureBox.Height = height;
-<<<<<<< HEAD
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
-=======
-
-            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(game.Map.afficher);
-
->>>>>>> aceltis
             pictureBox.MouseEnter += pictureBox_giveFocus;
             pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
 
@@ -93,15 +87,37 @@ namespace CivilizationWPF
             // Is there a winner among all players ?
             if (game.isWinner())
             {
+                //Affichage de la map complète, suppression du fow
+                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint -= new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
+                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint += new System.Windows.Forms.PaintEventHandler(game.Map.reveal);
+                windowsFormsHost1.Child.Refresh();
                 endGame();
             }
+            else
+            {
+                game.nextPlayer();
 
-            game.nextPlayer();
+                // Add a turn to the game
+                game.Turns++;
 
-            // Add a turn to the game
-            game.Turns++;
-            windowsFormsHost1.Child.Refresh();
-            beginTurn();
+                //Masquage de la map
+                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint += new System.Windows.Forms.PaintEventHandler(turnBlack);
+                windowsFormsHost1.Child.Refresh();
+                beginTurn();
+
+                //Le siège accueille un nouveau joueur
+                System.Windows.MessageBox.Show("Have a seat " + game.CurrentPlayer.Name + " !", "CiviliZation : Hotseat", MessageBoxButton.OK);
+
+                //Affichage de la map du nouveau joueur
+                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint -= new System.Windows.Forms.PaintEventHandler(turnBlack);
+                windowsFormsHost1.Child.Refresh();
+                windowsFormsHost1.Child.Focus();
+            }
+        }
+
+        private void turnBlack(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            e.Graphics.FillRectangle(new System.Drawing.SolidBrush(System.Drawing.Color.Black), 0, 0, game.Map.mapStrategy.height * 50, game.Map.mapStrategy.width * 50);
         }
 
         private void endGame()

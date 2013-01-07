@@ -49,7 +49,7 @@ namespace Implementation
                 Map.setMapStrategy(new SmallMapStrategy());
                 Map.createMap();
                 Map.grid[4 + 4 * 25].city = new City(Players.ElementAt(0), Map.grid[4 + 4 * 25]);
-                Map.grid[20 + 20 * 25].city = new City(Players.ElementAt(1), Map.grid[20 + 20 * 25]);
+                //Map.grid[20 + 20 * 25].city = new City(Players.ElementAt(1), Map.grid[20 + 20 * 25]);
                 Map.grid[4 + 4 * 25].addUnit(new TeacherINFO(Players.ElementAt(0), Map.grid[4 + 4 * 25]));
                 Map.grid[16 + 5 * 25].addUnit(new StudentINFO(Players.ElementAt(0), Map.grid[16 + 5 * 25]));
                 Map.grid[16 + 5 * 25].addUnit(new StudentINFO(Players.ElementAt(0), Map.grid[16 + 5 * 25]));
@@ -67,23 +67,37 @@ namespace Implementation
 		{
             Players = new Queue<IPlayer>();
 
+            //Player-order randomized
+            Random rng = new Random();
+
             if (players == 2)
             {
-                Players.Enqueue(new Player(names[0], civs[0], PlayerColor.Red));
-                Players.Enqueue(new Player(names[1], civs[1], PlayerColor.Blue));
+                int r = rng.Next(2);
+                Players.Enqueue(new Player(names[r], civs[r], PlayerColor.Red));
+                Players.Enqueue(new Player(names[1 - r], civs[1 - r], PlayerColor.Blue));
             }
             else if (players == 3)
             {
-                Players.Enqueue(new Player(names[0], civs[0], PlayerColor.Red));
-                Players.Enqueue(new Player(names[1], civs[1], PlayerColor.Blue));
-                Players.Enqueue(new Player(names[2], civs[2], PlayerColor.Orange));
+                int r = rng.Next(3);
+                Players.Enqueue(new Player(names[r], civs[r], PlayerColor.Red));
+                names.RemoveAt(r); civs.RemoveAt(r);
+                r = rng.Next(2);
+                Players.Enqueue(new Player(names[r], civs[r], PlayerColor.Blue));
+                names.RemoveAt(r); civs.RemoveAt(r);
+                Players.Enqueue(new Player(names[0], civs[0], PlayerColor.Orange));
             }
             else
             {
-                Players.Enqueue(new Player(names[0], civs[0], PlayerColor.Red));
-                Players.Enqueue(new Player(names[1], civs[1], PlayerColor.Blue));
-                Players.Enqueue(new Player(names[2], civs[2], PlayerColor.Orange));
-                Players.Enqueue(new Player(names[3], civs[3], PlayerColor.Green));
+                int r = rng.Next(4);
+                Players.Enqueue(new Player(names[r], civs[r], PlayerColor.Red));
+                names.RemoveAt(r); civs.RemoveAt(r);
+                r = rng.Next(3);
+                Players.Enqueue(new Player(names[r], civs[r], PlayerColor.Blue));
+                names.RemoveAt(r); civs.RemoveAt(r);
+                r = rng.Next(3);
+                Players.Enqueue(new Player(names[r], civs[r], PlayerColor.Orange));
+                names.RemoveAt(r); civs.RemoveAt(r);
+                Players.Enqueue(new Player(names[0], civs[0], PlayerColor.Green));
             }
 		}
 
