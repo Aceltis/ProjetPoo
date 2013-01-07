@@ -31,10 +31,18 @@ namespace Implementation
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
         {
             Case.afficher(sender, e, fw);
-            if(Visible)
+            if (Visible)
+            {
+                Case.Visible = true;
+                Case.afficher(sender, e, fw);
                 e.Graphics.DrawImage(fw.getBonusImage(0), 50 * Case.sqPos[0], 50 * Case.sqPos[1], 50, 50);
+            }
             else
+            {
+                Case.Visible = false;
+                Case.afficher(sender, e, fw);
                 e.Graphics.DrawImage(fw.getFoWBonusImage(0), 50 * Case.sqPos[0], 50 * Case.sqPos[1], 50, 50);
+            }
 		}
 
 	}

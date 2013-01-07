@@ -15,8 +15,11 @@ namespace Implementation
 
 	public class SmallMapStrategy : MapStrategy, ISmallMapStrategy
 	{
-        public int height { get; set; }
-        public int width { get; set; }
+        public SmallMapStrategy()
+        {
+            height = 25;
+            width = 25;
+        }
 
 		unsafe public override void createMap(List<ICase> map)
 		{
@@ -24,9 +27,9 @@ namespace Implementation
             CaseFactory factory = new CaseFactory();
             int** algoMap = algo.createMap(25, 25);
             int** algoBonusesMap = algo.createBonusesMap(25, 25, 0.05);
-            for (int j = 0; j < 25; j++)
+            for (int j = 0; j < height; j++)
             {
-                for (int i = 0; i < 25; i++)
+                for (int i = 0; i < width; i++)
                 {
                     ICase newCase = factory.makeCase(algoMap[i][j]);
                     newCase.sqPos = new int[2] { i, j };

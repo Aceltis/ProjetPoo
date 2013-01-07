@@ -38,41 +38,61 @@ namespace Implementation
             mapStrategy.createMap(grid);
         }
 
-        public void afficher(object sender, PaintEventArgs e, IPlayer currPlayer)
+        //Change la propriété Visible suivant le joueur qui est en train de jouer
+        private void updateVisibility(IPlayer currPlayer)
         {
             for (int i = 0; i < grid.Count; i++)
             {
                 if (grid[i].city != null)
-                {
-                    if (grid[i].city.Player == currPlayer)
+                    if (grid[i].city.Player.Color == currPlayer.Color)
                     {
                         for (int k = -3; k < 4; k++)
                         {
-                            for (int l = -3 -k; l < 4-k; l++)
+                            for (int l = -3 + Math.Abs(k); l < 4 - Math.Abs(k); l++)
                             {
-                                grid[i + k + 25*l].Visible = true;
+                                grid[i + k + mapStrategy.width * l].Visible = true;
                             }
                         }
 
                     }
-                }
 
+                if (grid[i].units.Count != 0)
+                    if (grid[i].units.First().Player.Color == currPlayer.Color)
+                    {
+                        for (int k = -2; k < 3; k++)
+                        {
+                            for (int l = -2 + Math.Abs(k); l < 3 - Math.Abs(k); l++)
+                            {
+                                grid[i + k + mapStrategy.width * l].Visible = true;
+                            }
+                        }
+                    }
+            }
+        }
+
+        public void afficher(object sender, PaintEventArgs e, IPlayer currPlayer)
+        {
+            updateVisibility(currPlayer);
+            
+            //Affichage par case, l'ordre d'appel définit la priorité d'affichage des différents logos
+            for (int i = 0; i < grid.Count; i++)
+            {
                 int x = 50 * grid[i].sqPos[0];
                 int y = 50 * grid[i].sqPos[1];
                 grid[i].afficher(sender, e, FWimages);
-
-                //Affichage des unités
-                foreach (IUnit unit in grid[i].units)
-                    if(grid[i].Visible)
-                        unit.afficher(sender, e, FWimages, x, y);
 
                 //Affichage de la ville
                 if (grid[i].city != null && grid[i].Visible)
                     grid[i].city.afficher(sender, e, FWimages, x, y);
 
+                //Affichage des unités
+                if (grid[i].Visible)
+                    foreach (IUnit unit in grid[i].units)
+                    {
+                        unit.afficher(sender, e, FWimages, x, y);
+                    }
+
                 //Surligne la case
-                //Doit être mis ici pour être 100% sûr que cela soit ce qui s'affiche en DERNIER
-                //et aussi éviter les répétitions
                 if (grid[i].Selected)
                 {
                     Pen brown = new Pen(Color.SaddleBrown, 2);
@@ -87,7 +107,7 @@ namespace Implementation
                 c.Selected = false;
             int x_pos = x / 50;
             int y_pos = y / 50;
-            grid[x_pos + (int)Math.Sqrt((double)grid.Count) * y_pos].Selected = true;
+            grid[x_pos + mapStrategy.width * y_pos].Selected = true;
         }
     }
 }

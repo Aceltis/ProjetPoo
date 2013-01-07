@@ -10,7 +10,9 @@ namespace Implementation
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
+    using System.Text;
+    using System.Windows.Forms;
+    using System.Drawing;
 
 	public class BossEII : Unit, IBoss
 	{
@@ -24,6 +26,14 @@ namespace Implementation
             Case = c;
             CreationTime = 5;
             Cost = 200;
+        }
+
+        public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)
+        {
+            if (Case.units.OfType<StudentEII>() != null || Case.units.OfType<BossEII>() != null)
+            {
+                e.Graphics.DrawImage(fw.getUnitImage(0, Player.Color), x + 6, y + 6, 38, 38);
+            }
         }
 	}
 }

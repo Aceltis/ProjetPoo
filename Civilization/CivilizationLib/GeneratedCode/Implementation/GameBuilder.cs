@@ -48,8 +48,18 @@ namespace Implementation
                 Map = new Map();
                 Map.setMapStrategy(new SmallMapStrategy());
                 Map.createMap();
-                Map.grid[4 + 4 * 25].addUnit(new TeacherEII(Players.ElementAt(0), Map.grid[4 + 4 * 25]));
-                Map.grid[20 + 20 * 25].addUnit(new TeacherEII(Players.ElementAt(1), Map.grid[20 + 20 * 25]));
+                Map.grid[4 + 4 * 25].city = new City(Players.ElementAt(0), Map.grid[4 + 4 * 25]);
+                Map.grid[20 + 20 * 25].city = new City(Players.ElementAt(1), Map.grid[20 + 20 * 25]);
+                Map.grid[4 + 4 * 25].addUnit(new TeacherINFO(Players.ElementAt(0), Map.grid[4 + 4 * 25]));
+                Map.grid[16 + 5 * 25].addUnit(new StudentINFO(Players.ElementAt(0), Map.grid[16 + 5 * 25]));
+                Map.grid[16 + 5 * 25].addUnit(new StudentINFO(Players.ElementAt(0), Map.grid[16 + 5 * 25]));
+                Map.grid[6 + 10 * 25].addUnit(new StudentINFO(Players.ElementAt(0), Map.grid[6 + 10 * 25]));
+                Map.grid[6 + 10 * 25].addUnit(new StudentINFO(Players.ElementAt(0), Map.grid[6 + 10 * 25]));
+                Map.grid[8 + 10 * 25].addUnit(new StudentINFO(Players.ElementAt(0), Map.grid[8 + 10 * 25]));
+                Map.grid[8 + 12 * 25].addUnit(new StudentINFO(Players.ElementAt(1), Map.grid[8 + 10 * 25]));
+                Map.grid[16 + 5 * 25].addUnit(new TeacherINFO(Players.ElementAt(0), Map.grid[16 + 5 * 25]));
+                Map.grid[16 + 5 * 25].addUnit(new TeacherINFO(Players.ElementAt(0), Map.grid[16 + 5 * 25]));
+                Map.grid[20 + 20 * 25].addUnit(new TeacherINFO(Players.ElementAt(1), Map.grid[20 + 20 * 25]));
             }
 		}
 

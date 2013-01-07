@@ -15,8 +15,11 @@ namespace Implementation
 
 	public class LargeMapStrategy : MapStrategy, ILargeMapStrategy
 	{
-        public int height { get; set; }
-        public int width { get; set; }
+        public LargeMapStrategy()
+        {
+            height = 100;
+            width = 100;
+        }
 
         unsafe public override void createMap(List<ICase> map)
         {
@@ -24,9 +27,9 @@ namespace Implementation
             CaseFactory factory = new CaseFactory();
             int** algoMap = algo.createMap(100, 100);
             int** algoBonusesMap = algo.createBonusesMap(100, 100, 0.05);
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < height; j++)
             {
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < width; i++)
                 {
                     ICase newCase = factory.makeCase(algoMap[i][j]);
                     newCase.sqPos = new int[2] { i, j };
