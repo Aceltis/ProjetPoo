@@ -39,8 +39,21 @@ namespace CivilizationWPF
             initializeDataContext();
             drawMap();
             beginTurn();
+
+            //Center the screen when the window is loaded
+            this.Loaded+=new RoutedEventHandler(GameWindow_Loaded);
         }
-        
+
+        /// <summary>
+        /// Calls the function that centers the screen for the first player
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GameWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            centerScreen();
+        }
+
         private void drawMap()
         {
             int height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
@@ -55,25 +68,14 @@ namespace CivilizationWPF
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
-            sc.HorizontalScroll.Maximum = pictureBox.Width;
-            sc.VerticalScroll.Maximum = pictureBox.Height;
-            sc.HorizontalScroll.SmallChange = 50;
-            sc.VerticalScroll.SmallChange = 50;
-            sc.HorizontalScroll.LargeChange = 500;
-            sc.VerticalScroll.LargeChange = 500;
-
+            //sc.HorizontalScroll.Maximum = pictureBox.Width;
+            //sc.VerticalScroll.Maximum = pictureBox.Height;
+            sc.HorizontalScroll.SmallChange = 50;   sc.VerticalScroll.SmallChange = 50;
+            sc.HorizontalScroll.LargeChange = 500;  sc.VerticalScroll.LargeChange = 500;
+                        
             sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
 
             windowsFormsHost1.Child = sc;
-            centerScreen();
-
-            //TODO !
-            ////Dimensions de windowsFormsHost1, pas encore disponibles car non-affiché
-            ////On centre l'écran pour le joueur 1
-            //List<int> maxValues = centerScreen(500, 1002, pictureBox.Width, pictureBox.Height);
-            //sc.HorizontalScroll.Maximum = maxValues[0];
-            //sc.VerticalScroll.Maximum = maxValues[1];
-            //windowsFormsHost1.Child.PerformLayout();
         }
 
         public void afficherPlayerMap(object sender, System.Windows.Forms.PaintEventArgs e)
@@ -145,16 +147,16 @@ namespace CivilizationWPF
             {
                 if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 > 0)
                 {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).HorizontalScroll.Maximum)
+                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Width)
                         x = game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2;
-                    else x = ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).HorizontalScroll.Maximum;
+                    else x = ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Width;
                 }
                 else x = 0;
                 if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 > 0)
                 {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).VerticalScroll.Maximum)
+                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Height)
                         y = game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2;
-                    else y = ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).VerticalScroll.Maximum;
+                    else y = ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Height;
                 }
                 else y = 0;
                 game.CurrentPlayer.ScreenPos = new int[2] { x, y };
@@ -162,38 +164,6 @@ namespace CivilizationWPF
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).HorizontalScroll.Value = x;
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).VerticalScroll.Value = y;
             windowsFormsHost1.Child.PerformLayout();
-        }
-
-        private List<int> centerScreen(int height, int width, int schmax, int scvmax)
-        {
-            int x, y;
-            if (game.CurrentPlayer.ScreenPos != null)
-            {
-                x = game.CurrentPlayer.ScreenPos[0];
-                y = game.CurrentPlayer.ScreenPos[1];
-            }
-            else
-            {
-                if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - width / 2 > 0)
-                {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - width / 2 < schmax)
-                        x = game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - width / 2;
-                    else x = schmax;
-                }
-                else x = 0;
-                if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - height / 2 > 0)
-                {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - height / 2 < scvmax)
-                        y = game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - height / 2;
-                    else y = scvmax;
-                }
-                else y = 0;
-                game.CurrentPlayer.ScreenPos = new int[2] { x, y };
-            }
-            List<int> values = new List<int>();
-            values.Add(x);
-            values.Add(y);
-            return values;
         }
 
         private void turnBlack(object sender, System.Windows.Forms.PaintEventArgs e)
