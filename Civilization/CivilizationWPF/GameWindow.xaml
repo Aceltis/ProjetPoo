@@ -9,6 +9,7 @@
         <BitmapImage x:Key="Student" UriSource="./Resource/interface/bottomLeft/student.png" />
         <BitmapImage x:Key="Boss" UriSource="./Resource/interface/bottomLeft/boss.png" />
         <BitmapImage x:Key="Field" UriSource="./Resource/interface/bottomLeft/field.png" />
+        <BitmapImage x:Key="City" UriSource="./Resource/interface/bottomLeft/city.png" />
         <Style x:Key="menu" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="FontFamily" Value="Lithos Pro"/>
@@ -105,10 +106,11 @@
             <Button Grid.Column="15" Click="quitGame" Content="Exit" Style="{StaticResource menu}"/>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="1" Name="field" Visibility="Hidden">
+        <Grid Grid.Row="2" Grid.Column="1" Name="field" Visibility="Visible">
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomField.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
             </Grid.Background>
+            <TextBlock Name="fieldType" Text="" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="146,36,155,138" />
             <TextBlock Text="{Binding Path=Foods}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,517,39"/>
             <TextBlock Text="{Binding Path=Minerals}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,274,39"/>
         </Grid>
@@ -141,7 +143,7 @@
             <ToggleButton Name="attackAction" Content="Attack" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="231,25,4,58" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="1" Name="city" Visibility="Visible">
+        <Grid Grid.Row="2" Grid.Column="1" Name="city" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="48*" />
                 <RowDefinition Height="42*" />
@@ -177,7 +179,7 @@
 
         <Grid Grid.Row="2" Grid.Column="0" Name="action">
             <Grid.Background>
-                <ImageBrush ImageSource="{Binding Path=UnitImage}" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"/>
+                <ImageBrush ImageSource="./Resource/interface/bottomLeft/field.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"/>
             </Grid.Background>
             <Button Name="orderUnit" Click="newUnitAction" Content="Units needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Hidden">
                 <Button.Effect>

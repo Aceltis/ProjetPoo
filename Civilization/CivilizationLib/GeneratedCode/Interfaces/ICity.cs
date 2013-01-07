@@ -19,8 +19,8 @@ namespace Interfaces
         ICase Position { get; set; }
         IPlayer Player { get; set; }
         Implementation.ProductionType Current_prod { get; set; }
-        int Owned_minerals { get; set; }
-        int Owned_food { get; set; }
+        int OwnedMinerals { get; set; }
+        int OwnedFoods { get; set; }
 
 		void produceBoss(IUnit unit);
 

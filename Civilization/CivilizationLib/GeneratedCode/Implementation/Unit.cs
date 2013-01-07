@@ -13,16 +13,40 @@ namespace Implementation
     using System.Text;
     using System.Windows.Forms;
     using System.Drawing;
+    using MVVM;
 
-    public class Unit : IUnit
+    public class Unit : ObservableObject, IUnit
     {
+        private int _hp;
+        public virtual int HP
+        {
+            get { return this._hp; }
+            set { this.SetAndNotify(ref this._hp, value, () => this._hp); }
+        }
+
+        private int _attackPoints;
+        public virtual int AttackPoints
+        {
+            get { return this._attackPoints; }
+            set { this.SetAndNotify(ref this._attackPoints, value, () => this._attackPoints); }
+        }
+
+        private int _defensePoints;
+        public virtual int DefensePoints
+        {
+            get { return this._defensePoints; }
+            set { this.SetAndNotify(ref this._defensePoints, value, () => this._defensePoints); }
+        }
+
+        private int _movePoints;
+        public virtual int MovePoints
+        {
+            get { return this._movePoints; }
+            set { this.SetAndNotify(ref this._movePoints, value, () => this._movePoints); }
+        }
 
         public virtual IPlayer Player { get; set; }
-        public virtual int HP { get; set; }
-        public virtual int AttackPoints { get; set; }
-        public virtual int DefensePoints { get; set; }
         public virtual ICase Case { get; set; }
-        public virtual int MovePoints { get; set; }
         public virtual int Cost { get; set; }
         public virtual int CreationTime { get; set; }
         public virtual int Id { get; set; }
