@@ -21,12 +21,12 @@ namespace Implementation
             width = 100;
         }
 
-        unsafe public override void createMap(List<ICase> map)
+        unsafe public override void createMap(List<ICase> map, Queue<IPlayer> players)
         {
             WrapperAlgo algo = new WrapperAlgo();
             CaseFactory factory = new CaseFactory();
-            int** algoMap = algo.createMap(100, 100);
-            int** algoBonusesMap = algo.createBonusesMap(100, 100, 0.05);
+            int** algoMap = algo.createMap(height, width);
+            int** algoBonusesMap = algo.createBonusesMap(height, width, 0.05);
             for (int j = 0; j < height; j++)
             {
                 for (int i = 0; i < width; i++)
@@ -48,6 +48,35 @@ namespace Implementation
                             map.Add(newCase);
                             break;
                     }
+                }
+            }
+
+            //Ajout des unités initiales
+            int** algoPosInit = algo.giveInitPos(height, width, players.Count);
+
+            foreach (IPlayer player in players)
+            {
+                int i = algoPosInit[(int)player.Color][0], j = algoPosInit[(int)player.Color][1];
+                switch (player.Civilization)
+                {
+                    case CivilizationType.EII:
+                        TeacherEII firstTeacherEII = new TeacherEII(player, map[i + width * j]);
+                        StudentEII firstStudentEII = new StudentEII(player, map[i + width * j]);
+                        map[i + width * j].addUnit(firstTeacherEII);
+                        map[i + width * j].addUnit(firstStudentEII);
+                        player.Teachers.Add(firstTeacherEII);
+                        player.Students.Add(firstStudentEII);
+                        break;
+                    case CivilizationType.INFO:
+                        TeacherINFO firstTeacherINFO = new TeacherINFO(player, map[i + width * j]);
+                        StudentINFO firstStudentINFO = new StudentINFO(player, map[i + width * j]);
+                        map[i + width * j].addUnit(firstTeacherINFO);
+                        map[i + width * j].addUnit(firstStudentINFO);
+                        player.Teachers.Add(firstTeacherINFO);
+                        player.Students.Add(firstStudentINFO);
+                        break;
+                    default:
+                        throw new ArgumentException();
                 }
             }
         }

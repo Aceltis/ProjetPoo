@@ -18,7 +18,7 @@ namespace Implementation
     {
 
         public virtual List<ICase> grid { get; set; }
-        private IMapStrategy mapStrategy;
+        public virtual IMapStrategy mapStrategy { get; set; }
         private CaseImageFlyweight FWimages;
 
         public Map()
@@ -33,9 +33,9 @@ namespace Implementation
         }
 
 
-        public void createMap()
+        public void createMap(Queue<IPlayer> playersqueue)
         {
-            mapStrategy.createMap(grid);
+            mapStrategy.createMap(grid, playersqueue);
         }
 
         //Change la propriété Visible suivant le joueur qui est en train de jouer
@@ -51,9 +51,16 @@ namespace Implementation
                     {
                         for (int k = -3; k < 4; k++)
                         {
-                            for (int l = -3 + Math.Abs(k); l < 4 - Math.Abs(k); l++)
+                            //Tests en cas de bord de map horizontal
+                            bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                            bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                            if (cond1 && cond2)
                             {
-                                grid[i + k + mapStrategy.width * l].Visible = true;
+                                for (int l = -3 + Math.Abs(k); l < 4 - Math.Abs(k); l++)
+                                {
+                                    if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count))
+                                        grid[i + k + mapStrategy.width * l].Visible = true;
+                                }
                             }
                         }
                     }
@@ -64,9 +71,17 @@ namespace Implementation
                     {
                         for (int k = -2; k < 3; k++)
                         {
-                            for (int l = -2 + Math.Abs(k); l < 3 - Math.Abs(k); l++)
+                            //Tests en cas de bord de map horizontal
+                            bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                            bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                            if (cond1 && cond2)
                             {
-                                grid[i + k + mapStrategy.width * l].Visible = true;
+                                for (int l = -2 + Math.Abs(k); l < 3 - Math.Abs(k); l++)
+                                {
+                                    //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
+                                    if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l<grid.Count))
+                                        grid[i + k + mapStrategy.width * l].Visible = true;
+                                }
                             }
                         }
                     }
@@ -92,9 +107,7 @@ namespace Implementation
                 //Affichage des unités
                 if (grid[i].Visible)
                     foreach (IUnit unit in grid[i].units)
-                    {
                         unit.afficher(sender, e, FWimages, x, y);
-                    }
 
                 //Surligne la case
                 if (grid[i].Selected)
@@ -112,6 +125,36 @@ namespace Implementation
             int x_pos = x / 50;
             int y_pos = y / 50;
             grid[x_pos + mapStrategy.width * y_pos].Selected = true;
+        }
+
+        //Affiche la map complète : fin de partie
+        public virtual void reveal(object sender, PaintEventArgs e)
+        {
+            foreach (Case square in grid)
+                square.Visible = true;
+
+            //Affichage par case, l'ordre d'appel définit la priorité d'affichage des différents logos
+            for (int i = 0; i < grid.Count; i++)
+            {
+                int x = 50 * grid[i].sqPos[0];
+                int y = 50 * grid[i].sqPos[1];
+                grid[i].afficher(sender, e, FWimages);
+
+                //Affichage de la ville
+                if (grid[i].city != null)
+                    grid[i].city.afficher(sender, e, FWimages, x, y);
+
+                //Affichage des unités
+                foreach (IUnit unit in grid[i].units)
+                    unit.afficher(sender, e, FWimages, x, y);
+
+                //Surligne la case
+                if (grid[i].Selected)
+                {
+                    Pen brown = new Pen(Color.SaddleBrown, 2);
+                    e.Graphics.DrawRectangle(brown, x + 1, y + 1, 48, 48);
+                }
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Implementation
         public int height { get; set; }
         public int width { get; set; }
 
-        public virtual void createMap(List<ICase> map)
+        public virtual void createMap(List<ICase> map, Queue<IPlayer> players)
 		{
 			throw new System.NotImplementedException();
 		}

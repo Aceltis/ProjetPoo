@@ -66,35 +66,20 @@ namespace Implementation
             set { this.SetAndNotify(ref this._color, value, () => this._color); }
         }
 
-        public Player(String name, String Civ, Implementation.PlayerColor col)
+        public Player(IMap map, String name, String Civ, Implementation.PlayerColor col)
         {
             if (Civ == "INFO")
-            {
                 Civilization = CivilizationType.INFO;
-
-                // Il me faut les positions de départ ! :)
-                Teachers = new List<ITeacher>();
-                Teachers.Add(new TeacherINFO(this, new Case()));
-
-                Students = new List<IStudent>();
-                Students.Add(new StudentINFO(this, new Case()));
-            }
             else
-            {
                 Civilization = CivilizationType.EII;
 
-                Teachers = new List<ITeacher>();
-                Teachers.Add(new TeacherEII(this, new Case()));
-
-                Students = new List<IStudent>();
-                Students.Add(new StudentEII(this, new Case()));
-            }
+            Teachers = new List<ITeacher>();
+            Students = new List<IStudent>();
 
             Name = name;
             Cities = new List<ICity>();
             Status = StatusType.InGame;
             Color = col;
-            Boss = null;
         }
 
         public virtual void chooseCivilization()

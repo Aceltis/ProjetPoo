@@ -15,6 +15,7 @@ namespace Wrapper {
 		~WrapperAlgo(){ Algo_delete(algo); }
 		int** createMap(int height, int width) { return algo->createMap(height, width); }
 		int** createBonusesMap(int height, int width, double ratio) { return algo->createBonusesMap(height, width, ratio); }
+		int** giveInitPos(int height, int width, int nbPlayers) {return algo->giveInitPos(height, width, nbPlayers);}
 	};
 }
 #endif

@@ -21,7 +21,8 @@ namespace CivilizationWPF
     /// </summary>
     public partial class HomeWindow : Window
     {
-        int players = 0;
+        //On considère qu'il y a deux joueurs par défaut
+        int players = 2;
         GameBuilder gameBuilder;
         List<String> names;
         List<String> civs;

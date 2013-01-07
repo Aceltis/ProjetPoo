@@ -17,7 +17,7 @@ namespace Interfaces
         int height { get; set; }
         int width { get; set; }
 
-        void createMap(List<ICase> map);
+        void createMap(List<ICase> map, Queue<IPlayer> players);
 	}
 }
 

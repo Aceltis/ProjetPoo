@@ -22,7 +22,6 @@ namespace Implementation
         {
             units = new List<IUnit>();
             Visible = false;
-
         }
 
         public Case(Case caseToCopy)

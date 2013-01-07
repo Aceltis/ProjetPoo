@@ -48,9 +48,7 @@ namespace CivilizationWPF
             int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox.Width = width; pictureBox.Height = height;
-
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
-
             pictureBox.MouseEnter += pictureBox_giveFocus;
             pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
 
@@ -58,12 +56,16 @@ namespace CivilizationWPF
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
-            sc.HorizontalScroll.Maximum = pictureBox.Height;
+            sc.HorizontalScroll.Maximum = pictureBox.Width;
             sc.VerticalScroll.Maximum = pictureBox.Height;
             sc.HorizontalScroll.SmallChange = 50;
             sc.VerticalScroll.SmallChange = 50;
             sc.HorizontalScroll.LargeChange = 500;
             sc.VerticalScroll.LargeChange = 500;
+
+            //TODO : Mettre la vue sur l'unité du joueur
+            /*sc.VerticalScroll.Value = game.CurrentPlayer.Teachers.First().Case.sqPos[1];
+            sc.HorizontalScroll.Value = game.CurrentPlayer.Teachers.First().Case.sqPos[0]; ;*/
             sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
 
             windowsFormsHost1.Child = sc;
@@ -89,15 +91,37 @@ namespace CivilizationWPF
             // Is there a winner among all players ?
             if (game.isWinner())
             {
+                //Affichage de la map complète, suppression du fow
+                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint -= new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
+                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint += new System.Windows.Forms.PaintEventHandler(game.Map.reveal);
+                windowsFormsHost1.Child.Refresh();
                 endGame();
             }
+            else
+            {
+                game.nextPlayer();
 
-            game.nextPlayer();
+                // Add a turn to the game
+                game.Turns++;
 
-            // Add a turn to the game
-            game.Turns++;
-            windowsFormsHost1.Child.Refresh();
-            beginTurn();
+                //Masquage de la map
+                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint += new System.Windows.Forms.PaintEventHandler(turnBlack);
+                windowsFormsHost1.Child.Refresh();
+                beginTurn();
+
+                //Le siège accueille un nouveau joueur
+                System.Windows.MessageBox.Show("Have a seat " + game.CurrentPlayer.Name + " !", "CiviliZation : Hotseat", MessageBoxButton.OK);
+
+                //Affichage de la map du nouveau joueur
+                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint -= new System.Windows.Forms.PaintEventHandler(turnBlack);
+                windowsFormsHost1.Child.Refresh();
+                windowsFormsHost1.Child.Focus();
+            }
+        }
+
+        private void turnBlack(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            e.Graphics.FillRectangle(new System.Drawing.SolidBrush(System.Drawing.Color.Black), 0, 0, game.Map.mapStrategy.height * 50, game.Map.mapStrategy.width * 50);
         }
 
         private void endGame()
@@ -223,22 +247,25 @@ namespace CivilizationWPF
 
         private void sc_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
         {
-            e.IsInputKey = true;
             System.Windows.Forms.ScrollableControl sc = (System.Windows.Forms.ScrollableControl)sender;
             switch (e.KeyValue)
             {
                 case (int)System.Windows.Forms.Keys.Down:
+                    e.IsInputKey = true;
                     sc.VerticalScroll.Value += 50;
                     break;
                 case (int)System.Windows.Forms.Keys.Up:
+                    e.IsInputKey = true;
                     if(sc.VerticalScroll.Value - 50 < 0)
                         sc.VerticalScroll.Value = 0;
                     else sc.VerticalScroll.Value -= 50;
                     break;
                 case (int)System.Windows.Forms.Keys.Right:
+                    e.IsInputKey = true;
                     sc.HorizontalScroll.Value += 50;
                     break;
                 case (int)System.Windows.Forms.Keys.Left:
+                    e.IsInputKey = true;
                     if (sc.HorizontalScroll.Value - 50 < 0)
                         sc.HorizontalScroll.Value = 0;
                     else
