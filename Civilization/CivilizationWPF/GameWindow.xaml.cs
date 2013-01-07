@@ -143,17 +143,17 @@ namespace CivilizationWPF
             }
             else
             {
-                if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 > 0)
+                if (game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 > 0)
                 {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).HorizontalScroll.Maximum)
-                        x = game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2;
+                    if (game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).HorizontalScroll.Maximum)
+                        x = game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2;
                     else x = ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).HorizontalScroll.Maximum;
                 }
                 else x = 0;
-                if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 > 0)
+                if (game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 > 0)
                 {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).VerticalScroll.Maximum)
-                        y = game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2;
+                    if (game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).VerticalScroll.Maximum)
+                        y = game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2;
                     else y = ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).VerticalScroll.Maximum;
                 }
                 else y = 0;
@@ -174,17 +174,17 @@ namespace CivilizationWPF
             }
             else
             {
-                if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - width / 2 > 0)
+                if (game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - width / 2 > 0)
                 {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - width / 2 < schmax)
-                        x = game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - width / 2;
+                    if (game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - width / 2 < schmax)
+                        x = game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - width / 2;
                     else x = schmax;
                 }
                 else x = 0;
-                if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - height / 2 > 0)
+                if (game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - height / 2 > 0)
                 {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - height / 2 < scvmax)
-                        y = game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - height / 2;
+                    if (game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - height / 2 < scvmax)
+                        y = game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - height / 2;
                     else y = scvmax;
                 }
                 else y = 0;
