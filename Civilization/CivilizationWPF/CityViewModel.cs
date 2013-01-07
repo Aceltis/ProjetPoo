@@ -4,119 +4,33 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using Interfaces;
+using MVVM;
+using Implementation;
 
 namespace CivilizationWPF
 {
-    class CityViewModel : INotifyPropertyChanged
+    class CityViewModel : ObservableObject
     {
-        // property changed event
-        public event PropertyChangedEventHandler PropertyChanged;
+        private string _name;
 
-        private string name;
-        private string population;
-        private string food;
-        private string iron;
-        private string neededFood;
-        private string currentProd;
-        private string currentProdTimer;
-
-        private void OnPropertyChanged(String property)
+        public CityViewModel(City c)
         {
-            if (PropertyChanged != null)
+            c.PropertyChanged += new PropertyChangedEventHandler(delegate(object sender, PropertyChangedEventArgs args)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
+                Name = ((City)sender).Name;
+            });
+
+            Name = c.Name;
         }
 
-        public String Name
+        public string Name
         {
-            get
-            {
-                return name;
-            }
+            get { return _name; }
             set
             {
-                name = value;
-                OnPropertyChanged("Name");
-            }
-        }
-
-        public String Population
-        {
-            get
-            {
-                return population;
-            }
-            set
-            {
-                population = value;
-                OnPropertyChanged("Population");
-            }
-        }
-
-        public String Food
-        {
-            get
-            {
-                return food;
-            }
-            set
-            {
-                food = value;
-                OnPropertyChanged("Food");
-            }
-        }
-
-        public String Iron
-        {
-            get
-            {
-                return iron;
-            }
-            set
-            {
-                iron = value;
-                OnPropertyChanged("Iron");
-            }
-        }
-
-        public String NeededFood
-        {
-            get
-            {
-                return neededFood;
-            }
-            set
-            {
-                neededFood = value;
-                OnPropertyChanged("NeededFood");
-            }
-        }
-
-        public String CurrentProd
-        {
-            get
-            {
-                return currentProd;
-            }
-            set
-            {
-                currentProd = value;
-                OnPropertyChanged("CurrentProd");
-            }
-        }
-
-        public String CurrentProdTimer
-        {
-            get
-            {
-                return currentProdTimer;
-            }
-            set
-            {
-                currentProdTimer = value;
-                OnPropertyChanged("CurrentProdTimer");
+                SetAndNotify(ref _name, value, () => Name);
             }
         }
     }
+    
 }
