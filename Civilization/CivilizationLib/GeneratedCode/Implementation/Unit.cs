@@ -22,6 +22,7 @@ namespace Implementation
         public virtual int AttackPoints { get; set; }
         public virtual int DefensePoints { get; set; }
         public virtual ICase Case { get; set; }
+        public virtual int MaxMovePoints { get; set; }
         public virtual int MovePoints { get; set; }
         public virtual int Cost { get; set; }
         public virtual int CreationTime { get; set; }
@@ -29,6 +30,8 @@ namespace Implementation
 
         public virtual void move(ICase destination)
         {
+            MovePoints -= Math.Abs(destination.SqPos[0] - Case.SqPos[0]);
+            MovePoints -= Math.Abs(destination.SqPos[1] - Case.SqPos[1]);
             Case.Units.Remove(this);
             Case = destination;
             destination.Units.Add(this);

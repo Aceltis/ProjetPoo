@@ -119,6 +119,14 @@ namespace CivilizationWPF
                 // Add a turn to the game
                 game.Turns++;
 
+                //Reset units' move points
+                foreach (IUnit unit in game.CurrentPlayer.Teachers)
+                    unit.MovePoints = unit.MaxMovePoints;
+                foreach (IUnit unit in game.CurrentPlayer.Students)
+                    unit.MovePoints = unit.MaxMovePoints;
+                if(game.CurrentPlayer.Boss != null)
+                    game.CurrentPlayer.Boss.MovePoints = game.CurrentPlayer.Boss.MaxMovePoints;
+
                 //Masquage de la map
                 windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint += new System.Windows.Forms.PaintEventHandler(turnBlack);
                 windowsFormsHost1.Child.Refresh();

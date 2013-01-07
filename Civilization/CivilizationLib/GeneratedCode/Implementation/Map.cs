@@ -126,13 +126,13 @@ namespace Implementation
                             e.Graphics.DrawLine(green, x + 49, y, x + 49, y + 50);
                     if (i - 1 >= 0)
                         if (!grid[i - 1].UnderUnitMoveRange)
-                            e.Graphics.DrawLine(green, x, y, x, y + 50);
+                            e.Graphics.DrawLine(green, x+1, y, x+1, y + 50);
                     if (i + mapStrategy.width < grid.Count)
                         if (!grid[i + mapStrategy.width].UnderUnitMoveRange)
                             e.Graphics.DrawLine(green, x, y + 49, x + 50, y + 49);
                     if (i - mapStrategy.width >= 0)
                         if (!grid[i - mapStrategy.width].UnderUnitMoveRange)
-                            e.Graphics.DrawLine(green, x, y, x + 50, y);
+                            e.Graphics.DrawLine(green, x, y+1, x + 50, y+1);
                 }
             }
         }

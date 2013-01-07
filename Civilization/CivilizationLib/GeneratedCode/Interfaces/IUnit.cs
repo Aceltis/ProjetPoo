@@ -19,6 +19,7 @@ namespace Interfaces
         int AttackPoints { get; set; }
         int DefensePoints { get; set; }
         ICase Case { get; set; }
+        int MaxMovePoints { get; set; }
         int MovePoints { get; set; }
         int Cost { get; set; }
         int CreationTime { get; set; }

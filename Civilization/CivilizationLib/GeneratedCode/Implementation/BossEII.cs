@@ -18,6 +18,7 @@ namespace Implementation
 	{
         public BossEII(Player p, Case c)
         {
+            MaxMovePoints = 2;
             MovePoints = 2;
             AttackPoints = 4;
             DefensePoints = 2;
