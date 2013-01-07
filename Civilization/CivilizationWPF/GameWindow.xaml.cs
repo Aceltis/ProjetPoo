@@ -28,7 +28,7 @@ namespace CivilizationWPF
         GameViewModel gvm;
         Dictionary<IPlayer, PlayerViewModel> pToPvm;
 
-        #region Game Initialization
+#region Game Initialization
         public GameWindow(IGameBuilder builder)
         {
             InitializeComponent();
@@ -43,41 +43,6 @@ namespace CivilizationWPF
             //Center the screen when the window is loaded
             this.Loaded+=new RoutedEventHandler(GameWindow_Loaded);
         }
-
-        /// <summary>
-        /// Calls the function that centers the screen for the first player
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GameWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            centerScreen();
-        }
-<<<<<<< HEAD
-
-        private void drawMap()
-        {
-            int height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
-            int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
-            System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = width; pictureBox.Height = height;
-            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
-            pictureBox.MouseEnter += pictureBox_giveFocus;
-            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-
-            //Setting up scrollableContent and adapting it to the game
-            System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
-            sc.Controls.Add(pictureBox);
-            sc.AutoScroll = true;
-            //sc.HorizontalScroll.Maximum = pictureBox.Width;
-            //sc.VerticalScroll.Maximum = pictureBox.Height;
-            sc.HorizontalScroll.SmallChange = 50;   sc.VerticalScroll.SmallChange = 50;
-            sc.HorizontalScroll.LargeChange = 500;  sc.VerticalScroll.LargeChange = 500;
-                        
-            sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
-
-            windowsFormsHost1.Child = sc;
-=======
 
         private void initializeDataContext()
         {
@@ -108,7 +73,6 @@ namespace CivilizationWPF
                 pToPvm.Add(fourth, new PlayerViewModel((Player)fourth));
                 game.Players.Enqueue(fourth);
             }
->>>>>>> aceltis
         }
 
         private void createGVM()
@@ -116,13 +80,18 @@ namespace CivilizationWPF
             gvm = new GameViewModel((Game)game);
         }
 
+        private void endGame()
+        {
+            System.Windows.MessageBox.Show(game.CurrentPlayer.Name + " wins!", "End Game", MessageBoxButton.OK);
+        }
+
         private void quitGame(object sender, RoutedEventArgs e)
         {
             Application.Current.Windows[0].Close();
         }
-        #endregion
+#endregion
 
-        #region Game & Turns mecanisms
+#region Game & Turns mecanisms
         private void beginTurn()
         {
             top.DataContext = pToPvm[game.CurrentPlayer];
@@ -178,23 +147,25 @@ namespace CivilizationWPF
                 windowsFormsHost1.Child.Focus();
             }
         }
-        
-        private void endGame()
-        {
-            System.Windows.MessageBox.Show(game.CurrentPlayer.Name + " wins!", "End Game", MessageBoxButton.OK);
-        }
-        #endregion
+#endregion
 
-        #region Buttons events
+#region Buttons events
         private void moveAction(object sender, RoutedEventArgs e)
         {
+            // Uncheck others actions
             moveActionView.IsChecked = true;
             attackActionView.IsChecked = false;
             buildActionView.IsChecked = false;
+
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            game.Map.drawBorders();
+            windowsFormsHost1.Child.Refresh();
         }
 
         private void attackAction(object sender, RoutedEventArgs e)
         {
+            // Uncheck others actions
             moveActionView.IsChecked = false;
             attackActionView.IsChecked = true;
             buildActionView.IsChecked = false;
@@ -202,6 +173,7 @@ namespace CivilizationWPF
 
         private void buildAction(object sender, RoutedEventArgs e)
         {
+            // Uncheck others actions
             moveActionView.IsChecked = false;
             attackActionView.IsChecked = false;
             buildActionView.IsChecked = true;
@@ -209,9 +181,12 @@ namespace CivilizationWPF
 
         private void prodStudent(object sender, RoutedEventArgs e)
         {
+            // Uncheck others actions
             prodBossView.IsChecked = false;
             prodTeacherView.IsChecked = false;
             prodStudentView.IsChecked = true;
+
+            // Timer visible for the production
             timerStudentView.Visibility = Visibility.Visible;
             timerTeacherView.Visibility = Visibility.Hidden;
             timerBossView.Visibility = Visibility.Hidden;
@@ -219,9 +194,12 @@ namespace CivilizationWPF
 
         private void prodBoss(object sender, RoutedEventArgs e)
         {
+            // Uncheck others actions
             prodBossView.IsChecked = true;
             prodTeacherView.IsChecked = false;
             prodStudentView.IsChecked = false;
+
+            // Timer visible for the production
             timerStudentView.Visibility = Visibility.Hidden;
             timerTeacherView.Visibility = Visibility.Hidden;
             timerBossView.Visibility = Visibility.Visible;
@@ -229,9 +207,11 @@ namespace CivilizationWPF
 
         private void prodTeacher(object sender, RoutedEventArgs e)
         {
+            // Uncheck others actions
             prodBossView.IsChecked = false;
             prodTeacherView.IsChecked = true;
             prodStudentView.IsChecked = false;
+            // Timer visible for the production
             timerStudentView.Visibility = Visibility.Hidden;
             timerTeacherView.Visibility = Visibility.Visible;
             timerBossView.Visibility = Visibility.Hidden;
@@ -240,10 +220,11 @@ namespace CivilizationWPF
         private void nextAction(object sender, RoutedEventArgs e)
         {
         }
+#endregion
 
-        #endregion
+#region Graphics mecanisms
 
-        #region Graphics mecanisms
+        // Comments
         private void drawMap()
         {
             int height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
@@ -252,38 +233,39 @@ namespace CivilizationWPF
             pictureBox.Width = width; pictureBox.Height = height;
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
             pictureBox.MouseEnter += pictureBox_giveFocus;
-            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
+            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
 
             //Setting up scrollableContent and adapting it to the game
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
-            sc.HorizontalScroll.Maximum = pictureBox.Width;
-            sc.VerticalScroll.Maximum = pictureBox.Height;
-            sc.HorizontalScroll.SmallChange = 50;
-            sc.VerticalScroll.SmallChange = 50;
-            sc.HorizontalScroll.LargeChange = 500;
-            sc.VerticalScroll.LargeChange = 500;
+            //sc.HorizontalScroll.Maximum = pictureBox.Width;
+            //sc.VerticalScroll.Maximum = pictureBox.Height;
+            sc.HorizontalScroll.SmallChange = 50; sc.VerticalScroll.SmallChange = 50;
+            sc.HorizontalScroll.LargeChange = 500; sc.VerticalScroll.LargeChange = 500;
 
             sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
 
             windowsFormsHost1.Child = sc;
-            centerScreen();
-
-            //TODO !
-            ////Dimensions de windowsFormsHost1, pas encore disponibles car non-affiché
-            ////On centre l'écran pour le joueur 1
-            //List<int> maxValues = centerScreen(500, 1002, pictureBox.Width, pictureBox.Height);
-            //sc.HorizontalScroll.Maximum = maxValues[0];
-            //sc.VerticalScroll.Maximum = maxValues[1];
-            //windowsFormsHost1.Child.PerformLayout();
         }
 
+        /// <summary>
+        /// Calls the function that centers the screen for the first player
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GameWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            centerScreen();
+        }
+
+        // Comments
         public void afficherPlayerMap(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             game.Map.afficher(sender, e, game.CurrentPlayer);
         }
 
+        // Comments
         private void centerScreen()
         {
             int x, y;
@@ -315,110 +297,12 @@ namespace CivilizationWPF
             windowsFormsHost1.Child.PerformLayout();
         }
 
+        // Comments
         private void turnBlack(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             e.Graphics.FillRectangle(new System.Drawing.SolidBrush(System.Drawing.Color.Black), 0, 0, game.Map.mapStrategy.height * 50, game.Map.mapStrategy.width * 50);
         }
 
-<<<<<<< HEAD
-        private void endGame()
-        {
-            System.Windows.MessageBox.Show(game.CurrentPlayer.Name + " wins!", "End Game", MessageBoxButton.OK);
-        }
-
-        private void createPVM()
-        {
-            pToPvm = new Dictionary<IPlayer, PlayerViewModel>();
-            pToPvm.Add(game.CurrentPlayer, new PlayerViewModel((Player)game.CurrentPlayer));
-
-            IPlayer second = game.Players.Dequeue();
-            pToPvm.Add(second, new PlayerViewModel((Player)second));
-            game.Players.Enqueue(second);
-
-            if (game.Players.Count() == 2)
-            {
-                IPlayer third = game.Players.Dequeue();
-                pToPvm.Add(third, new PlayerViewModel((Player)third));
-                game.Players.Enqueue(third);
-            }
-            else if (game.Players.Count() == 3)
-            {
-                IPlayer third = game.Players.Dequeue();
-                pToPvm.Add(third, new PlayerViewModel((Player)third));
-                game.Players.Enqueue(third);
-                IPlayer fourth = game.Players.Dequeue();
-                pToPvm.Add(fourth, new PlayerViewModel((Player)fourth));
-                game.Players.Enqueue(fourth);
-            }
-        }
-
-        private void createGVM()
-        {
-            gvm = new GameViewModel((Game)game);
-        }
-
-        private void quitGame(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Windows[0].Close();
-        }
-
-        private void newAction(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void prodStudent(object sender, RoutedEventArgs e)
-        {
-            prodBossView.IsChecked = false;
-            prodTeacherView.IsChecked = false;
-            prodStudentView.IsChecked = true;
-            timerStudentView.Visibility = Visibility.Visible;
-            timerTeacherView.Visibility = Visibility.Hidden;
-            timerBossView.Visibility = Visibility.Hidden;
-        }
-        private void prodBoss(object sender, RoutedEventArgs e)
-        {
-            prodBossView.IsChecked = true;
-            prodTeacherView.IsChecked = false;
-            prodStudentView.IsChecked = false;
-            timerStudentView.Visibility = Visibility.Hidden;
-            timerTeacherView.Visibility = Visibility.Hidden;
-            timerBossView.Visibility = Visibility.Visible;
-        }
-        private void prodTeacher(object sender, RoutedEventArgs e)
-        {
-            prodBossView.IsChecked = false;
-            prodTeacherView.IsChecked = true;
-            prodStudentView.IsChecked = false;
-            timerStudentView.Visibility = Visibility.Hidden;
-            timerTeacherView.Visibility = Visibility.Visible;
-            timerBossView.Visibility = Visibility.Hidden;
-        }
-
-        private void newUnitAction(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void newCityAction(object sender, RoutedEventArgs e)
-        {
-        }
-
-        /// <summary>
-        /// Appelé à l'appui du bouton move
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void moveSelectedUnit(object sender, RoutedEventArgs e)
-        {
-
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
-            game.Map.drawBorders();
-            windowsFormsHost1.Child.Refresh();
-
-        }
-
-=======
->>>>>>> aceltis
         //Give focus to the map when mouse enters map's area
         private void pictureBox_giveFocus(object sender, EventArgs e)
         {
@@ -464,11 +348,11 @@ namespace CivilizationWPF
                 showUnitInterface(selectedCase);
             }
         }
-
-<<<<<<< HEAD
-        //Move selected unit, Move button have been pressed
+        
+        // Move selected unit, Move button have been pressed
         private void pictureBox_MoveUnit(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            moveActionView.Click -= new RoutedEventHandler(cancellMove);
             windowsFormsHost1.Child.Focus();
             game.Map.moveTo(e.X, e.Y);
 
@@ -480,20 +364,22 @@ namespace CivilizationWPF
 
             // Select the interface linked to the type of the square
             ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
-            if (selectedCase.City != null)
+            if (selectedCase.City != null && selectedCase.Visible == true)
             {
                 field.Visibility = Visibility.Hidden;
                 unit.Visibility = Visibility.Hidden;
                 city.Visibility = Visibility.Visible;
-                showUnitInterface(selectedCase.Units[0]);
+                city.DataContext = new CityViewModel((City)selectedCase.City);
+                showUnitInterface(selectedCase);
 
             }
-            else if (selectedCase.Units.Count() > 0)
+            else if (selectedCase.Units.Count() > 0 && selectedCase.Visible == true)
             {
                 field.Visibility = Visibility.Hidden;
                 unit.Visibility = Visibility.Visible;
                 city.Visibility = Visibility.Hidden;
-                showUnitInterface(selectedCase.Units[0]);
+                unit.DataContext = new UnitViewModel((Unit)selectedCase.Units[0]);
+                showUnitInterface(selectedCase);
             }
             else
             {
@@ -501,15 +387,13 @@ namespace CivilizationWPF
                 unit.Visibility = Visibility.Hidden;
                 city.Visibility = Visibility.Hidden;
                 field.DataContext = new CaseViewModel((Case)selectedCase);
-                showUnitInterface(null);
+                showUnitInterface(selectedCase);
             }
+            moveActionView.Click += new RoutedEventHandler(moveSelectedUnit);
         }
 
-        private void showUnitInterface(IUnit unit)
-=======
         // Draw the bottom interface according to the selected Case
         private void showUnitInterface(ICase c)
->>>>>>> aceltis
         {
             ImageBrush unitDrawing = new ImageBrush();
             if (c.Units.Count() > 0)
@@ -570,6 +454,6 @@ namespace CivilizationWPF
             }
             sc.PerformLayout();
         }
-        #endregion
+#endregion
     }
 }
