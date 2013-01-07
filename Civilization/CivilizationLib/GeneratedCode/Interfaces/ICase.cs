@@ -22,6 +22,7 @@ namespace Interfaces
         ICity City { get; set; }
         bool Selected { get; set; }
         bool Visible { get; set; }
+        bool UnderUnitMoveRange { get; set; }
 
         void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw);
         void addUnit(IUnit unit);

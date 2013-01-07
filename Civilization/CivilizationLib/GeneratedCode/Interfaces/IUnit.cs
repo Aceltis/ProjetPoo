@@ -25,7 +25,7 @@ namespace Interfaces
         int Id { get; set; }
 
 
-		void move(int x, int y);
+		void move(ICase destination);
 
 		void passTurn();
 

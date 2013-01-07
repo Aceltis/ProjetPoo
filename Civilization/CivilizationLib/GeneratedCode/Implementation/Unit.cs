@@ -27,15 +27,11 @@ namespace Implementation
         public virtual int CreationTime { get; set; }
         public virtual int Id { get; set; }
 
-        public virtual void move(int x, int y)
+        public virtual void move(ICase destination)
         {
-            /*
-            if (movePoints >= pos_x + pos_y - x - y)
-            {
-                pos_x = x;
-                pos_y = y;
-            }
-             * */
+            Case.Units.Remove(this);
+            Case = destination;
+            destination.Units.Add(this);
         }
 
         public virtual void passTurn()

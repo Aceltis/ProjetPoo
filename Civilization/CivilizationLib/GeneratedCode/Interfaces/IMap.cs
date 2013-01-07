@@ -18,12 +18,15 @@ namespace Interfaces
         List<ICase> grid { get; set; }
         IMapStrategy mapStrategy { get; set; }
         ICase SelectedCase { get; set; }
+        IUnit SelectedUnit { get; set; }
 
         void setMapStrategy(IMapStrategy mapStrategy);
         void createMap(Queue<IPlayer> plqu);
         void afficher(object sender, PaintEventArgs e, IPlayer currPlayer);
         void select(int x, int y);
+        void moveTo(int x, int y);
         void reveal(object sender, PaintEventArgs e);
+        void drawBorders();
 	}
 }
 

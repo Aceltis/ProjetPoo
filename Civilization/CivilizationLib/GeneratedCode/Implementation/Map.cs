@@ -20,6 +20,7 @@ namespace Implementation
         public virtual List<ICase> grid { get; set; }
         public virtual IMapStrategy mapStrategy { get; set; }
         public virtual ICase SelectedCase { get; set; }
+        public virtual IUnit SelectedUnit { get; set; }
         private CaseImageFlyweight FWimages;
 
         public Map()
@@ -116,6 +117,23 @@ namespace Implementation
                     Pen brown = new Pen(Color.SaddleBrown, 2);
                     e.Graphics.DrawRectangle(brown, x + 1, y + 1, 48, 48);
                 }
+
+                if (grid[i].UnderUnitMoveRange)
+                {
+                    Pen green = new Pen(Color.Green, 2);
+                    if (i + 1 < grid.Count)
+                        if (!grid[i + 1].UnderUnitMoveRange)
+                            e.Graphics.DrawLine(green, x + 49, y, x + 49, y + 50);
+                    if (i - 1 >= 0)
+                        if (!grid[i - 1].UnderUnitMoveRange)
+                            e.Graphics.DrawLine(green, x, y, x, y + 50);
+                    if (i + mapStrategy.width < grid.Count)
+                        if (!grid[i + mapStrategy.width].UnderUnitMoveRange)
+                            e.Graphics.DrawLine(green, x, y + 49, x + 50, y + 49);
+                    if (i - mapStrategy.width >= 0)
+                        if (!grid[i - mapStrategy.width].UnderUnitMoveRange)
+                            e.Graphics.DrawLine(green, x, y, x + 50, y);
+                }
             }
         }
 
@@ -124,9 +142,37 @@ namespace Implementation
             if(SelectedCase!=null)
                 SelectedCase.Selected = false;
             int x_pos = x / 50;
-            int y_pos = y / 50;
-            grid[x_pos + mapStrategy.width * y_pos].Selected = true;
-            SelectedCase = grid[x_pos + mapStrategy.width * y_pos];
+            int y_pos = mapStrategy.width * (y / 50);
+            grid[x_pos + y_pos].Selected = true;
+            SelectedCase = grid[x_pos + y_pos];
+
+            if (SelectedCase.Units.Count != 0)
+                SelectedUnit = SelectedCase.Units.First();
+        }
+
+        //Cheks if the clicked square is within unit range
+        //if yes, move unit to it
+        //then selects the square
+        public void moveTo(int x, int y)
+        {
+            //Position de la case cliquée sur la map
+            int x_pos = x / 50;
+            int y_pos = mapStrategy.width * (y / 50);
+
+            if (grid[x_pos + y_pos].UnderUnitMoveRange)
+                SelectedUnit.move(grid[x_pos + y_pos]);
+            
+            foreach (ICase c in grid)
+                c.UnderUnitMoveRange = false;
+
+            if (SelectedCase != null)
+                SelectedCase.Selected = false;
+
+            grid[x_pos + y_pos].Selected = true;
+            SelectedCase = grid[x_pos + y_pos];
+
+            if (SelectedCase.Units.Count != 0)
+                SelectedUnit = SelectedCase.Units.First();
         }
 
         //Affiche la map complète : fin de partie
@@ -155,6 +201,26 @@ namespace Implementation
                 {
                     Pen brown = new Pen(Color.SaddleBrown, 2);
                     e.Graphics.DrawRectangle(brown, x + 1, y + 1, 48, 48);
+                }
+            }
+        }
+
+        public virtual void drawBorders()
+        {
+            int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
+            for (int k = -SelectedUnit.MovePoints; k <= SelectedUnit.MovePoints; k++)
+            {
+                //Tests en cas de bord de map horizontal
+                bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                if (cond1 && cond2)
+                {
+                    for (int l = -SelectedUnit.MovePoints + Math.Abs(k); l <= SelectedUnit.MovePoints - Math.Abs(k); l++)
+                    {
+                        //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
+                        if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count))
+                            grid[i + k + mapStrategy.width * l].UnderUnitMoveRange = true;
+                    }
                 }
             }
         }

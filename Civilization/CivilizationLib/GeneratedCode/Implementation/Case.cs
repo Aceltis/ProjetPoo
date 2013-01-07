@@ -21,6 +21,7 @@ namespace Implementation
         {
             Units = new List<IUnit>();
             Visible = false;
+            UnderUnitMoveRange = false;
         }
 
         public Case(Case caseToCopy)
@@ -49,6 +50,7 @@ namespace Implementation
         public virtual ICity City { get; set; }
         public virtual bool Selected { get; set; }
         public virtual bool Visible { get; set; }
+        public virtual bool UnderUnitMoveRange { get; set; }
 
         //Méthodes
         public virtual void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)

@@ -62,7 +62,7 @@ namespace CivilizationWPF
             pictureBox.Width = width; pictureBox.Height = height;
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
             pictureBox.MouseEnter += pictureBox_giveFocus;
-            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
+            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
 
             //Setting up scrollableContent and adapting it to the game
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
@@ -260,8 +260,12 @@ namespace CivilizationWPF
         /// <param name="e"></param>
         private void moveSelectedUnit(object sender, RoutedEventArgs e)
         {
-            /*int mp = game.Map.SelectedCase.Units.First().MovePoints;
-            game.Map.drawBorders();*/
+
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            game.Map.drawBorders();
+            windowsFormsHost1.Child.Refresh();
+
         }
 
         //Give focus to the map when mouse enters map's area
@@ -272,13 +276,52 @@ namespace CivilizationWPF
 
         //Give focus to the map when mouse clicks map's area
         //+ Select appropriate Square
-        private void pictureBox_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void pictureBox_Select(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             windowsFormsHost1.Child.Focus();
             game.Map.select(e.X, e.Y);
             
             //Cast du sender en l'objet approprié
             System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
+            pb.Refresh();
+
+            // Select the interface linked to the type of the square
+            ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
+            if (selectedCase.City != null)
+            {
+                field.Visibility = Visibility.Hidden;
+                unit.Visibility = Visibility.Hidden;
+                city.Visibility = Visibility.Visible;
+                showUnitInterface(selectedCase.Units[0]);
+
+            }
+            else if (selectedCase.Units.Count() > 0)
+            {
+                field.Visibility = Visibility.Hidden;
+                unit.Visibility = Visibility.Visible;
+                city.Visibility = Visibility.Hidden;
+                showUnitInterface(selectedCase.Units[0]);
+            }
+            else
+            {
+                field.Visibility = Visibility.Visible;
+                unit.Visibility = Visibility.Hidden;
+                city.Visibility = Visibility.Hidden;
+                field.DataContext = new CaseViewModel((Case)selectedCase);
+                showUnitInterface(null);
+            }
+        }
+
+        //Move selected unit, Move button have been pressed
+        private void pictureBox_MoveUnit(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            windowsFormsHost1.Child.Focus();
+            game.Map.moveTo(e.X, e.Y);
+
+            //Cast du sender en l'objet approprié
+            System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
+            pb.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            pb.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
             pb.Refresh();
 
             // Select the interface linked to the type of the square
