@@ -63,7 +63,7 @@ namespace CivilizationWPF
             sc.HorizontalScroll.LargeChange = 500;
             sc.VerticalScroll.LargeChange = 500;
 
-            //Mettre la vue sur l'unité du joueur
+            //TODO : Mettre la vue sur l'unité du joueur
             /*sc.VerticalScroll.Value = game.CurrentPlayer.Teachers.First().Case.sqPos[1];
             sc.HorizontalScroll.Value = game.CurrentPlayer.Teachers.First().Case.sqPos[0]; ;*/
             sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);

@@ -58,9 +58,13 @@ int** Algo::giveInitPos(int height, int width, int nbPlayers)
 	int** newIPos = new int*[nbPlayers];
 	for (int i=0; i<nbPlayers; i++)
 	{
-		newIPos[i] = new int[2];
-		newIPos[i][0] = rand()%(width - (int)(width/8))+ (int)(width/8);;
-		newIPos[i][1] = rand()%(height - (int)(height/8))+ (int)(height/8);;
+		do
+		{
+			newIPos[i] = new int[2];
+			newIPos[i][0] = rand()%(width - (int)(width/8))+ (int)(width/8);;
+			newIPos[i][1] = rand()%(height - (int)(height/8))+ (int)(height/8);;
+		}
+		while(tooClose(newIPos, i, height, width));
 	}
 	return newIPos;
 }
@@ -228,4 +232,15 @@ void changeGroup(square** &map, int height, int width, int i, int j, int itype, 
 	if (j+1<width)	if(map[i][j+1].type == itype) changeGroup(map, height, width, i, j+1, itype, dtype);
 	if (i>0)				if(map[i-1][j].type == itype) changeGroup(map, height, width, i-1, j, itype, dtype);
 	if (j>0)				if(map[i][j-1].type == itype) changeGroup(map, height, width, i, j-1, itype, dtype);
+}
+
+bool tooClose(int** &newIPos, int i, int height, int width)
+{
+	for(int j=0; j < i; j++)
+	{
+		//(x-x0)²+(y-y0)²<R²
+		if((newIPos[j][0]-newIPos[i][0])*(newIPos[j][0]-newIPos[i][0])+(newIPos[j][1]-newIPos[i][1])*(newIPos[j][1]-newIPos[i][1])<2*min(height, width))
+			return true;
+	}
+	return false;
 }

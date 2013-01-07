@@ -67,3 +67,6 @@ bool rearrangeGroups(square** &m, int height, int width, int* t);
 
 //Changes a group's type
 void changeGroup(square** &m, int height, int width, int i, int j, int it, int dt);
+
+//returns true if initial units' positions are too close
+bool tooClose(int** &newIPos, int i, int height, int width);
