@@ -47,11 +47,7 @@ namespace Implementation
 
         public virtual IPlayer Player { get; set; }
         public virtual ICase Case { get; set; }
-<<<<<<< HEAD
         public virtual int MaxMovePoints { get; set; }
-        public virtual int MovePoints { get; set; }
-=======
->>>>>>> aceltis
         public virtual int Cost { get; set; }
         public virtual int CreationTime { get; set; }
         public virtual int Id { get; set; }

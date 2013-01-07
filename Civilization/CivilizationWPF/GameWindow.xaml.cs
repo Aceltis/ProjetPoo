@@ -53,31 +53,6 @@ namespace CivilizationWPF
         {
             centerScreen();
         }
-<<<<<<< HEAD
-
-        private void drawMap()
-        {
-            int height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
-            int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
-            System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = width; pictureBox.Height = height;
-            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
-            pictureBox.MouseEnter += pictureBox_giveFocus;
-            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-
-            //Setting up scrollableContent and adapting it to the game
-            System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
-            sc.Controls.Add(pictureBox);
-            sc.AutoScroll = true;
-            //sc.HorizontalScroll.Maximum = pictureBox.Width;
-            //sc.VerticalScroll.Maximum = pictureBox.Height;
-            sc.HorizontalScroll.SmallChange = 50;   sc.VerticalScroll.SmallChange = 50;
-            sc.HorizontalScroll.LargeChange = 500;  sc.VerticalScroll.LargeChange = 500;
-                        
-            sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
-
-            windowsFormsHost1.Child = sc;
-=======
 
         private void initializeDataContext()
         {
@@ -108,7 +83,6 @@ namespace CivilizationWPF
                 pToPvm.Add(fourth, new PlayerViewModel((Player)fourth));
                 game.Players.Enqueue(fourth);
             }
->>>>>>> aceltis
         }
 
         private void createGVM()
@@ -188,9 +162,23 @@ namespace CivilizationWPF
         #region Buttons events
         private void moveAction(object sender, RoutedEventArgs e)
         {
-            moveActionView.IsChecked = true;
-            attackActionView.IsChecked = false;
-            buildActionView.IsChecked = false;
+            moveActionView.Click -= new RoutedEventHandler(moveAction);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            game.Map.drawBorders();
+            windowsFormsHost1.Child.Refresh();
+            moveActionView.Click += new RoutedEventHandler(cancellMove);
+        }
+
+        private void cancellMove(object sender, RoutedEventArgs e)
+        {
+            moveActionView.Click -= new RoutedEventHandler(cancellMove);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            foreach (ICase c in game.Map.grid)
+                c.UnderUnitMoveRange = false;
+            windowsFormsHost1.Child.Refresh();
+            moveActionView.Click += new RoutedEventHandler(moveAction);
         }
 
         private void attackAction(object sender, RoutedEventArgs e)
@@ -252,14 +240,12 @@ namespace CivilizationWPF
             pictureBox.Width = width; pictureBox.Height = height;
             pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
             pictureBox.MouseEnter += pictureBox_giveFocus;
-            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MouseClick);
+            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
 
             //Setting up scrollableContent and adapting it to the game
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
-            sc.HorizontalScroll.Maximum = pictureBox.Width;
-            sc.VerticalScroll.Maximum = pictureBox.Height;
             sc.HorizontalScroll.SmallChange = 50;
             sc.VerticalScroll.SmallChange = 50;
             sc.HorizontalScroll.LargeChange = 500;
@@ -268,7 +254,6 @@ namespace CivilizationWPF
             sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
 
             windowsFormsHost1.Child = sc;
-            centerScreen();
 
             //TODO !
             ////Dimensions de windowsFormsHost1, pas encore disponibles car non-affiché
@@ -319,117 +304,14 @@ namespace CivilizationWPF
         {
             e.Graphics.FillRectangle(new System.Drawing.SolidBrush(System.Drawing.Color.Black), 0, 0, game.Map.mapStrategy.height * 50, game.Map.mapStrategy.width * 50);
         }
-
-<<<<<<< HEAD
-        private void endGame()
-        {
-            System.Windows.MessageBox.Show(game.CurrentPlayer.Name + " wins!", "End Game", MessageBoxButton.OK);
-        }
-
-        private void createPVM()
-        {
-            pToPvm = new Dictionary<IPlayer, PlayerViewModel>();
-            pToPvm.Add(game.CurrentPlayer, new PlayerViewModel((Player)game.CurrentPlayer));
-
-            IPlayer second = game.Players.Dequeue();
-            pToPvm.Add(second, new PlayerViewModel((Player)second));
-            game.Players.Enqueue(second);
-
-            if (game.Players.Count() == 2)
-            {
-                IPlayer third = game.Players.Dequeue();
-                pToPvm.Add(third, new PlayerViewModel((Player)third));
-                game.Players.Enqueue(third);
-            }
-            else if (game.Players.Count() == 3)
-            {
-                IPlayer third = game.Players.Dequeue();
-                pToPvm.Add(third, new PlayerViewModel((Player)third));
-                game.Players.Enqueue(third);
-                IPlayer fourth = game.Players.Dequeue();
-                pToPvm.Add(fourth, new PlayerViewModel((Player)fourth));
-                game.Players.Enqueue(fourth);
-            }
-        }
-
-        private void createGVM()
-        {
-            gvm = new GameViewModel((Game)game);
-        }
-
-        private void quitGame(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Windows[0].Close();
-        }
-
-        private void newAction(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void prodStudent(object sender, RoutedEventArgs e)
-        {
-            prodBossView.IsChecked = false;
-            prodTeacherView.IsChecked = false;
-            prodStudentView.IsChecked = true;
-            timerStudentView.Visibility = Visibility.Visible;
-            timerTeacherView.Visibility = Visibility.Hidden;
-            timerBossView.Visibility = Visibility.Hidden;
-        }
-        private void prodBoss(object sender, RoutedEventArgs e)
-        {
-            prodBossView.IsChecked = true;
-            prodTeacherView.IsChecked = false;
-            prodStudentView.IsChecked = false;
-            timerStudentView.Visibility = Visibility.Hidden;
-            timerTeacherView.Visibility = Visibility.Hidden;
-            timerBossView.Visibility = Visibility.Visible;
-        }
-        private void prodTeacher(object sender, RoutedEventArgs e)
-        {
-            prodBossView.IsChecked = false;
-            prodTeacherView.IsChecked = true;
-            prodStudentView.IsChecked = false;
-            timerStudentView.Visibility = Visibility.Hidden;
-            timerTeacherView.Visibility = Visibility.Visible;
-            timerBossView.Visibility = Visibility.Hidden;
-        }
-
-        private void newUnitAction(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void newCityAction(object sender, RoutedEventArgs e)
-        {
-        }
-
+        
         /// <summary>
         /// Appelé à l'appui du bouton move
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void moveSelectedUnit(object sender, RoutedEventArgs e)
-        {
-            moveAction.Click -= new RoutedEventHandler(moveSelectedUnit);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
-            game.Map.drawBorders();
-            windowsFormsHost1.Child.Refresh();
-            moveAction.Click += new RoutedEventHandler(cancellMove);
-        }
 
-        private void cancellMove(object sender, RoutedEventArgs e)
-        {
-            moveAction.Click -= new RoutedEventHandler(cancellMove);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            foreach (ICase c in game.Map.grid)
-                c.UnderUnitMoveRange = false;
-            windowsFormsHost1.Child.Refresh();
-            moveAction.Click += new RoutedEventHandler(moveSelectedUnit);
-        }
 
-=======
->>>>>>> aceltis
         //Give focus to the map when mouse enters map's area
         private void pictureBox_giveFocus(object sender, EventArgs e)
         {
@@ -476,12 +358,11 @@ namespace CivilizationWPF
             }
         }
 
-<<<<<<< HEAD
         //Move selected unit, Move button have been pressed
         private void pictureBox_MoveUnit(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            moveAction.IsChecked = false;
-            moveAction.Click -= new RoutedEventHandler(cancellMove);
+            moveActionView.IsChecked = false;
+            moveActionView.Click -= new RoutedEventHandler(cancellMove);
             windowsFormsHost1.Child.Focus();
             game.Map.moveTo(e.X, e.Y);
 
@@ -498,7 +379,7 @@ namespace CivilizationWPF
                 field.Visibility = Visibility.Hidden;
                 unit.Visibility = Visibility.Hidden;
                 city.Visibility = Visibility.Visible;
-                showUnitInterface(selectedCase.Units[0]);
+                showUnitInterface(selectedCase);
 
             }
             else if (selectedCase.Units.Count() > 0)
@@ -506,7 +387,7 @@ namespace CivilizationWPF
                 field.Visibility = Visibility.Hidden;
                 unit.Visibility = Visibility.Visible;
                 city.Visibility = Visibility.Hidden;
-                showUnitInterface(selectedCase.Units[0]);
+                showUnitInterface(selectedCase);
             }
             else
             {
@@ -514,27 +395,27 @@ namespace CivilizationWPF
                 unit.Visibility = Visibility.Hidden;
                 city.Visibility = Visibility.Hidden;
                 field.DataContext = new CaseViewModel((Case)selectedCase);
-                showUnitInterface(null);
+                showUnitInterface(selectedCase);
             }
-            moveAction.Click += new RoutedEventHandler(moveSelectedUnit);
+            moveActionView.Click += new RoutedEventHandler(moveAction);
         }
 
-        private void showUnitInterface(IUnit unit)
-=======
         // Draw the bottom interface according to the selected Case
         private void showUnitInterface(ICase c)
->>>>>>> aceltis
         {
             ImageBrush unitDrawing = new ImageBrush();
-            if (c.Units.Count() > 0)
+            if (c.Units != null)
             {
-                if (c.Units[0] is ITeacher)
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
-                else if (c.Units[0] is IStudent)
+                if (c.Units.Count() > 0)
+                {
+                    if (c.Units[0] is ITeacher)
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
+                    else if (c.Units[0] is IStudent)
 
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
-                else if (c.Units[0] is IBoss)
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
+                    else if (c.Units[0] is IBoss)
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
+                }
             }
             else if (c.City != null)
             {
