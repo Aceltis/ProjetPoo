@@ -126,7 +126,7 @@ namespace CivilizationWPF
                 centerScreen();
 
                 //Le siège accueille un nouveau joueur
-                System.Windows.MessageBox.Show("Have a seat " + game.CurrentPlayer.Name + " !", "CiviliZation : Hotseat", MessageBoxButton.OK);
+                //System.Windows.MessageBox.Show("Have a seat " + game.CurrentPlayer.Name + " !", "CiviliZation : Hotseat", MessageBoxButton.OK);
 
                 //Affichage de la map du nouveau joueur
                 windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint -= new System.Windows.Forms.PaintEventHandler(turnBlack);
@@ -145,17 +145,17 @@ namespace CivilizationWPF
             }
             else
             {
-                if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 > 0)
+                if (game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 > 0)
                 {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Width)
-                        x = game.CurrentPlayer.Teachers.First().Case.sqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2;
+                    if (game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Width)
+                        x = game.CurrentPlayer.Teachers.First().Case.SqPos[0] * 50 - (int)windowsFormsHost1.ActualWidth / 2;
                     else x = ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Width;
                 }
                 else x = 0;
-                if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 > 0)
+                if (game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 > 0)
                 {
-                    if (game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Height)
-                        y = game.CurrentPlayer.Teachers.First().Case.sqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2;
+                    if (game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2 < ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Height)
+                        y = game.CurrentPlayer.Teachers.First().Case.SqPos[1] * 50 - (int)windowsFormsHost1.ActualHeight / 2;
                     else y = ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).DisplayRectangle.Height;
                 }
                 else y = 0;
@@ -271,25 +271,45 @@ namespace CivilizationWPF
 
             // Select the interface linked to the type of the square
             ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
-            if (selectedCase.city != null)
+            if (selectedCase.City != null)
             {
                 field.Visibility = Visibility.Hidden;
                 unit.Visibility = Visibility.Hidden;
                 city.Visibility = Visibility.Visible;
+                showUnitInterface(selectedCase.Units[0]);
+
             }
-            else if (selectedCase.units.Count() > 0)
+            else if (selectedCase.Units.Count() > 0)
             {
                 field.Visibility = Visibility.Hidden;
                 unit.Visibility = Visibility.Visible;
                 city.Visibility = Visibility.Hidden;
+                showUnitInterface(selectedCase.Units[0]);
             }
             else
             {
                 field.Visibility = Visibility.Visible;
                 unit.Visibility = Visibility.Hidden;
                 city.Visibility = Visibility.Hidden;
+                field.DataContext = new CaseViewModel((Case)selectedCase);
+                showUnitInterface(null);
             }
+        }
 
+        private void showUnitInterface(IUnit unit)
+        {
+            ImageBrush unitDrawing = new ImageBrush();
+
+            if(unit is ITeacher)
+                unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
+            else if (unit is IStudent)
+                unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
+            else if (unit is IBoss)
+                unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
+            else
+                unitDrawing.ImageSource = (BitmapImage)FindResource("Field");
+
+            action.Background = unitDrawing;
         }
 
         private void sc_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)

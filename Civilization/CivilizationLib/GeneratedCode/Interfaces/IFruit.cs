@@ -13,9 +13,6 @@ namespace Interfaces
 
 	public interface IFruit  : ICaseDecorator
 	{
-        int additional_food { get; set; }
-
-		void addFood(int additional_food);
 	}
 }
 

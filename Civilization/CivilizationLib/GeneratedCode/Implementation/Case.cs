@@ -13,14 +13,13 @@ namespace Implementation
 	using System.Text;
     using System.Windows.Forms;
     using System.Drawing;
+    using MVVM;
 
-    public class Case : ICase
+    public class Case : ObservableObject, ICase
     {
-        
-
         public Case()
         {
-            units = new List<IUnit>();
+            Units = new List<IUnit>();
             Visible = false;
         }
 
@@ -30,11 +29,24 @@ namespace Implementation
         }
 
         //Attributs
-        public virtual int[] sqPos { get; set; }
-        public virtual int minerals { get; set; }
-        public virtual int food { get; set; }
-        public virtual List<IUnit> units { get; set; }
-        public virtual ICity city { get; set; }
+        public virtual int[] SqPos { get; set; }
+
+        private int _minerals;
+        public virtual int Minerals
+        {
+            get { return this._minerals; }
+            set { this.SetAndNotify(ref this._minerals, value, () => this._minerals); }
+        }
+
+        private int _foods;
+        public virtual int Foods
+        {
+            get { return this._foods; }
+            set { this.SetAndNotify(ref this._foods, value, () => this._foods); }
+        }
+
+        public virtual List<IUnit> Units { get; set; }
+        public virtual ICity City { get; set; }
         public virtual bool Selected { get; set; }
         public virtual bool Visible { get; set; }
 
@@ -46,15 +58,15 @@ namespace Implementation
 
         public virtual void addUnit(IUnit unit)
         {
-            units.Add(unit);
+            Units.Add(unit);
         }
 
         public virtual void removeUnit(int unit_id)
         {
-            foreach (IUnit unit in units)
+            foreach (IUnit unit in Units)
             {
                 if (unit.Id == unit_id)
-                    units.Remove(unit);
+                    Units.Remove(unit);
             }
         }
     }

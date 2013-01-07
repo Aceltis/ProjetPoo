@@ -92,6 +92,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CaseViewModel.cs" />
     <Compile Include="CityViewModel.cs" />
     <Compile Include="EndWindow.xaml.cs">
       <DependentUpon>EndWindow.xaml</DependentUpon>
@@ -217,7 +218,7 @@
     <Resource Include="Resource\exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\bottomLeft\Boss.png" />
+    <Resource Include="Resource\interface\bottomLeft\boss.png" />
     <Resource Include="Resource\interface\bottomLeft\student.png" />
     <Resource Include="Resource\interface\bottomLeft\teacher.png" />
   </ItemGroup>
@@ -263,7 +264,7 @@
     <Resource Include="Resource\map\units\Red\teacher_bonus.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\bottomLeft\Field.png" />
+    <Resource Include="Resource\interface\bottomLeft\field.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\bottomRight\bottomField.png" />

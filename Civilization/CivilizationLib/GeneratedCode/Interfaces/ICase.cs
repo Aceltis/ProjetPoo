@@ -15,11 +15,11 @@ namespace Interfaces
 
 	public interface ICase
     {
-        int[] sqPos { get; set; }
-        int minerals { get; set; }
-        int food { get; set; }
-        List<IUnit> units { get; set; }
-        ICity city { get; set; }
+        int[] SqPos { get; set; }
+        int Minerals { get; set; }
+        int Foods { get; set; }
+        List<IUnit> Units { get; set; }
+        ICity City { get; set; }
         bool Selected { get; set; }
         bool Visible { get; set; }
 
