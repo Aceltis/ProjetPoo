@@ -180,9 +180,14 @@ namespace CivilizationWPF
 
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            foreach (ICase c in game.Map.grid)
-                c.UnderUnitMoveRange = false;
-            windowsFormsHost1.Child.Refresh();
+
+            //Si Build pressé, pas besoin d'effacer ça
+            if (!(bool)buildActionView.IsChecked)
+            {
+                foreach (ICase c in game.Map.grid)
+                    c.UnderUnitMoveRange = false;
+                windowsFormsHost1.Child.Refresh();
+            }
 
             moveActionView.Click += new RoutedEventHandler(moveAction);
         }
@@ -217,6 +222,7 @@ namespace CivilizationWPF
 
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+
             foreach (ICase c in game.Map.grid)
             {
                 c.UnderUnitMoveRange = false;
@@ -259,12 +265,17 @@ namespace CivilizationWPF
 
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            foreach (ICase c in game.Map.grid)
+            
+            //Si Move pressé, pas besoin d'effacer ça
+            if (!(bool)moveActionView.IsChecked)
             {
-                c.UnderUnitMoveRange = false;
-                c.CitySuggestion = false;
+                foreach (ICase c in game.Map.grid)
+                {
+                    c.UnderUnitMoveRange = false;
+                    c.CitySuggestion = false;
+                }
+                windowsFormsHost1.Child.Refresh();
             }
-            windowsFormsHost1.Child.Refresh();
 
             buildActionView.Click += new RoutedEventHandler(buildAction);
         }
