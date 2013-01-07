@@ -138,8 +138,25 @@ namespace CivilizationWPF
         #endregion
 
         #region Buttons events
-        private void newAction(object sender, RoutedEventArgs e)
+        private void moveAction(object sender, RoutedEventArgs e)
         {
+            moveActionView.IsChecked = true;
+            attackActionView.IsChecked = false;
+            buildActionView.IsChecked = false;
+        }
+
+        private void attackAction(object sender, RoutedEventArgs e)
+        {
+            moveActionView.IsChecked = false;
+            attackActionView.IsChecked = true;
+            buildActionView.IsChecked = false;
+        }
+
+        private void buildAction(object sender, RoutedEventArgs e)
+        {
+            moveActionView.IsChecked = false;
+            attackActionView.IsChecked = false;
+            buildActionView.IsChecked = true;
         }
 
         private void prodStudent(object sender, RoutedEventArgs e)
@@ -151,6 +168,7 @@ namespace CivilizationWPF
             timerTeacherView.Visibility = Visibility.Hidden;
             timerBossView.Visibility = Visibility.Hidden;
         }
+
         private void prodBoss(object sender, RoutedEventArgs e)
         {
             prodBossView.IsChecked = true;
@@ -160,6 +178,7 @@ namespace CivilizationWPF
             timerTeacherView.Visibility = Visibility.Hidden;
             timerBossView.Visibility = Visibility.Visible;
         }
+
         private void prodTeacher(object sender, RoutedEventArgs e)
         {
             prodBossView.IsChecked = false;
@@ -170,13 +189,10 @@ namespace CivilizationWPF
             timerBossView.Visibility = Visibility.Hidden;
         }
 
-        private void newUnitAction(object sender, RoutedEventArgs e)
+        private void nextAction(object sender, RoutedEventArgs e)
         {
         }
 
-        private void newCityAction(object sender, RoutedEventArgs e)
-        {
-        }
         #endregion
 
         #region Graphics mecanisms
@@ -343,6 +359,7 @@ namespace CivilizationWPF
                 if (c.Units[0] is ITeacher)
                     unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
                 else if (c.Units[0] is IStudent)
+
                     unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
                 else if (c.Units[0] is IBoss)
                     unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");

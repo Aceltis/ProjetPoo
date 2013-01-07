@@ -133,14 +133,14 @@
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomUnit.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
             </Grid.Background>
-            <TextBlock Text="{Binding Path=UnitType}" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="4" Margin="146,36,133,30" Grid.RowSpan="2" />
+            <TextBlock Text="{Binding Name}" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="141,35,196,29" Grid.Column="4" Grid.RowSpan="2" />
             <TextBlock Text="{Binding Path=MovePoints}" Grid.Column="2" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,11"/>
             <TextBlock Text="{Binding Path=HP}" Grid.Column="0" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,13"/>
             <TextBlock Text="{Binding Path=AttackPoints}" Grid.Column="4" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,13"/>
             <TextBlock Text="{Binding Path=DefensePoints}" Grid.Column="5" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,13"/>
-            <ToggleButton Name="moveAction" Content="Move" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="0,25,275,58" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
-            <ToggleButton Name="buildAction"  Content="Build" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="96,25,139,58" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
-            <ToggleButton Name="attackAction" Content="Attack" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="231,25,4,58" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+            <ToggleButton Name="moveActionView" Click="moveAction" Content="Move" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="0,25,275,58" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+            <ToggleButton Name="buildActionView"  Click="buildAction" Content="Build" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="96,25,139,58" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+            <ToggleButton Name="attackActionView" Click="attackAction" Content="Attack" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="231,25,4,58" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="1" Name="city" Visibility="Hidden">
@@ -181,7 +181,7 @@
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/bottomLeft/field.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"/>
             </Grid.Background>
-            <Button Name="orderUnit" Click="newUnitAction" Content="Units needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Hidden">
+            <Button Name="orderUnit" Click="nextAction" Content="Units needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Hidden">
                 <Button.Effect>
                     <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
                 </Button.Effect>
@@ -201,7 +201,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Name="orderCity" Click="newCityAction" Content="A City needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Visible">
+            <Button Name="orderCity" Click="nextAction" Content="A City needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Visible">
                 <Button.Effect>
                     <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
                 </Button.Effect>

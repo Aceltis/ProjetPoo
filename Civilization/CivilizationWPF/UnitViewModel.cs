@@ -11,6 +11,7 @@ namespace CivilizationWPF
 {
     class UnitViewModel : ObservableObject
     {
+        private string _name;
         private string _hp;
         private string _attackPoints;
         private string _defensePoints;
@@ -26,10 +27,29 @@ namespace CivilizationWPF
                 MovePoints = ((Unit)sender).MovePoints.ToString();
             });
 
+            Name = nameLabel(u);
             HP = u.HP.ToString();
             AttackPoints = u.AttackPoints.ToString();
             DefensePoints = u.DefensePoints.ToString();
             MovePoints = u.MovePoints.ToString();
+        }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                SetAndNotify(ref _name, value, () => Name);
+            }
+        }
+
+        public string nameLabel(Unit u)
+        {
+            if (u is ITeacher)
+                return "Teacher";
+            else if (u is IStudent)
+                return "Student";
+            else
+                return "Boss";
         }
 
         public string HP
