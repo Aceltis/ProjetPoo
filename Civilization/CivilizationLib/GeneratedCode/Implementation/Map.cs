@@ -33,9 +33,9 @@ namespace Implementation
         }
 
 
-        public void createMap()
+        public void createMap(Queue<IPlayer> playersqueue)
         {
-            mapStrategy.createMap(grid);
+            mapStrategy.createMap(grid, playersqueue);
         }
 
         //Change la propriété Visible suivant le joueur qui est en train de jouer
@@ -51,9 +51,16 @@ namespace Implementation
                     {
                         for (int k = -3; k < 4; k++)
                         {
-                            for (int l = -3 + Math.Abs(k); l < 4 - Math.Abs(k); l++)
+                            //Tests en cas de bord de map horizontal
+                            bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                            bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                            if (cond1 && cond2)
                             {
-                                grid[i + k + mapStrategy.width * l].Visible = true;
+                                for (int l = -3 + Math.Abs(k); l < 4 - Math.Abs(k); l++)
+                                {
+                                    if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count))
+                                        grid[i + k + mapStrategy.width * l].Visible = true;
+                                }
                             }
                         }
                     }
@@ -64,9 +71,17 @@ namespace Implementation
                     {
                         for (int k = -2; k < 3; k++)
                         {
-                            for (int l = -2 + Math.Abs(k); l < 3 - Math.Abs(k); l++)
+                            //Tests en cas de bord de map horizontal
+                            bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                            bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                            if (cond1 && cond2)
                             {
-                                grid[i + k + mapStrategy.width * l].Visible = true;
+                                for (int l = -2 + Math.Abs(k); l < 3 - Math.Abs(k); l++)
+                                {
+                                    //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
+                                    if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l<grid.Count))
+                                        grid[i + k + mapStrategy.width * l].Visible = true;
+                                }
                             }
                         }
                     }

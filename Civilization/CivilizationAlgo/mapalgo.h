@@ -30,6 +30,7 @@ class DLL Algo {
 		~Algo() {}
 		int** createMap(int h, int w);
 		int** createBonusesMap(int h, int w, double r);
+		int** giveInitPos(int h, int w, int nb);
 };
 
 // A ne pas implémenter dans le .h !
@@ -41,6 +42,9 @@ EXTERNC DLL int** Algo_createMap(Algo* algo, int h, int w);
 
 // Creates a height x width map of additional ressources.
 EXTERNC DLL int** Algo_createBonusesMap(Algo* algo, int h, int w, double r);
+
+// Returns each player's initial units' position
+EXTERNC DLL int** Algo_giveInitPos(Algo* algo, int h, int w, int nbPlayers);
 
 //fonctions internes
 //Generates the bonus map

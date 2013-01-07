@@ -68,7 +68,6 @@ namespace Implementation
             Population = 1;
             Position = c;
             Player = p;
-            p.Cities.Add(this);
             Current_prod = ProductionType.None;
             Owned_food = c.food;
             Owned_minerals = c.minerals;

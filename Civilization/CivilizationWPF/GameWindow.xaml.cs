@@ -56,12 +56,16 @@ namespace CivilizationWPF
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
             sc.Controls.Add(pictureBox);
             sc.AutoScroll = true;
-            sc.HorizontalScroll.Maximum = pictureBox.Height;
+            sc.HorizontalScroll.Maximum = pictureBox.Width;
             sc.VerticalScroll.Maximum = pictureBox.Height;
             sc.HorizontalScroll.SmallChange = 50;
             sc.VerticalScroll.SmallChange = 50;
             sc.HorizontalScroll.LargeChange = 500;
             sc.VerticalScroll.LargeChange = 500;
+
+            //Mettre la vue sur l'unité du joueur
+            /*sc.VerticalScroll.Value = game.CurrentPlayer.Teachers.First().Case.sqPos[1];
+            sc.HorizontalScroll.Value = game.CurrentPlayer.Teachers.First().Case.sqPos[0]; ;*/
             sc.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
 
             windowsFormsHost1.Child = sc;
@@ -243,22 +247,25 @@ namespace CivilizationWPF
 
         private void sc_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
         {
-            e.IsInputKey = true;
             System.Windows.Forms.ScrollableControl sc = (System.Windows.Forms.ScrollableControl)sender;
             switch (e.KeyValue)
             {
                 case (int)System.Windows.Forms.Keys.Down:
+                    e.IsInputKey = true;
                     sc.VerticalScroll.Value += 50;
                     break;
                 case (int)System.Windows.Forms.Keys.Up:
+                    e.IsInputKey = true;
                     if(sc.VerticalScroll.Value - 50 < 0)
                         sc.VerticalScroll.Value = 0;
                     else sc.VerticalScroll.Value -= 50;
                     break;
                 case (int)System.Windows.Forms.Keys.Right:
+                    e.IsInputKey = true;
                     sc.HorizontalScroll.Value += 50;
                     break;
                 case (int)System.Windows.Forms.Keys.Left:
+                    e.IsInputKey = true;
                     if (sc.HorizontalScroll.Value - 50 < 0)
                         sc.HorizontalScroll.Value = 0;
                     else

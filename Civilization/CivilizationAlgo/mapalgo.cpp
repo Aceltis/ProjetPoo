@@ -45,6 +45,26 @@ int** Algo::createBonusesMap(int height, int width, double ratio) {
 	return newBMap;
 }
 
+/*
+ * giveInitPos()
+ * Computes each player's units' initial position
+ * return int**
+ */
+int** Algo::giveInitPos(int height, int width, int nbPlayers)
+{
+	// Initialize random seed.
+	srand(time(NULL));
+
+	int** newIPos = new int*[nbPlayers];
+	for (int i=0; i<nbPlayers; i++)
+	{
+		newIPos[i] = new int[2];
+		newIPos[i][0] = rand()%(width - (int)(width/8))+ (int)(width/8);;
+		newIPos[i][1] = rand()%(height - (int)(height/8))+ (int)(height/8);;
+	}
+	return newIPos;
+}
+
 Algo* Algo_new() { return new Algo(); }
 void Algo_delete(Algo* algo) { delete algo; }
 int** Algo_createMap(Algo* algo, int height, int width) { return algo->createMap(height, width); }
