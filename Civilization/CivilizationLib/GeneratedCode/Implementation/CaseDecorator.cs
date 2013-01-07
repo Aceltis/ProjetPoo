@@ -19,7 +19,9 @@ namespace Implementation
 
         public CaseDecorator(ICase caseToDecorate)
         {
-            sqPos = caseToDecorate.sqPos;
+            Foods = caseToDecorate.Foods;
+            Minerals = caseToDecorate.Minerals;
+            SqPos = caseToDecorate.SqPos;
             Case = caseToDecorate;
         }
 

@@ -18,15 +18,8 @@ namespace Implementation
 	{
         public Fruit(ICase caseToDecorate) : base(caseToDecorate)
         {
-            additional_food = 2;
+            caseToDecorate.Foods += 2;
         }
-
-		public virtual int additional_food { get; set; }
-
-		public virtual void addFood(int additional_food)
-		{
-			throw new System.NotImplementedException();
-		}
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
         {
@@ -35,13 +28,13 @@ namespace Implementation
             {
                 Case.Visible = true;
                 Case.afficher(sender, e, fw);
-                e.Graphics.DrawImage(fw.getBonusImage(0), 50 * Case.sqPos[0], 50 * Case.sqPos[1], 50, 50);
+                e.Graphics.DrawImage(fw.getBonusImage(0), 50 * Case.SqPos[0], 50 * Case.SqPos[1], 50, 50);
             }
             else
             {
                 Case.Visible = false;
                 Case.afficher(sender, e, fw);
-                e.Graphics.DrawImage(fw.getFoWBonusImage(0), 50 * Case.sqPos[0], 50 * Case.sqPos[1], 50, 50);
+                e.Graphics.DrawImage(fw.getFoWBonusImage(0), 50 * Case.SqPos[0], 50 * Case.SqPos[1], 50, 50);
             }
 		}
 

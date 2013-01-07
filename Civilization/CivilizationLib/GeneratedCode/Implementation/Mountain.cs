@@ -18,8 +18,8 @@ namespace Implementation
     {
         public Mountain()
         {
-            food = 0;
-            minerals = 3;
+            Foods = 0;
+            Minerals = 3;
         }
 
         public override void removeUnit(int unit_id)
@@ -30,8 +30,8 @@ namespace Implementation
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
         {
             //Points qui définissent le coin supérieur gauche de la case
-            int x = 50 * sqPos[0];
-            int y = 50 * sqPos[1];
+            int x = 50 * SqPos[0];
+            int y = 50 * SqPos[1];
             if(Visible)
                 e.Graphics.DrawImage(fw.getCaseImage(0), x, y, 50, 50);
             else

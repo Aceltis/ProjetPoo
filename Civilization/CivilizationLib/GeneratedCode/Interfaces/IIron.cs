@@ -13,9 +13,6 @@ namespace Interfaces
 
 	public interface IIron  : ICaseDecorator
 	{
-        int additional_minerals { get; set; }
-
-		void addMinerals(int additional_minerals);
 	}
 }
 

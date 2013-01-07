@@ -69,8 +69,8 @@ namespace Implementation
             Position = c;
             Player = p;
             Current_prod = ProductionType.None;
-            Owned_food = c.food;
-            Owned_minerals = c.minerals;
+            Owned_food = c.Foods;
+            Owned_minerals = c.Minerals;
         }
 
         public virtual void produceStudent()
