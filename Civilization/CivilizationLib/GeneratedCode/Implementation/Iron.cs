@@ -18,14 +18,7 @@ namespace Implementation
     {
         public Iron(ICase caseToDecorate) : base(caseToDecorate)
         {
-            additional_minerals = 2;
-        }
-
-        public virtual int additional_minerals { get; set; }
-
-        public virtual void addMinerals(int additional_minerals)
-        {
-            throw new System.NotImplementedException();
+            caseToDecorate.Minerals += 2;
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw)
@@ -34,13 +27,13 @@ namespace Implementation
             {
                 Case.Visible = true;
                 Case.afficher(sender, e, fw);
-                e.Graphics.DrawImage(fw.getBonusImage(1), 50 * Case.sqPos[0], 50 * Case.sqPos[1], 50, 50);
+                e.Graphics.DrawImage(fw.getBonusImage(1), 50 * Case.SqPos[0], 50 * Case.SqPos[1], 50, 50);
             }
             else
             {
                 Case.Visible = false;
                 Case.afficher(sender, e, fw);
-                e.Graphics.DrawImage(fw.getFoWBonusImage(1), 50 * Case.sqPos[0], 50 * Case.sqPos[1], 50, 50);
+                e.Graphics.DrawImage(fw.getFoWBonusImage(1), 50 * Case.SqPos[0], 50 * Case.SqPos[1], 50, 50);
             }
         }
 

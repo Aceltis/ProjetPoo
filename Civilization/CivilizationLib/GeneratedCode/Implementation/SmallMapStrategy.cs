@@ -32,7 +32,7 @@ namespace Implementation
                 for (int i = 0; i < width; i++)
                 {
                     ICase newCase = factory.makeCase(algoMap[i][j]);
-                    newCase.sqPos = new int[2] { i, j };
+                    newCase.SqPos = new int[2] { i, j };
 
                     switch (algoBonusesMap[i][j])
                     {

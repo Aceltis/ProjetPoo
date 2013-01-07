@@ -5,6 +5,10 @@
         xmlns:implementation="clr-namespace:Implementation;assembly=CivilizationLib"
         Title="Civilization" Width="1008" Height="757" ResizeMode="NoResize">
     <Window.Resources>
+        <BitmapImage x:Key="Teacher" UriSource="./Resource/interface/bottomLeft/teacher.png" />
+        <BitmapImage x:Key="Student" UriSource="./Resource/interface/bottomLeft/student.png" />
+        <BitmapImage x:Key="Boss" UriSource="./Resource/interface/bottomLeft/boss.png" />
+        <BitmapImage x:Key="Field" UriSource="./Resource/interface/bottomLeft/field.png" />
         <Style x:Key="menu" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="FontFamily" Value="Lithos Pro"/>
@@ -105,10 +109,8 @@
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomField.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
             </Grid.Background>
-            <TextBlock Text="{Binding Path=Food}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,535,39"/>
-            <TextBlock Text="{Binding Path=AddFood}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,499,39"/>
-            <TextBlock Text="{Binding Path=Iron}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,296,39"/>
-            <TextBlock Text="{Binding Path=AddIron}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,261,39"/>
+            <TextBlock Text="{Binding Path=Foods}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,517,39"/>
+            <TextBlock Text="{Binding Path=Minerals}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,274,39"/>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="1" Name="unit" Visibility="Hidden">

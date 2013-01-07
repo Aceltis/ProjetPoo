@@ -46,8 +46,8 @@ namespace Implementation
 
             for (int i = 0; i < grid.Count; i++)
             {
-                if (grid[i].city != null)
-                    if (grid[i].city.Player.Color == currPlayer.Color)
+                if (grid[i].City != null)
+                    if (grid[i].City.Player.Color == currPlayer.Color)
                     {
                         for (int k = -3; k < 4; k++)
                         {
@@ -66,8 +66,8 @@ namespace Implementation
                     }
                     else grid[i].Visible = false;
 
-                if (grid[i].units.Count != 0)
-                    if (grid[i].units.First().Player.Color == currPlayer.Color)
+                if (grid[i].Units.Count != 0)
+                    if (grid[i].Units.First().Player.Color == currPlayer.Color)
                     {
                         for (int k = -2; k < 3; k++)
                         {
@@ -96,17 +96,17 @@ namespace Implementation
             //Affichage par case, l'ordre d'appel définit la priorité d'affichage des différents logos
             for (int i = 0; i < grid.Count; i++)
             {
-                int x = 50 * grid[i].sqPos[0];
-                int y = 50 * grid[i].sqPos[1];
+                int x = 50 * grid[i].SqPos[0];
+                int y = 50 * grid[i].SqPos[1];
                 grid[i].afficher(sender, e, FWimages);
 
                 //Affichage de la ville
-                if (grid[i].city != null && grid[i].Visible)
-                    grid[i].city.afficher(sender, e, FWimages, x, y);
+                if (grid[i].City != null && grid[i].Visible)
+                    grid[i].City.afficher(sender, e, FWimages, x, y);
 
                 //Affichage des unités
                 if (grid[i].Visible)
-                    foreach (IUnit unit in grid[i].units)
+                    foreach (IUnit unit in grid[i].Units)
                         unit.afficher(sender, e, FWimages, x, y);
 
                 //Surligne la case
@@ -136,16 +136,16 @@ namespace Implementation
             //Affichage par case, l'ordre d'appel définit la priorité d'affichage des différents logos
             for (int i = 0; i < grid.Count; i++)
             {
-                int x = 50 * grid[i].sqPos[0];
-                int y = 50 * grid[i].sqPos[1];
+                int x = 50 * grid[i].SqPos[0];
+                int y = 50 * grid[i].SqPos[1];
                 grid[i].afficher(sender, e, FWimages);
 
                 //Affichage de la ville
-                if (grid[i].city != null)
-                    grid[i].city.afficher(sender, e, FWimages, x, y);
+                if (grid[i].City != null)
+                    grid[i].City.afficher(sender, e, FWimages, x, y);
 
                 //Affichage des unités
-                foreach (IUnit unit in grid[i].units)
+                foreach (IUnit unit in grid[i].Units)
                     unit.afficher(sender, e, FWimages, x, y);
 
                 //Surligne la case

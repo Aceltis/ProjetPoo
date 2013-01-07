@@ -33,32 +33,32 @@ namespace Implementation
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)
         {
-            if (Case.units.OfType<TeacherINFO>().Count() != 0)
+            if (Case.Units.OfType<TeacherINFO>().Count() != 0)
             {
-                if (Case.units.OfType<BossINFO>().Count() != 0)
+                if (Case.Units.OfType<BossINFO>().Count() != 0)
                     e.Graphics.DrawImage(fw.getUnitImage(4, Player.Color), x+2, y+2, 25, 25);
                 else
                     e.Graphics.DrawImage(fw.getUnitImage(1, Player.Color), x+2, y+2, 25, 25);
 
                 //Affichage du nombre d'unités du même type
-                if (Case.units.OfType<StudentINFO>().Count() > 1)
+                if (Case.Units.OfType<StudentINFO>().Count() > 1)
                 {
-                    e.Graphics.DrawString(Case.units.OfType<StudentINFO>().Count().ToString(), new Font("Arial", 7, FontStyle.Bold), new SolidBrush(Color.Black), x + 16, y + 16);
-                    e.Graphics.DrawString(Case.units.OfType<StudentINFO>().Count().ToString(), new Font("Arial", 6), new SolidBrush(Color.White), x + 16, y + 16);
+                    e.Graphics.DrawString(Case.Units.OfType<StudentINFO>().Count().ToString(), new Font("Arial", 7, FontStyle.Bold), new SolidBrush(Color.Black), x + 16, y + 16);
+                    e.Graphics.DrawString(Case.Units.OfType<StudentINFO>().Count().ToString(), new Font("Arial", 6), new SolidBrush(Color.White), x + 16, y + 16);
                 }
             }
             else
             {
-                if (Case.units.OfType<BossINFO>().Count() != 0)
+                if (Case.Units.OfType<BossINFO>().Count() != 0)
                     e.Graphics.DrawImage(fw.getUnitImage(3, Player.Color), x + 6, y + 6, 38, 38);
                 else
                     e.Graphics.DrawImage(fw.getUnitImage(2, Player.Color), x + 6, y + 6, 38, 38);
 
                 //Affichage du nombre d'unités du même type
-                if (Case.units.OfType<StudentINFO>().Count() > 1)
+                if (Case.Units.OfType<StudentINFO>().Count() > 1)
                 {
-                    e.Graphics.DrawString(Case.units.OfType<StudentINFO>().Count().ToString(), new Font("Arial", 11, FontStyle.Bold), new SolidBrush(Color.Black), x + 28, y + 28);
-                    e.Graphics.DrawString(Case.units.OfType<StudentINFO>().Count().ToString(), new Font("Arial", 10), new SolidBrush(Color.White), x + 28, y + 28);
+                    e.Graphics.DrawString(Case.Units.OfType<StudentINFO>().Count().ToString(), new Font("Arial", 11, FontStyle.Bold), new SolidBrush(Color.Black), x + 28, y + 28);
+                    e.Graphics.DrawString(Case.Units.OfType<StudentINFO>().Count().ToString(), new Font("Arial", 10), new SolidBrush(Color.White), x + 28, y + 28);
                 }
             }
         }
