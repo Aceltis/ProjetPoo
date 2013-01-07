@@ -253,9 +253,15 @@ namespace CivilizationWPF
         {
         }
 
+        /// <summary>
+        /// Appelé à l'appui du bouton move
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void moveSelectedUnit(object sender, RoutedEventArgs e)
         {
-            
+            /*int mp = game.Map.SelectedCase.Units.First().MovePoints;
+            game.Map.drawBorders();*/
         }
 
         //Give focus to the map when mouse enters map's area

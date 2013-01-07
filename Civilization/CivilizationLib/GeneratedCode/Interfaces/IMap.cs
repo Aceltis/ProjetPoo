@@ -17,6 +17,7 @@ namespace Interfaces
 	{
         List<ICase> grid { get; set; }
         IMapStrategy mapStrategy { get; set; }
+        ICase SelectedCase { get; set; }
 
         void setMapStrategy(IMapStrategy mapStrategy);
         void createMap(Queue<IPlayer> plqu);
