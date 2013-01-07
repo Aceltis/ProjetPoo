@@ -76,7 +76,7 @@ namespace Implementation
                 r = rng.Next(3);
                 Players.Enqueue(new Player(Map, names[r], civs[r], PlayerColor.Blue));
                 names.RemoveAt(r); civs.RemoveAt(r);
-                r = rng.Next(3);
+                r = rng.Next(2);
                 Players.Enqueue(new Player(Map, names[r], civs[r], PlayerColor.Orange));
                 names.RemoveAt(r); civs.RemoveAt(r);
                 Players.Enqueue(new Player(Map, names[0], civs[0], PlayerColor.Green));
