@@ -126,6 +126,7 @@ namespace CivilizationWPF
                 centerScreen();
 
                 //Le siège accueille un nouveau joueur
+                //TODO : décommenter
                 //System.Windows.MessageBox.Show("Have a seat " + game.CurrentPlayer.Name + " !", "CiviliZation : Hotseat", MessageBoxButton.OK);
 
                 //Affichage de la map du nouveau joueur
@@ -250,6 +251,11 @@ namespace CivilizationWPF
 
         private void newCityAction(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void moveSelectedUnit(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         //Give focus to the map when mouse enters map's area

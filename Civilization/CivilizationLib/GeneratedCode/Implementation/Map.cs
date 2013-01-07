@@ -19,6 +19,7 @@ namespace Implementation
 
         public virtual List<ICase> grid { get; set; }
         public virtual IMapStrategy mapStrategy { get; set; }
+        public virtual ICase SelectedCase { get; set; }
         private CaseImageFlyweight FWimages;
 
         public Map()
@@ -120,11 +121,12 @@ namespace Implementation
 
         public void select(int x, int y)
         {
-            foreach (Case c in grid)
-                c.Selected = false;
+            if(SelectedCase!=null)
+                SelectedCase.Selected = false;
             int x_pos = x / 50;
             int y_pos = y / 50;
             grid[x_pos + mapStrategy.width * y_pos].Selected = true;
+            SelectedCase = grid[x_pos + mapStrategy.width * y_pos];
         }
 
         //Affiche la map complète : fin de partie
