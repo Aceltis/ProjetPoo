@@ -41,6 +41,9 @@ namespace Implementation
         //Change la propriété Visible suivant le joueur qui est en train de jouer
         private void updateVisibility(IPlayer currPlayer)
         {
+            foreach (Case square in grid)
+                square.Visible = false;
+
             for (int i = 0; i < grid.Count; i++)
             {
                 if (grid[i].city != null)
@@ -53,8 +56,8 @@ namespace Implementation
                                 grid[i + k + mapStrategy.width * l].Visible = true;
                             }
                         }
-
                     }
+                    else grid[i].Visible = false;
 
                 if (grid[i].units.Count != 0)
                     if (grid[i].units.First().Player.Color == currPlayer.Color)
@@ -67,6 +70,7 @@ namespace Implementation
                             }
                         }
                     }
+                    else grid[i].Visible = false;
             }
         }
 
