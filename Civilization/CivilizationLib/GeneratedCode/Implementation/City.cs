@@ -31,18 +31,18 @@ namespace Implementation
             set { this.SetAndNotify(ref this._population, value, () => this._population); }
         }
 
-        private int _owned_minerals;
-        public virtual int Owned_minerals
+        private int _ownedMinerals;
+        public virtual int OwnedMinerals
         {
-            get { return this._owned_minerals; }
-            set { this.SetAndNotify(ref this._owned_minerals, value, () => this._owned_minerals); }
+            get { return this._ownedMinerals; }
+            set { this.SetAndNotify(ref this._ownedMinerals, value, () => this._ownedMinerals); }
         }
 
-        private int _owned_food;
-        public virtual int Owned_food
+        private int _ownedFoods;
+        public virtual int OwnedFoods
         {
-            get { return this._owned_food; }
-            set { this.SetAndNotify(ref this._owned_food, value, () => this._owned_food); }
+            get { return this._ownedFoods; }
+            set { this.SetAndNotify(ref this._ownedFoods, value, () => this._ownedFoods); }
         }
 
         public virtual ICase Position { get; set; }
@@ -52,7 +52,7 @@ namespace Implementation
 
         public virtual void produceBoss(IUnit unit)
         {
-            if (Current_prod == ProductionType.None && Owned_minerals >= 200)
+            if (Current_prod == ProductionType.None && OwnedMinerals >= 200)
             {
                 Current_prod = ProductionType.Boss;
 
@@ -69,8 +69,8 @@ namespace Implementation
             Position = c;
             Player = p;
             Current_prod = ProductionType.None;
-            Owned_food = c.Foods;
-            Owned_minerals = c.Minerals;
+            OwnedFoods = c.Foods;
+            OwnedMinerals = c.Minerals;
         }
 
         public virtual void produceStudent()
