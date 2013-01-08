@@ -821,16 +821,13 @@ namespace CivilizationWPF
                     e.IsInputKey = true;
                     if ((game.Map.SelectedUnit != null)&&(moveActionView.IsChecked != false || attackActionView.IsChecked != false || buildActionView.IsChecked != false))
                     {
-                        foreach (ICase square in game.Map.grid)
-                        {
-                            square.UnderUnitAttackRange = false;
-                            square.EnemyInRange = false;
-                            square.CitySuggestion = false;
-                            square.UnderUnitMoveRange = false;
-                        }
-                        moveActionView.IsChecked = false;
-                        attackActionView.IsChecked = false;
-                        buildActionView.IsChecked = false;
+                        if ((bool)moveActionView.IsChecked)
+                            callMoveCancellation();
+                        if ((bool)attackActionView.IsChecked)
+                            callAttackCancellation();
+                        if ((bool)buildActionView.IsChecked)
+                            callBuildCancellation();
+
                         sc.Refresh();
                         updateInterface();
                         break;

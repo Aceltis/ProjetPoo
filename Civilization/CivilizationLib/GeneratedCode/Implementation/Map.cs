@@ -342,10 +342,12 @@ namespace Implementation
                             if (grid[i + k + mapStrategy.width * l].Units.Count != 0)
                             {
                                 if (grid[i + k + mapStrategy.width * l].Units.First().Player.Color == currPlayer.Color)
-                                    grid[i + k + mapStrategy.width * l].UnderUnitMoveRange = true;
+                                    grid[i + k + mapStrategy.width * l].UnderUnitMoveRange =
+                                        pathFinder(SelectedCase.SqPos[0], SelectedCase.SqPos[1], SelectedUnit.MovePoints, SelectedCase.SqPos[0] + k,SelectedCase.SqPos[1]+ l, currPlayer);
                             }
                             else
-                                grid[i + k + mapStrategy.width * l].UnderUnitMoveRange = true;
+                                grid[i + k + mapStrategy.width * l].UnderUnitMoveRange =
+                                    pathFinder(SelectedCase.SqPos[0], SelectedCase.SqPos[1], SelectedUnit.MovePoints, SelectedCase.SqPos[0] + k,SelectedCase.SqPos[1]+ l, currPlayer);
                     }
                 }
             }
@@ -395,45 +397,91 @@ namespace Implementation
         }
 
         //Affiche les endroits proposés pour construire une ville
-        unsafe public virtual void drawCityPossibilities(IPlayer currPlayer)
+        public virtual void drawCityPossibilities(IPlayer currPlayer)
         {
-            WrapperMapAlgo algo = new WrapperMapAlgo();
-            int[] ressourcesMap = new int[grid.Count];
-            int[] knownTowns = new int[grid.Count];
-            int[] knownUnits = new int[grid.Count];
-            for (int i = 0; i < grid.Count; i++)
-            {
-                ressourcesMap[i] = grid[i].Foods;
-                ressourcesMap[i] += grid[i].Minerals;
+            //Variables food/minerals du tour
+            Dictionary<int, int> caseValue = new Dictionary<int, int>();
 
-                if (grid[i].Visible)
+            int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
+            for (int k = -5; k <= 5; k++)
+            {
+                //Tests en cas de bord de map horizontal
+                bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
+                bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
+                if (cond1 && cond2)
                 {
-                    if (grid[i].City != null)
-                        if (grid[i].City.Player.Color != currPlayer.Color)
+                    for (int l = -5 + Math.Abs(k); l <= 5 - Math.Abs(k); l++)
+                    {
+                        //Test en cas de bord de map vertical + comparaison unité
+                        if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count))
                         {
-                            knownTowns[i] = -1;
-                            if (grid[i].Units.Count != 0)
-                                knownUnits[i] = -grid[i].Units.Count();
+                            //Calcul du nombre de points de la case
+                            int value = 0;
+                            int pos = i + k + mapStrategy.width * l;
+                            if (grid[pos].Visible)
+                            {
+                                if (grid[pos].City == null)
+                                {
+                                    if (grid[pos].Units.Count != 0)
+                                    {
+                                        if (grid[pos].Units.First().Player.Color == currPlayer.Color)
+                                            value += 2 * grid[pos].Units.Count;
+                                    }
+                                    else
+                                    {
+                                        value += 10 * grid[pos].Minerals;
+                                        value += 10 * grid[pos].Foods;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                value += 10 * grid[pos].Minerals;
+                                value += 10 * grid[pos].Foods;
+                            }
+                            //Ajout au dictionnaire de points
+                            caseValue.Add(pos, value);
                         }
-                        else
-                        {
-                            knownTowns[i] = 1;
-                            if (grid[i].Units.Count != 0)
-                                knownUnits[i] = grid[i].Units.Count();
-                        }
-                }
-                else
-                {
-                    knownTowns[i] = 0;
-                    knownUnits[i] = 0;
+                    }
                 }
             }
+            for (int nb = 0; nb < Math.Min(3, caseValue.Count); nb++)
+            {
+                int maxValue = caseValue.Values.Max();
+                foreach (var c in caseValue)
+                {
+                    if (c.Value >= maxValue)
+                    {
+                        grid[c.Key].CitySuggestion = true;
+                        caseValue.Remove(c.Key);
+                        break;
+                    }
 
-            //Analyses the given tables and returns suggested coordinates
-            //IntPtr ressourcesMapPtr = &ressourcesMap;
-            //int** CitiesCoords = algo.computeSuggestions(ressourcesMap, knownTowns, knownUnits, grid.Count);
+                }
+            }
         }
         #endregion
+
+        //TODO supprimer si non fonctionnel
+        public bool pathFinder(int posX, int posY, int mp, int destX, int destY, IPlayer currPlayer)
+        {
+            if (grid[posX + mapStrategy.width * posY].Units.Count != 0)
+                if (grid[posX + mapStrategy.width * posY].Units.First().Player.Color != currPlayer.Color)
+                    return false;
+            if (mp <= 0 && ((destX != posX) || (destY != posY)))
+                return false;
+            if (mp >= 0 && (destX == posX) && (destY == posY))
+                return true;
+            if (mp >= 0 && ((destX != posX) || (destY != posY)))
+            {
+                bool way1 = (pathFinder(posX + 1, posY, mp-1, destX, destY, currPlayer));
+                bool way2 = (pathFinder(posX, posY + 1, mp-1, destX, destY, currPlayer));
+                bool way3 = (pathFinder(posX - 1, posY, mp-1, destX, destY, currPlayer));
+                bool way4 = (pathFinder(posX, posY - 1, mp-1, destX, destY, currPlayer));
+                return (way1 || way2 || way3 || way4);
+            }
+            return false;
+        }
     }
 }
 
