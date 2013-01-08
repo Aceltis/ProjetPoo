@@ -27,14 +27,10 @@ namespace CivilizationWPF
         IGame game;
         GameViewModel gvm;
         Dictionary<IPlayer, PlayerViewModel> pToPvm;
-<<<<<<< HEAD
-        List<IUnit> activeUnits;
         //Map
         System.Windows.Forms.PictureBox mapPictureBox;
-=======
         IUnit activUnit;
         Queue<IUnit> activUnitsQueue;
->>>>>>> aceltis
 
 #region Game Initialization
         public GameWindow(IGameBuilder builder)
@@ -99,14 +95,13 @@ namespace CivilizationWPF
             var menu = new EndWindow("Still no winner...");
             menu.ShowDialog();
         }
-<<<<<<< HEAD
+
 #endregion
 
 #region Game & Turns mecanisms
         private void beginTurn()
         {
             top.DataContext = pToPvm[game.CurrentPlayer];
-            initializeActiveUnits();
 
             //Update cities
             foreach (Case c in game.Map.grid)
@@ -124,8 +119,7 @@ namespace CivilizationWPF
                 }
             }
         }
-=======
->>>>>>> aceltis
+
 
         // Add all units of a case waiting for an order
         private void initializeActiveUnits(ICase c)
@@ -141,13 +135,6 @@ namespace CivilizationWPF
                 }
                 activUnitsQueue.Dequeue();
             }
-        }
-#endregion
-
-#region Game & Turns mecanisms
-        private void beginTurn()
-        {
-            top.DataContext = pToPvm[game.CurrentPlayer];
         }
 
         //Fonction appellée à l'appui du bouton
@@ -690,15 +677,7 @@ namespace CivilizationWPF
                     showUnitInterface(selectedCase);
                 }
             }
-<<<<<<< HEAD
-            else
-            {
-                field.Visibility = Visibility.Visible;
-                unit.Visibility = Visibility.Hidden;
-                city.Visibility = Visibility.Hidden;
-                //TODO "vierger" le panneau du bas
-                showUnitInterface(null);
-=======
+
 
             if(selectedCase != null)
             {
@@ -717,7 +696,6 @@ namespace CivilizationWPF
                     orderCity.Visibility = Visibility.Hidden;
                     orderUnit.Visibility = Visibility.Hidden;
                 }
->>>>>>> aceltis
             }
         }
 
