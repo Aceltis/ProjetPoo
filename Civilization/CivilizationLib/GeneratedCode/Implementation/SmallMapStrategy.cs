@@ -69,13 +69,10 @@ namespace Implementation
                         break;
                     case CivilizationType.INFO:
                         TeacherINFO firstTeacherINFO = new TeacherINFO(player, map[i + width * j]);
-                        TeacherINFO firstTeacherINFO2 = new TeacherINFO(player, map[i + width * j]);
                         StudentINFO firstStudentINFO = new StudentINFO(player, map[i + width * j]);
                         map[i + width * j].addUnit(firstTeacherINFO);
-                        map[i + width * j].addUnit(firstTeacherINFO2);
                         map[i + width * j].addUnit(firstStudentINFO);
                         player.Teachers.Add(firstTeacherINFO);
-                        player.Teachers.Add(firstTeacherINFO2);
                         player.Students.Add(firstStudentINFO);
                         break;
                     default:

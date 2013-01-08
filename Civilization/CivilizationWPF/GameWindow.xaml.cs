@@ -180,7 +180,8 @@ namespace CivilizationWPF
                 game.nextPlayer();
 
                 // Add a turn to the game
-                game.Turns++;
+                if(game.CurrentPlayer.Color == PlayerColor.Red)
+                    game.Turns++;
 
                 //Reset units' move points
                 foreach (ITeacher teacher in game.CurrentPlayer.Teachers)
@@ -196,15 +197,70 @@ namespace CivilizationWPF
                 beginTurn();
                 centerScreen();
 
-                //Le siège accueille un nouveau joueur
-                //TODO : décommenter
-                //System.Windows.MessageBox.Show("Have a seat " + game.CurrentPlayer.Name + " !", "CiviliZation : Hotseat", MessageBoxButton.OK);
+                //Desactivate interactions and map
+                nextTurnButton.Click -= new RoutedEventHandler(nextTurn);
+                nextTurnButton.Click += new RoutedEventHandler(nextTurnBlack);
 
-                //Affichage de la map du nouveau joueur
-                mapPictureBox.Paint -= new System.Windows.Forms.PaintEventHandler(turnBlack);
-                windowsFormsHost1.Child.Refresh();
-                windowsFormsHost1.Child.Focus();
+                this.MouseDown += new MouseButtonEventHandler(clickBlack);
+                this.KeyDown += new KeyEventHandler(keyDownBlack);
+                mapPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(mapPictureBox_MouseDownBlack);
+                mapPictureBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(pb_keyDownBlack);
+                windowsFormsHost1.Child.PreviewKeyDown -= new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
+                windowsFormsHost1.Child.MouseDown += new System.Windows.Forms.MouseEventHandler(mapPictureBox_MouseDownBlack);
+                windowsFormsHost1.Child.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(pb_keyDownBlack);
+                mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
             }
+        }
+#endregion
+        #region inhibition events
+        //If user want to skip his turn
+        private void nextTurnBlack(object sender, RoutedEventArgs e)
+        {
+            revealMapUnderBlack();
+            callNextTurn();
+        }
+        private void mapPictureBox_MouseDownBlack(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            revealMapUnderBlack();
+        }
+
+        private void pb_keyDownBlack(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
+        {
+            revealMapUnderBlack();
+        }
+
+        private void keyDownBlack(object sender, KeyEventArgs e)
+        {
+            revealMapUnderBlack();
+        }
+
+        private void clickBlack(object sender, EventArgs e)
+        {
+            revealMapUnderBlack();
+        }
+
+        private void revealMapUnderBlack()
+        {
+            //Re-activate all interactions :
+            //Removing events triggers
+            this.MouseDown -= new MouseButtonEventHandler(clickBlack);
+            this.KeyDown -= new KeyEventHandler(keyDownBlack);
+            mapPictureBox.MouseDown -= new System.Windows.Forms.MouseEventHandler(mapPictureBox_MouseDownBlack);
+            mapPictureBox.PreviewKeyDown -= new System.Windows.Forms.PreviewKeyDownEventHandler(pb_keyDownBlack);
+            windowsFormsHost1.Child.MouseDown -= new System.Windows.Forms.MouseEventHandler(mapPictureBox_MouseDownBlack);
+            windowsFormsHost1.Child.PreviewKeyDown -= new System.Windows.Forms.PreviewKeyDownEventHandler(pb_keyDownBlack);
+            nextTurnButton.MouseDown -= new MouseButtonEventHandler(clickBlack);
+            mapPictureBox.Paint -= new System.Windows.Forms.PaintEventHandler(turnBlack);
+            nextTurnButton.Click -= new RoutedEventHandler(nextTurnBlack);
+
+            //Reloading the map
+            windowsFormsHost1.Child.Refresh();
+            windowsFormsHost1.Child.Focus();
+
+            //Re-activate normal interactions
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            windowsFormsHost1.Child.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(sc_PreviewKeyDown);
+            nextTurnButton.Click += new RoutedEventHandler(nextTurn);
         }
 #endregion
 
@@ -659,7 +715,8 @@ namespace CivilizationWPF
         {
             ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
 
-            initializeActiveUnits(game.Map.SelectedCase);
+            if(game.Map.SelectedCase != null)
+                initializeActiveUnits(game.Map.SelectedCase);
 
             if (selectedCase != null)
             {
@@ -694,12 +751,8 @@ namespace CivilizationWPF
                     field.DataContext = new CaseViewModel((Case)selectedCase);
                     showUnitInterface(selectedCase);
                 }
-            }
 
-
-            if(selectedCase != null)
-            {
-                if(selectedCase.Units.Count() > 1)
+                if (selectedCase.Units.Count() > 1)
                 {
                     orderCity.Visibility = Visibility.Hidden;
                     orderUnit.Visibility = Visibility.Visible;
@@ -718,6 +771,7 @@ namespace CivilizationWPF
                     orderUnitSmall.Visibility = Visibility.Hidden;
                 }
             }
+            else showUnitInterface(null);
         }
 
         // Draw the bottom interface according to the selected Case
@@ -870,16 +924,13 @@ namespace CivilizationWPF
                     e.IsInputKey = true;
                     if ((game.Map.SelectedUnit != null)&&(moveActionView.IsChecked != false || attackActionView.IsChecked != false || buildActionView.IsChecked != false))
                     {
-                        foreach (ICase square in game.Map.grid)
-                        {
-                            square.UnderUnitAttackRange = false;
-                            square.EnemyInRange = false;
-                            square.CitySuggestion = false;
-                            square.UnderUnitMoveRange = false;
-                        }
-                        moveActionView.IsChecked = false;
-                        attackActionView.IsChecked = false;
-                        buildActionView.IsChecked = false;
+                        if ((bool)moveActionView.IsChecked)
+                            callMoveCancellation();
+                        if ((bool)attackActionView.IsChecked)
+                            callAttackCancellation();
+                        if ((bool)buildActionView.IsChecked)
+                            callBuildCancellation();
+
                         sc.Refresh();
                         updateInterface();
                         break;

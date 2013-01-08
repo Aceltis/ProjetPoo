@@ -32,6 +32,7 @@ namespace Interfaces
         void drawAttackBorders();
         void circleEnemies(IPlayer currPlayer);
         void drawCityPossibilities(IPlayer currPlayer);
+        bool pathFinder(int posX, int posY, int mp, int destX, int destY, IPlayer currPlayer);
 	}
 }
 

@@ -63,6 +63,7 @@ namespace Implementation
 
         public virtual void updateCity(IMap map)
         {
+            //Reniew population number
             upgradePopulation();
 
             //Variables food/minerals du tour
@@ -83,6 +84,7 @@ namespace Implementation
                         //Test en cas de bord de map vertical + comparaison unité
                         if ((posIndex + k + map.mapStrategy.width * l >= 0) && (posIndex + k + map.mapStrategy.width * l < map.grid.Count))
                         {
+                            //Ajout des cases du périmètre dans le dictionnaire
                             cityCasesFood.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Foods);
                             cityCasesMinerals.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Foods);
                         }
@@ -93,59 +95,73 @@ namespace Implementation
             Dictionary<ICase, int> tempCityCasesFood = cityCasesFood;
             Dictionary<ICase, int> tempCityCasesMinerals = cityCasesMinerals;
 
-            //Enlever une case de min vers food et retester la condition Needed_minerals
+            //Calcul du max possible en mineraux
             int maxMinerals = tempCityCasesMinerals.Max(x => x.Value);
-            for (int j = 0; j < Population+2 - 1; j++)
+            for (int j = 0; j < Population+ 1; j++)
             {
                 tempCityCasesMinerals.Remove(tempCityCasesMinerals.ElementAt(tempCityCasesMinerals.Max(x => x.Value)).Key);
                 maxMinerals += tempCityCasesMinerals.Max(x => x.Value);
             }
 
             int maxFood = 0;
+            //sur le nombre de cases disponibles (pop)
             for (int i = 0; i < Population + 2; i++)
             {
+                //Si excès de minéraux, tenter de basculer des cases vers le food
                 if (Needed_minerals < maxMinerals)
                 {
+                    maxMinerals = 0;
+                    tempCityCasesFood = cityCasesFood;
+                    tempCityCasesMinerals = cityCasesMinerals;
+
                     maxMinerals = tempCityCasesMinerals.Max(x => x.Value);
-                    for (int j = 0; j < Population + 2 - 1 - i; j++)
+                    for (int j = 0; j < Population + 1 - i; j++)
                     {
                         tempCityCasesMinerals.Remove(tempCityCasesMinerals.ElementAt(tempCityCasesMinerals.Max(x => x.Value)).Key);
                         maxMinerals += tempCityCasesMinerals.Max(x => x.Value);
                     }
-
-                    maxFood = tempCityCasesFood.Max(x => x.Value);
-                    tempCityCasesFood.Remove(tempCityCasesFood.ElementAt(tempCityCasesFood.Max(x => x.Value)).Key);
+                    //On bascule i cases
+                    for (int j = 0; j < i; j++)
+                    {
+                        maxFood = tempCityCasesFood.Max(x => x.Value);
+                        tempCityCasesFood.Remove(tempCityCasesFood.ElementAt(tempCityCasesFood.Max(x => x.Value)).Key);
+                    }
                 }
+
+                //Sinon on revient un coup en arrière
                 else
                 {
-                    Needed_minerals -= maxMinerals;
-                    OwnedMinerals = maxMinerals;
-                    OwnedFoods = maxFood;
-                }
+                    if (i != 0)
+                    {
+                        maxMinerals = 0;
+                        tempCityCasesFood = cityCasesFood;
+                        tempCityCasesMinerals = cityCasesMinerals;
 
-                //Reset des listes de cases disponibles à la ville
-                tempCityCasesFood = cityCasesFood;
-                tempCityCasesMinerals = cityCasesMinerals;
+                        maxMinerals = tempCityCasesMinerals.Max(x => x.Value);
+                        for (int j = 0; j < Population + 1 - i - 1; j++)
+                        {
+                            tempCityCasesMinerals.Remove(tempCityCasesMinerals.ElementAt(tempCityCasesMinerals.Max(x => x.Value)).Key);
+                            maxMinerals += tempCityCasesMinerals.Max(x => x.Value);
+                        }
+                        //On bascule i cases
+                        for (int j = 0; j < i - 1; j++)
+                        {
+                            maxFood = tempCityCasesFood.Max(x => x.Value);
+                            tempCityCasesFood.Remove(tempCityCasesFood.ElementAt(tempCityCasesFood.Max(x => x.Value)).Key);
+                        }
+                    }
+                    break;
+                }
             }
+
+            Needed_minerals -= maxMinerals;
+            OwnedMinerals = maxMinerals;
+            OwnedFoods = maxFood;
 
             if (Needed_minerals <= 0)
                 spawnUnit(Current_prod);
         }
-
-        //Ancienne version
-        /*public virtual void produceBoss(IUnit unit)
-        {
-            if (Current_prod == ProductionType.None && OwnedMinerals >= 200)
-            {
-                Current_prod = ProductionType.Boss;
-
-                if (unit.Cost == 0)
-                {
-                    spawnUnit(unit);
-                }
-            }
-        }*/
-
+        
         public virtual void produceBoss()
         {
             Needed_minerals = 200;
