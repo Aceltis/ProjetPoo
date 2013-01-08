@@ -83,12 +83,14 @@ namespace CivilizationWPF
 
         private void endGame()
         {
-            System.Windows.MessageBox.Show(game.CurrentPlayer.Name + " wins!", "End Game", MessageBoxButton.OK);
+            var menu = new EndWindow(game.Winner.Name);
+            menu.ShowDialog();
         }
 
-        private void quitGame(object sender, RoutedEventArgs e)
+        private void quitToMenu(object sender, RoutedEventArgs e)
         {
-            Application.Current.Windows[0].Close();
+            var menu = new EndWindow("Still no winner...");
+            menu.ShowDialog();
         }
 #endregion
 

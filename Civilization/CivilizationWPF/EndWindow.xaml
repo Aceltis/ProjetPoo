@@ -1,11 +1,36 @@
 ﻿<Window x:Class="CivilizationWPF.EndWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="EndWindow" Height="300" Width="300">
+        Title="EndWindow" Height="500" Width="400" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="OnOffToggleImageStyle" TargetType="ToggleButton" BasedOn="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="./Resource/interface/bottomRight/prod_enabled.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="./Resource/interface/bottomRight/prod_disabled.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Button Content="New Game" Click="newGame"></Button>
-            <Button Content="Exit Game" Click="exitGame"></Button>
-        </StackPanel>
+        <Grid.Background>
+            <ImageBrush ImageSource="./Resource/endgame.png"></ImageBrush>
+        </Grid.Background>
+        <TextBlock Name="winnerView" Text="Still no winner..." FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="121,243,124,201"></TextBlock>
+        <ToggleButton Click="returnMap" Content="Return to Map" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,314,142,121" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+        <ToggleButton Click="newGame" Content="New Game" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,357,142,78" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+        <ToggleButton Click="exitGame" Content="Exit Game" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,401,142,34" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
     </Grid>
 </Window>
