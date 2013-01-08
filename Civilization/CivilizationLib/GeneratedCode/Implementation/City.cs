@@ -86,7 +86,7 @@ namespace Implementation
                         {
                             //Ajout des cases du périmètre dans le dictionnaire
                             cityCasesFood.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Foods);
-                            cityCasesMinerals.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Foods);
+                            cityCasesMinerals.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Minerals);
                         }
                     }
                 }
