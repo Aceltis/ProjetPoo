@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:CivilizationWPF"
         xmlns:implementation="clr-namespace:Implementation;assembly=CivilizationLib"
-        Title="Civilization" Width="1008" Height="757" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Civilization, Insa's Kings" Width="1008" Height="757" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="./Resource/gameicon.ico">
     <Window.Resources>
         <BitmapImage x:Key="Teacher" UriSource="./Resource/interface/bottomLeft/teacher.png" />
         <BitmapImage x:Key="Accueil" UriSource="./Resource/interface/bottomLeft/accueil.png" />
