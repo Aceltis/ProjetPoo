@@ -46,6 +46,7 @@ namespace Implementation
 
         public virtual bool isWinner()
         {
+            Winner = CurrentPlayer;
             return Players.Count() == 0;
         }
 

@@ -3,34 +3,62 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="EndWindow" Height="500" Width="400" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Style x:Key="OnOffToggleImageStyle" TargetType="ToggleButton" BasedOn="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}">
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="BorderBrush" Value="{x:Null}"/>
-            <Style.Triggers>
-                <Trigger Property="IsChecked" Value="True">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="./Resource/interface/bottomRight/prod_enabled.png" />
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-                <Trigger Property="IsChecked" Value="False">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="./Resource/interface/bottomRight/prod_disabled.png"/>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Window.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="./Resource/endgame.png"></ImageBrush>
         </Grid.Background>
         <TextBlock Name="winnerView" Text="Still no winner..." FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="121,243,124,201"></TextBlock>
-        <ToggleButton Click="returnMap" Content="Return to Map" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,314,142,121" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
-        <ToggleButton Click="newGame" Content="New Game" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,357,142,78" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
-        <ToggleButton Click="exitGame" Content="Exit Game" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,401,142,34" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+        <Button Click="returnMap" Content="Return to Map" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,314,142,121" Height="26" Width="102">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Image Name="Normal" Source="./Resource/interface/bottomRight/prod_disabled.png"/>
+                        <Image Name="Over" Source="./Resource/interface/bottomRight/prod_enabled.png" Visibility="Hidden"/>
+                        <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Click="newGame" Content="New Game" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,357,142,78" Height="26" Width="102">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Image Name="Normal" Source="./Resource/interface/bottomRight/prod_disabled.png"/>
+                        <Image Name="Over" Source="./Resource/interface/bottomRight/prod_enabled.png" Visibility="Hidden"/>
+                        <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Click="exitGame" Content="Exit Game" FontFamily="Lithos Pro" FontSize="12" Foreground="#fffef9dc" Margin="134,401,142,34" Height="26" Width="102">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Image Name="Normal" Source="./Resource/interface/bottomRight/prod_disabled.png"/>
+                        <Image Name="Over" Source="./Resource/interface/bottomRight/prod_enabled.png" Visibility="Hidden"/>
+                        <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>

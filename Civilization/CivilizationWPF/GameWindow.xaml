@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:CivilizationWPF"
         xmlns:implementation="clr-namespace:Implementation;assembly=CivilizationLib"
-        Title="Civilization" Width="1008" Height="757" ResizeMode="NoResize">
+        Title="Civilization" Width="1008" Height="757" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <BitmapImage x:Key="Teacher" UriSource="./Resource/interface/bottomLeft/teacher.png" />
         <BitmapImage x:Key="Accueil" UriSource="./Resource/interface/bottomLeft/accueil.png" />
@@ -32,7 +32,7 @@
                                 <Setter Property="Foreground" Value="White" />
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="Foreground" Value="#ffec921d" />
+                                <Setter Property="Foreground" Value="#fffef8d7" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

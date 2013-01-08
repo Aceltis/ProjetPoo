@@ -1,7 +1,7 @@
 ﻿<Window x:Class="CivilizationWPF.HomeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="HomeWindow" Height="768" Width="1024">
+        Title="HomeWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="menu" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
             <Setter Property="Background" Value="{x:Null}"/>
