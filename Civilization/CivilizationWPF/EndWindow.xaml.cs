@@ -18,17 +18,28 @@ namespace CivilizationWPF
     /// </summary>
     public partial class EndWindow : Window
     {
-        public EndWindow()
+        public EndWindow(String name)
         {
             InitializeComponent();
+
+            winnerView.Text = name;
+        }
+
+        public void returnMap(Object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void newGame(Object sender, RoutedEventArgs e)
         {
+            var newWindow = new HomeWindow();
+            Application.Current.Windows[0].Close();
+            newWindow.Show();
         }
 
         private void exitGame(Object sender, RoutedEventArgs e)
         {
+            Application.Current.Windows[0].Close();
         }
     }
 }
