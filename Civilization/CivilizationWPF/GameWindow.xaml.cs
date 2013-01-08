@@ -139,8 +139,22 @@ namespace CivilizationWPF
             }
         }
 
+        //Fonction appellée à l'appui du bouton
         private void nextTurn(object sender, RoutedEventArgs e)
         {
+            callNextTurn();
+        }
+
+        //Rend accessible par le code
+        private void callNextTurn()
+        {
+            if ((bool)moveActionView.IsChecked)
+                callMoveCancellation();
+            if ((bool)attackActionView.IsChecked)
+                callAttackCancellation();
+            if ((bool)buildActionView.IsChecked)
+                callBuildCancellation();
+
             // Is there a winner among all players ?
             if (game.isWinner())
             {
@@ -174,7 +188,7 @@ namespace CivilizationWPF
                     teacher.MovePoints = teacher.MaxMovePoints;
                 foreach (IStudent student in game.CurrentPlayer.Students)
                     student.MovePoints = student.MaxMovePoints;
-                if(game.CurrentPlayer.Boss != null)
+                if (game.CurrentPlayer.Boss != null)
                     game.CurrentPlayer.Boss.MovePoints = game.CurrentPlayer.Boss.MaxMovePoints;
 
                 //Masquage de la map
@@ -626,7 +640,7 @@ namespace CivilizationWPF
             ImageBrush unitDrawing = new ImageBrush();
             if (c != null)
             {
-                if (c.Units.Count() > 0)
+                if (c.Units.Count() > 0 && c.Visible)
                 {
                     if (c.Units[0] is ITeacher)
                     {
@@ -647,7 +661,7 @@ namespace CivilizationWPF
                         buildActionView.Visibility = Visibility.Hidden;
                     }
                 }
-                else if (c.City != null)
+                else if (c.City != null && c.Visible)
                 {
                     unitDrawing.ImageSource = (BitmapImage)FindResource("City");
                 }
@@ -721,17 +735,19 @@ namespace CivilizationWPF
                     //TODO
                 case (int)System.Windows.Forms.Keys.M:
                     e.IsInputKey = true;
-                    if (game.Map.SelectedUnit != null)
+                    if (game.Map.SelectedUnit != null && (game.Map.SelectedUnit.Player.Color == game.CurrentPlayer.Color))
+                    {
                         if ((bool)buildActionView.IsChecked)
                             callBuildCancellation();
                         if ((bool)attackActionView.IsChecked)
                             callAttackCancellation();
-                        if(!(bool)moveActionView.IsChecked)
+                        if (!(bool)moveActionView.IsChecked)
                             callMove();
+                    }
                     break;
                 case (int)System.Windows.Forms.Keys.A:
                     e.IsInputKey = true;
-                    if (game.Map.SelectedUnit != null)
+                    if (game.Map.SelectedUnit != null && (game.Map.SelectedUnit.Player.Color == game.CurrentPlayer.Color))
                     {
                         if ((game.Map.SelectedUnit.GetType() == (new StudentINFO()).GetType())||(game.Map.SelectedUnit.GetType() == (new StudentEII()).GetType()))
                         {
@@ -747,7 +763,7 @@ namespace CivilizationWPF
                     break;
                 case (int)System.Windows.Forms.Keys.B:
                     e.IsInputKey = true;
-                    if (game.Map.SelectedUnit != null)
+                    if (game.Map.SelectedUnit != null && (game.Map.SelectedUnit.Player.Color == game.CurrentPlayer.Color))
                     {
                         if ((game.Map.SelectedUnit.GetType() == (new TeacherINFO()).GetType()) || (game.Map.SelectedUnit.GetType() == (new TeacherEII()).GetType()))
                         {
@@ -797,6 +813,10 @@ namespace CivilizationWPF
                         updateInterface();
                         break;
                     }
+                    break;
+                case (int)System.Windows.Forms.Keys.Enter:
+                    e.IsInputKey = true;
+                    callNextTurn();
                     break;
             }
             sc.PerformLayout();

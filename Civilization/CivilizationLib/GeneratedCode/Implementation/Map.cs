@@ -201,8 +201,16 @@ namespace Implementation
         #region Actions
         public void select(int x, int y)
         {
+            if (SelectedUnit != null)
+                SelectedUnit = null;
+
             if (SelectedCase != null)
+            {
                 SelectedCase.Selected = false;
+                SelectedCase = null;
+            }
+
+
             int x_pos = x / 50;
             int y_pos = mapStrategy.width * (y / 50);
             grid[x_pos + y_pos].Selected = true;
