@@ -164,8 +164,8 @@
             <TextBlock Text="{Binding Path=NeededFood}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="20" Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,12,0" />
             <TextBlock Text="{Binding Path=Population}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" Grid.Column="4" Margin="133,9,120,18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBlock Text="{Binding Path=Name}" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" Grid.Column="4" Margin="147,38,132,28" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding Path=Food}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,3,9"></TextBlock>
-            <TextBlock Text="{Binding Path=Iron}" Grid.Column="2" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,3,8"></TextBlock>
+            <TextBlock Text="{Binding Path=OwnedFoods}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,3,9"></TextBlock>
+            <TextBlock Text="{Binding Path=OwnedMinerals}" Grid.Column="2" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,3,8"></TextBlock>
             <ToggleButton Name="prodBossView" Click="prodBoss" Content="Boss" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="2,7,195,52" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
             <ToggleButton Name="prodTeacherView" Click="prodTeacher" Content="Teacher" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="87,7,73,52" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
             <ToggleButton Name="prodStudentView" Click="prodStudent" Content="Student" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="248,23,182,26" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
@@ -201,7 +201,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Name="orderCity" Click="nextAction" Content="A City needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Visible">
+            <Button Name="orderCity" Click="nextAction" Content="A City needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Hidden">
                 <Button.Effect>
                     <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
                 </Button.Effect>
