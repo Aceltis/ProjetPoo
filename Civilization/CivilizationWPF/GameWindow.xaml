@@ -6,6 +6,7 @@
         Title="Civilization" Width="1008" Height="757" ResizeMode="NoResize">
     <Window.Resources>
         <BitmapImage x:Key="Teacher" UriSource="./Resource/interface/bottomLeft/teacher.png" />
+        <BitmapImage x:Key="Accueil" UriSource="./Resource/interface/bottomLeft/accueil.png" />
         <BitmapImage x:Key="Student" UriSource="./Resource/interface/bottomLeft/student.png" />
         <BitmapImage x:Key="Boss" UriSource="./Resource/interface/bottomLeft/boss.png" />
         <BitmapImage x:Key="Field" UriSource="./Resource/interface/bottomLeft/field.png" />
@@ -179,7 +180,7 @@
 
         <Grid Grid.Row="2" Grid.Column="0" Name="action">
             <Grid.Background>
-                <ImageBrush ImageSource="./Resource/interface/bottomLeft/field.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"/>
+                <ImageBrush ImageSource="./Resource/interface/bottomLeft/accueil.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"/>
             </Grid.Background>
             <Button Name="orderUnit" Click="nextAction" Content="Units needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Hidden">
                 <Button.Effect>

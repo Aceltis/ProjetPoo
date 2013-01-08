@@ -623,9 +623,9 @@ namespace CivilizationWPF
         // Draw the bottom interface according to the selected Case
         private void showUnitInterface(ICase c)
         {
+            ImageBrush unitDrawing = new ImageBrush();
             if (c != null)
             {
-                ImageBrush unitDrawing = new ImageBrush();
                 if (c.Units.Count() > 0)
                 {
                     if (c.Units[0] is ITeacher)
@@ -661,9 +661,10 @@ namespace CivilizationWPF
                     else
                         fieldType.Text = "Desert";
                 }
-                action.Background = unitDrawing;
             }
-            else action.Background = null; //TODO mettre l'image "vide"
+            else
+                unitDrawing.ImageSource = (BitmapImage)FindResource("Accueil");
+            action.Background = unitDrawing;
         }
 
         // Comments
