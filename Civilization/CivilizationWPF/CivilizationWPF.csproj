@@ -52,6 +52,9 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>./Resource/gameicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -293,6 +296,9 @@
   <ItemGroup>
     <Resource Include="Resource\interface\bottomLeft\bouton_small_disabled.png" />
     <Resource Include="Resource\interface\bottomLeft\bouton_small_enabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\gameicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
