@@ -31,6 +31,10 @@ namespace Implementation
             MaxHP = 10;
             Player = p;
             Case = c;
+            if (Player.Boss != null)
+                if (Player.Boss.Case == c)
+                    BossBonus = 1.5;
+            BossBonus = 1;
         }
 
         unsafe public virtual void attack(ICase target)
@@ -38,7 +42,8 @@ namespace Implementation
             WrapperBattleAlgo algo = new WrapperBattleAlgo();
             Dictionary<int, IUnit> EnemyDefPoints = new Dictionary<int, IUnit>();
             foreach(IUnit unit in target.Units)
-                EnemyDefPoints.Add((int)((double)unit.DefensePoints / ((double)unit.HP/(double)unit.MaxHP)), unit);
+                EnemyDefPoints.Add((int)((double)unit.DefensePoints / ((double)unit.HP / (double)unit.MaxHP)), unit);
+
             IUnit targetUnit = EnemyDefPoints[(EnemyDefPoints.Max()).Key];
             int* results = algo.computeBattle(AttackPoints, EnemyDefPoints.Max().Key, HP, targetUnit.HP);
             if (results[0] != 0)

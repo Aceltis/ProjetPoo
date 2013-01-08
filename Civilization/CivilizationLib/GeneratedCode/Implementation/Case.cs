@@ -75,9 +75,18 @@ namespace Implementation
                         unit.Player.Teachers.Remove(unit.Player.Teachers.Find(x => x == unit));
                     if (unit.Player.Students.Find(x => x == unit) != null)
                         unit.Player.Students.Remove(unit.Player.Students.Find(x => x == unit));
-                    if(unit.Player.Boss != null)
-                        if (unit.Player.Boss == unit)
-                            unit.Player.Boss = null;
+                    if (unit.Player.Boss == unit)
+                    {
+                        unit.Player.Boss = null;
+                        foreach (IStudent u in unit.Player.Students)
+                        {
+                            u.BossBonus = 1;
+                        }
+                        foreach (ITeacher u in unit.Player.Teachers)
+                        {
+                            u.BossBonus = 1;
+                        }
+                    }
         }
     }
 }
