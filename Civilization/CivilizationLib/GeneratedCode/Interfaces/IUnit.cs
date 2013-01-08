@@ -20,6 +20,7 @@ namespace Interfaces
         int DefensePoints { get; set; }
         ICase Case { get; set; }
         int MaxMovePoints { get; set; }
+        int MaxHP { get; set; }
         int AttackRange { get; set; }
         int MovePoints { get; set; }
         int Cost { get; set; }

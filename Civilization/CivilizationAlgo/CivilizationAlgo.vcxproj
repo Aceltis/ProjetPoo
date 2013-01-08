@@ -60,9 +60,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="battleAlgo.h" />
     <ClInclude Include="mapalgo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="battleAlgo.cpp" />
     <ClCompile Include="mapalgo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

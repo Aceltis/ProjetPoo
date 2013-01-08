@@ -14,6 +14,7 @@ namespace Implementation
     using System.Windows.Forms;
     using System.Drawing;
     using System.Drawing.Imaging;
+    using Wrapper;
 
     public class Map : IMap
     {
@@ -245,8 +246,8 @@ namespace Implementation
             int y_pos = mapStrategy.width * (y / 50);
 
             //TODO
-            /*if (grid[x_pos + y_pos].UnderUnitMoveRange)
-                SelectedUnit.move(grid[x_pos + y_pos]);*/
+            if (grid[x_pos + y_pos].EnemyInRange)
+                ((IStudent)SelectedUnit).attack(grid[x_pos + y_pos]);
 
             foreach (ICase c in grid)
             {
@@ -382,29 +383,43 @@ namespace Implementation
         }
 
         //Affiche les endroits proposés pour construire une ville
-        public virtual void drawCityPossibilities(IPlayer currPlayer)
+        unsafe public virtual void drawCityPossibilities(IPlayer currPlayer)
         {
-            //TODO
-            int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
-            grid[i - 1 - 2 * mapStrategy.width].CitySuggestion = true;
-            grid[i + 3].CitySuggestion = true;
-            grid[i - 1 + mapStrategy.width].CitySuggestion = true;
-            /*for (int k = -SelectedUnit.MovePoints; k <= SelectedUnit.MovePoints; k++)
+            WrapperMapAlgo algo = new WrapperMapAlgo();
+            int[] ressourcesMap = new int[grid.Count];
+            int[] knownTowns = new int[grid.Count];
+            int[] knownUnits = new int[grid.Count];
+            for (int i = 0; i < grid.Count; i++)
             {
-                //Tests en cas de bord de map horizontal
-                bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
-                bool cond2 = ((k >= 0) || ((i % mapStrategy.width) + k) >= 0);
-                if (cond1 && cond2)
+                ressourcesMap[i] = grid[i].Foods;
+                ressourcesMap[i] += grid[i].Minerals;
+
+                if (grid[i].Visible)
                 {
-                    for (int l = -SelectedUnit.MovePoints + Math.Abs(k); l <= SelectedUnit.MovePoints - Math.Abs(k); l++)
-                    {
-                        //Test en cas de bord de map vertical + comparaison unité
-                        if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count) && (grid[i + k + mapStrategy.width * l].Units.Count != 0))
-                            if (grid[i + k + mapStrategy.width * l].Units.First().Player.Color != currPlayer.Color && callAlgoCity())
-                                grid[i + k + mapStrategy.width * l].CitySuggestion = true;
-                    }
+                    if (grid[i].City != null)
+                        if (grid[i].City.Player.Color != currPlayer.Color)
+                        {
+                            knownTowns[i] = -1;
+                            if (grid[i].Units.Count != 0)
+                                knownUnits[i] = -grid[i].Units.Count();
+                        }
+                        else
+                        {
+                            knownTowns[i] = 1;
+                            if (grid[i].Units.Count != 0)
+                                knownUnits[i] = grid[i].Units.Count();
+                        }
                 }
-            }*/
+                else
+                {
+                    knownTowns[i] = 0;
+                    knownUnits[i] = 0;
+                }
+            }
+
+            //Analyses the given tables and returns suggested coordinates
+            //IntPtr ressourcesMapPtr = &ressourcesMap;
+            //int** CitiesCoords = algo.computeSuggestions(ressourcesMap, knownTowns, knownUnits, grid.Count);
         }
         #endregion
     }

@@ -13,6 +13,7 @@ namespace Implementation
     using System.Text;
     using System.Windows.Forms;
     using System.Drawing;
+    using Wrapper;
 
     public class StudentEII : Unit, IStudent
     {
@@ -24,11 +25,12 @@ namespace Implementation
             AttackPoints = 3;
             DefensePoints = 3;
             HP = 10;
+            MaxHP = 10;
             Player = p;
             Case = c;
         }
 
-        public virtual void attack()
+        unsafe public virtual void attack(ICase target)
         {
             throw new System.NotImplementedException();
         }

@@ -14,7 +14,7 @@ namespace Interfaces
 
 	public interface IStudent  : IUnit
 	{
-        void attack();
+        void attack(ICase target);
 	}
 }
 

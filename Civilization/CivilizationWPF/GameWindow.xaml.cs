@@ -124,10 +124,10 @@ namespace CivilizationWPF
                 game.Turns++;
 
                 //Reset units' move points
-                foreach (IUnit unit in game.CurrentPlayer.Teachers)
-                    unit.MovePoints = unit.MaxMovePoints;
-                foreach (IUnit unit in game.CurrentPlayer.Students)
-                    unit.MovePoints = unit.MaxMovePoints;
+                foreach (ITeacher teacher in game.CurrentPlayer.Teachers)
+                    teacher.MovePoints = teacher.MaxMovePoints;
+                foreach (IStudent student in game.CurrentPlayer.Students)
+                    student.MovePoints = student.MaxMovePoints;
                 if(game.CurrentPlayer.Boss != null)
                     game.CurrentPlayer.Boss.MovePoints = game.CurrentPlayer.Boss.MaxMovePoints;
 
@@ -588,6 +588,11 @@ namespace CivilizationWPF
                     else
                         sc.HorizontalScroll.Value -= 50;
                     break;
+                /*case (int)System.Windows.Forms.Keys.M:
+                    e.IsInputKey = true;
+                    RoutedEventArgs newEventArgs = new RoutedEventArgs();
+                    moveActionView.t
+                    break;*/
             }
             sc.PerformLayout();
         }

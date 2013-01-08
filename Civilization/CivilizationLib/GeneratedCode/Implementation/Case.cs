@@ -70,12 +70,12 @@ namespace Implementation
         public virtual void removeUnit(IUnit unit)
         {
                     Units.Remove(unit);
-                    if (unit.Player.Teachers.Find(x => x.Id == unit.Id) != null)
-                        unit.Player.Teachers.Remove(unit.Player.Teachers.Find(x => x.Id == unit.Id));
-                    if (unit.Player.Students.Find(x => x.Id == unit.Id) != null)
-                        unit.Player.Students.Remove(unit.Player.Students.Find(x => x.Id == unit.Id));
+                    if (unit.Player.Teachers.Find(x => x == unit) != null)
+                        unit.Player.Teachers.Remove(unit.Player.Teachers.Find(x => x == unit));
+                    if (unit.Player.Students.Find(x => x == unit) != null)
+                        unit.Player.Students.Remove(unit.Player.Students.Find(x => x == unit));
                     if(unit.Player.Boss != null)
-                        if (unit.Player.Boss.Id == unit.Id)
+                        if (unit.Player.Boss == unit)
                             unit.Player.Boss = null;
         }
     }

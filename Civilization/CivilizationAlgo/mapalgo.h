@@ -24,27 +24,31 @@ struct square {
 	int frozen;
 };
 
-class DLL Algo {
+class DLL MapAlgo {
 	public:
-		Algo() {}
-		~Algo() {}
+		MapAlgo() {}
+		~MapAlgo() {}
 		int** createMap(int h, int w);
 		int** createBonusesMap(int h, int w, double r);
 		int** giveInitPos(int h, int w, int nb);
+		int** computeSuggestions(int* &ress, int* &Towns, int* &Units, int s);
 };
 
 // A ne pas implémenter dans le .h !
-EXTERNC DLL Algo* Algo_new();
-EXTERNC DLL void Algo_delete(Algo* algo);
+EXTERNC DLL MapAlgo* MapAlgo_new();
+EXTERNC DLL void MapAlgo_delete(MapAlgo* mapAlgo);
 
 // Creates a height x width map.
-EXTERNC DLL int** Algo_createMap(Algo* algo, int h, int w);
+EXTERNC DLL int** MapAlgo_createMap(MapAlgo* mapAlgo, int h, int w);
 
 // Creates a height x width map of additional ressources.
-EXTERNC DLL int** Algo_createBonusesMap(Algo* algo, int h, int w, double r);
+EXTERNC DLL int** MapAlgo_createBonusesMap(MapAlgo* mapAlgo, int h, int w, double r);
 
 // Returns each player's initial units' position
-EXTERNC DLL int** Algo_giveInitPos(Algo* algo, int h, int w, int nbPlayers);
+EXTERNC DLL int** MapAlgo_giveInitPos(MapAlgo* mapAlgo, int h, int w, int nbPlayers);
+
+// Returns each player's initial units' position
+EXTERNC DLL int** MapAlgo_giveCitiesPos(MapAlgo* mapAlgo, int* &ress, int* &Towns, int* &Units, int size);
 
 //fonctions internes
 //Generates the bonus map

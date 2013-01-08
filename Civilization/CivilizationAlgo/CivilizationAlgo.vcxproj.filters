@@ -18,9 +18,15 @@
     <ClInclude Include="mapalgo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="battleAlgo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mapalgo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="battleAlgo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

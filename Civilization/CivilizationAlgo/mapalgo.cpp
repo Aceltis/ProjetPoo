@@ -5,7 +5,7 @@
  * Create a new heightxwidth map
  * return int**
  */
-int** Algo::createMap(int height, int width) {
+int** MapAlgo::createMap(int height, int width) {
 	square** newMap = new square*[height];
 	for (int i=0; i<height; i++)
        newMap[i] = new square[width];
@@ -33,7 +33,7 @@ int** Algo::createMap(int height, int width) {
  * Create a new heightxwidth map with bonus ressources
  * return int**
  */
-int** Algo::createBonusesMap(int height, int width, double ratio) {
+int** MapAlgo::createBonusesMap(int height, int width, double ratio) {
 	int** newBMap = new int*[height];
 	for (int i=0; i<height; i++)
        newBMap[i] = new int[width];
@@ -50,7 +50,7 @@ int** Algo::createBonusesMap(int height, int width, double ratio) {
  * Computes each player's units' initial position
  * return int**
  */
-int** Algo::giveInitPos(int height, int width, int nbPlayers)
+int** MapAlgo::giveInitPos(int height, int width, int nbPlayers)
 {
 	// Initialize random seed.
 	srand(time(NULL));
@@ -70,10 +70,25 @@ int** Algo::giveInitPos(int height, int width, int nbPlayers)
 	return newIPos;
 }
 
-Algo* Algo_new() { return new Algo(); }
-void Algo_delete(Algo* algo) { delete algo; }
-int** Algo_createMap(Algo* algo, int height, int width) { return algo->createMap(height, width); }
-int** Algo_createBonusesMap(Algo* algo, int height, int width, double ratio) { return algo->createBonusesMap(height, width, ratio); }
+/*
+ * giveInitPos()
+ * Computes each player's units' initial position
+ * return int**
+ */
+int** MapAlgo::computeSuggestions(int* &ressourcesMap, int* &knownTowns, int* &knownUnits, int size)
+{	
+	int** newBMap = new int*[size];
+	for (int i=0; i<size; i++)
+       newBMap[i] = new int[2];
+
+	return newBMap;
+}
+
+MapAlgo* MapAlgo_new() { return new MapAlgo(); }
+void MapAlgo_delete(MapAlgo* mapAlgo) { delete mapAlgo; }
+int** MapAlgo_createMap(MapAlgo* mapAlgo, int height, int width) { return mapAlgo->createMap(height, width); }
+int** MapAlgo_createBonusesMap(MapAlgo* mapAlgo, int height, int width, double ratio) { return mapAlgo->createBonusesMap(height, width, ratio); }
+int** MapAlgo_giveCitiesPos(MapAlgo* mapAlgo, int* &ress, int* &Towns, int* &Units, int size) {return mapAlgo->computeSuggestions(ress, Towns, Units, size);}
 
 void generateBMap(int** &BMap, int height, int width, double ratio){
 	for(int i = 0; i<height; i++)

@@ -13,6 +13,7 @@ namespace Implementation
     using System.Text;
     using System.Windows.Forms;
     using System.Drawing;
+    using Wrapper;
 
     public class StudentINFO : Unit, IStudent
     {
@@ -24,13 +25,31 @@ namespace Implementation
             AttackPoints = 4;
             DefensePoints = 2;
             HP = 10;
+            MaxHP = 10;
             Player = p;
             Case = c;
         }
 
-        public virtual void attack()
+        unsafe public virtual void attack(ICase target)
         {
-            throw new System.NotImplementedException();
+            WrapperBattleAlgo algo = new WrapperBattleAlgo();
+            Dictionary<int, IUnit> EnemyDefPoints = new Dictionary<int, IUnit>();
+            foreach(IUnit unit in target.Units)
+                EnemyDefPoints.Add((int)((double)unit.DefensePoints / ((double)unit.HP/(double)unit.MaxHP)), unit);
+            IUnit targetUnit = EnemyDefPoints[(EnemyDefPoints.Max()).Key];
+            int* results = algo.computeBattle(AttackPoints, EnemyDefPoints.Max().Key, HP, targetUnit.HP);
+            if (results[0] != 0)
+                HP = results[0];
+            else
+                Case.removeUnit(this);
+            if (results[1] != 0)
+                targetUnit.HP = results[1];
+            else
+            {
+                target.removeUnit(targetUnit);
+                if (MovePoints == 0) MovePoints++;
+                move(target);
+            }
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)

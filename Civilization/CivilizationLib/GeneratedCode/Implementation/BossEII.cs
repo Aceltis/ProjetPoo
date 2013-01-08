@@ -24,6 +24,7 @@ namespace Implementation
             AttackPoints = 4;
             DefensePoints = 2;
             HP = 10;
+            MaxHP = 10;
             Player = p;
             Case = c;
             CreationTime = 5;

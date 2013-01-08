@@ -47,6 +47,7 @@ namespace Implementation
 
         public virtual IPlayer Player { get; set; }
         public virtual ICase Case { get; set; }
+        public virtual int MaxHP { get; set; }
         public virtual int MaxMovePoints { get; set; }
         public virtual int AttackRange { get; set; }
         public virtual int Cost { get; set; }

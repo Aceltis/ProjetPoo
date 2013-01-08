@@ -23,7 +23,7 @@ namespace Implementation
 
         unsafe public override void createMap(List<ICase> map, Queue<IPlayer> players)
         {
-            WrapperAlgo algo = new WrapperAlgo();
+            WrapperMapAlgo algo = new WrapperMapAlgo();
             CaseFactory factory = new CaseFactory();
             int** algoMap = algo.createMap(height, width);
             int** algoBonusesMap = algo.createBonusesMap(height, width, 0.05);
