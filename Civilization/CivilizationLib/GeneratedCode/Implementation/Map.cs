@@ -279,7 +279,7 @@ namespace Implementation
         //Cheks if the clicked square is within unit range and if a city can be built in it
         //if yes, move unit to it and build City
         //then selects the square
-        public void buildCity(int x, int y, IPlayer currPlayer)
+        public void buildCity(int x, int y, IPlayer currPlayer, String name)
         {
             //Position de la case cliquée sur la map
             int x_pos = x / 50;
@@ -292,13 +292,13 @@ namespace Implementation
                     if (grid[x_pos + y_pos].Units.First().Player.Color == currPlayer.Color)
                     {
                         SelectedUnit.move(grid[x_pos + y_pos]);
-                        ((ITeacher)SelectedUnit).createCity(currPlayer);
+                        ((ITeacher)SelectedUnit).createCity(currPlayer, name);
                     }
                 }
                 else
                 {
                     SelectedUnit.move(grid[x_pos + y_pos]);
-                    ((ITeacher)SelectedUnit).createCity(currPlayer);
+                    ((ITeacher)SelectedUnit).createCity(currPlayer, name);
                 }
             }
 
