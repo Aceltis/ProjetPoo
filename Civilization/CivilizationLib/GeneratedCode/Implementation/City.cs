@@ -190,6 +190,13 @@ namespace Implementation
                 Population++;
         }
 
+        public virtual void changeOwner(IPlayer newOwner)
+        {
+            Player.Cities.Remove(this);
+            Player = newOwner;
+            Player.Cities.Add(this);
+        }
+
         public virtual void spawnUnit(ProductionType type)
         {
             switch (type)

@@ -69,6 +69,10 @@ namespace Implementation
                 else
                     BossBonus = 1;
             }
+            //Si l'unité a pu se déplacer sur une ville, c'est qu'elle est vide -> il la capture
+            if(destination.City != null)
+                if(destination.City.Player.Color != Player.Color)
+                    destination.City.changeOwner(Player);
         }
 
         public virtual void passTurn()

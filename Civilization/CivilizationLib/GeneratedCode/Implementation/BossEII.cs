@@ -62,6 +62,11 @@ namespace Implementation
             //Le boss arrive à une case, les unités gagnent le bonus
             foreach (IUnit u in destination.Units)
                 u.BossBonus = 1.5;
+
+            //Si l'unité a pu se déplacer sur une ville, c'est qu'elle est vide -> il la capture
+            if (destination.City != null)
+                if (destination.City.Player.Color != Player.Color)
+                    destination.City.changeOwner(Player);
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)
