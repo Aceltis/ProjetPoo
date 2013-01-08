@@ -29,11 +29,14 @@ namespace Implementation
             MaxHP = 1;
             Player = p;
             Case = c;
+            if (Player.Boss != null)
+                if (Player.Boss.Case == c)
+                    BossBonus = 1.5;
+            BossBonus = 1;
         }
 
         public virtual void createCity(IPlayer currPlayer, String name)
         {
-            //TODO add city string
             City newCity = new City(currPlayer, Case);
             newCity.Name = name;
             Case.City = newCity;

@@ -86,7 +86,7 @@ namespace Implementation
                         {
                             //Ajout des cases du périmètre dans le dictionnaire
                             cityCasesFood.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Foods);
-                            cityCasesMinerals.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Foods);
+                            cityCasesMinerals.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Minerals);
                         }
                     }
                 }
@@ -188,6 +188,13 @@ namespace Implementation
 
             if (OwnedFoods >= nbResNeeded)
                 Population++;
+        }
+
+        public virtual void changeOwner(IPlayer newOwner)
+        {
+            Player.Cities.Remove(this);
+            Player = newOwner;
+            Player.Cities.Add(this);
         }
 
         public virtual void spawnUnit(ProductionType type)

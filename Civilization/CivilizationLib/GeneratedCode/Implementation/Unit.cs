@@ -24,17 +24,17 @@ namespace Implementation
             set { this.SetAndNotify(ref this._hp, value, () => this._hp); }
         }
 
-        private int _attackPoints;
+        protected int _attackPoints;
         public virtual int AttackPoints
         {
-            get { return this._attackPoints; }
+            get { return (int)(this._attackPoints * BossBonus); }
             set { this.SetAndNotify(ref this._attackPoints, value, () => this._attackPoints); }
         }
 
-        private int _defensePoints;
+        protected int _defensePoints;
         public virtual int DefensePoints
         {
-            get { return this._defensePoints; }
+            get { return (int)(this._defensePoints * BossBonus); }
             set { this.SetAndNotify(ref this._defensePoints, value, () => this._defensePoints); }
         }
 
@@ -53,6 +53,7 @@ namespace Implementation
         public virtual int Cost { get; set; }
         public virtual int CreationTime { get; set; }
         public virtual int Id { get; set; }
+        public virtual double BossBonus { get; set; }
 
         public virtual void move(ICase destination)
         {
@@ -61,6 +62,17 @@ namespace Implementation
             Case.Units.Remove(this);
             Case = destination;
             destination.Units.Add(this);
+            if (Player.Boss != null)
+            {
+                if (Player.Boss.Case == destination)
+                    BossBonus = 1.5;
+                else
+                    BossBonus = 1;
+            }
+            //Si l'unité a pu se déplacer sur une ville, c'est qu'elle est vide -> il la capture
+            if(destination.City != null)
+                if(destination.City.Player.Color != Player.Color)
+                    destination.City.changeOwner(Player);
         }
 
         public virtual void passTurn()

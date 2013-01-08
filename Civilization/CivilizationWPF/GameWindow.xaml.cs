@@ -146,6 +146,7 @@ namespace CivilizationWPF
         //Rend accessible par le code
         private void callNextTurn()
         {
+
             if ((bool)moveActionView.IsChecked)
                 callMoveCancellation();
             if ((bool)attackActionView.IsChecked)
@@ -212,7 +213,8 @@ namespace CivilizationWPF
             }
         }
 #endregion
-        #region inhibition events
+
+#region inhibition events
         //If user want to skip his turn
         private void nextTurnBlack(object sender, RoutedEventArgs e)
         {

@@ -31,6 +31,41 @@ namespace Implementation
             Case = c;
             CreationTime = 5;
             Cost = 200;
+            BossBonus = 1;
+        }
+
+        public override int AttackPoints
+        {
+            get { return (int)(this._attackPoints); }
+            set { this.SetAndNotify(ref this._attackPoints, value, () => this._attackPoints); }
+        }
+
+        public override int DefensePoints
+        {
+            get { return (int)(this._defensePoints); }
+            set { this.SetAndNotify(ref this._defensePoints, value, () => this._defensePoints); }
+        }
+
+        public override void move(ICase destination)
+        {
+            //Le boss part d'une case, les unités de cette case perdent le bonus
+            foreach (IUnit u in destination.Units)
+                u.BossBonus = 1;
+
+            MovePoints -= Math.Abs(destination.SqPos[0] - Case.SqPos[0]);
+            MovePoints -= Math.Abs(destination.SqPos[1] - Case.SqPos[1]);
+            Case.Units.Remove(this);
+            Case = destination;
+            destination.Units.Add(this);
+
+            //Le boss arrive à une case, les unités gagnent le bonus
+            foreach (IUnit u in destination.Units)
+                u.BossBonus = 1.5;
+
+            //Si l'unité a pu se déplacer sur une ville, c'est qu'elle est vide -> il la capture
+            if (destination.City != null)
+                if (destination.City.Player.Color != Player.Color)
+                    destination.City.changeOwner(Player);
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)

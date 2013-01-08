@@ -33,6 +33,8 @@ namespace Interfaces
 
 		void upgradePopulation();
 
+        void changeOwner(IPlayer newOwner);
+
         void spawnUnit(Implementation.ProductionType type);
 
         void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y);

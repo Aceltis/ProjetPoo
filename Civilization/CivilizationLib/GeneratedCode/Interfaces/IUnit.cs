@@ -18,6 +18,7 @@ namespace Interfaces
         int HP { get; set; }
         int AttackPoints { get; set; }
         int DefensePoints { get; set; }
+        double BossBonus { get; set; }
         ICase Case { get; set; }
         int MaxMovePoints { get; set; }
         int MaxHP { get; set; }

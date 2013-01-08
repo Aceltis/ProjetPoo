@@ -146,7 +146,7 @@
             <TextBlock Text="{Binding Path=DefensePoints}" Grid.Column="5" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,13"/>
             <ToggleButton Name="moveActionView" Click="moveAction" Content="Move" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="0,25,275,58" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
             <ToggleButton Name="buildActionView"  Click="buildAction" Content="Build" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="96,25,139,58" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
-            <ToggleButton Name="attackActionView" Click="attackAction" Content="Attack" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="231,25,4,58" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
+            <ToggleButton  Name="attackActionView" Click="attackAction" Content="Attack" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="231,25,4,58" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="1" Name="city" Visibility="Hidden">
