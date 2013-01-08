@@ -319,7 +319,7 @@ namespace Implementation
         #region UnitsZones
 
         //Affiche la distance de parcours possible de l'unité
-        public virtual void drawMoveBorders()
+        public virtual void drawMoveBorders(IPlayer currPlayer)
         {
             int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
             for (int k = -SelectedUnit.MovePoints; k <= SelectedUnit.MovePoints; k++)
@@ -333,7 +333,13 @@ namespace Implementation
                     {
                         //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
                         if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count))
-                            grid[i + k + mapStrategy.width * l].UnderUnitMoveRange = true;
+                            if (grid[i + k + mapStrategy.width * l].Units.Count != 0)
+                            {
+                                if (grid[i + k + mapStrategy.width * l].Units.First().Player.Color == currPlayer.Color)
+                                    grid[i + k + mapStrategy.width * l].UnderUnitMoveRange = true;
+                            }
+                            else
+                                grid[i + k + mapStrategy.width * l].UnderUnitMoveRange = true;
                     }
                 }
             }

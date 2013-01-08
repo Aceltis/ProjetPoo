@@ -28,7 +28,7 @@ namespace Interfaces
         void attack(int x, int y);
         void buildCity(int x, int y, IPlayer currPlayer);
         void reveal(object sender, PaintEventArgs e);
-        void drawMoveBorders();
+        void drawMoveBorders(IPlayer currPlayer);
         void drawAttackBorders();
         void circleEnemies(IPlayer currPlayer);
         void drawCityPossibilities(IPlayer currPlayer);

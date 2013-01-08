@@ -161,7 +161,7 @@ namespace CivilizationWPF
 
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
-            game.Map.drawMoveBorders();
+            game.Map.drawMoveBorders(game.CurrentPlayer);
             windowsFormsHost1.Child.Refresh();
 
             moveActionView.Click += new RoutedEventHandler(cancellMove);
@@ -245,7 +245,7 @@ namespace CivilizationWPF
 
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
-            game.Map.drawMoveBorders();
+            game.Map.drawMoveBorders(game.CurrentPlayer);
             game.Map.drawCityPossibilities(game.CurrentPlayer);
             windowsFormsHost1.Child.Refresh();
 
@@ -588,6 +588,7 @@ namespace CivilizationWPF
                     else
                         sc.HorizontalScroll.Value -= 50;
                     break;
+                    //TODO
                 /*case (int)System.Windows.Forms.Keys.M:
                     e.IsInputKey = true;
                     RoutedEventArgs newEventArgs = new RoutedEventArgs();
