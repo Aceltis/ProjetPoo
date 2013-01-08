@@ -28,6 +28,8 @@ namespace CivilizationWPF
         GameViewModel gvm;
         Dictionary<IPlayer, PlayerViewModel> pToPvm;
         List<IUnit> activeUnits;
+        //Map
+        System.Windows.Forms.PictureBox mapPictureBox;
 
 #region Game Initialization
         public GameWindow(IGameBuilder builder)
@@ -175,8 +177,8 @@ namespace CivilizationWPF
             if (game.isWinner())
             {
                 //Affichage de la map complète, suppression du fow
-                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint -= new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
-                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint += new System.Windows.Forms.PaintEventHandler(game.Map.reveal);
+                mapPictureBox.Paint -= new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
+                mapPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(game.Map.reveal);
                 windowsFormsHost1.Child.Refresh();
                 endGame();
             }
@@ -189,6 +191,7 @@ namespace CivilizationWPF
                 //Reset selection
                 foreach (Case c in game.Map.grid)
                     c.Selected = false;
+
                 game.Map.SelectedCase = null;
                 game.Map.SelectedUnit = null;
 
@@ -208,7 +211,7 @@ namespace CivilizationWPF
                     game.CurrentPlayer.Boss.MovePoints = game.CurrentPlayer.Boss.MaxMovePoints;
 
                 //Masquage de la map
-                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint += new System.Windows.Forms.PaintEventHandler(turnBlack);
+                mapPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(turnBlack);
                 windowsFormsHost1.Child.Refresh();
                 beginTurn();
                 centerScreen();
@@ -218,7 +221,7 @@ namespace CivilizationWPF
                 //System.Windows.MessageBox.Show("Have a seat " + game.CurrentPlayer.Name + " !", "CiviliZation : Hotseat", MessageBoxButton.OK);
 
                 //Affichage de la map du nouveau joueur
-                windowsFormsHost1.Child.Controls.OfType<System.Windows.Forms.PictureBox>().First().Paint -= new System.Windows.Forms.PaintEventHandler(turnBlack);
+                mapPictureBox.Paint -= new System.Windows.Forms.PaintEventHandler(turnBlack);
                 windowsFormsHost1.Child.Refresh();
                 windowsFormsHost1.Child.Focus();
             }
@@ -235,8 +238,8 @@ namespace CivilizationWPF
             attackActionView.IsChecked = false;
             buildActionView.IsChecked = false;
 
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
             game.Map.drawMoveBorders(game.CurrentPlayer);
             windowsFormsHost1.Child.Refresh();
 
@@ -254,8 +257,8 @@ namespace CivilizationWPF
             attackActionView.IsChecked = true;
             buildActionView.IsChecked = false;
 
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
+            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
             game.Map.drawAttackBorders();
             game.Map.circleEnemies(game.CurrentPlayer);
             windowsFormsHost1.Child.Refresh();
@@ -274,8 +277,8 @@ namespace CivilizationWPF
             attackActionView.IsChecked = false;
             buildActionView.IsChecked = true;
 
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
+            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
             game.Map.drawMoveBorders(game.CurrentPlayer);
             game.Map.drawCityPossibilities(game.CurrentPlayer);
             windowsFormsHost1.Child.Refresh();
@@ -294,8 +297,8 @@ namespace CivilizationWPF
             //Uncheck other buttons
             moveActionView.IsChecked = false;
 
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
 
             //Si Build pressé, pas besoin d'effacer ça
             if (!(bool)buildActionView.IsChecked)
@@ -316,8 +319,8 @@ namespace CivilizationWPF
 
             attackActionView.IsChecked = false;
 
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
 
             foreach (ICase c in game.Map.grid)
             {
@@ -339,8 +342,8 @@ namespace CivilizationWPF
             //Uncheck other buttons
             buildActionView.IsChecked = false;
 
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
 
             //Si Move pressé, pas besoin d'effacer ça
             if (!(bool)moveActionView.IsChecked)
@@ -445,15 +448,15 @@ namespace CivilizationWPF
         {
             int height = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
             int width = (int)Math.Sqrt((double)game.Map.grid.Count) * 50;
-            System.Windows.Forms.PictureBox pictureBox = new System.Windows.Forms.PictureBox();
-            pictureBox.Width = width; pictureBox.Height = height;
-            pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
-            pictureBox.MouseEnter += pictureBox_giveFocus;
-            pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox = new System.Windows.Forms.PictureBox();
+            mapPictureBox.Width = width; mapPictureBox.Height = height;
+            mapPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(afficherPlayerMap);
+            mapPictureBox.MouseEnter += pictureBox_giveFocus;
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
 
             //Setting up scrollableContent and adapting it to the game
             System.Windows.Forms.ScrollableControl sc = new System.Windows.Forms.ScrollableControl();
-            sc.Controls.Add(pictureBox);
+            sc.Controls.Add(mapPictureBox);
             sc.AutoScroll = true;
             //sc.HorizontalScroll.Maximum = pictureBox.Width;
             //sc.VerticalScroll.Maximum = pictureBox.Height;
@@ -465,11 +468,8 @@ namespace CivilizationWPF
             windowsFormsHost1.Child = sc;
         }
 
-        /// <summary>
-        /// Calls the function that centers the screen for the first player
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+        // Calls the function that centers the screen for the first player
         private void GameWindow_Loaded(object sender, RoutedEventArgs e)
         {
             centerScreen();
@@ -532,10 +532,7 @@ namespace CivilizationWPF
             windowsFormsHost1.Child.Focus();
             game.Map.select(e.X, e.Y);
 
-            //Cast du sender en l'objet approprié
-            System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
-            pb.Refresh();
-
+            mapPictureBox.Refresh();
             updateInterface();
         }
 
@@ -551,11 +548,9 @@ namespace CivilizationWPF
             windowsFormsHost1.Child.Focus();
             game.Map.moveTo(e.X, e.Y);
 
-            //Cast du sender en l'objet approprié. Mode déplacement -> mode sélection
-            System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
-            pb.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
-            pb.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            pb.Refresh();
+            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_MoveUnit);
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox.Refresh();
 
             updateInterface();
 
@@ -576,11 +571,10 @@ namespace CivilizationWPF
             windowsFormsHost1.Child.Focus();
             game.Map.attack(e.X, e.Y);
 
-            //Cast du sender en l'objet approprié. Mode attaque -> mode sélection
-            System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
-            pb.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
-            pb.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            pb.Refresh();
+            //Mode attaque -> mode sélection
+            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
+            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            mapPictureBox.Refresh();
 
             updateInterface();
 
@@ -598,31 +592,33 @@ namespace CivilizationWPF
             buildActionView.Click -= new RoutedEventHandler(cancellBuild);
             attackActionView.Click -= new RoutedEventHandler(cancellBuild);
 
-            var newWindow = new CityNameWindow(game.CurrentPlayer);
-            newWindow.ShowDialog();
-            String cityname;
+            String cityName = "";
+            if (game.Map.grid[e.X / 50 + game.Map.mapStrategy.width * (e.Y / 50)].UnderUnitMoveRange)
+            {
+                var newWindow = new CityNameWindow(game.CurrentPlayer);
+                newWindow.ShowDialog();
 
-            if (newWindow.DialogResult == true)
-            {
-                cityname = newWindow.newCityName.Text;
-                newWindow.Close();
+                if (newWindow.DialogResult == true)
+                {
+                    cityName = newWindow.newCityName.Text;
+                }
+                else
+                {
+                    callBuildCancellation();
+                }
             }
-            else
-            {
-                cityname = "";
-                newWindow.Close();
-                callBuildCancellation();
-            }
-          
+
             windowsFormsHost1.Child.Focus();
-            game.Map.buildCity(e.X, e.Y, game.CurrentPlayer, cityname);
+            game.Map.buildCity(e.X, e.Y, game.CurrentPlayer, cityName);
 
             //Cast du sender en l'objet approprié. Mode attaque -> mode sélection
-            System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
-            pb.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
-            pb.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            pb.Refresh();
+            if (cityName != "")
+            {
+                mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
+                mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            }
 
+            mapPictureBox.Refresh();
             updateInterface();
 
             //Re-activate button
@@ -670,7 +666,14 @@ namespace CivilizationWPF
                     showUnitInterface(selectedCase);
                 }
             }
-            else showUnitInterface(null);
+            else
+            {
+                field.Visibility = Visibility.Visible;
+                unit.Visibility = Visibility.Hidden;
+                city.Visibility = Visibility.Hidden;
+                //TODO "vierger" le panneau du bas
+                showUnitInterface(null);
+            }
         }
 
         // Draw the bottom interface according to the selected Case
@@ -771,7 +774,6 @@ namespace CivilizationWPF
                     }
                     break;
 
-                    //TODO
                 case (int)System.Windows.Forms.Keys.M:
                     e.IsInputKey = true;
                     if (game.Map.SelectedUnit != null && (game.Map.SelectedUnit.Player.Color == game.CurrentPlayer.Color))

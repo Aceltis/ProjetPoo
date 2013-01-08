@@ -34,8 +34,8 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
                             <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -51,8 +51,8 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
                             <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -31,11 +31,13 @@ namespace CivilizationWPF
         private void cancel(Object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+            Close();
         }
 
         private void ok(Object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+            Close();
         }
     }
 }

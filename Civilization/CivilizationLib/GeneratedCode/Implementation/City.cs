@@ -63,10 +63,7 @@ namespace Implementation
 
         public virtual void updateCity(IMap map)
         {
-            //TODO
-            int nbRes = 3;
-            for (int i = 0; i <= Population; i++)
-                nbRes += nbRes / 2;
+            upgradePopulation();
 
             //Variables food/minerals du tour
             Dictionary<ICase, int> cityCasesFood = new Dictionary<ICase, int>();
@@ -169,8 +166,12 @@ namespace Implementation
 
         public virtual void upgradePopulation()
         {
-            //TODO
-            throw new System.NotImplementedException();
+            int nbResNeeded = 10;
+            for (int i = 0; i < Population; i++)
+                nbResNeeded += nbResNeeded / 2;
+
+            if (OwnedFoods >= nbResNeeded)
+                Population++;
         }
 
         public virtual void spawnUnit(ProductionType type)
