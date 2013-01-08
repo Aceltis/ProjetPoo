@@ -107,7 +107,12 @@
             <Button Grid.Column="15" Click="quitToMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="1" Name="field" Visibility="Visible">
+        <Grid Grid.Row="2" Grid.Column="1" Name="neutral" Visibility="Visible">
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomNeutral.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
+            </Grid.Background>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1" Name="field" Visibility="Hidden">
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomField.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
             </Grid.Background>
