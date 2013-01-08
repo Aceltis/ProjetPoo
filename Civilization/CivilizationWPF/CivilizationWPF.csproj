@@ -176,8 +176,8 @@
     <Resource Include="Resource\interface\bottomLeft\city.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\interface\bottomLeft\order1.png" />
-    <Resource Include="Resource\interface\bottomLeft\order2.png" />
+    <Resource Include="Resource\interface\bottomLeft\bouton_disabled.png" />
+    <Resource Include="Resource\interface\bottomLeft\bouton_enabled.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\top.png" />
@@ -289,6 +289,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\interface\bottomRight\bottomNeutral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\interface\bottomLeft\bouton_small_disabled.png" />
+    <Resource Include="Resource\interface\bottomLeft\bouton_small_enabled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
