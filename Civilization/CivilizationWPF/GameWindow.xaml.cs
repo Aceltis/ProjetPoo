@@ -671,6 +671,7 @@ namespace CivilizationWPF
                     neutral.Visibility = Visibility.Hidden;
 
                     city.DataContext = new CityViewModel((City)selectedCase.City);
+                    setCurrentProdView(selectedCase.City);
                     showUnitInterface(selectedCase);
 
                 }
@@ -717,6 +718,50 @@ namespace CivilizationWPF
                     orderUnit.Visibility = Visibility.Hidden;
                     orderUnitSmall.Visibility = Visibility.Hidden;
                 }
+            }
+        }
+
+        private void setCurrentProdView(ICity c)
+        {
+            if (c.Current_prod == ProductionType.Teacher)
+            {
+                prodBossView.IsChecked = false;
+                prodTeacherView.IsChecked = true;
+                prodStudentView.IsChecked = false;
+
+                timerStudentView.Visibility = Visibility.Hidden;
+                timerTeacherView.Visibility = Visibility.Visible;
+                timerBossView.Visibility = Visibility.Hidden;
+            }
+            else if (c.Current_prod == ProductionType.Student)
+            {
+                prodBossView.IsChecked = false;
+                prodTeacherView.IsChecked = false;
+                prodStudentView.IsChecked = true;
+
+                timerStudentView.Visibility = Visibility.Visible;
+                timerTeacherView.Visibility = Visibility.Hidden;
+                timerBossView.Visibility = Visibility.Hidden;
+            }
+            else if (c.Current_prod == ProductionType.Boss)
+            {
+                prodBossView.IsChecked = true;
+                prodTeacherView.IsChecked = false;
+                prodStudentView.IsChecked = false;
+
+                timerStudentView.Visibility = Visibility.Hidden;
+                timerTeacherView.Visibility = Visibility.Hidden;
+                timerBossView.Visibility = Visibility.Visible;
+            }
+            else if (c.Current_prod == ProductionType.None)
+            {
+                prodBossView.IsChecked = false;
+                prodTeacherView.IsChecked = false;
+                prodStudentView.IsChecked = false;
+
+                timerStudentView.Visibility = Visibility.Hidden;
+                timerTeacherView.Visibility = Visibility.Hidden;
+                timerBossView.Visibility = Visibility.Hidden;
             }
         }
 
