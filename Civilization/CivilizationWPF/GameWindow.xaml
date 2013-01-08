@@ -103,11 +103,16 @@
             <TextBlock Grid.Column="9" Text="{Binding Path=Students}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0"/>
             <Image Grid.Column="10" Source="{Binding Path=Boss}" Height="24" Width="24"></Image>
             <TextBlock Name="turnsView" Grid.Column="13" Text="{Binding Path=Turns}" FontFamily="Lithos Pro" Foreground="#fffef8d7" FontSize="14" VerticalAlignment="Center"/>
-            <Button Grid.Column="14" Click="nextTurn" Content="End Turn" Style="{StaticResource menu}"/>
+            <Button Grid.Column="14" Name="nextTurnButton" Click="nextTurn" Content="End Turn" Style="{StaticResource menu}"/>
             <Button Grid.Column="15" Click="quitToMenu" Content="Menu" Style="{StaticResource menu}"/>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="1" Name="field" Visibility="Visible">
+        <Grid Grid.Row="2" Grid.Column="1" Name="neutral" Visibility="Visible">
+            <Grid.Background>
+                <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomNeutral.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
+            </Grid.Background>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1" Name="field" Visibility="Hidden">
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomField.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
             </Grid.Background>

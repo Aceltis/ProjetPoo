@@ -425,12 +425,29 @@ namespace Implementation
                                     if (grid[pos].Units.Count != 0)
                                     {
                                         if (grid[pos].Units.First().Player.Color == currPlayer.Color)
-                                            value += 2 * grid[pos].Units.Count;
+                                            value += 25 * grid[pos].Units.Count;
                                     }
                                     else
                                     {
-                                        value += 10 * grid[pos].Minerals;
-                                        value += 10 * grid[pos].Foods;
+                                        //Check de la valeur des ressources aux alentours
+                                        for (int k2 = -3; k2 <= 3; k2++)
+                                        {
+                                            //Tests en cas de bord de map horizontal
+                                            bool cond11 = ((k2 <= 0) || ((i % mapStrategy.width) + k2) < mapStrategy.width);
+                                            bool cond21 = ((k2 >= 0) || ((i % mapStrategy.width) + k2) >= 0);
+                                            if (cond1 && cond2)
+                                            {
+                                                for (int l2 = -3 + Math.Abs(k2); l2 <= 3 - Math.Abs(k2); l2++)
+                                                {
+                                                    //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
+                                                    if ((i + k2 + mapStrategy.width * l2 >= 0) && (i + k2 + mapStrategy.width * l2 < grid.Count))
+                                                    {
+                                                        value += 10 * grid[pos].Minerals;
+                                                        value += 10 * grid[pos].Foods;
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
