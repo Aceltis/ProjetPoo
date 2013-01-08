@@ -13,6 +13,7 @@ namespace Implementation
 	using System.Text;
     using System.Windows.Forms;
     using System.Drawing;
+    using System.Drawing.Imaging;
 
     public class Map : IMap
     {
@@ -132,6 +133,21 @@ namespace Implementation
                     if (i - mapStrategy.width >= 0)
                         if (!grid[i - mapStrategy.width].UnderUnitMoveRange)
                             e.Graphics.DrawLine(green, x, y+1, x + 50, y+1);
+                }
+
+                if (grid[i].CitySuggestion)
+                {
+                    Pen gold = new Pen(Color.Gold, 2);
+                    e.Graphics.DrawRectangle(gold, x + 1, y + 1, 48, 48);
+
+                    //Affichage de la proposition de ville
+                    ColorMatrix matrix = new ColorMatrix();
+                    matrix.Matrix33 = 0.5f; //opacity 0 = completely transparent, 1 = completely opaque
+
+                    ImageAttributes attributes = new ImageAttributes();
+                    attributes.SetColorMatrix(matrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+                    e.Graphics.DrawImage(FWimages.getCityImage((int)currPlayer.Color), new Rectangle(x, y, 50, 50), 0, 0, 50, 50, GraphicsUnit.Pixel, attributes);
                 }
 
                 //Surligne une case ennemie
@@ -281,7 +297,10 @@ namespace Implementation
 
 
             foreach (ICase c in grid)
+            {
                 c.UnderUnitMoveRange = false;
+                c.CitySuggestion = false;
+            }
 
             //S'il y a une case de sélectionnée, on la désélectionne
             if (SelectedCase != null)
@@ -365,8 +384,12 @@ namespace Implementation
         //Affiche les endroits proposés pour construire une ville
         public virtual void drawCityPossibilities(IPlayer currPlayer)
         {
+            //TODO
             int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
-            for (int k = -SelectedUnit.MovePoints; k <= SelectedUnit.MovePoints; k++)
+            grid[i - 1 - 2 * mapStrategy.width].CitySuggestion = true;
+            grid[i + 3].CitySuggestion = true;
+            grid[i - 1 + mapStrategy.width].CitySuggestion = true;
+            /*for (int k = -SelectedUnit.MovePoints; k <= SelectedUnit.MovePoints; k++)
             {
                 //Tests en cas de bord de map horizontal
                 bool cond1 = ((k <= 0) || ((i % mapStrategy.width) + k) < mapStrategy.width);
@@ -377,11 +400,11 @@ namespace Implementation
                     {
                         //Test en cas de bord de map vertical + comparaison unité
                         if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count) && (grid[i + k + mapStrategy.width * l].Units.Count != 0))
-                            if (grid[i + k + mapStrategy.width * l].Units.First().Player.Color != currPlayer.Color)
-                                /*TODO : algoHERE grid[i + k + mapStrategy.width * l].EnemyInRange = true*/;
+                            if (grid[i + k + mapStrategy.width * l].Units.First().Player.Color != currPlayer.Color && callAlgoCity())
+                                grid[i + k + mapStrategy.width * l].CitySuggestion = true;
                     }
                 }
-            }
+            }*/
         }
         #endregion
     }
