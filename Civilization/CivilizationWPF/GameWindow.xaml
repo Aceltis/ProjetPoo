@@ -111,7 +111,7 @@
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomField.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
             </Grid.Background>
-            <TextBlock Name="fieldType" Text="" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="146,36,155,138" />
+            <TextBlock Name="fieldType" Text="" MinWidth="200" TextAlignment="Center" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="146,36,155,138" />
             <TextBlock Text="{Binding Path=Foods}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,517,39"/>
             <TextBlock Text="{Binding Path=Minerals}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,274,39"/>
         </Grid>
@@ -134,7 +134,7 @@
             <Grid.Background>
                 <ImageBrush ImageSource="./Resource/interface/bottomRight/bottomUnit.png" TileMode="Tile" Stretch="None" Viewport="0,0,802,199" ViewportUnits="Absolute" AlignmentX="Left" AlignmentY="Top" ViewboxUnits="RelativeToBoundingBox"></ImageBrush>
             </Grid.Background>
-            <TextBlock Text="{Binding Name}" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="141,35,196,29" Grid.Column="4" Grid.RowSpan="2" />
+            <TextBlock Text="{Binding Name}" MinWidth="200" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" TextAlignment="Center" Margin="42,35,95,29" Grid.Column="4" Grid.RowSpan="2" />
             <TextBlock Text="{Binding Path=MovePoints}" Grid.Column="2" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,11"/>
             <TextBlock Text="{Binding Path=HP}" Grid.Column="0" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,13"/>
             <TextBlock Text="{Binding Path=AttackPoints}" Grid.Column="4" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,13"/>
@@ -164,15 +164,15 @@
             </Grid.Background>
             <TextBlock Text="{Binding Path=NeededFood}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="20" Grid.Column="5" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,12,0" />
             <TextBlock Text="{Binding Path=Population}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" Grid.Column="4" Margin="133,9,120,18" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding Path=Name}" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" Grid.Column="4" Margin="147,38,132,28" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Path=Name}" MinWidth="200" FontFamily="Lithos Pro" Foreground="#ff541c04" FontSize="20" Margin="42,36,30,30" TextAlignment="Center" Grid.Column="4" Grid.RowSpan="2" />
             <TextBlock Text="{Binding Path=OwnedFoods}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,3,9"></TextBlock>
             <TextBlock Text="{Binding Path=OwnedMinerals}" Grid.Column="2" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,3,8"></TextBlock>
             <ToggleButton Name="prodBossView" Click="prodBoss" Content="Boss" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="2,7,195,52" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
             <ToggleButton Name="prodTeacherView" Click="prodTeacher" Content="Teacher" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="87,7,73,52" Grid.Column="4" Grid.Row="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
             <ToggleButton Name="prodStudentView" Click="prodStudent" Content="Student" FontFamily="Lithos Pro" FontSize="14" Foreground="#fffef9dc" Margin="248,23,182,26" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{StaticResource OnOffToggleImageStyle}" Height="26" Width="102"/>
-            <Image Name="timerBossView" Source="./Resource/interface/icons/timer.png" Height="19" Width="19" Grid.Column="3" Margin="5,53,16,37" Grid.Row="2" Visibility="Hidden"/>
-            <Image Name="timerTeacherView" Source="./Resource/interface/icons/timer.png" Height="19" Grid.Column="4" Margin="125,53,130,38" Grid.Row="2" Visibility="Hidden"/>
-            <Image Name="timerStudentView" Source="./Resource/interface/icons/timer.png" Height="19" Width="19" Grid.Column="5" Margin="9,53,242,37" Grid.Row="2" Grid.ColumnSpan="2" Visibility="Hidden"/>
+            <Image Name="timerBossView" Source="./Resource/interface/icons/timer.png" Height="19" Width="19" Grid.Column="3" Margin="3,53,18,37" Grid.Row="2" Visibility="Hidden"/>
+            <Image Name="timerTeacherView" Source="./Resource/interface/icons/timer.png" Height="19" Grid.Column="4" Margin="124,53,131,38" Grid.Row="2" Visibility="Hidden"/>
+            <Image Name="timerStudentView" Source="./Resource/interface/icons/timer.png" Height="19" Width="19" Grid.Column="5" Margin="12,53,245,37" Grid.Row="2" Grid.ColumnSpan="2" Visibility="Hidden"/>
             <TextBlock Name="timerProdTeacher" Text="{Binding Path=CurrentProdTimer}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="15" Grid.Column="4" Margin="145,54,113,37" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Visibility="Hidden"/>
             <TextBlock Name="timerProdBoss" Text="{Binding Path=CurrentProdTimer}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="15" Grid.Column="3" Margin="30,54,278,37" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Visibility="Hidden" Grid.ColumnSpan="2"/>
             <TextBlock Name="timerProdStudent" Text="{Binding Path=CurrentProdTimer}" FontFamily="Lithos Pro" Foreground="#fffef9dc" FontSize="15" Grid.Column="6" Margin="13,54,225,37" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Visibility="Hidden"/>

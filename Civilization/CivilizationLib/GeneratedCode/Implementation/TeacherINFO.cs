@@ -31,9 +31,10 @@ namespace Implementation
             Case = c;
         }
 
-        public virtual void createCity(IPlayer currPlayer)
+        public virtual void createCity(IPlayer currPlayer, String name)
         {
             City newCity = new City(currPlayer, Case);
+            newCity.Name = name;
             Case.City = newCity;
             currPlayer.Cities.Add(newCity);
             Case.removeUnit(this);

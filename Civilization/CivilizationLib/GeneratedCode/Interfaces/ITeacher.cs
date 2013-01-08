@@ -14,7 +14,7 @@ namespace Interfaces
 
 	public interface ITeacher  : IUnit
 	{
-		void createCity(IPlayer currPlayer);
+		void createCity(IPlayer currPlayer, String name);
 	}
 }
 

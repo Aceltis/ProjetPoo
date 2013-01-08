@@ -598,8 +598,24 @@ namespace CivilizationWPF
             buildActionView.Click -= new RoutedEventHandler(cancellBuild);
             attackActionView.Click -= new RoutedEventHandler(cancellBuild);
 
+            var newWindow = new CityNameWindow(game.CurrentPlayer);
+            newWindow.ShowDialog();
+            String cityname;
+
+            if (newWindow.DialogResult == true)
+            {
+                cityname = newWindow.newCityName.Text;
+                newWindow.Close();
+            }
+            else
+            {
+                cityname = "";
+                newWindow.Close();
+                callBuildCancellation();
+            }
+          
             windowsFormsHost1.Child.Focus();
-            game.Map.buildCity(e.X, e.Y, game.CurrentPlayer);
+            game.Map.buildCity(e.X, e.Y, game.CurrentPlayer, cityname);
 
             //Cast du sender en l'objet approprié. Mode attaque -> mode sélection
             System.Windows.Forms.PictureBox pb = (System.Windows.Forms.PictureBox)sender;
