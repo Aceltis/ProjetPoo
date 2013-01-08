@@ -100,6 +100,22 @@ namespace CivilizationWPF
         {
             top.DataContext = pToPvm[game.CurrentPlayer];
             initializeActiveUnits();
+
+            //Update cities
+            foreach (Case c in game.Map.grid)
+            {
+                if (c.City != null)
+                {
+                    if (c.City.Player.Color == game.CurrentPlayer.Color)
+                        c.City.updateCity(game.Map);
+                    if (c.City.Current_prod == ProductionType.None)
+                    {
+                        prodBossView.IsChecked = false;
+                        prodStudentView.IsChecked = false;
+                        prodTeacherView.IsChecked = false;
+                    }
+                }
+            }
         }
 
         //Ajoute toutes les unités du joueur donné à la queue des unités en attente d'ordres
@@ -378,6 +394,8 @@ namespace CivilizationWPF
             prodTeacherView.IsChecked = false;
             prodStudentView.IsChecked = true;
 
+            game.Map.SelectedCase.City.produceStudent();
+
             // Timer visible for the production
             timerStudentView.Visibility = Visibility.Visible;
             timerTeacherView.Visibility = Visibility.Hidden;
@@ -391,6 +409,8 @@ namespace CivilizationWPF
             prodTeacherView.IsChecked = false;
             prodStudentView.IsChecked = false;
 
+            game.Map.SelectedCase.City.produceBoss();
+
             // Timer visible for the production
             timerStudentView.Visibility = Visibility.Hidden;
             timerTeacherView.Visibility = Visibility.Hidden;
@@ -403,6 +423,9 @@ namespace CivilizationWPF
             prodBossView.IsChecked = false;
             prodTeacherView.IsChecked = true;
             prodStudentView.IsChecked = false;
+
+            game.Map.SelectedCase.City.produceTeacher();
+
             // Timer visible for the production
             timerStudentView.Visibility = Visibility.Hidden;
             timerTeacherView.Visibility = Visibility.Visible;
@@ -566,7 +589,7 @@ namespace CivilizationWPF
             updateQueue();
         }
 
-        //Build City with selected unit, Build button have been pressed
+        //Build City with selected unit, Build button have been pressed, map have been clicked
         private void pictureBox_BuildCity(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             buildActionView.IsChecked = false;

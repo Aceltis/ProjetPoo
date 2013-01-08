@@ -18,7 +18,7 @@ namespace Implementation
 	{
         public BossINFO() { }
 
-        public BossINFO(Player p, Case c)
+        public BossINFO(IPlayer p, ICase c)
         {
             AttackRange = 1;
             MaxMovePoints = 2;

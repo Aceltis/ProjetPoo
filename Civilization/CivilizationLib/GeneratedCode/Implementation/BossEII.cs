@@ -18,7 +18,7 @@ namespace Implementation
 	{
         public BossEII() { }
 
-        public BossEII(Player p, Case c)
+        public BossEII(IPlayer p, ICase c)
         {
             //TODO : implem bonus boss
             AttackRange = 1;

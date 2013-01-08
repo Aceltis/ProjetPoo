@@ -48,20 +48,8 @@ namespace Implementation
         public virtual ICase Position { get; set; }
         public virtual IPlayer Player { get; set; }
         public virtual ProductionType Current_prod { get; set; }
-
-
-        public virtual void produceBoss(IUnit unit)
-        {
-            if (Current_prod == ProductionType.None && OwnedMinerals >= 200)
-            {
-                Current_prod = ProductionType.Boss;
-
-                if (unit.Cost == 0)
-                {
-                    spawnUnit(unit);
-                }
-            }
-        }
+        //Attribut correspondant aux minéraux encore à accumuler pour spawn l'unité en prod
+        public virtual int Needed_minerals { get; set; }
 
         public City(IPlayer p, ICase c)
         {
@@ -73,29 +61,169 @@ namespace Implementation
             OwnedMinerals = c.Minerals;
         }
 
+        public virtual void updateCity(IMap map)
+        {
+            //TODO
+            int nbRes = 3;
+            for (int i = 0; i <= Population; i++)
+                nbRes += nbRes / 2;
+
+            //Variables food/minerals du tour
+            Dictionary<ICase, int> cityCasesFood = new Dictionary<ICase, int>();
+            Dictionary<ICase, int> cityCasesMinerals = new Dictionary<ICase, int>();
+
+            //Cases dans le périmètre
+            int posIndex = Position.SqPos[0] + map.mapStrategy.width * Position.SqPos[1];
+            for (int k = -3; k <= 3; k++)
+            {
+                //Tests en cas de bord de map horizontal
+                bool cond1 = ((k <= 0) || ((posIndex % map.mapStrategy.width) + k) < map.mapStrategy.width);
+                bool cond2 = ((k >= 0) || ((posIndex % map.mapStrategy.width) + k) >= 0);
+                if (cond1 && cond2)
+                {
+                    for (int l = -3 + Math.Abs(k); l <= 3 - Math.Abs(k); l++)
+                    {
+                        //Test en cas de bord de map vertical + comparaison unité
+                        if ((posIndex + k + map.mapStrategy.width * l >= 0) && (posIndex + k + map.mapStrategy.width * l < map.grid.Count))
+                        {
+                            cityCasesFood.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Foods);
+                            cityCasesMinerals.Add(map.grid[posIndex + k + map.mapStrategy.width * l], map.grid[posIndex + k + map.mapStrategy.width * l].Foods);
+                        }
+                    }
+                }
+            }
+            //Dictionnaires temporaires pour garder les valeurs disponibles
+            Dictionary<ICase, int> tempCityCasesFood = cityCasesFood;
+            Dictionary<ICase, int> tempCityCasesMinerals = cityCasesMinerals;
+
+            //Enlever une case de min vers food et retester la condition Needed_minerals
+            int maxMinerals = tempCityCasesMinerals.Max(x => x.Value);
+            for (int j = 0; j < Population+2 - 1; j++)
+            {
+                tempCityCasesMinerals.Remove(tempCityCasesMinerals.ElementAt(tempCityCasesMinerals.Max(x => x.Value)).Key);
+                maxMinerals += tempCityCasesMinerals.Max(x => x.Value);
+            }
+
+            int maxFood = 0;
+            for (int i = 0; i < Population + 2; i++)
+            {
+                if (Needed_minerals < maxMinerals)
+                {
+                    maxMinerals = tempCityCasesMinerals.Max(x => x.Value);
+                    for (int j = 0; j < Population + 2 - 1 - i; j++)
+                    {
+                        tempCityCasesMinerals.Remove(tempCityCasesMinerals.ElementAt(tempCityCasesMinerals.Max(x => x.Value)).Key);
+                        maxMinerals += tempCityCasesMinerals.Max(x => x.Value);
+                    }
+
+                    maxFood = tempCityCasesFood.Max(x => x.Value);
+                    tempCityCasesFood.Remove(tempCityCasesFood.ElementAt(tempCityCasesFood.Max(x => x.Value)).Key);
+                }
+                else
+                {
+                    Needed_minerals -= maxMinerals;
+                    OwnedMinerals = maxMinerals;
+                    OwnedFoods = maxFood;
+                }
+
+                //Reset des listes de cases disponibles à la ville
+                tempCityCasesFood = cityCasesFood;
+                tempCityCasesMinerals = cityCasesMinerals;
+            }
+
+            if (Needed_minerals <= 0)
+                spawnUnit(Current_prod);
+        }
+
+        //Ancienne version
+        /*public virtual void produceBoss(IUnit unit)
+        {
+            if (Current_prod == ProductionType.None && OwnedMinerals >= 200)
+            {
+                Current_prod = ProductionType.Boss;
+
+                if (unit.Cost == 0)
+                {
+                    spawnUnit(unit);
+                }
+            }
+        }*/
+
+        public virtual void produceBoss()
+        {
+            Needed_minerals = 200;
+            Current_prod = ProductionType.Boss;
+        }
+
         public virtual void produceStudent()
         {
-            throw new System.NotImplementedException();
+            Needed_minerals = 100;
+            Current_prod = ProductionType.Student;
         }
 
         public virtual void produceTeacher()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void changeProduction()
-        {
-            throw new System.NotImplementedException();
+            Needed_minerals = 60;
+            Current_prod = ProductionType.Teacher;
         }
 
         public virtual void upgradePopulation()
         {
+            //TODO
             throw new System.NotImplementedException();
         }
 
-        public virtual void spawnUnit(IUnit unit)
+        public virtual void spawnUnit(ProductionType type)
         {
-            throw new System.NotImplementedException();
+            switch (type)
+            {
+                case ProductionType.Boss :
+                    switch (Player.Civilization)
+                    {
+                        case CivilizationType.EII:
+                            BossEII newBossEII = new BossEII(Player, Position);
+                            Player.Boss = newBossEII;
+                            Position.Units.Add(newBossEII);
+                            break;
+                        case CivilizationType.INFO:
+                            BossINFO newBossINFO = new BossINFO(Player, Position);
+                            Player.Boss = newBossINFO;
+                            Position.Units.Add(newBossINFO);
+                            break;
+                    }
+                    break;
+                case ProductionType.Student:
+                    switch (Player.Civilization)
+                    {
+                        case CivilizationType.EII:
+                            StudentEII newStudentEII = new StudentEII(Player, Position);
+                            Player.Students.Add(newStudentEII);
+                            Position.addUnit(newStudentEII);
+                            break;
+                        case CivilizationType.INFO:
+                            StudentINFO newStudentINFO = new StudentINFO(Player, Position);
+                            Player.Students.Add(newStudentINFO);
+                            Position.addUnit(newStudentINFO);
+                            break;
+                    }
+                    break;
+                case ProductionType.Teacher :
+                    switch (Player.Civilization)
+                    {
+                        case CivilizationType.EII:
+                            TeacherEII newTeacherEII = new TeacherEII(Player, Position);
+                            Player.Teachers.Add(newTeacherEII);
+                            Position.addUnit(newTeacherEII);
+                            break;
+                        case CivilizationType.INFO:
+                            TeacherINFO newTeacherINFO = new TeacherINFO(Player, Position);
+                            Player.Teachers.Add(newTeacherINFO);
+                            Position.addUnit(newTeacherINFO);
+                            break;
+                    }
+                    break;
+            }
+            Current_prod = ProductionType.None;
         }
 
         public virtual void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)

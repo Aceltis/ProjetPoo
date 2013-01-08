@@ -64,6 +64,7 @@ namespace Implementation
 
         public virtual void addUnit(IUnit unit)
         {
+            //TODO implém ici l'ajout à la base d'unités d'un joueur
             Units.Add(unit);
         }
 

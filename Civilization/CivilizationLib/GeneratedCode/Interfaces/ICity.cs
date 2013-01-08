@@ -21,18 +21,19 @@ namespace Interfaces
         Implementation.ProductionType Current_prod { get; set; }
         int OwnedMinerals { get; set; }
         int OwnedFoods { get; set; }
+        int Needed_minerals { get; set; }
 
-		void produceBoss(IUnit unit);
+        void updateCity(IMap map);
+
+		void produceBoss();
 
         void produceStudent();
 
         void produceTeacher();
 
-		void changeProduction();
-
 		void upgradePopulation();
 
-        void spawnUnit(IUnit unit);
+        void spawnUnit(Implementation.ProductionType type);
 
         void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y);
 	}

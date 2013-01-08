@@ -38,7 +38,10 @@ namespace Implementation
             WrapperBattleAlgo algo = new WrapperBattleAlgo();
             Dictionary<int, IUnit> EnemyDefPoints = new Dictionary<int, IUnit>();
             foreach (IUnit unit in target.Units)
-                EnemyDefPoints.Add((int)((double)unit.DefensePoints / ((double)unit.HP / (double)unit.MaxHP)), unit);
+            {
+                if(EnemyDefPoints[(int)((double)unit.DefensePoints / ((double)unit.HP / (double)unit.MaxHP))]==null)
+                    EnemyDefPoints.Add((int)((double)unit.DefensePoints / ((double)unit.HP / (double)unit.MaxHP)), unit);
+            }
             IUnit targetUnit = EnemyDefPoints[(EnemyDefPoints.Max()).Key];
             int* results = algo.computeBattle(AttackPoints, EnemyDefPoints.Max().Key, HP, targetUnit.HP);
             if (results[0] != 0)
