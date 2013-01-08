@@ -27,7 +27,7 @@ namespace CivilizationWPF
 
         public void returnMap(Object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void newGame(Object sender, RoutedEventArgs e)
@@ -35,11 +35,13 @@ namespace CivilizationWPF
             var newWindow = new HomeWindow();
             Application.Current.Windows[0].Close();
             newWindow.Show();
+            this.Close();
         }
 
         private void exitGame(Object sender, RoutedEventArgs e)
         {
             Application.Current.Windows[0].Close();
+            this.Close();
         }
     }
 }
