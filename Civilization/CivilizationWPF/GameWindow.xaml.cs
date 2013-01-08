@@ -27,6 +27,7 @@ namespace CivilizationWPF
         IGame game;
         GameViewModel gvm;
         Dictionary<IPlayer, PlayerViewModel> pToPvm;
+        Queue<IUnit> activeUnits;
 
 #region Game Initialization
         public GameWindow(IGameBuilder builder)
@@ -95,6 +96,27 @@ namespace CivilizationWPF
         private void beginTurn()
         {
             top.DataContext = pToPvm[game.CurrentPlayer];
+            initializeActiveUnits();
+        }
+
+        private void initializeActiveUnits()
+        {
+            activeUnits = new Queue<IUnit>();
+
+            if (game.CurrentPlayer.Teachers.Count() > 0)
+            {
+                foreach (ITeacher t in game.CurrentPlayer.Teachers)
+                {
+                    activeUnits.Enqueue(t);
+                }
+            }
+            if (game.CurrentPlayer.Students.Count() > 0)
+            {
+                foreach (IStudent s in game.CurrentPlayer.Students)
+                {
+                    activeUnits.Enqueue(s);
+                }
+            }
         }
 
         private void nextTurn(object sender, RoutedEventArgs e)
@@ -320,6 +342,7 @@ namespace CivilizationWPF
 
         private void nextAction(object sender, RoutedEventArgs e)
         {
+            ICase sel = game.Map.SelectedCase;
         }
 #endregion
 
@@ -506,6 +529,9 @@ namespace CivilizationWPF
                 unit.Visibility = Visibility.Hidden;
                 city.Visibility = Visibility.Visible;
 
+                orderCity.Visibility = Visibility.Visible;
+                orderUnit.Visibility = Visibility.Hidden;
+
                 city.DataContext = new CityViewModel((City)selectedCase.City);
                 showUnitInterface(selectedCase);
 
@@ -515,6 +541,9 @@ namespace CivilizationWPF
                 field.Visibility = Visibility.Hidden;
                 unit.Visibility = Visibility.Visible;
                 city.Visibility = Visibility.Hidden;
+
+                orderCity.Visibility = Visibility.Hidden;
+                orderUnit.Visibility = Visibility.Visible;
 
                 unit.DataContext = new UnitViewModel((Unit)selectedCase.Units[0]);
                 showUnitInterface(selectedCase);
@@ -536,12 +565,23 @@ namespace CivilizationWPF
             if (c.Units.Count() > 0)
             {
                 if (c.Units[0] is ITeacher)
+                {
                     unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
+                    attackActionView.Visibility = Visibility.Hidden;
+                    buildActionView.Visibility = Visibility.Visible;
+                }
                 else if (c.Units[0] is IStudent)
-
+                {
                     unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
+                    buildActionView.Visibility = Visibility.Hidden;
+                    attackActionView.Visibility = Visibility.Visible;
+                }
                 else if (c.Units[0] is IBoss)
+                {
                     unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
+                    attackActionView.Visibility = Visibility.Hidden;
+                    buildActionView.Visibility = Visibility.Hidden;
+                }
             }
             else if (c.City != null)
             {
