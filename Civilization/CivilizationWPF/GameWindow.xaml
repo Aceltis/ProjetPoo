@@ -194,8 +194,8 @@
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Image Name="Normal" Source="./Resource/interface/bottomLeft/order1.png"/>
-                            <Image Name="Over" Source="./Resource/interface/bottomLeft/order2.png" Visibility="Hidden"/>
+                            <Image Name="Normal" Source="./Resource/interface/bottomLeft/bouton_disabled.png"/>
+                            <Image Name="Over" Source="./Resource/interface/bottomLeft/bouton_enabled.png" Visibility="Hidden"/>
                             <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -207,15 +207,35 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Name="orderCity" Click="nextAction" Content="A City needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="14" Foreground="Black" Margin="3,3,1,0" Visibility="Hidden">
+            <Button Name="orderCity" Click="focusCity" Content="A City needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="12" Foreground="Black" Margin="3,2,1,0" Visibility="Hidden" Height="24">
                 <Button.Effect>
                     <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
                 </Button.Effect>
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Image Name="Normal" Source="./Resource/interface/bottomLeft/order1.png"/>
-                            <Image Name="Over" Source="./Resource/interface/bottomLeft/order2.png" Visibility="Hidden"/>
+                            <Image Name="Normal" Source="./Resource/interface/bottomLeft/bouton_small_disabled.png"/>
+                            <Image Name="Over" Source="./Resource/interface/bottomLeft/bouton_small_enabled.png" Visibility="Hidden"/>
+                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="orderUnitSmall" Click="nextAction" Content="Units needs orders" VerticalAlignment="Top" FontFamily="Lithos Pro" FontSize="12" Foreground="Black" Margin="4,25,0,0" Visibility="Hidden" Height="24">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
+                </Button.Effect>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image Name="Normal" Source="./Resource/interface/bottomLeft/bouton_small_disabled.png"/>
+                            <Image Name="Over" Source="./Resource/interface/bottomLeft/bouton_small_enabled.png" Visibility="Hidden"/>
                             <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </Grid>
                         <ControlTemplate.Triggers>

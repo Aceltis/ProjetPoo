@@ -418,32 +418,50 @@ namespace CivilizationWPF
         private void nextAction(object sender, RoutedEventArgs e)
         {
             ImageBrush unitDrawing = new ImageBrush();
-            activUnitsQueue.Enqueue(activUnit);
-            activUnit = activUnitsQueue.Dequeue();
 
-            if (activUnit is ITeacher)
-            {
-                unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
-                attackActionView.Visibility = Visibility.Hidden;
-                buildActionView.Visibility = Visibility.Visible;
-            }
-            else if (activUnit is IStudent)
-            {
-                unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
-                buildActionView.Visibility = Visibility.Hidden;
-                attackActionView.Visibility = Visibility.Visible;
-            }
-            else if (activUnit is IBoss)
-            {
-                unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
-                attackActionView.Visibility = Visibility.Hidden;
-                buildActionView.Visibility = Visibility.Hidden;
-            }
+                activUnitsQueue.Enqueue(activUnit);
+                activUnit = activUnitsQueue.Dequeue();
 
+                if (activUnit is ITeacher)
+                {
+                    unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
+                    attackActionView.Visibility = Visibility.Hidden;
+                    buildActionView.Visibility = Visibility.Visible;
+                }
+                else if (activUnit is IStudent)
+                {
+                    unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
+                    buildActionView.Visibility = Visibility.Hidden;
+                    attackActionView.Visibility = Visibility.Visible;
+                }
+                else if (activUnit is IBoss)
+                {
+                    unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
+                    attackActionView.Visibility = Visibility.Hidden;
+                    buildActionView.Visibility = Visibility.Hidden;
+                }
+
+                field.Visibility = Visibility.Hidden;
+                unit.Visibility = Visibility.Visible;
+                city.Visibility = Visibility.Hidden;
+                neutral.Visibility = Visibility.Hidden;
+
+                action.Background = unitDrawing;
+                unit.DataContext = new UnitViewModel((Unit)activUnit);
+                game.Map.SelectedUnit = activUnit;
+        }
+
+        private void focusCity(object sender, RoutedEventArgs e)
+        {
+            field.Visibility = Visibility.Hidden;
+            unit.Visibility = Visibility.Hidden;
+            city.Visibility = Visibility.Visible;
+            neutral.Visibility = Visibility.Hidden;
+
+            ImageBrush unitDrawing = new ImageBrush();
+            unitDrawing.ImageSource = (BitmapImage)FindResource("City");
             action.Background = unitDrawing;
-            unit.DataContext = new UnitViewModel((Unit)activUnit);
-            game.Map.SelectedUnit = activUnit;
-
+            city.DataContext = new CityViewModel((City)game.Map.SelectedCase.City);
         }
 
 #endregion
@@ -685,16 +703,19 @@ namespace CivilizationWPF
                 {
                     orderCity.Visibility = Visibility.Hidden;
                     orderUnit.Visibility = Visibility.Visible;
+                    orderUnitSmall.Visibility = Visibility.Hidden;
                 }
-                else if (selectedCase.Units.Count() == 1 && selectedCase.City != null)
+                else if (selectedCase.Units.Count() > 0 && selectedCase.City != null)
                 {
-                    orderCity.Visibility = Visibility.Hidden;
-                    orderUnit.Visibility = Visibility.Visible;
+                    orderCity.Visibility = Visibility.Visible;
+                    orderUnit.Visibility = Visibility.Hidden;
+                    orderUnitSmall.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     orderCity.Visibility = Visibility.Hidden;
                     orderUnit.Visibility = Visibility.Hidden;
+                    orderUnitSmall.Visibility = Visibility.Hidden;
                 }
             }
         }
@@ -705,7 +726,7 @@ namespace CivilizationWPF
             ImageBrush unitDrawing = new ImageBrush();
             if (c != null)
             {
-                if (c.Units.Count() > 0 && c.Visible)
+                if (c.Units.Count() > 0 && c.Visible && c.City == null)
                 {
                     if (activUnit is ITeacher)
                     {
