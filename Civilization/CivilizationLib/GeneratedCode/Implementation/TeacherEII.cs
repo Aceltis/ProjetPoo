@@ -29,9 +29,12 @@ namespace Implementation
             Case = c;
         }
 
-        public virtual void createCity()
+        public virtual void createCity(IPlayer currPlayer)
         {
-            throw new System.NotImplementedException();
+            City newCity = new City(currPlayer, Case);
+            Case.City = newCity;
+            currPlayer.Cities.Add(newCity);
+            Case.removeUnit(this);
         }
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)

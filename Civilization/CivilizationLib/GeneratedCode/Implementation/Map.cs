@@ -284,15 +284,13 @@ namespace Implementation
                     if (grid[x_pos + y_pos].Units.First().Player.Color == currPlayer.Color)
                     {
                         SelectedUnit.move(grid[x_pos + y_pos]);
-                        grid[x_pos + y_pos].City = new City(currPlayer, grid[x_pos + y_pos]);
-                        grid[x_pos + y_pos].removeUnit(SelectedUnit);
+                        ((ITeacher)SelectedUnit).createCity(currPlayer);
                     }
                 }
                 else
                 {
                     SelectedUnit.move(grid[x_pos + y_pos]);
-                    grid[x_pos + y_pos].City = new City(currPlayer, grid[x_pos + y_pos]);
-                    grid[x_pos + y_pos].removeUnit(SelectedUnit);
+                    ((ITeacher)SelectedUnit).createCity(currPlayer);
                 }
             }
 
