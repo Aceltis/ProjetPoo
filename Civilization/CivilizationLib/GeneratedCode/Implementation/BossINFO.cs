@@ -16,6 +16,8 @@ namespace Implementation
 
 	public class BossINFO : Unit, IBoss
 	{
+        public BossINFO() { }
+
         public BossINFO(Player p, Case c)
         {
             AttackRange = 1;

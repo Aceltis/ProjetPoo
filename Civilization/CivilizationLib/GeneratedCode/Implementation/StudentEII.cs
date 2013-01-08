@@ -17,6 +17,9 @@ namespace Implementation
 
     public class StudentEII : Unit, IStudent
     {
+        //Sert aux gettype
+        public StudentEII() { }
+
         public StudentEII(IPlayer p, ICase c)
         {
             AttackRange = 1;

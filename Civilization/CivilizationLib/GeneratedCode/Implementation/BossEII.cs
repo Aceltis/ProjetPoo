@@ -16,8 +16,11 @@ namespace Implementation
 
 	public class BossEII : Unit, IBoss
 	{
+        public BossEII() { }
+
         public BossEII(Player p, Case c)
         {
+            //TODO : implem bonus boss
             AttackRange = 1;
             MaxMovePoints = 2;
             MovePoints = 2;

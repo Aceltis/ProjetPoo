@@ -16,6 +16,8 @@ namespace Implementation
 
     public class TeacherEII : Unit, ITeacher
     {
+        public TeacherEII() { }
+
         public TeacherEII(IPlayer p, ICase c)
         {
             AttackRange = 0;
@@ -31,6 +33,7 @@ namespace Implementation
 
         public virtual void createCity(IPlayer currPlayer)
         {
+            //TODO add city string
             City newCity = new City(currPlayer, Case);
             Case.City = newCity;
             currPlayer.Cities.Add(newCity);

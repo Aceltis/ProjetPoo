@@ -17,6 +17,9 @@ namespace Implementation
 
     public class StudentINFO : Unit, IStudent
     {
+        //Sert aux gettype
+        public StudentINFO() { }
+
         public StudentINFO(IPlayer p, ICase c)
         {
             AttackRange = 1;

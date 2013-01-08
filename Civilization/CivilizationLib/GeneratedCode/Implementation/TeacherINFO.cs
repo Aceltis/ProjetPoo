@@ -16,6 +16,8 @@ namespace Implementation
 
     public class TeacherINFO : Unit, ITeacher
     {
+        public TeacherINFO() { }
+
         public TeacherINFO(IPlayer p, ICase c)
         {
             AttackRange = 0;

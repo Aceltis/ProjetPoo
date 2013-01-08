@@ -27,13 +27,14 @@ namespace CivilizationWPF
         IGame game;
         GameViewModel gvm;
         Dictionary<IPlayer, PlayerViewModel> pToPvm;
-        Queue<IUnit> activeUnits;
+        List<IUnit> activeUnits;
 
 #region Game Initialization
         public GameWindow(IGameBuilder builder)
         {
             InitializeComponent();
             game = builder.build();
+            activeUnits = new List<IUnit>();
             createPVM();
             createGVM();
 
@@ -99,22 +100,39 @@ namespace CivilizationWPF
             initializeActiveUnits();
         }
 
+        //Ajoute toutes les unités du joueur donné à la queue des unités en attente d'ordres
         private void initializeActiveUnits()
         {
-            activeUnits = new Queue<IUnit>();
-
             if (game.CurrentPlayer.Teachers.Count() > 0)
             {
                 foreach (ITeacher t in game.CurrentPlayer.Teachers)
                 {
-                    activeUnits.Enqueue(t);
+                    activeUnits.Add(t);
                 }
             }
             if (game.CurrentPlayer.Students.Count() > 0)
             {
                 foreach (IStudent s in game.CurrentPlayer.Students)
                 {
-                    activeUnits.Enqueue(s);
+                    activeUnits.Add(s);
+                }
+            }
+            if (game.CurrentPlayer.Boss != null)
+            {
+                activeUnits.Add(game.CurrentPlayer.Boss);
+            }
+        }
+
+        private void updateQueue()
+        {
+            if (game.CurrentPlayer.Teachers.Count() > 0)
+            {
+                //On fait le choix de ne considérer que le déplacement ici
+                //Sinon, il faudrait que toutes les unités attaquent ou bien construisent pour devenir inactives.
+                foreach (IUnit unit in game.CurrentPlayer.Teachers)
+                {
+                    if (unit.MovePoints == 0)
+                        activeUnits.Remove(unit);
                 }
             }
         }
@@ -139,6 +157,10 @@ namespace CivilizationWPF
                 //Reset selection
                 foreach (Case c in game.Map.grid)
                     c.Selected = false;
+                game.Map.SelectedCase = null;
+                game.Map.SelectedUnit = null;
+
+                updateInterface();
 
                 game.nextPlayer();
 
@@ -172,7 +194,7 @@ namespace CivilizationWPF
 #endregion
 
 #region Buttons events
-        private void moveAction(object sender, RoutedEventArgs e)
+        private void callMove()
         {
             moveActionView.Click -= new RoutedEventHandler(moveAction);
 
@@ -191,7 +213,47 @@ namespace CivilizationWPF
             attackActionView.Click += new RoutedEventHandler(cancellMove);
         }
 
-        private void cancellMove(object sender, RoutedEventArgs e)
+        private void callAttack()
+        {
+            attackActionView.Click -= new RoutedEventHandler(attackAction);
+
+            // Uncheck others actions
+            moveActionView.IsChecked = false;
+            attackActionView.IsChecked = true;
+            buildActionView.IsChecked = false;
+
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
+            game.Map.drawAttackBorders();
+            game.Map.circleEnemies(game.CurrentPlayer);
+            windowsFormsHost1.Child.Refresh();
+
+            moveActionView.Click += new RoutedEventHandler(cancellAttack);
+            buildActionView.Click += new RoutedEventHandler(cancellAttack);
+            attackActionView.Click += new RoutedEventHandler(cancellAttack);
+        }
+
+        private void callBuild()
+        {
+            buildActionView.Click -= new RoutedEventHandler(buildAction);
+
+            // Uncheck others actions
+            moveActionView.IsChecked = false;
+            attackActionView.IsChecked = false;
+            buildActionView.IsChecked = true;
+
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
+            game.Map.drawMoveBorders(game.CurrentPlayer);
+            game.Map.drawCityPossibilities(game.CurrentPlayer);
+            windowsFormsHost1.Child.Refresh();
+
+            moveActionView.Click += new RoutedEventHandler(cancellBuild);
+            buildActionView.Click += new RoutedEventHandler(cancellBuild);
+            attackActionView.Click += new RoutedEventHandler(cancellBuild);
+        }
+
+        private void callMoveCancellation()
         {
             moveActionView.Click -= new RoutedEventHandler(cancellMove);
             buildActionView.Click -= new RoutedEventHandler(cancellMove);
@@ -214,27 +276,7 @@ namespace CivilizationWPF
             moveActionView.Click += new RoutedEventHandler(moveAction);
         }
 
-        private void attackAction(object sender, RoutedEventArgs e)
-        {
-            attackActionView.Click -= new RoutedEventHandler(attackAction);
-
-            // Uncheck others actions
-            moveActionView.IsChecked = false;
-            attackActionView.IsChecked = true;
-            buildActionView.IsChecked = false;
-
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
-            game.Map.drawAttackBorders();
-            game.Map.circleEnemies(game.CurrentPlayer);
-            windowsFormsHost1.Child.Refresh();
-
-            moveActionView.Click += new RoutedEventHandler(cancellAttack);
-            buildActionView.Click += new RoutedEventHandler(cancellAttack);
-            attackActionView.Click += new RoutedEventHandler(cancellAttack);
-        }
-
-        private void cancellAttack(object sender, RoutedEventArgs e)
+        private void callAttackCancellation()
         {
             moveActionView.Click -= new RoutedEventHandler(cancellAttack);
             buildActionView.Click -= new RoutedEventHandler(cancellAttack);
@@ -256,27 +298,7 @@ namespace CivilizationWPF
             attackActionView.Click += new RoutedEventHandler(attackAction);
         }
 
-        private void buildAction(object sender, RoutedEventArgs e)
-        {
-            buildActionView.Click -= new RoutedEventHandler(buildAction);
-
-            // Uncheck others actions
-            moveActionView.IsChecked = false;
-            attackActionView.IsChecked = false;
-            buildActionView.IsChecked = true;
-
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
-            game.Map.drawMoveBorders(game.CurrentPlayer);
-            game.Map.drawCityPossibilities(game.CurrentPlayer);
-            windowsFormsHost1.Child.Refresh();
-
-            moveActionView.Click += new RoutedEventHandler(cancellBuild);
-            buildActionView.Click += new RoutedEventHandler(cancellBuild);
-            attackActionView.Click += new RoutedEventHandler(cancellBuild);
-        }
-
-        private void cancellBuild(object sender, RoutedEventArgs e)
+        private void callBuildCancellation()
         {
             moveActionView.Click -= new RoutedEventHandler(cancellBuild);
             buildActionView.Click -= new RoutedEventHandler(cancellBuild);
@@ -287,7 +309,7 @@ namespace CivilizationWPF
 
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_BuildCity);
             ((System.Windows.Forms.ScrollableControl)windowsFormsHost1.Child).Controls.OfType<System.Windows.Forms.PictureBox>().First().MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            
+
             //Si Move pressé, pas besoin d'effacer ça
             if (!(bool)moveActionView.IsChecked)
             {
@@ -300,6 +322,37 @@ namespace CivilizationWPF
             }
 
             buildActionView.Click += new RoutedEventHandler(buildAction);
+        }
+
+        //action is wrapped into a function to access it from anywhere else into the C# code
+        private void moveAction(object sender, RoutedEventArgs e)
+        {
+            callMove();
+        }
+
+        private void cancellMove(object sender, RoutedEventArgs e)
+        {
+            callMoveCancellation();
+        }
+
+        private void attackAction(object sender, RoutedEventArgs e)
+        {
+            callAttack();
+        }
+
+        private void cancellAttack(object sender, RoutedEventArgs e)
+        {
+            callAttackCancellation();
+        }
+
+        private void buildAction(object sender, RoutedEventArgs e)
+        {
+            callBuild();
+        }
+
+        private void cancellBuild(object sender, RoutedEventArgs e)
+        {
+            callBuildCancellation();
         }
 
         private void prodStudent(object sender, RoutedEventArgs e)
@@ -469,6 +522,7 @@ namespace CivilizationWPF
 
             //Re-activate button
             moveActionView.Click += new RoutedEventHandler(moveAction);
+            updateQueue();
         }
 
         //Attack unit with selected unit, Attack button have been pressed
@@ -493,6 +547,7 @@ namespace CivilizationWPF
 
             //Re-activate button
             attackActionView.Click += new RoutedEventHandler(attackAction);
+            updateQueue();
         }
 
         //Build City with selected unit, Build button have been pressed
@@ -517,88 +572,96 @@ namespace CivilizationWPF
 
             //Re-activate button
             buildActionView.Click += new RoutedEventHandler(buildAction);
+            updateQueue();
         }
 
         // Selects the interface linked to the type of the square
         private void updateInterface()
         {
             ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
-            if (selectedCase.City != null && selectedCase.Visible == true)
+            if (selectedCase != null)
             {
-                field.Visibility = Visibility.Hidden;
-                unit.Visibility = Visibility.Hidden;
-                city.Visibility = Visibility.Visible;
+                if (selectedCase.City != null && selectedCase.Visible == true)
+                {
+                    field.Visibility = Visibility.Hidden;
+                    unit.Visibility = Visibility.Hidden;
+                    city.Visibility = Visibility.Visible;
 
-                orderCity.Visibility = Visibility.Visible;
-                orderUnit.Visibility = Visibility.Hidden;
+                    orderCity.Visibility = Visibility.Visible;
+                    orderUnit.Visibility = Visibility.Hidden;
 
-                city.DataContext = new CityViewModel((City)selectedCase.City);
-                showUnitInterface(selectedCase);
+                    city.DataContext = new CityViewModel((City)selectedCase.City);
+                    showUnitInterface(selectedCase);
 
+                }
+                else if (selectedCase.Units.Count() > 0 && selectedCase.Visible == true)
+                {
+                    field.Visibility = Visibility.Hidden;
+                    unit.Visibility = Visibility.Visible;
+                    city.Visibility = Visibility.Hidden;
+
+                    orderCity.Visibility = Visibility.Hidden;
+                    orderUnit.Visibility = Visibility.Visible;
+
+                    unit.DataContext = new UnitViewModel((Unit)selectedCase.Units[0]);
+                    showUnitInterface(selectedCase);
+                }
+                else
+                {
+                    field.Visibility = Visibility.Visible;
+                    unit.Visibility = Visibility.Hidden;
+                    city.Visibility = Visibility.Hidden;
+                    field.DataContext = new CaseViewModel((Case)selectedCase);
+                    showUnitInterface(selectedCase);
+                }
             }
-            else if (selectedCase.Units.Count() > 0 && selectedCase.Visible == true)
-            {
-                field.Visibility = Visibility.Hidden;
-                unit.Visibility = Visibility.Visible;
-                city.Visibility = Visibility.Hidden;
-
-                orderCity.Visibility = Visibility.Hidden;
-                orderUnit.Visibility = Visibility.Visible;
-
-                unit.DataContext = new UnitViewModel((Unit)selectedCase.Units[0]);
-                showUnitInterface(selectedCase);
-            }
-            else
-            {
-                field.Visibility = Visibility.Visible;
-                unit.Visibility = Visibility.Hidden;
-                city.Visibility = Visibility.Hidden;
-                field.DataContext = new CaseViewModel((Case)selectedCase);
-                showUnitInterface(selectedCase);
-            }
+            else showUnitInterface(null);
         }
 
         // Draw the bottom interface according to the selected Case
         private void showUnitInterface(ICase c)
         {
-            ImageBrush unitDrawing = new ImageBrush();
-            if (c.Units.Count() > 0)
+            if (c != null)
             {
-                if (c.Units[0] is ITeacher)
+                ImageBrush unitDrawing = new ImageBrush();
+                if (c.Units.Count() > 0)
                 {
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
-                    attackActionView.Visibility = Visibility.Hidden;
-                    buildActionView.Visibility = Visibility.Visible;
+                    if (c.Units[0] is ITeacher)
+                    {
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
+                        attackActionView.Visibility = Visibility.Hidden;
+                        buildActionView.Visibility = Visibility.Visible;
+                    }
+                    else if (c.Units[0] is IStudent)
+                    {
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
+                        buildActionView.Visibility = Visibility.Hidden;
+                        attackActionView.Visibility = Visibility.Visible;
+                    }
+                    else if (c.Units[0] is IBoss)
+                    {
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
+                        attackActionView.Visibility = Visibility.Hidden;
+                        buildActionView.Visibility = Visibility.Hidden;
+                    }
                 }
-                else if (c.Units[0] is IStudent)
+                else if (c.City != null)
                 {
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
-                    buildActionView.Visibility = Visibility.Hidden;
-                    attackActionView.Visibility = Visibility.Visible;
+                    unitDrawing.ImageSource = (BitmapImage)FindResource("City");
                 }
-                else if (c.Units[0] is IBoss)
-                {
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
-                    attackActionView.Visibility = Visibility.Hidden;
-                    buildActionView.Visibility = Visibility.Hidden;
-                }
-            }
-            else if (c.City != null)
-            {
-                unitDrawing.ImageSource = (BitmapImage)FindResource("City");
-            }
-            else
-            {
-                unitDrawing.ImageSource = (BitmapImage)FindResource("Field");
-                if (c is IPlain || (c.Foods == 5 && c.Minerals == 1) || (c.Foods == 3 && c.Minerals == 3))
-                    fieldType.Text = "Plain";
-                else if (c is IMountain || (c.Foods == 0 && c.Minerals == 5) || (c.Foods == 2 && c.Minerals == 3))
-                    fieldType.Text = "Mountain";
                 else
-                    fieldType.Text = "Desert";
+                {
+                    unitDrawing.ImageSource = (BitmapImage)FindResource("Field");
+                    if (c is IPlain || (c.Foods == 5 && c.Minerals == 1) || (c.Foods == 3 && c.Minerals == 3))
+                        fieldType.Text = "Plain";
+                    else if (c is IMountain || (c.Foods == 0 && c.Minerals == 5) || (c.Foods == 2 && c.Minerals == 3))
+                        fieldType.Text = "Mountain";
+                    else
+                        fieldType.Text = "Desert";
+                }
+                action.Background = unitDrawing;
             }
-
-            action.Background = unitDrawing;
+            else action.Background = null; //TODO mettre l'image "vide"
         }
 
         // Comments
@@ -628,12 +691,110 @@ namespace CivilizationWPF
                     else
                         sc.HorizontalScroll.Value -= 50;
                     break;
-                    //TODO
-                /*case (int)System.Windows.Forms.Keys.M:
+                case (int)System.Windows.Forms.Keys.Space :
                     e.IsInputKey = true;
-                    RoutedEventArgs newEventArgs = new RoutedEventArgs();
-                    moveActionView.t
-                    break;*/
+                    if (game.Map.SelectedUnit != null)
+                    {
+                        activeUnits.Remove(game.Map.SelectedUnit);
+                        game.Map.SelectedUnit = null;
+                        game.Map.SelectedCase = null;
+                        foreach (ICase square in game.Map.grid)
+                        {
+                            square.Selected = false;
+                            square.UnderUnitAttackRange = false;
+                            square.EnemyInRange = false;
+                            square.CitySuggestion = false;
+                            square.UnderUnitMoveRange = false;
+                        }
+                        moveActionView.IsChecked = false;
+                        attackActionView.IsChecked = false;
+                        buildActionView.IsChecked = false;
+                        sc.Refresh();
+                        updateInterface();
+                        break;
+                    }
+                    break;
+
+                    //TODO
+                case (int)System.Windows.Forms.Keys.M:
+                    e.IsInputKey = true;
+                    if (game.Map.SelectedUnit != null)
+                        if ((bool)buildActionView.IsChecked)
+                            callBuildCancellation();
+                        if ((bool)attackActionView.IsChecked)
+                            callAttackCancellation();
+                        if(!(bool)moveActionView.IsChecked)
+                            callMove();
+                    break;
+                case (int)System.Windows.Forms.Keys.A:
+                    e.IsInputKey = true;
+                    if (game.Map.SelectedUnit != null)
+                    {
+                        if ((game.Map.SelectedUnit.GetType() == (new StudentINFO()).GetType())||(game.Map.SelectedUnit.GetType() == (new StudentEII()).GetType()))
+                        {
+                            if ((bool)moveActionView.IsChecked)
+                                callMoveCancellation();
+                            if ((bool)buildActionView.IsChecked)
+                                callBuildCancellation();
+                            if (game.Map.SelectedUnit != null)
+                                if (!(bool)attackActionView.IsChecked)
+                                    callAttack();
+                        }
+                    }
+                    break;
+                case (int)System.Windows.Forms.Keys.B:
+                    e.IsInputKey = true;
+                    if (game.Map.SelectedUnit != null)
+                    {
+                        if ((game.Map.SelectedUnit.GetType() == (new TeacherINFO()).GetType()) || (game.Map.SelectedUnit.GetType() == (new TeacherEII()).GetType()))
+                        {
+                            if ((bool)moveActionView.IsChecked)
+                                callMoveCancellation();
+                            if ((bool)attackActionView.IsChecked)
+                                callAttackCancellation();
+                            if (!(bool)buildActionView.IsChecked)
+                                callBuild();
+                        }
+                    }
+                    break;
+                case (int)System.Windows.Forms.Keys.Escape:
+                    e.IsInputKey = true;
+                    if ((game.Map.SelectedUnit != null)&&(moveActionView.IsChecked != false || attackActionView.IsChecked != false || buildActionView.IsChecked != false))
+                    {
+                        foreach (ICase square in game.Map.grid)
+                        {
+                            square.UnderUnitAttackRange = false;
+                            square.EnemyInRange = false;
+                            square.CitySuggestion = false;
+                            square.UnderUnitMoveRange = false;
+                        }
+                        moveActionView.IsChecked = false;
+                        attackActionView.IsChecked = false;
+                        buildActionView.IsChecked = false;
+                        sc.Refresh();
+                        updateInterface();
+                        break;
+                    }
+                    else if (game.Map.SelectedCase != null)
+                    {
+                        game.Map.SelectedUnit = null;
+                        game.Map.SelectedCase = null;
+                        foreach (ICase square in game.Map.grid)
+                        {
+                            square.Selected = false;
+                            square.UnderUnitAttackRange = false;
+                            square.EnemyInRange = false;
+                            square.CitySuggestion = false;
+                            square.UnderUnitMoveRange = false;
+                        }
+                        moveActionView.IsChecked = false;
+                        attackActionView.IsChecked = false;
+                        buildActionView.IsChecked = false;
+                        sc.Refresh();
+                        updateInterface();
+                        break;
+                    }
+                    break;
             }
             sc.PerformLayout();
         }
