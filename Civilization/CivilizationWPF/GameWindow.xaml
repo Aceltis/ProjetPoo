@@ -247,6 +247,26 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
+            <Button Name="nextSelectionnableButton" Click="nextSelectionnable" Content="Next" VerticalAlignment="Bottom" Width="100" FontFamily="Lithos Pro" FontSize="10" Foreground="Black" Visibility="Hidden" Height="32">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-90" Opacity="0.7"></DropShadowEffect>
+                </Button.Effect>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Image Name="Normal" Source="./Resource/interface/bottomLeft/bouton_small_disabled.png"/>
+                            <Image Name="Over" Source="./Resource/interface/bottomLeft/bouton_small_enabled.png" Visibility="Hidden"/>
+                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Normal" Property="Visibility" Value="Hidden"/>
+                                <Setter TargetName="Over" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
     </Grid>
 </Window>

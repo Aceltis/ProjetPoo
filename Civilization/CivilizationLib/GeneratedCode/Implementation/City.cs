@@ -56,6 +56,8 @@ namespace Implementation
             Population = 1;
             Position = c;
             Player = p;
+            if (!p.builtHisFirstCity)
+                p.builtHisFirstCity = true;
             Current_prod = ProductionType.None;
             OwnedFoods = c.Foods;
             OwnedMinerals = c.Minerals;
@@ -63,9 +65,6 @@ namespace Implementation
 
         public virtual void updateCity(IMap map)
         {
-            //Reniew population number
-            upgradePopulation();
-
             //Variables food/minerals du tour
             Dictionary<ICase, int> cityCasesFood = new Dictionary<ICase, int>();
             Dictionary<ICase, int> cityCasesMinerals = new Dictionary<ICase, int>();
@@ -105,12 +104,12 @@ namespace Implementation
 
             int maxFood = 0;
             //sur le nombre de cases disponibles (pop)
-            for (int i = 0; i < Population + 2; i++)
+            for (int i = 0; i < Population + 3; i++)
             {
                 //Si excès de minéraux, tenter de basculer des cases vers le food
                 if (Needed_minerals < maxMinerals)
                 {
-                    maxMinerals = 0;
+                    maxMinerals = 0; maxFood = 0;
                     tempCityCasesFood = cityCasesFood;
                     tempCityCasesMinerals = cityCasesMinerals;
 
@@ -123,7 +122,7 @@ namespace Implementation
                     //On bascule i cases
                     for (int j = 0; j < i; j++)
                     {
-                        maxFood = tempCityCasesFood.Max(x => x.Value);
+                        maxFood += tempCityCasesFood.Max(x => x.Value);
                         tempCityCasesFood.Remove(tempCityCasesFood.ElementAt(tempCityCasesFood.Max(x => x.Value)).Key);
                     }
                 }
@@ -133,7 +132,7 @@ namespace Implementation
                 {
                     if (i != 0)
                     {
-                        maxMinerals = 0;
+                        maxMinerals = 0; maxFood = 0;
                         tempCityCasesFood = cityCasesFood;
                         tempCityCasesMinerals = cityCasesMinerals;
 
@@ -146,7 +145,7 @@ namespace Implementation
                         //On bascule i cases
                         for (int j = 0; j < i - 1; j++)
                         {
-                            maxFood = tempCityCasesFood.Max(x => x.Value);
+                            maxFood += tempCityCasesFood.Max(x => x.Value);
                             tempCityCasesFood.Remove(tempCityCasesFood.ElementAt(tempCityCasesFood.Max(x => x.Value)).Key);
                         }
                     }
@@ -160,6 +159,10 @@ namespace Implementation
 
             if (Needed_minerals <= 0)
                 spawnUnit(Current_prod);
+
+
+            //Reniew population number
+            updatePopulation();
         }
         
         public virtual void produceBoss()
@@ -180,11 +183,14 @@ namespace Implementation
             Current_prod = ProductionType.Teacher;
         }
 
-        public virtual void upgradePopulation()
+        public virtual void updatePopulation()
         {
             int nbResNeeded = 10;
-            for (int i = 0; i < Population; i++)
-                nbResNeeded += nbResNeeded / 2;
+            if (Population >= 1)
+            {
+                for (int i = 0; i < Population - 1; i++)
+                    nbResNeeded += nbResNeeded / 2;
+            }
 
             if (OwnedFoods >= nbResNeeded)
                 Population++;

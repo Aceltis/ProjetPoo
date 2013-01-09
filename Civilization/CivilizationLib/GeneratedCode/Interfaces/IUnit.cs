@@ -27,6 +27,7 @@ namespace Interfaces
         int Cost { get; set; }
         int CreationTime { get; set; }
         int Id { get; set; }
+        bool haveAttacked { get; set; }
 
 
 		void move(ICase destination);

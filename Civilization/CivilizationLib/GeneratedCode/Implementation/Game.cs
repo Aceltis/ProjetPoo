@@ -38,27 +38,37 @@ namespace Implementation
             Turns = 1;
         }
 
-        public virtual void addLooser()
+        public virtual void addLooser(IPlayer player)
         {
-            CurrentPlayer.Status = StatusType.Spectator;
-            Loosers.Add(CurrentPlayer);
+            player.Status = StatusType.Spectator;
+            Loosers.Add(player);
         }
 
         public virtual bool isWinner()
         {
-            Winner = CurrentPlayer;
-            return Players.Count() == 0;
+            return Winner != null;
         }
 
         public virtual bool isLooser()
         {
-            if (Turns > 4 && CurrentPlayer.Cities.Count() == 0 && Players.Count() > 0)
+            if ((!CurrentPlayer.builtHisFirstCity) && CurrentPlayer.Cities.Count() == 0 && Players.Count() > 0)
             {
-                addLooser();
+                if (CurrentPlayer.Teachers.Count == 0 && CurrentPlayer.Students.Count == 0 && CurrentPlayer.Boss == null)
+                {
+                    addLooser(CurrentPlayer);
+                    if (Players.Count() == 1)
+                        Winner = Players.First();
+                    return true;
+                }
+            }
+            if (CurrentPlayer.builtHisFirstCity && CurrentPlayer.Cities.Count() == 0 && Players.Count() > 0)
+            {
+                addLooser(CurrentPlayer);
+                if (Players.Count() == 1)
+                    Winner = Players.First();
                 return true;
             }
-            else
-                return false;
+            return false;
         }
 
         public virtual bool isSpectator(IPlayer p)

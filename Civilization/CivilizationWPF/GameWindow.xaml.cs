@@ -124,16 +124,22 @@ namespace CivilizationWPF
         // Add all units of a case waiting for an order
         private void initializeActiveUnits(ICase c)
         {
-            activUnit = new Unit();
             activUnitsQueue = new Queue<IUnit>();
             if (c.Units.Count() > 0)
             {
-                activUnit = c.Units[0];
+                bool unitNeedOrders = false;
                 foreach (IUnit unit in c.Units)
+                    if (unit.MovePoints != 0)
+                        unitNeedOrders = true;
+                if (unitNeedOrders)
                 {
-                    activUnitsQueue.Enqueue(unit);
+                    activUnit = c.Units.First(x => x.MovePoints!=0);
+                    foreach (IUnit unit in c.Units)
+                    {
+                        if (unit.MovePoints != 0)
+                            activUnitsQueue.Enqueue(unit);
+                    }
                 }
-                activUnitsQueue.Dequeue();
             }
         }
 
@@ -186,11 +192,23 @@ namespace CivilizationWPF
 
                 //Reset units' move points
                 foreach (ITeacher teacher in game.CurrentPlayer.Teachers)
+                {
+                    if (teacher.MovePoints == teacher.MaxMovePoints && teacher.HP < teacher.MaxHP)
+                        teacher.HP ++;
                     teacher.MovePoints = teacher.MaxMovePoints;
+                }
                 foreach (IStudent student in game.CurrentPlayer.Students)
+                {
+                    if (student.MovePoints == student.MaxMovePoints && (!student.haveAttacked) && student.HP < student.MaxHP)
+                        student.HP ++;
                     student.MovePoints = student.MaxMovePoints;
+                    student.haveAttacked = false;
+                }
                 if (game.CurrentPlayer.Boss != null)
-                    game.CurrentPlayer.Boss.MovePoints = game.CurrentPlayer.Boss.MaxMovePoints;
+                {
+                    if (game.CurrentPlayer.Boss.MovePoints == game.CurrentPlayer.Boss.MaxMovePoints && game.CurrentPlayer.Boss.HP < game.CurrentPlayer.Boss.MaxHP)
+                        game.CurrentPlayer.Boss.MovePoints = game.CurrentPlayer.Boss.MaxMovePoints;
+                }
 
                 //Masquage de la map
                 mapPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(turnBlack);
@@ -288,22 +306,29 @@ namespace CivilizationWPF
 
         private void callAttack()
         {
-            attackActionView.Click -= new RoutedEventHandler(attackAction);
+            if (!game.Map.SelectedUnit.haveAttacked)
+            {
+                attackActionView.Click -= new RoutedEventHandler(attackAction);
 
-            // Uncheck others actions
-            moveActionView.IsChecked = false;
-            attackActionView.IsChecked = true;
-            buildActionView.IsChecked = false;
+                // Uncheck others actions
+                moveActionView.IsChecked = false;
+                attackActionView.IsChecked = true;
+                buildActionView.IsChecked = false;
 
-            mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
-            mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
-            game.Map.drawAttackBorders();
-            game.Map.circleEnemies(game.CurrentPlayer);
-            windowsFormsHost1.Child.Refresh();
+                mapPictureBox.MouseClick -= new System.Windows.Forms.MouseEventHandler(pictureBox_Select);
+                mapPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(pictureBox_AttackUnit);
+                game.Map.drawAttackBorders();
+                game.Map.circleEnemies(game.CurrentPlayer);
+                windowsFormsHost1.Child.Refresh();
 
-            moveActionView.Click += new RoutedEventHandler(cancellAttack);
-            buildActionView.Click += new RoutedEventHandler(cancellAttack);
-            attackActionView.Click += new RoutedEventHandler(cancellAttack);
+                moveActionView.Click += new RoutedEventHandler(cancellAttack);
+                buildActionView.Click += new RoutedEventHandler(cancellAttack);
+                attackActionView.Click += new RoutedEventHandler(cancellAttack);
+            }
+            else
+            {
+                attackActionView.IsChecked = false;
+            }
         }
 
         private void callBuild()
@@ -473,40 +498,66 @@ namespace CivilizationWPF
             timerBossView.Visibility = Visibility.Hidden;
         }
 
+        private void nextSelectionnable(object sender, RoutedEventArgs e)
+        {
+            if (game.Map.SelectedCase != null)
+            {
+                if (game.Map.SelectedCase.Units.Count > 1)
+                {
+                    IUnit nextUnit = game.Map.SelectedCase.Units.First(x => x != game.Map.SelectedUnit);
+                    game.Map.SelectedUnit = nextUnit;
+                    updateInterface(nextUnit);
+                }
+                else
+                    nextSelectionnableButton.Visibility = Visibility.Hidden;
+            }
+        }
+
         private void nextAction(object sender, RoutedEventArgs e)
         {
-            ImageBrush unitDrawing = new ImageBrush();
+            bool unitNeedOrder = false;
+            foreach (IUnit u in activUnitsQueue)
+                if (u.MovePoints != 0)
+                    unitNeedOrder = true;
+
+            if (unitNeedOrder)
+            {
+                ImageBrush unitDrawing = new ImageBrush();
 
                 activUnitsQueue.Enqueue(activUnit);
                 activUnit = activUnitsQueue.Dequeue();
-
-                if (activUnit is ITeacher)
+                if (activUnit.MovePoints != 0)
                 {
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
-                    attackActionView.Visibility = Visibility.Hidden;
-                    buildActionView.Visibility = Visibility.Visible;
-                }
-                else if (activUnit is IStudent)
-                {
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
-                    buildActionView.Visibility = Visibility.Hidden;
-                    attackActionView.Visibility = Visibility.Visible;
-                }
-                else if (activUnit is IBoss)
-                {
-                    unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
-                    attackActionView.Visibility = Visibility.Hidden;
-                    buildActionView.Visibility = Visibility.Hidden;
-                }
+                    if (activUnit is ITeacher)
+                    {
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
+                        attackActionView.Visibility = Visibility.Hidden;
+                        buildActionView.Visibility = Visibility.Visible;
+                    }
+                    else if (activUnit is IStudent)
+                    {
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
+                        buildActionView.Visibility = Visibility.Hidden;
+                        attackActionView.Visibility = Visibility.Visible;
+                    }
+                    else if (activUnit is IBoss)
+                    {
+                        unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
+                        attackActionView.Visibility = Visibility.Hidden;
+                        buildActionView.Visibility = Visibility.Hidden;
+                    }
 
-                field.Visibility = Visibility.Hidden;
-                unit.Visibility = Visibility.Visible;
-                city.Visibility = Visibility.Hidden;
-                neutral.Visibility = Visibility.Hidden;
+                    field.Visibility = Visibility.Hidden;
+                    unit.Visibility = Visibility.Visible;
+                    city.Visibility = Visibility.Hidden;
+                    neutral.Visibility = Visibility.Hidden;
 
-                action.Background = unitDrawing;
-                unit.DataContext = new UnitViewModel((Unit)activUnit);
-                game.Map.SelectedUnit = activUnit;
+                    action.Background = unitDrawing;
+                    unit.DataContext = new UnitViewModel((Unit)activUnit);
+                    game.Map.SelectedUnit = activUnit;
+                }
+                else nextAction(sender, e);
+            }
         }
 
         private void focusCity(object sender, RoutedEventArgs e)
@@ -615,6 +666,15 @@ namespace CivilizationWPF
             windowsFormsHost1.Child.Focus();
             game.Map.select(e.X, e.Y);
 
+            if (game.Map.SelectedCase != null)
+            {
+                if (game.Map.SelectedCase.Units.Count > 1)
+                {
+                    nextSelectionnableButton.Visibility = Visibility.Visible;
+                }
+                else nextSelectionnableButton.Visibility = Visibility.Hidden;
+            }
+
             mapPictureBox.Refresh();
             updateInterface();
             
@@ -640,6 +700,19 @@ namespace CivilizationWPF
 
             //Re-activate button
             moveActionView.Click += new RoutedEventHandler(moveAction);
+
+            foreach (IPlayer player in game.Players)
+            {
+                if (player.Teachers.Count + player.Students.Count + player.Cities.Count == 0)
+                {
+                    if (player.Boss == null)
+                    {
+                        game.Loosers.Add(player);
+                        if (game.Players.Count == 1)
+                            game.Winner=game.Players.First();
+                    }
+                }
+            }
         }
 
         //Attack unit with selected unit, Attack button have been pressed
@@ -663,6 +736,19 @@ namespace CivilizationWPF
 
             //Re-activate button
             attackActionView.Click += new RoutedEventHandler(attackAction);
+
+            foreach (IPlayer player in game.Players)
+            {
+                if (player.Teachers.Count + player.Students.Count + player.Cities.Count == 0)
+                {
+                    if (player.Boss == null)
+                    {
+                        game.Loosers.Add(player);
+                        if (game.Players.Count == 1)
+                            game.Winner=game.Players.First();
+                    }
+                }
+            }
         }
 
         //Build City with selected unit, Build button have been pressed, map have been clicked
@@ -717,8 +803,21 @@ namespace CivilizationWPF
         {
             ICase selectedCase = game.Map.grid.Find(x => x.Selected == true);
 
-            if(game.Map.SelectedCase != null)
+            if (game.Map.SelectedCase != null)
+            {
                 initializeActiveUnits(game.Map.SelectedCase);
+
+                if (game.Map.SelectedCase.Units.Count > 1)
+                    nextSelectionnableButton.Visibility = Visibility.Visible;
+                else nextSelectionnableButton.Visibility = Visibility.Hidden;
+            }
+
+            if (this.activUnitsQueue.Count != 0)
+            {
+                orderUnit.Visibility = Visibility.Visible;
+                //game.Map.SelectedUnit = this.activUnitsQueue.Dequeue();
+            }
+            else orderUnit.Visibility = Visibility.Hidden;
 
             if (selectedCase != null)
             {
@@ -740,7 +839,7 @@ namespace CivilizationWPF
                     city.Visibility = Visibility.Hidden;
                     neutral.Visibility = Visibility.Hidden;
 
-                    unit.DataContext = new UnitViewModel((Unit)selectedCase.Units[0]);
+                    unit.DataContext = new UnitViewModel((Unit)game.Map.SelectedUnit);
                     showUnitInterface(selectedCase);
                 }
                 else
@@ -756,15 +855,21 @@ namespace CivilizationWPF
 
                 if (selectedCase.Units.Count() > 1)
                 {
-                    orderCity.Visibility = Visibility.Hidden;
-                    orderUnit.Visibility = Visibility.Visible;
-                    orderUnitSmall.Visibility = Visibility.Hidden;
+                    if (selectedCase.Units.Find(x => x.MovePoints != 0) != null)
+                    {
+                        orderCity.Visibility = Visibility.Hidden;
+                        orderUnit.Visibility = Visibility.Visible;
+                        orderUnitSmall.Visibility = Visibility.Hidden;
+                    }
                 }
                 else if (selectedCase.Units.Count() > 0 && selectedCase.City != null)
                 {
                     orderCity.Visibility = Visibility.Visible;
-                    orderUnit.Visibility = Visibility.Hidden;
-                    orderUnitSmall.Visibility = Visibility.Visible;
+                    if (selectedCase.Units.Find(x => x.MovePoints != 0) != null)
+                    {
+                        orderUnit.Visibility = Visibility.Hidden;
+                        orderUnitSmall.Visibility = Visibility.Visible;
+                    }
                 }
                 else
                 {
@@ -776,6 +881,33 @@ namespace CivilizationWPF
             else showUnitInterface(null);
         }
 
+        //Surcharge pour ignorer la queue des unités actives
+        private void updateInterface(IUnit nextUnit)
+        {            
+            unit.DataContext = new UnitViewModel((Unit)nextUnit);
+
+            ImageBrush unitDrawing = new ImageBrush();
+            if (nextUnit is ITeacher)
+            {
+                unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
+                attackActionView.Visibility = Visibility.Hidden;
+                buildActionView.Visibility = Visibility.Visible;
+            }
+            else if (nextUnit is IStudent)
+            {
+                unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
+                buildActionView.Visibility = Visibility.Hidden;
+                attackActionView.Visibility = Visibility.Visible;
+            }
+            else if (nextUnit is IBoss)
+            {
+                unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
+                attackActionView.Visibility = Visibility.Hidden;
+                buildActionView.Visibility = Visibility.Hidden;
+            }
+            action.Background = unitDrawing;
+        }
+
         // Draw the bottom interface according to the selected Case
         private void showUnitInterface(ICase c)
         {
@@ -784,19 +916,19 @@ namespace CivilizationWPF
             {
                 if (c.Units.Count() > 0 && c.Visible && c.City == null)
                 {
-                    if (activUnit is ITeacher)
+                    if (game.Map.SelectedUnit is ITeacher)
                     {
                         unitDrawing.ImageSource = (BitmapImage)FindResource("Teacher");
                         attackActionView.Visibility = Visibility.Hidden;
                         buildActionView.Visibility = Visibility.Visible;
                     }
-                    else if (activUnit is IStudent)
+                    else if (game.Map.SelectedUnit is IStudent)
                     {
                         unitDrawing.ImageSource = (BitmapImage)FindResource("Student");
                         buildActionView.Visibility = Visibility.Hidden;
                         attackActionView.Visibility = Visibility.Visible;
                     }
-                    else if (activUnit is IBoss)
+                    else if (game.Map.SelectedUnit is IBoss)
                     {
                         unitDrawing.ImageSource = (BitmapImage)FindResource("Boss");
                         attackActionView.Visibility = Visibility.Hidden;
@@ -856,15 +988,17 @@ namespace CivilizationWPF
                     else
                         sc.HorizontalScroll.Value -= 50;
                     break;
+
+                //Touche permettant de faire passer le tour d'une unité
                 case (int)System.Windows.Forms.Keys.Space :
                     e.IsInputKey = true;
+
                     if (game.Map.SelectedUnit != null)
-                    { 
-                        game.Map.SelectedUnit = null;
-                        game.Map.SelectedCase = null;
+                    {
+                        //On la rend inactive
+                        game.Map.SelectedUnit.MovePoints = 0;
                         foreach (ICase square in game.Map.grid)
                         {
-                            square.Selected = false;
                             square.UnderUnitAttackRange = false;
                             square.EnemyInRange = false;
                             square.CitySuggestion = false;
@@ -873,9 +1007,23 @@ namespace CivilizationWPF
                         moveActionView.IsChecked = false;
                         attackActionView.IsChecked = false;
                         buildActionView.IsChecked = false;
+
+                        if(game.Map.SelectedCase!=null)
+                            if (game.Map.SelectedCase.Units.Count != 0)
+                            {
+                                foreach (IUnit unit in game.Map.SelectedCase.Units)
+                                {
+                                    if (unit.MovePoints != 0)
+                                    {
+                                        game.Map.SelectedUnit = unit;
+                                        break;
+                                    }
+                                }
+                            }
+
                         sc.Refresh();
                         updateInterface();
-                        break;
+                        break; //TODO
                     }
                     break;
 

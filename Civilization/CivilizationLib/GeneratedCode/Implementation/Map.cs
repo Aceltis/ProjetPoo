@@ -408,7 +408,11 @@ namespace Implementation
             //Variables food/minerals du tour
             Dictionary<int, int> caseValue = new Dictionary<int, int>();
 
+            //Position de la case
             int i = SelectedCase.SqPos[0] + mapStrategy.width * SelectedCase.SqPos[1];
+            int pos;
+
+            //Sélection des cases environnantes
             for (int k = -5; k <= 5; k++)
             {
                 //Tests en cas de bord de map horizontal
@@ -421,35 +425,49 @@ namespace Implementation
                         //Test en cas de bord de map vertical + comparaison unité
                         if ((i + k + mapStrategy.width * l >= 0) && (i + k + mapStrategy.width * l < grid.Count))
                         {
+                            //Case voisine valide
                             //Calcul du nombre de points de la case
-                            int value = 0;
-                            int pos = i + k + mapStrategy.width * l;
+                            int value = 0; List<int> totfood = new List<int>();
+                            pos = i + k + mapStrategy.width * l;
+
+                            //Visible : on compte les ressources avoisinnantes et les unités alliées sur la case
                             if (grid[pos].Visible)
                             {
+                                //Il ne doit pas y avoir de ville
                                 if (grid[pos].City == null)
                                 {
                                     if (grid[pos].Units.Count != 0)
                                     {
+                                        //La valeur de la case augmente si des unitées alliées sont présentes
                                         if (grid[pos].Units.First().Player.Color == currPlayer.Color)
                                             value += 25 * grid[pos].Units.Count;
                                     }
-                                    else
+                                    //Check de la valeur des ressources aux alentours
+                                    for (int k2 = -3; k2 <= 3; k2++)
                                     {
-                                        //Check de la valeur des ressources aux alentours
-                                        for (int k2 = -3; k2 <= 3; k2++)
+                                        //Tests en cas de bord de map horizontal
+                                        bool cond11 = ((k2 <= 0) || ((i % mapStrategy.width) + k2) < mapStrategy.width);
+                                        bool cond21 = ((k2 >= 0) || ((i % mapStrategy.width) + k2) >= 0);
+                                        if (cond1 && cond2)
                                         {
-                                            //Tests en cas de bord de map horizontal
-                                            bool cond11 = ((k2 <= 0) || ((i % mapStrategy.width) + k2) < mapStrategy.width);
-                                            bool cond21 = ((k2 >= 0) || ((i % mapStrategy.width) + k2) >= 0);
-                                            if (cond1 && cond2)
+                                            for (int l2 = -3 + Math.Abs(k2); l2 <= 3 - Math.Abs(k2); l2++)
                                             {
-                                                for (int l2 = -3 + Math.Abs(k2); l2 <= 3 - Math.Abs(k2); l2++)
+                                                //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
+                                                if ((i + k2 + mapStrategy.width * l2 >= 0) && (i + k2 + mapStrategy.width * l2 < grid.Count))
                                                 {
-                                                    //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
-                                                    if ((i + k2 + mapStrategy.width * l2 >= 0) && (i + k2 + mapStrategy.width * l2 < grid.Count))
+                                                    //Pour chaque ressource, la case gagne 10 pts de valeur
+                                                    value += 10 * grid[pos].Minerals;
+                                                    value += 10 * grid[pos].Foods;
+
+                                                    //On va comptabiliser la nourriture pour savoir si la cité poura s'étendre
+                                                    //Doit > 10
+                                                    if (totfood.Count == 0)
+                                                        totfood.Add(grid[pos].Foods);
+                                                    else if (totfood.Min() < grid[pos].Foods)
                                                     {
-                                                        value += 10 * grid[pos].Minerals;
-                                                        value += 10 * grid[pos].Foods;
+                                                        if (totfood.Count >= 3)
+                                                            totfood.Remove(totfood.Min());
+                                                        totfood.Add(grid[pos].Foods);
                                                     }
                                                 }
                                             }
@@ -457,11 +475,43 @@ namespace Implementation
                                     }
                                 }
                             }
+                            //Si la case n'est pas visible, on ne se préoccupe pas des unités
                             else
                             {
-                                value += 10 * grid[pos].Minerals;
-                                value += 10 * grid[pos].Foods;
+                                int probableCity = pos;
+                                //On regarde les ressources avoisinnantes
+                                for (int k2 = -3; k2 <= 3; k2++)
+                                {
+                                    //Tests en cas de bord de map horizontal
+                                    bool cond11 = ((k2 <= 0) || ((probableCity % mapStrategy.width) + k2) < mapStrategy.width);
+                                    bool cond21 = ((k2 >= 0) || ((probableCity % mapStrategy.width) + k2) >= 0);
+                                    if (cond1 && cond2)
+                                    {
+                                        for (int l2 = -3 + Math.Abs(k2); l2 <= 3 - Math.Abs(k2); l2++)
+                                        {
+                                            //Test en cas de bord de map vertical, la case à éclairer est-elle dans le tableau ?
+                                            if ((probableCity + k2 + mapStrategy.width * l2 >= 0) && (probableCity + k2 + mapStrategy.width * l2 < grid.Count))
+                                            {
+                                                pos = probableCity + k2 + mapStrategy.width * l2;
+                                                value += 10 * grid[pos].Minerals;
+                                                value += 4 * grid[pos].Foods;
+                                                if (totfood.Count == 0)
+                                                    totfood.Add(grid[pos].Foods);
+                                                else if (totfood.Min() < grid[pos].Foods)
+                                                {
+                                                    if(totfood.Count >=3)
+                                                        totfood.Remove(totfood.Min());
+                                                    totfood.Add(grid[pos].Foods);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
+                            if (totfood.Sum() < 10)
+                                value /= 3;
+
+                            pos = i + k + mapStrategy.width * l;
                             //Ajout au dictionnaire de points
                             caseValue.Add(pos, value);
                         }
@@ -485,23 +535,25 @@ namespace Implementation
         }
         #endregion
 
-        //TODO supprimer si non fonctionnel
         public bool pathFinder(int posX, int posY, int mp, int destX, int destY, IPlayer currPlayer)
         {
-            if (grid[posX + mapStrategy.width * posY].Units.Count != 0)
-                if (grid[posX + mapStrategy.width * posY].Units.First().Player.Color != currPlayer.Color)
-                    return false;
-            if (mp <= 0 && ((destX != posX) || (destY != posY)))
-                return false;
-            if (mp >= 0 && (destX == posX) && (destY == posY))
-                return true;
-            if (mp >= 0 && ((destX != posX) || (destY != posY)))
+            if (posX + mapStrategy.width * posY < grid.Count && (posX + mapStrategy.width * posY >= 0))
             {
-                bool way1 = (pathFinder(posX + 1, posY, mp-1, destX, destY, currPlayer));
-                bool way2 = (pathFinder(posX, posY + 1, mp-1, destX, destY, currPlayer));
-                bool way3 = (pathFinder(posX - 1, posY, mp-1, destX, destY, currPlayer));
-                bool way4 = (pathFinder(posX, posY - 1, mp-1, destX, destY, currPlayer));
-                return (way1 || way2 || way3 || way4);
+                if (grid[posX + mapStrategy.width * posY].Units.Count != 0)
+                    if (grid[posX + mapStrategy.width * posY].Units.First().Player.Color != currPlayer.Color)
+                        return false;
+                if (mp <= 0 && ((destX != posX) || (destY != posY)))
+                    return false;
+                if (mp >= 0 && (destX == posX) && (destY == posY))
+                    return true;
+                if (mp >= 0 && ((destX != posX) || (destY != posY)))
+                {
+                    bool way1 = (pathFinder(posX + 1, posY, mp - 1, destX, destY, currPlayer));
+                    bool way2 = (pathFinder(posX, posY + 1, mp - 1, destX, destY, currPlayer));
+                    bool way3 = (pathFinder(posX - 1, posY, mp - 1, destX, destY, currPlayer));
+                    bool way4 = (pathFinder(posX, posY - 1, mp - 1, destX, destY, currPlayer));
+                    return (way1 || way2 || way3 || way4);
+                }
             }
             return false;
         }

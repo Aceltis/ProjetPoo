@@ -54,6 +54,8 @@ namespace Implementation
         public virtual int CreationTime { get; set; }
         public virtual int Id { get; set; }
         public virtual double BossBonus { get; set; }
+        public virtual bool haveAttacked { get; set; }
+
 
         public virtual void move(ICase destination)
         {

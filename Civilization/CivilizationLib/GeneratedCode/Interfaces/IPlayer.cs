@@ -14,6 +14,7 @@ namespace Interfaces
 	public interface IPlayer 
 	{
         int[] ScreenPos { get; set; }
+        bool builtHisFirstCity { get; set; }
         string Name { get; set; }
         Implementation.CivilizationType Civilization { get; set; }
         List<ICity> Cities { get; set; }

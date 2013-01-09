@@ -20,7 +20,7 @@ namespace Interfaces
         IMap Map { get; set; }
         int Turns { get; set; }
 
-		void addLooser();
+        void addLooser(IPlayer player);
 
 		bool isWinner();
 

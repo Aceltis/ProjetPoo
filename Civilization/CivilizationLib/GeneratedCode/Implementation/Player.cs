@@ -16,6 +16,7 @@ namespace Implementation
     public class Player : ObservableObject, IPlayer
     {
         public virtual int[] ScreenPos { get; set; }
+        public virtual bool builtHisFirstCity { get; set; }
 
         private string _name;
         public virtual string Name

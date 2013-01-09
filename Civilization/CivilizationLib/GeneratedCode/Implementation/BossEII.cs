@@ -71,7 +71,7 @@ namespace Implementation
 
         public override void afficher(object sender, PaintEventArgs e, ICaseImageFlyweight fw, int x, int y)
         {
-            if (Case.Units.OfType<StudentEII>() != null || Case.Units.OfType<BossEII>() != null)
+            if (Case.Units.Count == 1)
             {
                 e.Graphics.DrawImage(fw.getUnitImage(0, Player.Color), x + 6, y + 6, 38, 38);
             }

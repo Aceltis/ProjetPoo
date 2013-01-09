@@ -31,7 +31,7 @@ namespace Interfaces
 
         void produceTeacher();
 
-		void upgradePopulation();
+		void updatePopulation();
 
         void changeOwner(IPlayer newOwner);
 
